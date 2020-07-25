@@ -13,7 +13,11 @@ const useStyles = makeStyles({
   root: {
     height: '70px',
     display: 'flex',
+    width: '100%',
+    position: 'fixed',
+    zIndex: '100',
     alignItems: 'center',
+    backgroundColor: 'white',
     boxShadow: '0 10px 20px rgba(0,0,0,.1)',
   },
   text: {
