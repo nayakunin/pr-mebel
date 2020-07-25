@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header } from '../../components/Header/Header';
-// import { Carousel } from './components/Carousel/Carousel';
+import { Carousel } from './components/Carousel/Carousel';
 // import { Catalog } from './components/Catalog/Catalog';
 // import { DesignOffer } from './components/DesignOffer/DesignOffer';
 // import { FeedbackForm } from './components/FeedbackForm/FeedbackForm';
@@ -21,8 +21,8 @@ import { Footer } from '../../components/Footer/Footer';
 export const HomePage = () => (
   <>
     <Header />
-    {/* <Carousel />
-    <Paragraph />
+    <Carousel />
+    {/* <Paragraph />
     <Catalog />
     <DesignOffer />
     <FeedbackForm />
