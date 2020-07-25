@@ -6,6 +6,7 @@ import cx from 'classnames';
 import { Grid, Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import { Link } from '../Link/Link';
 import logo from './resources/logo.svg';
 
 const useStyles = makeStyles({
@@ -32,14 +33,6 @@ const useStyles = makeStyles({
     listStyle: 'none',
     padding: '0',
     margin: '0',
-  },
-  link: {
-    textDecoration: 'none',
-    color: 'inherit',
-    transition: 'color .1s',
-    '&:hover': {
-      color: 'red',
-    },
   },
   dropdown: {
     position: 'relative',
@@ -115,22 +108,22 @@ export const Header = () => {
                   >
                     <li>
                       <Typography className={classes.text} gutterBottom>
-                        <a href="/" className={classes.link}>Шкафы</a>
+                        <Link href="/">Шкафы</Link>
                       </Typography>
                     </li>
                     <li>
                       <Typography className={classes.text} gutterBottom>
-                        <a href="/" className={classes.link}>Гардеробные</a>
+                        <Link href="/">Гардеробные</Link>
                       </Typography>
                     </li>
                     <li>
                       <Typography className={classes.text} gutterBottom>
-                        <a href="/" className={classes.link}>Аксессуары</a>
+                        <Link href="/">Аксессуары</Link>
                       </Typography>
                     </li>
                     <li>
                       <Typography className={classes.text} gutterBottom>
-                        <a href="/" className={classes.link}>Системные подсветки</a>
+                        <Link href="/">Системные подсветки</Link>
                       </Typography>
                     </li>
                   </ul>
@@ -138,22 +131,22 @@ export const Header = () => {
               </li>
               <li>
                 <Typography className={classes.text}>
-                  <a href="#design" className={classes.link}>Рассчитать стоимость</a>
+                  <Link href="#design">Рассчитать стоимость</Link>
                 </Typography>
               </li>
               <li>
                 <Typography className={classes.text}>
-                  <a href="#design" className={classes.link}>Преимущества</a>
+                  <Link href="#design">Преимущества</Link>
                 </Typography>
               </li>
               <li>
                 <Typography className={classes.text}>
-                  <a href="#design" className={classes.link}>О нас</a>
+                  <Link href="#design">О нас</Link>
                 </Typography>
               </li>
               <li>
                 <Typography className={classes.text}>
-                  <a href="#design" className={classes.link}>Контакты</a>
+                  <Link href="#design">Контакты</Link>
                 </Typography>
               </li>
             </ul>
@@ -162,7 +155,7 @@ export const Header = () => {
             <ul className={cx(classes.list, classes.contacts)}>
               <li>
                 <Typography variant="body2" className={classes.text}>
-                  <a href="tel:+74952780285" className={classes.link}>+7 (495) 278-02-85</a>
+                  <Link href="tel:+74952780285">+7 (495) 278-02-85</Link>
                 </Typography>
               </li>
               <li>
