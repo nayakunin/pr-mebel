@@ -16,7 +16,7 @@ import { Header } from '../../components/Header/Header';
 // import { QuestionsForm } from './components/QuestionsForm/QuestionsForm';
 // import { ShopImg } from './components/ShopImg/ShopImg';
 // import { Map } from './components/Map/Map';
-// import { Footer } from '../../components/Footer/Footer';
+import { Footer } from '../../components/Footer/Footer';
 
 export const HomePage = () => (
   <>
@@ -37,7 +37,7 @@ export const HomePage = () => (
     <FAQ />
     <QuestionsForm />
     <ShopImg />
-    <Map />
-    <Footer /> */}
+    <Map /> */}
+    <Footer />
   </>
 );
