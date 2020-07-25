@@ -63,7 +63,7 @@ export const Pagination = ({
 
   const handleClick = useCallback((index) => () => {
     onChangeSlide(index);
-  }, []);
+  }, [onChangeSlide]);
 
   return (
     <Grid
