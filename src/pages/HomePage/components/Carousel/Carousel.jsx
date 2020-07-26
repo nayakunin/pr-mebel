@@ -5,7 +5,7 @@ import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import cx from 'classnames';
 import { Page } from './components/Page/Page';
 import { Pagination } from './components/Pagination/Pagination';
-import { pages } from './resources/pages';
+import { pages } from '../../../../__fixtures__/pages';
 
 const useStyles = makeStyles({
   root: {
