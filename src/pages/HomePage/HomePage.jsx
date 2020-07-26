@@ -6,8 +6,8 @@ import { Catalog } from './components/Catalog/Catalog';
 import { DesignOffer } from './components/DesignOffer/DesignOffer';
 import { FeedbackForm } from './components/FeedbackForm/FeedbackForm';
 import { Advantages } from './components/Advantages/Advantages';
-// import { WardrobeLeft } from './components/WardrobeLeft/WardrobeLeft';
-// import { WardrobeRight } from './components/WardrobeRight/WardrobeRight';
+import { WardrobeLeft } from './components/WardrobeLeft/WardrobeLeft';
+import { WardrobeRight } from './components/WardrobeRight/WardrobeRight';
 // import { About } from './components/About/About';
 // import { Order } from './components/Order/Order';
 // import { CallDesignerFrom } from './components/CallDesignerForm/CallDesignerForm';
@@ -30,9 +30,9 @@ export const HomePage = () => (
       <DesignOffer />
       <FeedbackForm />
       <Advantages />
-      {/* <WardrobeLeft />
-    <WardrobeRight />
-    <About />
+      <WardrobeLeft />
+      <WardrobeRight />
+      {/* <About />
     <Order />
     <CallDesignerFrom />
     <OurProduction />
