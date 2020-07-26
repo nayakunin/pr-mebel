@@ -74,6 +74,7 @@ export const Pagination = ({
     >
       <Grid item xs={9} container className={classes.content}>
         {pages.map((page, index) => {
+          // TODO Fix classnames composition
           let itemClasses;
           if (currentPage === index) {
             itemClasses = cx(classes.item, classes.active);
