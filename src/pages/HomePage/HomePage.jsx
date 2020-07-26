@@ -9,7 +9,7 @@ import { Advantages } from './components/Advantages/Advantages';
 import { WardrobeLeft } from './components/WardrobeLeft/WardrobeLeft';
 import { WardrobeRight } from './components/WardrobeRight/WardrobeRight';
 import { About } from './components/About/About';
-// import { Order } from './components/Order/Order';
+import { Order } from './components/Order/Order';
 // import { CallDesignerFrom } from './components/CallDesignerForm/CallDesignerForm';
 // import { OurProduction } from './components/OurProduction/OurProduction';
 // import { HowToOrder } from './components/HowToOrder/HowToOrder';
@@ -33,8 +33,8 @@ export const HomePage = () => (
       <WardrobeLeft />
       <WardrobeRight />
       <About />
-      {/* <Order />
-    <CallDesignerFrom />
+      <Order />
+      {/* <CallDesignerFrom />
     <OurProduction />
     <HowToOrder />
     <FAQ />
