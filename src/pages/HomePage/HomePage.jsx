@@ -11,7 +11,7 @@ import { WardrobeRight } from './components/WardrobeRight/WardrobeRight';
 import { About } from './components/About/About';
 import { Order } from './components/Order/Order';
 import { CallDesignerForm } from './components/CallDesignerForm/CallDesignerForm';
-// import { OurProduction } from './components/OurProduction/OurProduction';
+import { OurProduction } from './components/OurProduction/OurProduction';
 // import { HowToOrder } from './components/HowToOrder/HowToOrder';
 // import { FAQ } from './components/FAQ/FAQ';
 // import { QuestionsForm } from './components/QuestionsForm/QuestionsForm';
@@ -35,8 +35,8 @@ export const HomePage = () => (
       <About />
       <Order />
       <CallDesignerForm />
-      {/* <OurProduction />
-    <HowToOrder />
+      <OurProduction />
+      {/* <HowToOrder />
     <FAQ />
     <QuestionsForm />
     <ShopImg />
