@@ -8,7 +8,7 @@ import { FeedbackForm } from './components/FeedbackForm/FeedbackForm';
 import { Advantages } from './components/Advantages/Advantages';
 import { WardrobeLeft } from './components/WardrobeLeft/WardrobeLeft';
 import { WardrobeRight } from './components/WardrobeRight/WardrobeRight';
-// import { About } from './components/About/About';
+import { About } from './components/About/About';
 // import { Order } from './components/Order/Order';
 // import { CallDesignerFrom } from './components/CallDesignerForm/CallDesignerForm';
 // import { OurProduction } from './components/OurProduction/OurProduction';
@@ -32,8 +32,8 @@ export const HomePage = () => (
       <Advantages />
       <WardrobeLeft />
       <WardrobeRight />
-      {/* <About />
-    <Order />
+      <About />
+      {/* <Order />
     <CallDesignerFrom />
     <OurProduction />
     <HowToOrder />
