@@ -4,7 +4,7 @@ import { Carousel } from './components/Carousel/Carousel';
 import { Description } from './components/Description/Description';
 import { Catalog } from './components/Catalog/Catalog';
 import { DesignOffer } from './components/DesignOffer/DesignOffer';
-// import { FeedbackForm } from './components/FeedbackForm/FeedbackForm';
+import { FeedbackForm } from './components/FeedbackForm/FeedbackForm';
 // import { Advantages } from './components/Advantages/Advantages';
 // import { WardrobeLeft } from './components/WardrobeLeft/WardrobeLeft';
 // import { WardrobeRight } from './components/WardrobeRight/WardrobeRight';
@@ -27,8 +27,8 @@ export const HomePage = () => (
       <Description />
       <Catalog />
       <DesignOffer />
-      {/* <FeedbackForm />
-    <Advantages />
+      <FeedbackForm />
+      {/* <Advantages />
     <WardrobeLeft />
     <WardrobeRight />
     <About />
