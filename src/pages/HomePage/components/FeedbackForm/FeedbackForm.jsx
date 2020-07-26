@@ -143,6 +143,7 @@ export const FeedbackForm = () => {
                 ))}
               </Grid>
             </Grid>
+            {/* TODO Добавить тип кнопки и доделать отправку формы */}
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
               <Grid item xs={4}>
                 <MainButton>Рассчитать стоимость</MainButton>
