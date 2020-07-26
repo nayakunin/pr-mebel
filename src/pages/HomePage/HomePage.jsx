@@ -5,7 +5,7 @@ import { Description } from './components/Description/Description';
 import { Catalog } from './components/Catalog/Catalog';
 import { DesignOffer } from './components/DesignOffer/DesignOffer';
 import { FeedbackForm } from './components/FeedbackForm/FeedbackForm';
-// import { Advantages } from './components/Advantages/Advantages';
+import { Advantages } from './components/Advantages/Advantages';
 // import { WardrobeLeft } from './components/WardrobeLeft/WardrobeLeft';
 // import { WardrobeRight } from './components/WardrobeRight/WardrobeRight';
 // import { About } from './components/About/About';
@@ -29,8 +29,8 @@ export const HomePage = () => (
       <Catalog />
       <DesignOffer />
       <FeedbackForm />
-      {/* <Advantages />
-    <WardrobeLeft />
+      <Advantages />
+      {/* <WardrobeLeft />
     <WardrobeRight />
     <About />
     <Order />
