@@ -11,6 +11,7 @@ import img4 from './resources/design-img4.svg';
 const useStyles = makeStyles({
   root: {
     marginTop: '40px',
+    marginBottom: '80px',
   },
   container: {
     marginTop: '48px',

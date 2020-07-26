@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid, Typography } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
@@ -28,6 +28,8 @@ const useStyles = makeStyles({
     lineHeight: '100%',
   },
   publish: {
+    display: 'flex',
+    flexDirection: 'row',
     cursor: 'pointer',
   },
   icon: {
@@ -44,23 +46,66 @@ const useStyles = makeStyles({
   'copyright-link': {
     color: 'white',
   },
+  'input-file': {
+    display: 'none',
+  },
+  'button-container': {
+    marginTop: '36px',
+    marginBottom: '24px',
+  },
+  filenames: {
+    color: 'white',
+  },
 });
 
-// TODO Добавить обработку загрузки файлов
 export const FeedbackForm = () => {
   const classes = useStyles();
+  const fileInputRef = useRef();
+  const [fileNames, setFileNames] = useState([]);
+
+  const handleFileInputClick = useCallback(() => {
+    fileInputRef.current.click();
+  }, [fileInputRef]);
+
+  const handleFileUploadChange = useCallback(() => {
+    const { files } = fileInputRef.current;
+    const names = [];
+
+    for (let i = 0; i < files.length; i++) {
+      if (i > 2) {
+        names.push(`И еще ${files.length - i}`);
+        break;
+      }
+      names.push(files[i].name);
+    }
+
+    setFileNames(names);
+  }, [fileInputRef]);
 
   return (
     <div className={classes.root}>
       <Container>
         <form className={classes.form}>
-          <Grid container spacing={4}>
+          <Grid container>
             <Grid item xs={6} container spacing={4}>
               <Grid item xs={6}>
-                <input className={classes.input} placeholder="Имя" />
+                <input
+                  type="text"
+                  autoComplete="name"
+                  className={classes.input}
+                  placeholder="Имя"
+                  required
+                />
               </Grid>
               <Grid item xs={6}>
-                <input className={classes.input} placeholder="Телефон" />
+                <input
+                  type="tel"
+                  autoComplete="tel"
+                  pattern="[7,8]{1}-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
+                  className={classes.input}
+                  placeholder="Телефон"
+                  required
+                />
               </Grid>
               <Grid item xs={12}>
                 <Typography className={classes.text}>
@@ -70,20 +115,35 @@ export const FeedbackForm = () => {
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item xs={6} container>
-              <Grid item xs={3} container direction="row" className={classes.publish}>
-                <PublishIcon className={classes.icon} />
-                <Typography className={classes.text_publish}>
-                  Прикрепить
-                  <br />
-                  эскизы
-                </Typography>
+            <Grid item xs={1} />
+            <Grid item xs={5} container spacing={4}>
+              <Grid
+                item
+                xs={4}
+              >
+                <input
+                  type="file"
+                  multiple
+                  ref={fileInputRef}
+                  className={classes['input-file']}
+                  onChange={handleFileUploadChange}
+                />
+                <div onClick={handleFileInputClick} className={classes.publish}>
+                  <PublishIcon className={classes.icon} />
+                  <Typography className={classes.text_publish}>
+                    Прикрепить
+                    <br />
+                    эскизы
+                  </Typography>
+                </div>
               </Grid>
-              {/* <Grid item xs={9}>
-
-              </Grid> */}
+              <Grid item xs={8}>
+                {fileNames.map((file) => (
+                  <Typography key={file} className={classes.filenames}>{file}</Typography>
+                ))}
+              </Grid>
             </Grid>
-            <Grid item xs={12} container justify="center">
+            <Grid item xs={12} container justify="center" className={classes['button-container']}>
               <Grid item xs={4}>
                 <MainButton>Рассчитать стоимость</MainButton>
               </Grid>

@@ -19,6 +19,7 @@ import { FeedbackForm } from './components/FeedbackForm/FeedbackForm';
 // import { Map } from './components/Map/Map';
 import { Footer } from '../../components/Footer/Footer';
 
+// TODO Объединить в секции
 export const HomePage = () => (
   <>
     <Header />
