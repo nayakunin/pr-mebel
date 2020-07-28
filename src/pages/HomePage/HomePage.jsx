@@ -15,8 +15,8 @@ import { OurProduction } from './components/OurProduction/OurProduction';
 import { HowToOrder } from './components/HowToOrder/HowToOrder';
 import { FAQ } from './components/FAQ/FAQ';
 import { QuestionsForm } from './components/QuestionsForm/QuestionsForm';
-// import { ShopImg } from './components/ShopImg/ShopImg';
-// import { Map } from './components/Map/Map';
+import { ShopImg } from './components/ShopImg/ShopImg';
+import { Map } from './components/Map/Map';
 import { Footer } from '../../components/Footer/Footer';
 
 // TODO Объединить в секции
@@ -39,8 +39,8 @@ export const HomePage = () => (
       <HowToOrder />
       <FAQ />
       <QuestionsForm />
-      {/* <ShopImg />
-    <Map /> */}
+      <ShopImg />
+      <Map />
     </main>
     <Footer />
   </>
