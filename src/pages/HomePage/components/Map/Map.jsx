@@ -11,7 +11,7 @@ import { BlockTitle } from '../../../../components/BlockTitle/BlockTitle';
 
 const useStyles = makeStyles({
   root: {
-    marginTop: '80px',
+    margin: '80px 0',
   },
   content: {
     marginTop: '40px',

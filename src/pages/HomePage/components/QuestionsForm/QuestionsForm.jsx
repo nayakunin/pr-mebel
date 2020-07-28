@@ -73,7 +73,7 @@ export const QuestionsForm = () => {
           <Grid container>
             <Grid item xs={3} />
             <Grid item xs={6} container>
-              <Grid item xs={6}>
+              <Grid item xs={5}>
                 <input
                   type="text"
                   autoComplete="name"
@@ -82,7 +82,8 @@ export const QuestionsForm = () => {
                   required
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={2} />
+              <Grid item xs={5}>
                 <input
                   type="tel"
                   autoComplete="tel"
