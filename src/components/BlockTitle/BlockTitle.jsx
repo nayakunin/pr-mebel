@@ -35,7 +35,10 @@ export const BlockTitle = ({
 
 BlockTitle.propTypes = {
   children: PropTypes.node.isRequired,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ]),
 };
 
 BlockTitle.defaultProps = {

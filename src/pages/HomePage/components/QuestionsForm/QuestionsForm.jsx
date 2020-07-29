@@ -96,7 +96,8 @@ export const QuestionsForm = () => {
             </Grid>
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
               <Grid item xs={4}>
-                <MainButton>Задать вопрос</MainButton>
+                {/* TODO Add callback */}
+                <MainButton onClick={() => ({})}>Задать вопрос</MainButton>
               </Grid>
             </Grid>
             <Grid item xs container justify="center">

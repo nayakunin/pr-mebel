@@ -93,7 +93,7 @@ export const WardrobeLeft = () => {
                   : cx(classes.option);
 
                 return (
-                  <li className={active} onClick={handleClick(tab.title)}>
+                  <li key={tab.title} className={active} onClick={handleClick(tab.title)}>
                     <Typography color="inherit" variant="h6">
                       {tab.title}
                     </Typography>
@@ -105,7 +105,8 @@ export const WardrobeLeft = () => {
         </Grid>
         <Grid container justify="center" className={classes['button-container']}>
           <Grid item xs={4}>
-            <MainButton>Рассчитать стоимость</MainButton>
+            {/* TODO Add callback */}
+            <MainButton onClick={() => ({})}>Рассчитать стоимость</MainButton>
           </Grid>
         </Grid>
       </Container>

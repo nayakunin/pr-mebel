@@ -1,5 +1,6 @@
 export const catalogMock = [
   {
+    id: 1,
     title: 'Традиции и элегантность',
     subtitle: 'В вашем интерьере',
     caption: 'Шкафы классические',
@@ -7,6 +8,7 @@ export const catalogMock = [
     href: '/',
   },
   {
+    id: 2,
     title: 'tilte',
     subtitle: 'subtitle',
     caption: 'caption',
@@ -14,6 +16,7 @@ export const catalogMock = [
     href: '/',
   },
   {
+    id: 3,
     title: 'tilte',
     subtitle: 'subtitle',
     caption: 'caption',
@@ -21,6 +24,7 @@ export const catalogMock = [
     href: '/',
   },
   {
+    id: 4,
     title: 'tilte',
     subtitle: 'subtitle',
     caption: 'caption',
@@ -28,6 +32,7 @@ export const catalogMock = [
     href: '/',
   },
   {
+    id: 5,
     title: 'tilte',
     subtitle: 'subtitle',
     caption: 'caption',
@@ -35,6 +40,7 @@ export const catalogMock = [
     href: '/',
   },
   {
+    id: 6,
     title: 'tilte',
     subtitle: 'subtitle',
     caption: 'caption',

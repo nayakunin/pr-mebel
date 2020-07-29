@@ -90,7 +90,7 @@ export const Tabs = ({
 
 Tabs.propTypes = {
   activeTab: PropTypes.string.isRequired,
-  tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  tabs: PropTypes.arrayOf(PropTypes.object).isRequired,
   children: PropTypes.arrayOf(PropTypes.node).isRequired,
   onChange: PropTypes.func.isRequired,
 };

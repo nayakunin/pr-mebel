@@ -11,6 +11,7 @@ import img6 from './resources/about-img6.svg';
 
 const CARDS = [
   {
+    id: 1,
     title: 'Богатый ассортимент',
     text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
     вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
@@ -19,6 +20,7 @@ const CARDS = [
     img: img1,
   },
   {
+    id: 2,
     title: 'Богатый ассортимент',
     text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
     вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
@@ -27,6 +29,7 @@ const CARDS = [
     img: img2,
   },
   {
+    id: 3,
     title: 'Богатый ассортимент',
     text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
     вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
@@ -35,6 +38,7 @@ const CARDS = [
     img: img3,
   },
   {
+    id: 4,
     title: 'Богатый ассортимент',
     text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
     вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
@@ -43,6 +47,7 @@ const CARDS = [
     img: img4,
   },
   {
+    id: 5,
     title: 'Богатый ассортимент',
     text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
     вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
@@ -51,6 +56,7 @@ const CARDS = [
     img: img5,
   },
   {
+    id: 6,
     title: 'Богатый ассортимент',
     text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
     вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
@@ -88,7 +94,7 @@ export const About = () => {
         </Typography>
         <Grid container spacing={4} className={classes.grid}>
           {CARDS.map((card) => (
-            <Grid item xs={4} container spacing={2}>
+            <Grid key={card.id} item xs={4} container spacing={2}>
               <Grid item xs={2}>
                 <img src={card.img} alt="icon" />
               </Grid>

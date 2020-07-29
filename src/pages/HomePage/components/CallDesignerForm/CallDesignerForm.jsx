@@ -69,7 +69,8 @@ export const CallDesignerForm = () => {
             </Grid>
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
               <Grid item xs={4}>
-                <MainButton>Рассчитать стоимость</MainButton>
+                {/* TODO Add callback */}
+                <MainButton onClick={() => ({})}>Рассчитать стоимость</MainButton>
               </Grid>
             </Grid>
             <Grid item xs container justify="center">

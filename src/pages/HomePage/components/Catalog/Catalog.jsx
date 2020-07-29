@@ -31,7 +31,7 @@ export const Catalog = () => {
       </BlockTitle>
       <Grid container spacing={4}>
         {catalogMock.map((item) => (
-          <Grid item xs={4} key={item.title}>
+          <Grid item xs={4} key={item.id}>
             <CatalogCard
               title={item.title}
               subtitle={item.subtitle}

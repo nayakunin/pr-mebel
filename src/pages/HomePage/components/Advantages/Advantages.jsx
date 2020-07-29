@@ -148,10 +148,12 @@ export const Advantages = () => {
             <Grid item className={classes.tabs}>
               <Tabs tabs={TABS} activeTab={activeTab} onChange={handleChangeTab}>
                 {TABS.map((tab) => (
-                  <div label={tab.title}>
+                  // TODO Move to a separate component
+                  <div key={tab.title} label={tab.title}>
                     <ul className={classes.list}>
                       {tab.list.map((option) => (
-                        <li className={classes['list-item']}>
+                        // TODO Move to a separate component
+                        <li key={option} className={classes['list-item']}>
                           <CheckIcon className={classes.check} />
                           <Typography>{option}</Typography>
                         </li>
@@ -172,7 +174,8 @@ export const Advantages = () => {
         </Grid>
         <Grid item xs={12} container justify="center" className={classes['button-container']}>
           <Grid item xs={4}>
-            <MainButton>Рассчитать стоимость</MainButton>
+            {/* TODO Add callback */}
+            <MainButton onClick={() => ({})}>Рассчитать стоимость</MainButton>
           </Grid>
         </Grid>
       </Container>

@@ -24,8 +24,11 @@ export const DesignOffer = () => {
   return (
     <Container className={classes.root}>
       <BlockTitle>
-        <Typography variant="h4">Получите дизайн-проект</Typography>
-        <Typography variant="h4">и стоимость вашего проекта сегодня</Typography>
+        <Typography variant="h4">
+          Получите дизайн-проект
+          <br />
+          и стоимость вашего проекта сегодня
+        </Typography>
       </BlockTitle>
       <Grid container className={classes.container} spacing={4}>
         <Grid item xs={3}>
