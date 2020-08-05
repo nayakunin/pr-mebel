@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -14,17 +15,24 @@ const useStyles = makeStyles({
 });
 
 export const Link = ({
-  href,
+  to,
   children,
 }) => {
   const classes = useStyles();
 
   return (
-    <a href={href} className={classes.root}>{children}</a>
+    <RouterLink to={to} className={classes.root}>{children}</RouterLink>
   );
 };
 
 Link.propTypes = {
-  href: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
+  to: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.func,
+  ]).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]).isRequired,
 };
