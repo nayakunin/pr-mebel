@@ -14,6 +14,15 @@ const useStyles = makeStyles({
     height: '100vh',
     minHeight: '700px',
     overflow: 'hidden',
+    '&::after': {
+      position: 'absolute',
+      content: '""',
+      width: '100%',
+      top: '0',
+      left: '0',
+      height: '100%',
+      background: 'rgba(0, 0, 0, 0.4)',
+    },
   },
   slider: {
     position: 'relative',
@@ -84,9 +93,18 @@ export const Carousel = () => {
       setWindowWidth(window.innerWidth);
     };
 
+    const handleRotate = () => {
+      handleClickNext();
+    };
+
+    const interval = setInterval(() => handleRotate(), 10000);
+
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearInterval(interval);
+    };
+  }, [handleClickNext]);
 
   return (
     <div className={classes.root}>

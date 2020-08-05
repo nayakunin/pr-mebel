@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid, Typography } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
 import { MainButton } from '../../../../components/MainButton/MainButton';
+import { getFileDeclination } from '../../../../utils';
 
 const useStyles = makeStyles({
   root: {
@@ -73,7 +74,7 @@ export const FeedbackForm = () => {
 
     for (let i = 0; i < files.length; i++) {
       if (i > 2) {
-        names.push(`И еще ${files.length - i}`);
+        names.push(`И еще ${files.length - i} ${getFileDeclination(files.length - i)}`);
         break;
       }
       names.push(files[i].name);
