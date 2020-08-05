@@ -8,7 +8,8 @@ import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    {/* TODO Find a solution */}
+    <Router basename={process.env.PUBLIC_URL}>
       <App />
     </Router>
   </React.StrictMode>,

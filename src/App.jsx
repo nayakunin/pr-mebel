@@ -4,13 +4,17 @@ import {
   Switch,
 } from 'react-router-dom';
 import { HomePage } from './pages/HomePage/HomePage';
+import { Catalog } from './pages/Catalog/Catalog';
 
 function App() {
   return (
     <>
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           <HomePage />
+        </Route>
+        <Route path="/catalog">
+          <Catalog />
         </Route>
       </Switch>
     </>
