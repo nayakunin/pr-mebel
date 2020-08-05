@@ -16,9 +16,16 @@ const useStyles = makeStyles({
 
 export const Link = ({
   to,
+  external,
   children,
 }) => {
   const classes = useStyles();
+
+  if (external) {
+    return (
+      <a href={to} className={classes.root}>{children}</a>
+    );
+  }
 
   return (
     <RouterLink to={to} className={classes.root}>{children}</RouterLink>
@@ -35,4 +42,9 @@ Link.propTypes = {
     PropTypes.string,
     PropTypes.node,
   ]).isRequired,
+  external: PropTypes.bool,
+};
+
+Link.defaultProps = {
+  external: false,
 };
