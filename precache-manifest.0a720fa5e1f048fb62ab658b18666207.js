@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9dfc1251a5e0bfb14ab6be0c2fd85a59",
+    "revision": "ed849a76da97ff28e2d4491e12062427",
     "url": "/pr-mebel/index.html"
   },
   {
-    "revision": "546b83bd7a48754dccd4",
+    "revision": "306d0ac776cf8476fa6e",
     "url": "/pr-mebel/static/css/main.cb0cdd74.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pr-mebel/static/js/2.6a755b1c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "546b83bd7a48754dccd4",
-    "url": "/pr-mebel/static/js/main.573f8ea7.chunk.js"
+    "revision": "306d0ac776cf8476fa6e",
+    "url": "/pr-mebel/static/js/main.1a21e697.chunk.js"
   },
   {
     "revision": "a242efee147dd90ff80c",
