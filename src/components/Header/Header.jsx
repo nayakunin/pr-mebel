@@ -92,7 +92,9 @@ export const Header = () => {
       <Container>
         <Grid container>
           <Grid item xs={2}>
-            <img src={logo} alt="logo" />
+            <Link to="/">
+              <img src={logo} alt="logo" />
+            </Link>
           </Grid>
           <Grid item xs={7} container justify="center" alignItems="center">
             <ul className={cx(classes.menu, classes.list)}>
@@ -112,22 +114,22 @@ export const Header = () => {
                   >
                     <li>
                       <Typography className={classes.text} gutterBottom>
-                        <Link href="/">Шкафы</Link>
+                        <Link to="/catalog">Шкафы</Link>
                       </Typography>
                     </li>
                     <li>
                       <Typography className={classes.text} gutterBottom>
-                        <Link href="/">Гардеробные</Link>
+                        <Link to="/">Гардеробные</Link>
                       </Typography>
                     </li>
                     <li>
                       <Typography className={classes.text} gutterBottom>
-                        <Link href="/">Аксессуары</Link>
+                        <Link to="/">Аксессуары</Link>
                       </Typography>
                     </li>
                     <li>
                       <Typography className={classes.text} gutterBottom>
-                        <Link href="/">Системные подсветки</Link>
+                        <Link to="/">Системные подсветки</Link>
                       </Typography>
                     </li>
                   </ul>
@@ -135,22 +137,22 @@ export const Header = () => {
               </li>
               <li>
                 <Typography className={classes.text}>
-                  <Link href="#design">Рассчитать стоимость</Link>
+                  <Link to="/#design-offer">Рассчитать стоимость</Link>
                 </Typography>
               </li>
               <li>
                 <Typography className={classes.text}>
-                  <Link href="#design">Преимущества</Link>
+                  <Link to="/#advantages">Преимущества</Link>
                 </Typography>
               </li>
               <li>
                 <Typography className={classes.text}>
-                  <Link href="#design">О нас</Link>
+                  <Link to="/#about">О нас</Link>
                 </Typography>
               </li>
               <li>
                 <Typography className={classes.text}>
-                  <Link href="#design">Контакты</Link>
+                  <Link to="/#contacts">Контакты</Link>
                 </Typography>
               </li>
             </ul>
@@ -159,16 +161,18 @@ export const Header = () => {
             <ul className={cx(classes.list, classes.contacts)}>
               <li>
                 <Typography variant="body2" className={classes.text}>
-                  <Link href="tel:+74952780285">+7 (495) 278-02-85</Link>
+                  <Link to="tel:+74952780285" external>+7 (495) 278-02-85</Link>
                 </Typography>
               </li>
               <li>
+                {/* TODO Add link to ymaps */}
                 <Typography variant="body2" className={classes.text}>м. сокол</Typography>
               </li>
               <li>
                 <Typography variant="body2" className={classes.text}>10:00 - 20:00</Typography>
               </li>
             </ul>
+            {/* TODO Add links to socials */}
             <ul className={cx(classes.list, classes.social)}>
               <li>vk</li>
               <li>in</li>
