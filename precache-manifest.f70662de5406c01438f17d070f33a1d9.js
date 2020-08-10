@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d825ecd50bed7b6fe7f240333c136251",
+    "revision": "84ed275e69d8ab4e6d0eae370fbc499e",
     "url": "/pr-mebel/index.html"
   },
   {
-    "revision": "b11df939488c13eb7b03",
+    "revision": "59a4357d3ec46aad334e",
     "url": "/pr-mebel/static/css/main.cb0cdd74.chunk.css"
   },
   {
-    "revision": "aa5dd06d042e798ea8b2",
-    "url": "/pr-mebel/static/js/2.9e91c448.chunk.js"
+    "revision": "2be5e2b23a8fedf8fc52",
+    "url": "/pr-mebel/static/js/2.0f9de936.chunk.js"
   },
   {
-    "revision": "5e9b6f5c16b720e8a86875f97734673e",
-    "url": "/pr-mebel/static/js/2.9e91c448.chunk.js.LICENSE.txt"
+    "revision": "75304a605f9c03e664948edc1c5186bb",
+    "url": "/pr-mebel/static/js/2.0f9de936.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b11df939488c13eb7b03",
-    "url": "/pr-mebel/static/js/main.83ba229a.chunk.js"
+    "revision": "59a4357d3ec46aad334e",
+    "url": "/pr-mebel/static/js/main.51398627.chunk.js"
   },
   {
     "revision": "a242efee147dd90ff80c",
