@@ -41,7 +41,7 @@ export const HomePage = () => {
         behavior: 'smooth',
       });
     }
-  }, [refsMap.current, location.hash]);
+  }, [location.hash]);
 
   return (
     <>

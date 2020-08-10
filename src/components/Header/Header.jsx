@@ -107,6 +107,7 @@ export const Header = () => {
                   Каталог&nbsp;
                   <ArrowDropDownIcon className={classes.dropdown} />
                 </Typography>
+                {/* TODO добавить поддержку клика вне дропдауна */}
                 {dropdownVisible && (
                   <ul
                     className={classes['menu__dropdown-popup']}
