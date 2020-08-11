@@ -13,6 +13,7 @@ import { Loader } from './components/Loader/Loader';
 const useStyles = makeStyles({
   root: {
     marginTop: '40px',
+    marginBottom: '80px',
   },
 });
 
@@ -26,16 +27,19 @@ export const Gallery = ({
   const dispatch = useDispatch();
 
   const observer = useRef();
+
   const observedNodeRef = useCallback((node) => {
     if (isLoading) return;
     if (observer.current) observer.current.disconnect();
 
-    observer.current = new IntersectionObserver((entries) => {
+    const handleUpdate = (entries) => {
       if (entries[0].isIntersecting && hasMore) {
         dispatch(changePage(page + 1));
         dispatch(fetchCatalog());
       }
-    });
+    };
+
+    observer.current = new IntersectionObserver(handleUpdate);
 
     if (node) observer.current.observe(node);
   }, [isLoading, hasMore, dispatch, page]);
@@ -44,7 +48,7 @@ export const Gallery = ({
     <Container className={classes.root}>
       <Grid container spacing={3}>
         {items.map((item, i) => {
-          if (i === items.length - 10) {
+          if (i === items.length - 1) {
             return (
               <Grid item xs={4} key={item.id} ref={observedNodeRef}>
                 <Card imageUrlMin={item.imageMinified.url} onClick={() => ({})} />
