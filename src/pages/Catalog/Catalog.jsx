@@ -8,24 +8,28 @@ import { Lead } from './components/Lead/Lead';
 import { Filters } from './components/Filters/Filters';
 import { Gallery } from './components/Gallery/Gallery';
 import { filters } from '../../constants/filters';
-import { fetchCatalog, changeFilter } from '../../actions/catalog';
+import { fetchCatalog, changeFilter, resetCatalog } from '../../actions/catalog';
 import { catalogSelector } from './selectors';
 
 export const Catalog = () => {
   const dispatch = useDispatch();
   const {
     items,
-    // hasMore,
-    // isLoading,
+    hasMore,
+    isLoading,
+    page,
     // isError,
     filter,
   } = useSelector(catalogSelector);
   const location = useLocation();
 
+  // Применить фильтр
   const handleApplyFilter = useCallback(() => {
+    dispatch(resetCatalog());
     dispatch(fetchCatalog());
   }, [dispatch]);
 
+  // Поменять значение одного из селектов
   const handleChangeFilter = useCallback(({ name, value }) => {
     dispatch(changeFilter({
       name,
@@ -33,6 +37,7 @@ export const Catalog = () => {
     }));
   }, [dispatch]);
 
+  // Разбирает поиск из урла, подставляет параметры в селекты, и делает по ним запрос
   useEffect(() => {
     const search = QueryString.parse(location.search);
     if (Object.keys(search).length) {
@@ -57,7 +62,12 @@ export const Catalog = () => {
           onApplyFilter={handleApplyFilter}
           onChange={handleChangeFilter}
         />
-        <Gallery items={items} />
+        <Gallery
+          items={items}
+          isLoading={isLoading}
+          hasMore={hasMore}
+          page={page}
+        />
         {/* <FeedbackForm /> */}
       </main>
       <Footer />

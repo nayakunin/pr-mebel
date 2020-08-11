@@ -1,16 +1,20 @@
 import { gql } from '@apollo/client';
 import { client } from './client';
+import { getCollectionName } from './getCollectionName';
+import { batchSize } from '../constants';
 
-export const fetchCatalogByFilter = ({ section, style, doorType }) => client.query({
+export const fetchCatalogByFilter = ({ section, style, doorType }, page) => client.query({
   query: gql`
     {
-      catalogCollection(where: {
-        ${section}: true
+      ${getCollectionName(section)}(where: {
         ${style !== 'any' ? `${style}: true` : ''}
         ${doorType !== 'any' ? `${doorType}: true` : ''}
-      }){
+      }, order: [id_ASC], limit: ${batchSize}, skip: ${batchSize * page}){
+        total
         items {
-          name
+          id
+          collection
+          description
           imageFull {
             url
           }

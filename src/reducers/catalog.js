@@ -3,6 +3,8 @@ import {
   FETCH_CATALOG_SUCCESS,
   FETCH_CATALOG_FAILURE,
   CHANGE_FILTER,
+  CHANGE_PAGE,
+  RESET_CATALOG,
 } from '../actions/catalog';
 import { filters } from '../constants/filters';
 
@@ -15,6 +17,8 @@ const initialState = {
     style: filters.styles[0].id,
     doorType: filters.styles[0].id,
   },
+  total: 0,
+  page: 0,
 };
 
 export const catalog = (state = initialState, action) => {
@@ -22,26 +26,25 @@ export const catalog = (state = initialState, action) => {
     case FETCH_CATALOG_REQUEST: {
       return {
         ...state,
-        items: [],
-        hasMore: false,
         isLoading: true,
       };
     }
     case FETCH_CATALOG_SUCCESS: {
+      const { items, total } = action.payload;
       return {
         ...state,
-        items: action.payload,
-        // TODO Add hasMore
-        hasMore: true,
+        items: [...state.items, ...items],
+        total,
         isLoading: false,
+        hasMore: state.items.length + items.length !== total,
       };
     }
     case FETCH_CATALOG_FAILURE: {
       return {
         ...state,
         items: [],
-        hasMore: false,
         isLoading: false,
+        hasMore: false,
         // TODO Add error handling
         isError: true,
       };
@@ -55,6 +58,21 @@ export const catalog = (state = initialState, action) => {
           ...state.filter,
           [name]: value,
         },
+      };
+    }
+    case CHANGE_PAGE: {
+      return {
+        ...state,
+        page: action.payload,
+      };
+    }
+    case RESET_CATALOG: {
+      return {
+        ...state,
+        total: 0,
+        items: [],
+        page: 0,
+        hasMore: false,
       };
     }
     default: {

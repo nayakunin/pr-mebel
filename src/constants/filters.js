@@ -2,15 +2,20 @@ export const filters = {
   sections: [
     {
       title: 'Шкафы',
-      id: 'cupboard',
+      id: 'cupboards',
     },
     {
       title: 'Гардеробные',
-      id: 'wardrobe',
+      id: 'wardrobes',
     },
     {
-      title: 'Аксессуары и системы подсветки',
+      // TODO Разделить Аксессуары и системы подсветки на отдельные фильтры
+      title: 'Аксессуары',
       id: 'accessories',
+    },
+    {
+      title: 'Cистемы подсветки',
+      id: 'lightingSystems',
     },
   ],
   styles: [
