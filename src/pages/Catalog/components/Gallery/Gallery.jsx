@@ -38,7 +38,7 @@ export const Gallery = ({
     });
 
     if (node) observer.current.observe(node);
-  }, [isLoading, hasMore]);
+  }, [isLoading, hasMore, dispatch, page]);
 
   return (
     <Container className={classes.root}>
