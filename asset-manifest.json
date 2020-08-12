@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/pr-mebel/static/css/main.cb0cdd74.chunk.css",
-    "main.js": "/pr-mebel/static/js/main.5f56bce8.chunk.js",
-    "main.js.map": "/pr-mebel/static/js/main.5f56bce8.chunk.js.map",
+    "main.js": "/pr-mebel/static/js/main.6ca9e152.chunk.js",
+    "main.js.map": "/pr-mebel/static/js/main.6ca9e152.chunk.js.map",
     "runtime-main.js": "/pr-mebel/static/js/runtime-main.83a5afc1.js",
     "runtime-main.js.map": "/pr-mebel/static/js/runtime-main.83a5afc1.js.map",
     "static/js/2.7b277146.chunk.js": "/pr-mebel/static/js/2.7b277146.chunk.js",
     "static/js/2.7b277146.chunk.js.map": "/pr-mebel/static/js/2.7b277146.chunk.js.map",
     "index.html": "/pr-mebel/index.html",
-    "precache-manifest.7d3d8376c8a977fb7a9f19a3bd7974e5.js": "/pr-mebel/precache-manifest.7d3d8376c8a977fb7a9f19a3bd7974e5.js",
+    "precache-manifest.da05a996f9b58013604e5d35b003ceb3.js": "/pr-mebel/precache-manifest.da05a996f9b58013604e5d35b003ceb3.js",
     "service-worker.js": "/pr-mebel/service-worker.js",
     "static/css/main.cb0cdd74.chunk.css.map": "/pr-mebel/static/css/main.cb0cdd74.chunk.css.map",
     "static/js/2.7b277146.chunk.js.LICENSE.txt": "/pr-mebel/static/js/2.7b277146.chunk.js.LICENSE.txt",
@@ -35,6 +35,6 @@
     "static/js/runtime-main.83a5afc1.js",
     "static/js/2.7b277146.chunk.js",
     "static/css/main.cb0cdd74.chunk.css",
-    "static/js/main.5f56bce8.chunk.js"
+    "static/js/main.6ca9e152.chunk.js"
   ]
 }
