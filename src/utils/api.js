@@ -18,8 +18,12 @@ export const fetchCatalogByFilter = ({ section, style, doorType }, page) => clie
           imageFull {
             url
           }
-          imageMinified {
-            url
+          imageMinified: imageFull {
+            url(transform: {
+              width: 435
+              height: 290
+              format: JPG_PROGRESSIVE
+            })
           }
           sys {
             id

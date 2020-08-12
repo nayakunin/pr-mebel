@@ -51,13 +51,21 @@ export const Gallery = ({
           if (i === items.length - 1) {
             return (
               <Grid item xs={4} key={item.id} ref={observedNodeRef}>
-                <Card imageUrlMin={item.imageMinified.url} onClick={() => ({})} />
+                <Card
+                  imageUrlMin={item.imageMinified.url}
+                  collection={item.collection}
+                  onClick={() => ({})}
+                />
               </Grid>
             );
           }
           return (
             <Grid item xs={4} key={item.id}>
-              <Card imageUrlMin={item.imageMinified.url} onClick={() => ({})} />
+              <Card
+                imageUrlMin={item.imageMinified.url}
+                collection={item.collection}
+                onClick={() => ({})}
+              />
             </Grid>
           );
         })}

@@ -112,7 +112,7 @@ export const About = () => {
           ))}
         </Grid>
         <Typography variant="h5" align="center" className={classes.subtitle}>
-          Приходите, нам есть чам вас удивить!
+          Приходите, нам есть чем вас удивить!
         </Typography>
       </Container>
 

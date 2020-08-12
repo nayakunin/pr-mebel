@@ -1,7 +1,8 @@
+// TODO Подумать о React.lazy
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -13,8 +14,7 @@ import './index.css';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={configureStore()}>
-      {/* TODO Find a solution */}
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
         <ThemeProvider theme={theme}>
           <App />
         </ThemeProvider>
