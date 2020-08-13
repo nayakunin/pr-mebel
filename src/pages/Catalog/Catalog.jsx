@@ -85,7 +85,7 @@ export const Catalog = () => {
   const handleDownloadMoreCards = useCallback(() => {
     dispatch(changePage(page + 1));
     dispatch(fetchCatalog());
-  }, [dispatch]);
+  }, [dispatch, page]);
 
   // Разбирает поиск из урла, подставляет параметры в селекты, и делает по ним запрос
   useEffect(() => {

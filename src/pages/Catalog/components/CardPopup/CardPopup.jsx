@@ -97,18 +97,18 @@ export const CardPopup = ({
 
   const handleClickBack = useCallback(() => {
     onClickBack();
-  }, []);
+  }, [onClickBack]);
 
   const handleClickForward = useCallback(() => {
     onClickForward();
-  }, []);
+  }, [onClickForward]);
 
   useEffect(() => {
     if (items.length - 5 === currentItemId) {
       console.log('hello');
       onDownloadMoreCards();
     }
-  }, [items.lenght, currentItemId]);
+  }, [items.length, currentItemId, onDownloadMoreCards]);
 
   return (
     <Dialog
