@@ -5,6 +5,12 @@ import {
   CHANGE_FILTER,
   CHANGE_PAGE,
   RESET_CATALOG,
+  OPEN_CARD_POPUP,
+  CLOSE_CARD_POPUP,
+  OPEN_FEEDBACK_FORM_POPUP,
+  CLOSE_FEEDBACK_FORM_POPUP,
+  GO_TO_NEXT_CARD,
+  GO_TO_PREV_CARD,
 } from '../actions/catalog';
 import { filters } from '../constants/filters';
 
@@ -19,6 +25,9 @@ const initialState = {
   },
   total: 0,
   page: 0,
+  currentItemId: 0,
+  isCardPopupOpen: false,
+  isFeedbackFormPopupOpen: false,
 };
 
 export const catalog = (state = initialState, action) => {
@@ -73,6 +82,46 @@ export const catalog = (state = initialState, action) => {
         items: [],
         page: 0,
         hasMore: false,
+      };
+    }
+    case OPEN_CARD_POPUP: {
+      return {
+        ...state,
+        currentItemId: action.payload,
+        isCardPopupOpen: true,
+      };
+    }
+    case CLOSE_CARD_POPUP: {
+      return {
+        ...state,
+        currentItemId: 0,
+        isCardPopupOpen: false,
+      };
+    }
+    case OPEN_FEEDBACK_FORM_POPUP: {
+      return {
+        ...state,
+        isFeedbackFormPopupOpen: true,
+      };
+    }
+    case CLOSE_FEEDBACK_FORM_POPUP: {
+      return {
+        ...state,
+        isFeedbackFormPopupOpen: false,
+      };
+    }
+    case GO_TO_NEXT_CARD: {
+      return {
+        ...state,
+        // TODO Добавить проверку на последнего
+        currentItemId: state.currentItemId + 1,
+      };
+    }
+    case GO_TO_PREV_CARD: {
+      return {
+        ...state,
+        // TODO Добавить проверку на первого
+        currentItemId: state.currentItemId - 1,
       };
     }
     default: {

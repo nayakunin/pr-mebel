@@ -22,6 +22,7 @@ export const Gallery = ({
   isLoading,
   hasMore,
   page,
+  onCardClick,
 }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -54,7 +55,8 @@ export const Gallery = ({
                 <Card
                   imageUrlMin={item.imageMinified.url}
                   collection={item.collection}
-                  onClick={() => ({})}
+                  currentItemId={i}
+                  onClick={onCardClick}
                 />
               </Grid>
             );
@@ -64,7 +66,8 @@ export const Gallery = ({
               <Card
                 imageUrlMin={item.imageMinified.url}
                 collection={item.collection}
-                onClick={() => ({})}
+                currentItemId={i}
+                onClick={onCardClick}
               />
             </Grid>
           );
@@ -82,4 +85,5 @@ Gallery.propTypes = {
   page: PropTypes.number.isRequired,
   isLoading: PropTypes.bool.isRequired,
   hasMore: PropTypes.bool.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };

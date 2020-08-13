@@ -8,8 +8,20 @@ import { Lead } from './components/Lead/Lead';
 import { Filters } from './components/Filters/Filters';
 import { Gallery } from './components/Gallery/Gallery';
 import { filters } from '../../constants/filters';
-import { fetchCatalog, changeFilter, resetCatalog } from '../../actions/catalog';
+import {
+  fetchCatalog,
+  changeFilter,
+  resetCatalog,
+  openCardPopup,
+  closeCardPopup,
+  openFeedbackFormPopup,
+  // closeFeedbackFormPopup,
+  goToNextCard,
+  goToPrevCard,
+  changePage,
+} from '../../actions/catalog';
 import { catalogSelector } from './selectors';
+import { CardPopup } from './components/CardPopup/CardPopup';
 
 export const Catalog = () => {
   const dispatch = useDispatch();
@@ -20,6 +32,9 @@ export const Catalog = () => {
     page,
     // isError,
     filter,
+    currentItemId,
+    isCardPopupOpen,
+    // isFeedbackFormPopupOpen,
   } = useSelector(catalogSelector);
   const location = useLocation();
 
@@ -35,6 +50,41 @@ export const Catalog = () => {
       name,
       value,
     }));
+  }, [dispatch]);
+
+  // Открыть модальное окно с итемом
+  const handleCardClick = useCallback((itemId) => {
+    dispatch(openCardPopup(itemId));
+  }, [dispatch]);
+
+  // Закрыть модальное окно итемов
+  const handleCloseCardPopup = useCallback(() => {
+    dispatch(closeCardPopup());
+  }, [dispatch]);
+
+  // Открыть модальное окно обратной связи по нажатию на "рассчитать стоимость"
+  const handleCardPopupButtonClick = useCallback(() => {
+    dispatch(openFeedbackFormPopup());
+  }, [dispatch]);
+
+  // Закрыть модальное окно обратной связи
+  // const handleCloseFeedbackFormPopup = useCallback(() => {
+  //   dispatch(closeFeedbackFormPopup());
+  // }, [dispatch]);
+
+  // Открыть следующий итем внутри модального окна итемов
+  const handleGoToNextCard = useCallback(() => {
+    dispatch(goToNextCard());
+  }, [dispatch]);
+
+  // Открыть предыдущий итем внутри модального окна итемов
+  const handleGoToPevCard = useCallback(() => {
+    dispatch(goToPrevCard());
+  }, [dispatch]);
+
+  const handleDownloadMoreCards = useCallback(() => {
+    dispatch(changePage(page + 1));
+    dispatch(fetchCatalog());
   }, [dispatch]);
 
   // Разбирает поиск из урла, подставляет параметры в селекты, и делает по ним запрос
@@ -67,9 +117,22 @@ export const Catalog = () => {
           isLoading={isLoading}
           hasMore={hasMore}
           page={page}
+          onCardClick={handleCardClick}
         />
         {/* <FeedbackForm /> */}
       </main>
+      {isCardPopupOpen && (
+        <CardPopup
+          items={items}
+          currentItemId={currentItemId}
+          isOpen={isCardPopupOpen}
+          onClose={handleCloseCardPopup}
+          onButtonClick={handleCardPopupButtonClick}
+          onClickBack={handleGoToPevCard}
+          onClickForward={handleGoToNextCard}
+          onDownloadMoreCards={handleDownloadMoreCards}
+        />
+      )}
       <Footer />
     </>
   );

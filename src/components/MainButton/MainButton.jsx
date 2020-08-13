@@ -19,6 +19,9 @@ const useStyles = makeStyles({
       color: '#ff001f',
       background: 'white',
     },
+    '&:focus': {
+      outline: 'none',
+    },
   },
 });
 

@@ -7,6 +7,12 @@ export const FETCH_CATALOG_FAILURE = 'FETCH_CATALOG_FAILURE';
 export const CHANGE_FILTER = 'CHANGE_FILTER';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const RESET_CATALOG = 'RESET_CATALOG';
+export const OPEN_CARD_POPUP = 'OPEN_CARD_POPUP';
+export const CLOSE_CARD_POPUP = 'CLOSE_CARD_POPUP';
+export const OPEN_FEEDBACK_FORM_POPUP = 'OPEN_FEEDBACK_FORM_POPUP';
+export const CLOSE_FEEDBACK_FORM_POPUP = 'CLOSE_FEEDBACK_FORM_POPUP';
+export const GO_TO_NEXT_CARD = 'GO_TO_NEXT_CARD';
+export const GO_TO_PREV_CARD = 'GO_TO_PREV_CARD';
 
 export const fetchCatalog = () => async (dispatch, getState) => {
   const { filter, page } = getState().catalog;
@@ -41,4 +47,29 @@ export const changePage = (newPage) => ({
 
 export const resetCatalog = () => ({
   type: RESET_CATALOG,
+});
+
+export const openCardPopup = (currentItemId) => ({
+  type: OPEN_CARD_POPUP,
+  payload: currentItemId,
+});
+
+export const closeCardPopup = () => ({
+  type: CLOSE_CARD_POPUP,
+});
+
+export const openFeedbackFormPopup = () => ({
+  type: OPEN_FEEDBACK_FORM_POPUP,
+});
+
+export const closeFeedbackFormPopup = () => ({
+  type: CLOSE_FEEDBACK_FORM_POPUP,
+});
+
+export const goToNextCard = () => ({
+  type: GO_TO_NEXT_CARD,
+});
+
+export const goToPrevCard = () => ({
+  type: GO_TO_PREV_CARD,
 });
