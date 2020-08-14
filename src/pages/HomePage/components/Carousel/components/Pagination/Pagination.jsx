@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Grid } from '@material-ui/core';
-import classNames from 'classnames';
+import cx from 'classnames';
 
 const useStyles = makeStyles({
   root: {
@@ -59,7 +59,6 @@ export const Pagination = ({
   onChangeSlide,
 }) => {
   const classes = useStyles();
-  const cx = classNames.bind(classes);
 
   const handleClick = useCallback((index) => () => {
     onChangeSlide(index);
@@ -73,29 +72,22 @@ export const Pagination = ({
       className={classes.root}
     >
       <Grid item xs={9} container className={classes.content}>
-        {pages.map((page, index) => {
-          // TODO Fix classnames composition
-          let itemClasses;
-          if (currentPage === index) {
-            itemClasses = cx(classes.item, classes.active);
-          } else {
-            itemClasses = cx(classes.item);
-          }
-          return (
-            <button
-              key={page.title}
-              type="button"
-              className={itemClasses}
-              onClick={handleClick(index)}
+        {pages.map((page, index) => (
+          <button
+            key={page.title}
+            type="button"
+            className={cx(classes.item, {
+              [classes.active]: currentPage === index,
+            })}
+            onClick={handleClick(index)}
+          >
+            <Typography
+              className={classes.text}
             >
-              <Typography
-                className={classes.text}
-              >
-                {index + 1}
-              </Typography>
-            </button>
-          );
-        })}
+              {index + 1}
+            </Typography>
+          </button>
+        ))}
       </Grid>
     </Grid>
   );

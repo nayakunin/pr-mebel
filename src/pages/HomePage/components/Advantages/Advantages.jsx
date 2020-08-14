@@ -148,11 +148,9 @@ export const Advantages = () => {
             <Grid item className={classes.tabs}>
               <Tabs tabs={TABS} activeTab={activeTab} onChange={handleChangeTab}>
                 {TABS.map((tab) => (
-                  // TODO Move to a separate component
                   <div key={tab.title} label={tab.title}>
                     <ul className={classes.list}>
                       {tab.list.map((option) => (
-                        // TODO Move to a separate component
                         <li key={option} className={classes['list-item']}>
                           <CheckIcon className={classes.check} />
                           <Typography>{option}</Typography>

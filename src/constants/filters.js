@@ -9,7 +9,6 @@ export const filters = {
       id: 'wardrobes',
     },
     {
-      // TODO Разделить Аксессуары и системы подсветки на отдельные фильтры
       title: 'Аксессуары',
       id: 'accessories',
     },

@@ -113,14 +113,12 @@ export const catalog = (state = initialState, action) => {
     case GO_TO_NEXT_CARD: {
       return {
         ...state,
-        // TODO Добавить проверку на последнего
         currentItemId: state.currentItemId + 1,
       };
     }
     case GO_TO_PREV_CARD: {
       return {
         ...state,
-        // TODO Добавить проверку на первого
         currentItemId: state.currentItemId - 1,
       };
     }

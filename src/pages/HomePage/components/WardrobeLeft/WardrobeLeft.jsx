@@ -87,19 +87,19 @@ export const WardrobeLeft = () => {
               но&nbsp;еще и&nbsp;приятным
             </Typography>
             <ul className={classes.list}>
-              {TABS.map((tab) => {
-                const active = activeTab === tab.title
-                  ? cx(classes.active, classes.option)
-                  : cx(classes.option);
-
-                return (
-                  <li key={tab.title} className={active} onClick={handleClick(tab.title)}>
-                    <Typography color="inherit" variant="h6">
-                      {tab.title}
-                    </Typography>
-                  </li>
-                );
-              })}
+              {TABS.map((tab) => (
+                <li
+                  key={tab.title}
+                  className={cx(classes.option, {
+                    [classes.active]: activeTab === tab.title,
+                  })}
+                  onClick={handleClick(tab.title)}
+                >
+                  <Typography color="inherit" variant="h6">
+                    {tab.title}
+                  </Typography>
+                </li>
+              ))}
             </ul>
           </Grid>
         </Grid>

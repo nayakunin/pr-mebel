@@ -62,28 +62,28 @@ export const Tabs = ({
   return (
     <>
       <ul className={classes.tabs}>
-        {tabs.map((tab) => {
-          const activeClass = activeTab === tab.title
-            ? cx(classes.active, classes.tab) : cx(classes.tab);
-          return (
-            <li
-              key={tab.title}
-              className={activeClass}
-              onClick={handeChangeTab(tab.title)}
-            >
-              <Typography component="span" variant="h6" color="inherit">{tab.title}</Typography>
-            </li>
-          );
-        })}
+        {tabs.map((tab) => (
+          <li
+            key={tab.title}
+            className={cx(classes.tab, {
+              [classes.active]: activeTab === tab.title,
+            })}
+            onClick={handeChangeTab(tab.title)}
+          >
+            <Typography component="span" variant="h6" color="inherit">{tab.title}</Typography>
+          </li>
+        ))}
       </ul>
-      {children.map((child) => {
-        const activeTabContent = activeTab === child.props.label
-          ? cx(classes['tab-content_visible'], classes['tab-content'])
-          : cx(classes['tab-content']);
-        return (
-          <div key={child.props.label} className={activeTabContent}>{child}</div>
-        );
-      })}
+      {children.map((child) => (
+        <div
+          key={child.props.label}
+          className={cx(classes['tab-content'], {
+            [classes['tab-content_visible']]: activeTab === child.props.label,
+          })}
+        >
+          {child}
+        </div>
+      ))}
     </>
   );
 };
