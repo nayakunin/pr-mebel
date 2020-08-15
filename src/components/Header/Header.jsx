@@ -182,20 +182,19 @@ export const Header = () => {
                 <Typography variant="body2" className={classes.text}>10:00 - 20:00</Typography>
               </li>
             </ul>
-            {/* TODO Add links to socials */}
             <ul className={cx(classes.list, classes.social)}>
               <li>
-                <a href="/">
+                <a href="https://vk.com/public185518769">
                   <Vk className={classes.social__icon} />
                 </a>
               </li>
               <li>
-                <a href="/">
+                <a href="https://www.instagram.com/pr_mebel.ru/">
                   <Inst className={classes.social__icon} />
                 </a>
               </li>
               <li>
-                <a href="/">
+                <a href="https://www.facebook.com/%D0%A7%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B9-%D0%BC%D0%B5%D0%B1%D0%B5%D0%BB%D1%8C%D0%B5%D1%80-108136607213942">
                   <Fb className={classes.social__icon} />
                 </a>
               </li>

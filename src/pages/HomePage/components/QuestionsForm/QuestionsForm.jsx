@@ -4,6 +4,7 @@ import {
   Container,
   Typography,
   Grid,
+  TextField,
 } from '@material-ui/core';
 import {
   BlockTitle,
@@ -23,17 +24,25 @@ const useStyles = makeStyles({
   title: {
     color: 'white',
   },
-  input: {
-    width: '100%',
+  input__inner: {
     color: 'white',
-    background: 'none',
-    border: 'none',
-    borderBottom: '1px solid white',
-    boxSizing: 'border-box',
-    padding: '8px',
-    '&:focus': {
-      outline: 'none',
+    '&:placeholder': {
+      color: 'white',
     },
+  },
+  input__root: {
+    '&:hover&:before,&:before': {
+      borderColor: 'white',
+    },
+  },
+  input_outline: {
+    borderColor: 'white',
+  },
+  input__label: {
+    color: 'white',
+  },
+  textarea: {
+    marginTop: '20px',
   },
   container: {
     position: 'relative',
@@ -71,27 +80,69 @@ export const QuestionsForm = () => {
             <Grid item xs={3} />
             <Grid item xs={6} container>
               <Grid item xs={5}>
-                {/* TODO Заменить инпуты на инпуты из MUI */}
-                <input
+                <TextField
                   type="text"
                   autoComplete="name"
-                  className={classes.input}
+                  InputProps={{
+                    classes: {
+                      root: classes.input__root,
+                      input: classes.input__inner,
+                    },
+                  }}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.input__label,
+                    },
+                  }}
+                  fullWidth
                   placeholder="Имя"
+                  label="Имя"
                   required
                 />
               </Grid>
               <Grid item xs={2} />
               <Grid item xs={5}>
-                <input
+                <TextField
                   type="tel"
                   autoComplete="tel"
+                  InputProps={{
+                    classes: {
+                      root: classes.input__root,
+                      input: classes.input__inner,
+                    },
+                  }}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.input__label,
+                    },
+                  }}
                   pattern="[7,8]{1}-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
-                  className={classes.input}
+                  fullWidth
                   placeholder="Телефон"
+                  label="Телефон"
                   required
                 />
               </Grid>
-              {/* TODO Добавить textarea */}
+              <TextField
+                fullWidth
+                multiline
+                className={classes.textarea}
+                InputProps={{
+                  classes: {
+                    root: classes.input__root,
+                    input: classes.input__inner,
+                  },
+                }}
+                InputLabelProps={{
+                  classes: {
+                    root: classes.input__label,
+                  },
+                }}
+                variant="filled"
+                placeholder="Описание"
+                label="Описание"
+                rows={5}
+              />
             </Grid>
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
               <Grid item xs={4}>
