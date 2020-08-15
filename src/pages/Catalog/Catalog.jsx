@@ -79,6 +79,13 @@ export const Catalog = () => {
     dispatch(fetchCatalog());
   }, [dispatch, page]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+    });
+  }, []);
+
   // Разбирает поиск из урла, подставляет параметры в селекты, и делает по ним запрос
   useEffect(() => {
     const search = QueryString.parse(location.search);

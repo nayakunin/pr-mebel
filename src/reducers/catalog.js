@@ -14,14 +14,13 @@ import { filters } from '__constants__';
 
 const initialState = {
   items: [],
-  hasMore: false,
   isLoading: false,
   filter: {
     section: filters.sections[0].id,
     style: filters.styles[0].id,
     doorType: filters.styles[0].id,
   },
-  total: 0,
+  hasMore: 0,
   page: 0,
   currentItemId: 0,
   isCardPopupOpen: false,
@@ -40,9 +39,8 @@ export const catalog = (state = initialState, action) => {
       return {
         ...state,
         items: [...state.items, ...items],
-        total,
         isLoading: false,
-        hasMore: state.items.length + items.length !== total,
+        hasMore: total,
       };
     }
     case FETCH_CATALOG_FAILURE: {
@@ -50,7 +48,7 @@ export const catalog = (state = initialState, action) => {
         ...state,
         items: [],
         isLoading: false,
-        hasMore: false,
+        hasMore: 0,
         // TODO Add error handling
         isError: true,
       };
@@ -75,10 +73,9 @@ export const catalog = (state = initialState, action) => {
     case RESET_CATALOG: {
       return {
         ...state,
-        total: 0,
         items: [],
         page: 0,
-        hasMore: false,
+        hasMore: 0,
       };
     }
     case OPEN_CARD_POPUP: {

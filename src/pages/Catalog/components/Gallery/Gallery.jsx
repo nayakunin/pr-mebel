@@ -86,6 +86,6 @@ Gallery.propTypes = {
   items: PropTypes.array.isRequired,
   page: PropTypes.number.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  hasMore: PropTypes.bool.isRequired,
+  hasMore: PropTypes.number.isRequired,
   onCardClick: PropTypes.func.isRequired,
 };
