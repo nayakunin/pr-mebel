@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d0cd42e33a0c6b9afd64f42662850f85",
+    "revision": "cd63ba385247f1060d017807c0a310d2",
     "url": "/pr-mebel/index.html"
   },
   {
-    "revision": "793a1546e26e4a4b6bb1",
+    "revision": "eac44ea2bc1f3e204edb",
     "url": "/pr-mebel/static/css/main.cb0cdd74.chunk.css"
   },
   {
-    "revision": "0ffac017ae84fdcf0b6d",
-    "url": "/pr-mebel/static/js/2.e546ae5e.chunk.js"
+    "revision": "531c9cce916981c6563b",
+    "url": "/pr-mebel/static/js/2.6cd82ca6.chunk.js"
   },
   {
     "revision": "75304a605f9c03e664948edc1c5186bb",
-    "url": "/pr-mebel/static/js/2.e546ae5e.chunk.js.LICENSE.txt"
+    "url": "/pr-mebel/static/js/2.6cd82ca6.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "793a1546e26e4a4b6bb1",
-    "url": "/pr-mebel/static/js/main.6964ff5e.chunk.js"
+    "revision": "eac44ea2bc1f3e204edb",
+    "url": "/pr-mebel/static/js/main.0ddcd784.chunk.js"
   },
   {
     "revision": "a242efee147dd90ff80c",
@@ -66,6 +66,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "9d2e5f488ade878790194c0277ee869f",
     "url": "/pr-mebel/static/media/footer-logo.9d2e5f48.svg"
+  },
+  {
+    "revision": "17d6289304bedac11d6d745a782033e1",
+    "url": "/pr-mebel/static/media/form-top.17d62893.jpg"
   },
   {
     "revision": "a41b57cf3de303b29e52498059ca72e3",
