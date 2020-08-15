@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import {
+  openOrderFormPopup,
+} from 'actions';
+import { connect } from 'react-redux';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     lineHeight: '45px',
-    background: '#ff001f',
+    background: theme.palette.primary.main,
     textAlign: 'center',
     fontSize: '12px',
     fontWeight: '400',
     textTransform: 'uppercase',
     color: 'white',
-    border: '1px solid #ff001f',
+    border: `1px solid ${theme.palette.primary.main}`,
     transition: 'all .3s ease-in-out',
     cursor: 'pointer',
     width: '100%',
@@ -23,9 +27,9 @@ const useStyles = makeStyles({
       outline: 'none',
     },
   },
-});
+}));
 
-export const MainButton = ({
+const MainButton = ({
   children,
   onClick,
 }) => {
@@ -46,3 +50,18 @@ MainButton.propTypes = {
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func.isRequired,
 };
+
+export default connect(
+  null,
+  (dispatch, ownProps) => {
+    if (!ownProps.onClick) {
+      return {
+        onClick: () => dispatch(openOrderFormPopup()),
+      };
+    }
+
+    return {
+      onClick: ownProps.onClick,
+    };
+  },
+)(MainButton);

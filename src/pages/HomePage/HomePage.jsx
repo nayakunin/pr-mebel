@@ -1,8 +1,13 @@
-import React, { useEffect, useRef, useLayoutEffect } from 'react';
+import React, {
+  useEffect,
+  useRef,
+  useLayoutEffect,
+} from 'react';
 import { useLocation } from 'react-router-dom';
 import {
   Header,
   Footer,
+  OrderFormPopup,
 } from 'components';
 import {
   Carousel,
@@ -98,6 +103,7 @@ export const HomePage = () => {
         </section>
       </main>
       <Footer />
+      <OrderFormPopup />
     </>
   );
 };

@@ -1,1 +1,2 @@
-export { catalog } from './catalog';
+export * from './catalog';
+export * from './orderFormPopup';

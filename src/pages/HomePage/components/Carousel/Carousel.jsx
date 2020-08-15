@@ -99,7 +99,7 @@ export const Carousel = () => {
       handleClickNext();
     };
 
-    const interval = setInterval(() => handleRotate(), 10000);
+    const interval = setInterval(() => handleRotate(), 15000);
 
     window.addEventListener('resize', handleResize);
     return () => {

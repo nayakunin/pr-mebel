@@ -86,7 +86,6 @@ export const CardPopup = ({
   currentItemId,
   isOpen,
   onClose,
-  onButtonClick,
   onClickBack,
   onClickForward,
   onDownloadMoreCards,
@@ -202,7 +201,7 @@ export const CardPopup = ({
             )}
           </div>
           <div className={classes['description-container_top']}>
-            <MainButton onClick={onButtonClick}>Рассчитать стоимость</MainButton>
+            <MainButton>Рассчитать стоимость</MainButton>
             <Grid container className={classes.socials}>
               <Grid item xs={4} />
               <Grid item xs={4} container spacing={2}>
@@ -230,7 +229,6 @@ CardPopup.propTypes = {
   })).isRequired,
   currentItemId: PropTypes.number.isRequired,
   onClose: PropTypes.func.isRequired,
-  onButtonClick: PropTypes.func.isRequired,
   onClickBack: PropTypes.func.isRequired,
   onClickForward: PropTypes.func.isRequired,
   onDownloadMoreCards: PropTypes.func.isRequired,

@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
+import { batchSize } from '__constants__';
 import { client } from './client';
 import { getCollectionName } from './getCollectionName';
-import { batchSize } from '../constants';
 
 export const fetchCatalogByFilter = ({ section, style, doorType }, page) => client.query({
   query: gql`

@@ -1,4 +1,5 @@
 export const getFileDeclination = (num) => {
+  console.log(num);
   const variants = ['файл', 'файла', 'файлов'];
   const remainder = num % 100;
   const remainderOfTen = remainder % 10;

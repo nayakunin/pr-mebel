@@ -9,8 +9,6 @@ export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const RESET_CATALOG = 'RESET_CATALOG';
 export const OPEN_CARD_POPUP = 'OPEN_CARD_POPUP';
 export const CLOSE_CARD_POPUP = 'CLOSE_CARD_POPUP';
-export const OPEN_FEEDBACK_FORM_POPUP = 'OPEN_FEEDBACK_FORM_POPUP';
-export const CLOSE_FEEDBACK_FORM_POPUP = 'CLOSE_FEEDBACK_FORM_POPUP';
 export const GO_TO_NEXT_CARD = 'GO_TO_NEXT_CARD';
 export const GO_TO_PREV_CARD = 'GO_TO_PREV_CARD';
 
@@ -56,14 +54,6 @@ export const openCardPopup = (currentItemId) => ({
 
 export const closeCardPopup = () => ({
   type: CLOSE_CARD_POPUP,
-});
-
-export const openFeedbackFormPopup = () => ({
-  type: OPEN_FEEDBACK_FORM_POPUP,
-});
-
-export const closeFeedbackFormPopup = () => ({
-  type: CLOSE_FEEDBACK_FORM_POPUP,
 });
 
 export const goToNextCard = () => ({

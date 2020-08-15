@@ -57,8 +57,7 @@ export const WardrobeRight = () => {
         </Grid>
         <Grid container justify="center" className={classes['button-container']}>
           <Grid item xs={4}>
-            {/* TODO Add callback */}
-            <MainButton onClick={() => ({})}>Рассчитать стоимость</MainButton>
+            <MainButton>Рассчитать стоимость</MainButton>
           </Grid>
         </Grid>
       </Container>

@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Grid } from '@material-ui/core';
 import {
-  OrderForm,
   BlockTitle,
   MainButton,
 } from 'components';
@@ -47,7 +46,7 @@ export const Catalog = () => {
       </Grid>
       <Grid container justify="center">
         <Grid item xs={4}>
-          <MainButton onClick={() => ({})}>Рассчитать стоимость</MainButton>
+          <MainButton>Рассчитать стоимость</MainButton>
         </Grid>
       </Grid>
     </Container>

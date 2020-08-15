@@ -5,6 +5,7 @@ import QueryString from 'query-string';
 import {
   Header,
   Footer,
+  OrderFormPopup,
 } from 'components';
 import {
   fetchCatalog,
@@ -12,8 +13,6 @@ import {
   resetCatalog,
   openCardPopup,
   closeCardPopup,
-  openFeedbackFormPopup,
-  // closeFeedbackFormPopup,
   goToNextCard,
   goToPrevCard,
   changePage,
@@ -38,7 +37,6 @@ export const Catalog = () => {
     filter,
     currentItemId,
     isCardPopupOpen,
-    // isFeedbackFormPopupOpen,
   } = useSelector(catalogSelector);
   const location = useLocation();
 
@@ -65,16 +63,6 @@ export const Catalog = () => {
   const handleCloseCardPopup = useCallback(() => {
     dispatch(closeCardPopup());
   }, [dispatch]);
-
-  // Открыть модальное окно обратной связи по нажатию на "рассчитать стоимость"
-  const handleCardPopupButtonClick = useCallback(() => {
-    dispatch(openFeedbackFormPopup());
-  }, [dispatch]);
-
-  // Закрыть модальное окно обратной связи
-  // const handleCloseFeedbackFormPopup = useCallback(() => {
-  //   dispatch(closeFeedbackFormPopup());
-  // }, [dispatch]);
 
   // Открыть следующий итем внутри модального окна итемов
   const handleGoToNextCard = useCallback(() => {
@@ -131,13 +119,13 @@ export const Catalog = () => {
           currentItemId={currentItemId}
           isOpen={isCardPopupOpen}
           onClose={handleCloseCardPopup}
-          onButtonClick={handleCardPopupButtonClick}
           onClickBack={handleGoToPevCard}
           onClickForward={handleGoToNextCard}
           onDownloadMoreCards={handleDownloadMoreCards}
         />
       )}
       <Footer />
+      <OrderFormPopup />
     </>
   );
 };
