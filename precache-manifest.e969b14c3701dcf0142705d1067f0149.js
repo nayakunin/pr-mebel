@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c74e4188cde880eee55d50d906bbf358",
+    "revision": "f0347ffc170b269ddc1d6f69b663695a",
     "url": "/pr-mebel/index.html"
   },
   {
-    "revision": "41a04906314c151daf81",
+    "revision": "fceeeff5fc250861d6ec",
     "url": "/pr-mebel/static/css/main.cb0cdd74.chunk.css"
   },
   {
-    "revision": "531c9cce916981c6563b",
-    "url": "/pr-mebel/static/js/2.6cd82ca6.chunk.js"
+    "revision": "8153064df76fa24f4473",
+    "url": "/pr-mebel/static/js/2.7d36a0fe.chunk.js"
   },
   {
     "revision": "75304a605f9c03e664948edc1c5186bb",
-    "url": "/pr-mebel/static/js/2.6cd82ca6.chunk.js.LICENSE.txt"
+    "url": "/pr-mebel/static/js/2.7d36a0fe.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "41a04906314c151daf81",
-    "url": "/pr-mebel/static/js/main.1f4cd3a9.chunk.js"
+    "revision": "fceeeff5fc250861d6ec",
+    "url": "/pr-mebel/static/js/main.402e07ad.chunk.js"
   },
   {
     "revision": "a242efee147dd90ff80c",
@@ -48,6 +48,66 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pr-mebel/static/media/about-img6.75ae4523.svg"
   },
   {
+    "revision": "2ff01296b0b77621b3ce85ed339bf335",
+    "url": "/pr-mebel/static/media/advantages-img1.2ff01296.jpg"
+  },
+  {
+    "revision": "0b5256160c8e3feb4b27a488340138e3",
+    "url": "/pr-mebel/static/media/advantages-img2.0b525616.jpg"
+  },
+  {
+    "revision": "195d6936a532a3f8e062c4c6cfccd578",
+    "url": "/pr-mebel/static/media/advantages-img4.195d6936.jpg"
+  },
+  {
+    "revision": "8ff059ec4412e0ef5d040c2318e1bf86",
+    "url": "/pr-mebel/static/media/advantages-img5.8ff059ec.jpg"
+  },
+  {
+    "revision": "8ba25a4baf035986b48e811c26e51d6a",
+    "url": "/pr-mebel/static/media/advantages-img6.8ba25a4b.jpg"
+  },
+  {
+    "revision": "ed6ad0eff05289b26ba8f7b119854fbd",
+    "url": "/pr-mebel/static/media/catalog-1.ed6ad0ef.jpg"
+  },
+  {
+    "revision": "6bdda78139ca1991c444de27aba0949b",
+    "url": "/pr-mebel/static/media/catalog-2.6bdda781.jpg"
+  },
+  {
+    "revision": "66215e9f968c844746925c0cf6ba9c6d",
+    "url": "/pr-mebel/static/media/catalog-3.66215e9f.jpg"
+  },
+  {
+    "revision": "56e4079907c30bb0da15cc8afba7e7e6",
+    "url": "/pr-mebel/static/media/catalog-4.56e40799.jpg"
+  },
+  {
+    "revision": "579b5f6edad8a5c2b1421793e1ae65ed",
+    "url": "/pr-mebel/static/media/catalog-5.579b5f6e.jpg"
+  },
+  {
+    "revision": "e9e071b8adea75626f9a8ce55cb6eee2",
+    "url": "/pr-mebel/static/media/catalog-6.e9e071b8.jpg"
+  },
+  {
+    "revision": "b990bff625cdc402db399345b6654686",
+    "url": "/pr-mebel/static/media/comfort-img1.b990bff6.jpg"
+  },
+  {
+    "revision": "f6a7a93a3e52f1d70e20c3d56aa6e193",
+    "url": "/pr-mebel/static/media/comfort-img2.f6a7a93a.jpg"
+  },
+  {
+    "revision": "76f376a3b4ca0ebf7e3863763afb44d7",
+    "url": "/pr-mebel/static/media/comfort-img3.76f376a3.jpg"
+  },
+  {
+    "revision": "2ced1995e94e84b1f313f97d7880ff61",
+    "url": "/pr-mebel/static/media/connect-bg.2ced1995.jpg"
+  },
+  {
     "revision": "fa51a5a61e073766095b85cc63976074",
     "url": "/pr-mebel/static/media/design-img.fa51a5a6.svg"
   },
@@ -70,6 +130,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "17d6289304bedac11d6d745a782033e1",
     "url": "/pr-mebel/static/media/form-top.17d62893.jpg"
+  },
+  {
+    "revision": "150478a64367d8c4f2bbfd0b1706dc9d",
+    "url": "/pr-mebel/static/media/img.150478a6.png"
   },
   {
     "revision": "a41b57cf3de303b29e52498059ca72e3",
@@ -102,5 +166,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "89e635d6de3966b8fc7919dc544a41a4",
     "url": "/pr-mebel/static/media/production-img.89e635d6.jpg"
+  },
+  {
+    "revision": "4b97e8a5a7f2517fb38199acb79d5974",
+    "url": "/pr-mebel/static/media/quality-img.4b97e8a5.jpg"
   }
 ]);
