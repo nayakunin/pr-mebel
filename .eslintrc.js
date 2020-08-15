@@ -25,4 +25,11 @@ module.exports = {
     'jsx-a11y/no-noninteractive-element-interactions': 0,
     'no-plusplus': 0,
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+      },
+    },
+  },
 };
