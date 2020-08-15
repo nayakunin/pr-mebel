@@ -5,7 +5,7 @@ import PublishIcon from '@material-ui/icons/Publish';
 import { MainButton } from 'components';
 import { getFileDeclination } from 'utils';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     background: '#303030',
     padding: '80px 0',
@@ -34,7 +34,7 @@ const useStyles = makeStyles({
     cursor: 'pointer',
   },
   icon: {
-    color: 'red',
+    color: theme.palette.primary.main,
     width: '30px',
     height: '30px',
   },
@@ -57,7 +57,7 @@ const useStyles = makeStyles({
   filenames: {
     color: 'white',
   },
-});
+}));
 
 export const FeedbackForm = () => {
   const classes = useStyles();

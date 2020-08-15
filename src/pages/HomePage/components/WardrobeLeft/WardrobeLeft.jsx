@@ -12,7 +12,7 @@ import {
 } from 'components';
 import { TABS } from './constants';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: '80px',
   },
@@ -35,16 +35,16 @@ const useStyles = makeStyles({
     marginBottom: '16px',
     cursor: 'pointer',
     '&:hover': {
-      color: 'red',
+      color: theme.palette.primary.main,
     },
   },
   active: {
-    color: 'red',
+    color: theme.palette.primary.main,
   },
   'button-container': {
     marginTop: '32px',
   },
-});
+}));
 
 export const WardrobeLeft = () => {
   const classes = useStyles();

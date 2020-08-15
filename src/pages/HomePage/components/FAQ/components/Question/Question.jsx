@@ -9,10 +9,10 @@ import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
-    border: '1px solid red',
+    border: `1px solid ${theme.palette.primary.main}`,
     padding: '10px',
     transition: 'all .3s ease-in-out',
     overflow: 'hidden',
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
   number: {
     fontSize: '40px',
-    color: 'red',
+    color: theme.palette.primary.main,
     opacity: '0.6',
   },
   dropdown: {
@@ -34,10 +34,10 @@ const useStyles = makeStyles({
   dropdown__icon: {
     width: '40px',
     height: '40px',
-    color: 'red',
+    color: theme.palette.primary.main,
     transition: 'all .3s ease-in-out',
   },
-});
+}));
 
 export const Question = ({
   id,

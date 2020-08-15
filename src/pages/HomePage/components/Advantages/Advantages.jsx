@@ -9,7 +9,7 @@ import {
 import { TABS } from './constants';
 import { Tabs } from './components';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: '80px',
   },
@@ -35,7 +35,7 @@ const useStyles = makeStyles({
   check: {
     position: 'absolute',
     left: '-30px',
-    color: 'red',
+    color: theme.palette.primary.main,
   },
   img: {
     width: '100%',
@@ -44,7 +44,7 @@ const useStyles = makeStyles({
   'button-container': {
     marginTop: '32px',
   },
-});
+}));
 
 export const Advantages = () => {
   const classes = useStyles();

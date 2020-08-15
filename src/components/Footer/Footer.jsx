@@ -5,10 +5,13 @@ import {
   Grid,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { ReactComponent as Logo } from 'assets/logo_footer.svg';
+import { ReactComponent as Vk } from 'assets/vk.svg';
+import { ReactComponent as Fb } from 'assets/fb.svg';
+import { ReactComponent as Inst } from 'assets/in.svg';
 import { Link } from '../Link/Link';
-import logo from './resources/footer-logo.svg';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     background: '#303030',
     padding: '80px 0',
@@ -40,14 +43,25 @@ const useStyles = makeStyles({
     fontSize: '24px',
     marginBottom: '24px',
   },
-  social__icons: {
+  'social__icons-container': {
     marginBottom: '24px',
+  },
+  social__icon: {
+    width: '35px',
+    height: '35px',
+    '& path': {
+      fill: 'white',
+    },
+    '&:hover path': {
+      fill: theme.palette.primary.main,
+      transition: 'fill .1s',
+    },
   },
   'vertical-line': {
     fontSize: '20px',
     margin: '0 8px',
   },
-});
+}));
 
 export const Footer = () => {
   const classes = useStyles();
@@ -57,7 +71,7 @@ export const Footer = () => {
       <Container>
         <Grid container justify="center" className={classes['logo-container']}>
           <Grid item>
-            <img src={logo} alt="logo" />
+            <Logo />
             <Typography align="center" className={classes.subtitle}>
               Салон мебели премиум класса
             </Typography>
@@ -185,22 +199,28 @@ export const Footer = () => {
             Мы в соц.сетях
           </Typography>
           {/* TODO Add links to socials */}
-          <Grid item xs={4} container className={classes.social__icons}>
+          <Grid item xs={4} container className={classes['social__icons-container']}>
             <Grid item xs={4} container justify="center">
-              vk
+              <a href="/">
+                <Vk className={classes.social__icon} />
+              </a>
             </Grid>
             <Grid item xs={4} container justify="center">
-              inst
+              <a href="/">
+                <Inst className={classes.social__icon} />
+              </a>
             </Grid>
             <Grid item xs={4} container justify="center">
-              fb
+              <a href="/">
+                <Fb className={classes.social__icon} />
+              </a>
             </Grid>
           </Grid>
           {/* TODO Add links to copyright */}
           <Typography variant="body2">
-            <Link to="/">Политика конфиденциальности</Link>
+            <Link to="/" external>Политика конфиденциальности</Link>
             <span className={classes['vertical-line']}>|</span>
-            <Link to="/">Пользовательское соглашение</Link>
+            <Link to="/" external>Пользовательское соглашение</Link>
           </Typography>
           <Typography>
             &copy; Частный Мебельер

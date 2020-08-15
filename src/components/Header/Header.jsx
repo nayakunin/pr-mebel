@@ -6,10 +6,13 @@ import cx from 'classnames';
 import { Grid, Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import logo from 'assets/logo_header.svg';
+import { ReactComponent as Fb } from 'assets/fb.svg';
+import { ReactComponent as Inst } from 'assets/in.svg';
+import { ReactComponent as Vk } from 'assets/vk.svg';
 import { Link } from '../Link/Link';
-import logo from './resources/logo.svg';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: '70px',
     display: 'flex',
@@ -49,7 +52,7 @@ const useStyles = makeStyles({
     color: 'inherit',
     transition: 'color .1s',
     '&:hover': {
-      color: 'red',
+      color: theme.palette.primary.main,
     },
     cursor: 'pointer',
   },
@@ -72,7 +75,13 @@ const useStyles = makeStyles({
     width: '100px',
     justifyContent: 'space-between',
   },
-});
+  social__icon: {
+    '&:hover path': {
+      fill: theme.palette.primary.main,
+      transition: 'fill .1s',
+    },
+  },
+}));
 
 export const Header = () => {
   const classes = useStyles();
@@ -175,9 +184,21 @@ export const Header = () => {
             </ul>
             {/* TODO Add links to socials */}
             <ul className={cx(classes.list, classes.social)}>
-              <li>vk</li>
-              <li>in</li>
-              <li>fb</li>
+              <li>
+                <a href="/">
+                  <Vk className={classes.social__icon} />
+                </a>
+              </li>
+              <li>
+                <a href="/">
+                  <Inst className={classes.social__icon} />
+                </a>
+              </li>
+              <li>
+                <a href="/">
+                  <Fb className={classes.social__icon} />
+                </a>
+              </li>
             </ul>
           </Grid>
         </Grid>

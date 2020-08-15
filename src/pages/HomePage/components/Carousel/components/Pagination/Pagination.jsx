@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Grid } from '@material-ui/core';
 import cx from 'classnames';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     position: 'absolute',
     width: '100%',
@@ -48,10 +48,10 @@ const useStyles = makeStyles({
     cursor: 'pointer',
     transition: 'color .2s',
     '&:hover': {
-      color: 'red',
+      color: theme.palette.primary.main,
     },
   },
-});
+}));
 
 export const Pagination = ({
   currentPage,

@@ -13,7 +13,7 @@ import LocalParkingIcon from '@material-ui/icons/LocalParking';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 import { BlockTitle } from 'components';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     margin: '80px 0',
   },
@@ -53,9 +53,9 @@ const useStyles = makeStyles({
     color: 'grey',
   },
   link_red: {
-    color: 'red',
+    color: theme.palette.primary.main,
   },
-});
+}));
 
 export const Map = () => {
   const classes = useStyles();

@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Grid } from '@material-ui/core';
 import cx from 'classnames';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     height: '100%',
@@ -38,7 +38,7 @@ const useStyles = makeStyles({
     transition: 'border .2s',
     border: 'solid 2px white',
     '&:hover': {
-      border: 'solid 2px red',
+      border: `solid 2px ${theme.palette.primary.main}`,
     },
     '&:focus': {
       outline: 'none',
@@ -47,7 +47,7 @@ const useStyles = makeStyles({
   'button-container': {
     marginTop: '60px',
   },
-});
+}));
 
 export const Page = ({
   title,

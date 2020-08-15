@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
     marginBottom: '11px',
@@ -15,10 +15,10 @@ const useStyles = makeStyles({
       bottom: '-11px',
       width: '95px',
       height: '1px',
-      background: 'red',
+      background: theme.palette.primary.main,
     },
   },
-});
+}));
 
 export const BlockTitle = ({
   className,

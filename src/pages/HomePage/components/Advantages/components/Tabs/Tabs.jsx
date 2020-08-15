@@ -4,7 +4,7 @@ import cx from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   tabs: {
     margin: '0',
     padding: '0',
@@ -30,12 +30,12 @@ const useStyles = makeStyles({
       display: 'none',
     },
     '&:hover': {
-      color: 'red',
+      color: theme.palette.primary.main,
     },
   },
   active: {
     cursor: 'default',
-    color: 'red',
+    color: theme.palette.primary.main,
   },
   'tab-content': {
     display: 'none',
@@ -43,7 +43,7 @@ const useStyles = makeStyles({
   'tab-content_visible': {
     display: 'block',
   },
-});
+}));
 
 export const Tabs = ({
   activeTab,
