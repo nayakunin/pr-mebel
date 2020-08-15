@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     lineHeight: '24px',
-    background: theme.palette.primary.mai,
+    background: theme.palette.primary.main,
     textAlign: 'center',
     fontSize: '12px',
     fontWeight: '400',
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     width: '100%',
     '&:hover': {
-      color: theme.palette.primary.mai,
+      color: theme.palette.primary.main,
       background: 'white',
     },
   },
