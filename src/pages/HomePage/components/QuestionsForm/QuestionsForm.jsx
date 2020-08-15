@@ -63,7 +63,6 @@ const useStyles = makeStyles({
   },
 });
 
-// TODO Добавить textArea
 export const QuestionsForm = () => {
   const classes = useStyles();
 

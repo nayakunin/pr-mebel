@@ -116,7 +116,7 @@ export const Header = () => {
                   Каталог&nbsp;
                   <ArrowDropDownIcon className={classes.dropdown} />
                 </Typography>
-                {/* TODO добавить поддержку клика вне дропдауна */}
+                {/* TODO Заменить на модалку из mui */}
                 {dropdownVisible && (
                   <ul
                     className={classes['menu__dropdown-popup']}
@@ -124,22 +124,22 @@ export const Header = () => {
                   >
                     <li>
                       <Typography className={classes.text} gutterBottom>
-                        <Link to="/catalog">Шкафы</Link>
+                        <Link to="/catalog?section=cupboards">Шкафы</Link>
                       </Typography>
                     </li>
                     <li>
                       <Typography className={classes.text} gutterBottom>
-                        <Link to="/">Гардеробные</Link>
+                        <Link to="/catalog?section=wardrobes">Гардеробные</Link>
                       </Typography>
                     </li>
                     <li>
                       <Typography className={classes.text} gutterBottom>
-                        <Link to="/">Аксессуары</Link>
+                        <Link to="/catalog?section=accessories">Аксессуары</Link>
                       </Typography>
                     </li>
                     <li>
                       <Typography className={classes.text} gutterBottom>
-                        <Link to="/">Системные подсветки</Link>
+                        <Link to="/catalog?section=lightingSystems">Системы подсветки</Link>
                       </Typography>
                     </li>
                   </ul>

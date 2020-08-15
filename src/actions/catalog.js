@@ -7,6 +7,7 @@ export const FETCH_CATALOG_FAILURE = 'FETCH_CATALOG_FAILURE';
 export const CHANGE_FILTER = 'CHANGE_FILTER';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const RESET_CATALOG = 'RESET_CATALOG';
+export const RESET_FILTERS = 'RESET_FILTERS';
 export const OPEN_CARD_POPUP = 'OPEN_CARD_POPUP';
 export const CLOSE_CARD_POPUP = 'CLOSE_CARD_POPUP';
 export const GO_TO_NEXT_CARD = 'GO_TO_NEXT_CARD';
@@ -45,6 +46,10 @@ export const changePage = (newPage) => ({
 
 export const resetCatalog = () => ({
   type: RESET_CATALOG,
+});
+
+export const resetFilters = () => ({
+  type: RESET_FILTERS,
 });
 
 export const openCardPopup = (currentItemId) => ({

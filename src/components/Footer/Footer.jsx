@@ -95,7 +95,7 @@ export const Footer = () => {
               <li>
                 <Typography gutterBottom>
                   <Link
-                    to="/catalog/"
+                    to="/catalog?section=cupboards&style=classic"
                     className={classes.list__item}
                   >
                     Шкафы классические
@@ -105,7 +105,7 @@ export const Footer = () => {
               <li>
                 <Typography gutterBottom>
                   <Link
-                    to="/"
+                    to="/catalog?section=cupboards&style=modern"
                     className={classes.list__item}
                   >
                     Шкафы современные
@@ -115,7 +115,7 @@ export const Footer = () => {
               <li>
                 <Typography gutterBottom>
                   <Link
-                    to="/"
+                    to="/catalog?section=wardrobes&style=classic"
                     className={classes.list__item}
                   >
                     Гардеробные классические
@@ -125,7 +125,7 @@ export const Footer = () => {
               <li>
                 <Typography gutterBottom>
                   <Link
-                    to="/"
+                    to="/catalog?section=wardrobes&style=modern"
                     className={classes.list__item}
                   >
                     Гардеробные современные
@@ -304,11 +304,10 @@ export const Footer = () => {
               </a>
             </Grid>
           </Grid>
-          {/* TODO Add links to copyright */}
           <Typography variant="body2">
-            <Link to="/" external>Политика конфиденциальности</Link>
+            <Link to="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit" external>Политика конфиденциальности</Link>
             <span className={classes['vertical-line']}>|</span>
-            <Link to="/" external>Пользовательское соглашение</Link>
+            <Link to="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit" external>Пользовательское соглашение</Link>
           </Typography>
           <Typography>
             &copy; Частный Мебельер

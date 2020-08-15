@@ -11,6 +11,7 @@ import {
   fetchCatalog,
   changeFilter,
   resetCatalog,
+  resetFilters,
   openCardPopup,
   closeCardPopup,
   goToNextCard,
@@ -96,9 +97,11 @@ export const Catalog = () => {
           value: search[key],
         }));
       });
+    } else {
+      dispatch(resetFilters());
     }
-    dispatch(fetchCatalog());
-  }, [location.search, dispatch]);
+    handleApplyFilter();
+  }, [location, dispatch, handleApplyFilter]);
 
   return (
     <>

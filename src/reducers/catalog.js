@@ -5,6 +5,7 @@ import {
   CHANGE_FILTER,
   CHANGE_PAGE,
   RESET_CATALOG,
+  RESET_FILTERS,
   OPEN_CARD_POPUP,
   CLOSE_CARD_POPUP,
   GO_TO_NEXT_CARD,
@@ -76,6 +77,16 @@ export const catalog = (state = initialState, action) => {
         items: [],
         page: 0,
         hasMore: 0,
+      };
+    }
+    case RESET_FILTERS: {
+      return {
+        ...state,
+        filter: {
+          section: filters.sections[0].id,
+          style: filters.styles[0].id,
+          doorType: filters.styles[0].id,
+        },
       };
     }
     case OPEN_CARD_POPUP: {
