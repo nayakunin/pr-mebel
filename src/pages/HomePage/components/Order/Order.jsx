@@ -6,19 +6,22 @@ import {
   Grid,
 } from '@material-ui/core';
 import { BlockTitle } from 'components';
-import img1 from './assets/measurer-img.svg';
-import img2 from './assets/measurer-img2.svg';
-import img3 from './assets/measurer-img3.svg';
-import img4 from './assets/measurer-img4.svg';
-import img5 from './assets/measurer-img5.svg';
+import { ReactComponent as Img1 } from './assets/img1.svg';
+import { ReactComponent as Img2 } from './assets/img2.svg';
+import { ReactComponent as Img3 } from './assets/img3.svg';
+import { ReactComponent as Img4 } from './assets/img4.svg';
+import { ReactComponent as Img5 } from './assets/img5.svg';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: '80px',
   },
   img: {
     height: '50px',
     marginBottom: '16px',
+    '& path': {
+      fill: theme.palette.primary.main,
+    },
   },
   container: {
     marginTop: '30px',
@@ -26,7 +29,7 @@ const useStyles = makeStyles({
   row: {
     marginTop: '30px',
   },
-});
+}));
 
 export const Order = () => {
   const classes = useStyles();
@@ -43,19 +46,19 @@ export const Order = () => {
         </BlockTitle>
         <Grid container className={classes.container}>
           <Grid item xs={4} container direction="column" alignItems="center">
-            <img src={img1} alt="icon" className={classes.img} />
+            <Img1 className={classes.img} />
             <Typography variant="body1" align="center">
               Приедет в удобное для вас время
             </Typography>
           </Grid>
           <Grid item xs={4} container direction="column" alignItems="center">
-            <img src={img2} alt="icon" className={classes.img} />
+            <Img2 className={classes.img} />
             <Typography variant="body1" align="center">
               Привезет нужные материалы
             </Typography>
           </Grid>
           <Grid item xs={4} container direction="column" alignItems="center">
-            <img src={img3} alt="icon" className={classes.img} />
+            <Img3 className={classes.img} />
             <Typography variant="body1" align="center">
               Сделает профессиональный замер помещение
             </Typography>
@@ -63,13 +66,13 @@ export const Order = () => {
           <Grid item xs={2} />
           <Grid item xs={8} container className={classes.row} spacing={4}>
             <Grid item xs={6} container direction="column" alignItems="center">
-              <img src={img4} alt="icon" className={classes.img} />
+              <Img4 className={classes.img} />
               <Typography variant="body1" align="center">
                 Объяснит, как лучше использовать пространство вашего помещения
               </Typography>
             </Grid>
             <Grid item xs={6} container direction="column" alignItems="center">
-              <img src={img5} alt="icon" className={classes.img} />
+              <Img5 className={classes.img} />
               <Typography variant="body1" align="center">
                 Разработает дизайн-проект мебели в 3D в течение 24 часов после замера
               </Typography>

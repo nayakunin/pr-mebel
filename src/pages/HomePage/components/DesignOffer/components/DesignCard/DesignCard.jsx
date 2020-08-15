@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -16,24 +16,27 @@ const useStyles = makeStyles({
   img: {
     width: '70px',
     height: '70px',
+    '& path': {
+      fill: theme.palette.primary.main,
+    }
   },
-});
+}));
 
 export const DesignCard = ({
-  img,
+  Img,
   children,
 }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <img src={img} alt="icon" className={classes.img} />
+      <Img className={classes.img} />
       <Typography className={classes.text}>{children}</Typography>
     </div>
   );
 };
 
 DesignCard.propTypes = {
-  img: PropTypes.string.isRequired,
+  Img: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };

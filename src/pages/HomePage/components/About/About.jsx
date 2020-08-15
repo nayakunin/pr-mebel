@@ -2,69 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Grid } from '@material-ui/core';
 import { BlockTitle } from 'components';
-import img1 from './assets/about-img.svg';
-import img2 from './assets/about-img2.svg';
-import img3 from './assets/about-img3.svg';
-import img4 from './assets/about-img4.svg';
-import img5 from './assets/about-img5.svg';
-import img6 from './assets/about-img6.svg';
-
-const CARDS = [
-  {
-    id: 1,
-    title: 'Богатый ассортимент',
-    text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
-    вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
-    Более 1000 вариантов материалов и\xa0отделок будут доступны для вашего выбора.
-    Это удобно, выгодно и\xa0позволит сэкономит массу Вашего времени.`,
-    img: img1,
-  },
-  {
-    id: 2,
-    title: 'Богатый ассортимент',
-    text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
-    вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
-    Более 1000 вариантов материалов и\xa0отделок будут доступны для вашего выбора.
-    Это удобно, выгодно и\xa0позволит сэкономит массу Вашего времени.`,
-    img: img2,
-  },
-  {
-    id: 3,
-    title: 'Богатый ассортимент',
-    text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
-    вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
-    Более 1000 вариантов материалов и\xa0отделок будут доступны для вашего выбора.
-    Это удобно, выгодно и\xa0позволит сэкономит массу Вашего времени.`,
-    img: img3,
-  },
-  {
-    id: 4,
-    title: 'Богатый ассортимент',
-    text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
-    вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
-    Более 1000 вариантов материалов и\xa0отделок будут доступны для вашего выбора.
-    Это удобно, выгодно и\xa0позволит сэкономит массу Вашего времени.`,
-    img: img4,
-  },
-  {
-    id: 5,
-    title: 'Богатый ассортимент',
-    text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
-    вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
-    Более 1000 вариантов материалов и\xa0отделок будут доступны для вашего выбора.
-    Это удобно, выгодно и\xa0позволит сэкономит массу Вашего времени.`,
-    img: img5,
-  },
-  {
-    id: 6,
-    title: 'Богатый ассортимент',
-    text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
-    вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
-    Более 1000 вариантов материалов и\xa0отделок будут доступны для вашего выбора.
-    Это удобно, выгодно и\xa0позволит сэкономит массу Вашего времени.`,
-    img: img6,
-  },
-];
+import { CARDS } from './constants';
+import { Card } from './components';
 
 const useStyles = makeStyles({
   root: {
@@ -94,21 +33,12 @@ export const About = () => {
         </Typography>
         <Grid container spacing={4} className={classes.grid}>
           {CARDS.map((card) => (
-            <Grid key={card.id} item xs={4} container spacing={2}>
-              <Grid item xs={2}>
-                <img src={card.img} alt="icon" />
-              </Grid>
-              <Grid item xs={10} container alignItems="center">
-                <Typography variant="h6">
-                  {card.title}
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography variant="body2">
-                  {card.text}
-                </Typography>
-              </Grid>
-            </Grid>
+            <Card
+              key={card.id}
+              Img={card.img}
+              title={card.title}
+              text={card.text}
+            />
           ))}
         </Grid>
         <Typography variant="h5" align="center" className={classes.subtitle}>
