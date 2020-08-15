@@ -63,7 +63,7 @@ export const OrderFormPopup = () => {
 
   const handleClosePopup = useCallback(() => {
     dispatch(closeOrderFormPopup());
-  }, []);
+  }, [dispatch]);
 
   const handleFileInputClick = useCallback(() => {
     fileInputRef.current.click();
