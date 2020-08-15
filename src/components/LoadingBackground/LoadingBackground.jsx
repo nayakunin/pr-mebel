@@ -4,6 +4,7 @@ import cx from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
+  // TODO Добавить цвета в палитру
   '@keyframes pulse': {
     '0%': {
       backgroundColor: '#DDDDDD',

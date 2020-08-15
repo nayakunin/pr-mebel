@@ -24,6 +24,7 @@ const useStyles = makeStyles({
     position: 'absolute',
     fontSize: '120px',
     lineHeight: '120px',
+    // TODO Добавить цвет в тему
     color: '#eb2f46',
     opacity: '.07',
     top: '-5px',

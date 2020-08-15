@@ -14,8 +14,6 @@ import { BlockTitle } from 'components';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // height: '50px',
-    // backgroundColor: 'white',
     marginTop: '30px',
     marginBottom: '30px',
   },
@@ -27,18 +25,18 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     lineHeight: '24px',
-    background: '#ff001f',
+    background: theme.palette.primary.mai,
     textAlign: 'center',
     fontSize: '12px',
     fontWeight: '400',
     textTransform: 'uppercase',
     color: 'white',
-    border: '1px solid #ff001f',
+    border: `1px solid ${theme.palette.primary.main}`,
     transition: 'all .3s ease-in-out',
     cursor: 'pointer',
     width: '100%',
     '&:hover': {
-      color: '#ff001f',
+      color: theme.palette.primary.mai,
       background: 'white',
     },
   },

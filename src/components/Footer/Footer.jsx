@@ -13,6 +13,7 @@ import { Link } from '../Link/Link';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    // TODO Добавить цвет в тему
     background: '#303030',
     padding: '80px 0',
     color: 'white',
