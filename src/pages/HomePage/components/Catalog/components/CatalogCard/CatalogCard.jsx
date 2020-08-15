@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import { LoadingBackground } from 'components';
 
 const useStyles = makeStyles({
   root: {
@@ -100,13 +101,15 @@ export const CatalogCard = ({
   return (
     <div className={classes.root}>
       <a href={href} className={classes.link}>
-        <div className={classes.img} style={{ backgroundImage: `url(${img})` }}>
-          <div className={classes.hoverText}>
-            <Typography variant="h5">{title}</Typography>
-            <Typography className={classes.subtitle}>{subtitle}</Typography>
+        <LoadingBackground>
+          <div className={classes.img} style={{ backgroundImage: `url(${img})` }}>
+            <div className={classes.hoverText}>
+              <Typography variant="h5">{title}</Typography>
+              <Typography className={classes.subtitle}>{subtitle}</Typography>
+            </div>
+            <ArrowForwardIcon className={classes.arrow} />
           </div>
-          <ArrowForwardIcon className={classes.arrow} />
-        </div>
+        </LoadingBackground>
         <Typography
           component="span"
           className={classes.caption}

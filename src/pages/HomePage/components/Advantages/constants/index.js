@@ -1,3 +1,9 @@
+import img1 from '../assets/advantages-img1.jpg';
+import img2 from '../assets/advantages-img2.jpg';
+import img4 from '../assets/advantages-img4.jpg';
+import img5 from '../assets/advantages-img5.jpg';
+import img6 from '../assets/advantages-img6.jpg';
+
 export const TABS = [
   {
     title: 'Эмаль',
@@ -7,7 +13,7 @@ export const TABS = [
       'Более 2000 оттенков',
       'Разработка фасадов по вашему образцу',
     ],
-    img: 'http://placekitten.com/300/300',
+    img: img1,
   },
   {
     title: 'Ламинат',
@@ -18,7 +24,7 @@ export const TABS = [
       'Высокая износостойкость',
       'Декоративная ударопрочная кромка (не Китай).',
     ],
-    img: 'http://placekitten.com/300/301',
+    img: img2,
   },
   {
     title: '3D Ламинат',
@@ -28,7 +34,7 @@ export const TABS = [
       'Более 50 вариантов декоров под древесину, камень, кожу',
       'Высокая износостойкость',
     ],
-    img: 'http://placekitten.com/300/302',
+    img: img2,
   },
   {
     title: 'Шпон',
@@ -38,7 +44,7 @@ export const TABS = [
       'Тонирование в нужный цвет',
       'Сохраняется точный рисунок древесины',
     ],
-    img: 'http://placekitten.com/300/306',
+    img: img4,
   },
   {
     title: 'Кожа',
@@ -47,7 +53,7 @@ export const TABS = [
       'Выглядит благородно и элегантно',
       'Создает атмосферу респектабельности и эксклюзивности',
     ],
-    img: 'http://placekitten.com/300/303',
+    img: img5,
   },
   {
     title: 'Стекло',
@@ -59,6 +65,6 @@ export const TABS = [
       'Художественное матирование стекла',
       'Составные панно из зеркал',
     ],
-    img: 'http://placekitten.com/300/304',
+    img: img6,
   },
 ];

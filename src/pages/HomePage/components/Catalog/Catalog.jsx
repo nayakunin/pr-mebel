@@ -5,7 +5,7 @@ import {
   BlockTitle,
   MainButton,
 } from 'components';
-import { catalogMock } from '__fixtures__/catalog';
+import { CATALOG } from './constants';
 import { CatalogCard } from './components';
 
 const useStyles = makeStyles({
@@ -32,7 +32,7 @@ export const Catalog = () => {
         </Typography>
       </BlockTitle>
       <Grid container spacing={4}>
-        {catalogMock.map((item) => (
+        {CATALOG.map((item) => (
           <Grid item xs={4} key={item.id}>
             <CatalogCard
               title={item.title}

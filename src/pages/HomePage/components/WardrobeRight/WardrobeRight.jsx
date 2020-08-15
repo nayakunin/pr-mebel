@@ -5,19 +5,19 @@ import {
   BlockTitle,
   MainButton,
 } from 'components';
+import img from './assets/quality-img.jpg';
 
 const useStyles = makeStyles({
   root: {
     marginTop: '80px',
   },
   content: {
-    height: '400px',
   },
   description: {
     marginTop: '80px',
   },
   img: {
-    height: '100%',
+    width: '100%',
     position: 'relative',
   },
   'button-container': {
@@ -49,7 +49,7 @@ export const WardrobeRight = () => {
           </Grid>
           <Grid item xs={7}>
             <img
-              src="http://placekitten.com/300/302"
+              src={img}
               alt="шкаф"
               className={classes.img}
             />

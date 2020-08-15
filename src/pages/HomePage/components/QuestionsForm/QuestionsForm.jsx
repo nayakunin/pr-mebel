@@ -9,25 +9,16 @@ import {
   BlockTitle,
   MainButton,
 } from 'components';
+import img from './assets/connect-bg.jpg';
 
 const useStyles = makeStyles({
   root: {
     marginTop: '60px',
-    backgroundImage: 'url("http://placekitten.com/800/800")',
+    backgroundImage: `url('${img}')`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     padding: '40px 0',
-    position: 'relative',
-    '&:after': {
-      position: 'absolute',
-      background: 'rgba(0,0,0,.5)',
-      width: '100%',
-      height: '100%',
-      content: '""',
-      top: '0',
-      left: '0',
-    },
   },
   title: {
     color: 'white',
@@ -80,6 +71,7 @@ export const QuestionsForm = () => {
             <Grid item xs={3} />
             <Grid item xs={6} container>
               <Grid item xs={5}>
+                {/* TODO Заменить инпуты на инпуты из MUI */}
                 <input
                   type="text"
                   autoComplete="name"
@@ -99,6 +91,7 @@ export const QuestionsForm = () => {
                   required
                 />
               </Grid>
+              {/* TODO Добавить textarea */}
             </Grid>
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
               <Grid item xs={4}>

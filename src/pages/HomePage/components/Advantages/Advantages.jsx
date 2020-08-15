@@ -6,7 +6,7 @@ import {
   BlockTitle,
   MainButton,
 } from 'components';
-import { TABS } from '__constants__';
+import { TABS } from './constants';
 import { Tabs } from './components';
 
 const useStyles = makeStyles({

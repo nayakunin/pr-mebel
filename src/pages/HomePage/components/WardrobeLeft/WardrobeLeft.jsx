@@ -10,21 +10,7 @@ import {
   BlockTitle,
   MainButton,
 } from 'components';
-
-const TABS = [
-  {
-    title: 'Однотонный',
-    img: 'http://placekitten.com/300/300',
-  },
-  {
-    title: 'Комбинированный',
-    img: 'http://placekitten.com/300/301',
-  },
-  {
-    title: 'Кобминированный с Alcantara',
-    img: 'http://placekitten.com/300/302',
-  },
-];
+import { TABS } from './constants';
 
 const useStyles = makeStyles({
   root: {
@@ -32,10 +18,9 @@ const useStyles = makeStyles({
   },
   content: {
     marginTop: '50px',
-    height: '400px',
   },
   img: {
-    height: '100%',
+    width: '100%',
     position: 'relative',
   },
   list: {
