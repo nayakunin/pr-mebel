@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f0347ffc170b269ddc1d6f69b663695a",
+    "revision": "f4ef4d51021cc480bee11a56ad47aaf4",
     "url": "/pr-mebel/index.html"
   },
   {
-    "revision": "fceeeff5fc250861d6ec",
+    "revision": "59b53e3f78c235035c14",
     "url": "/pr-mebel/static/css/main.cb0cdd74.chunk.css"
   },
   {
-    "revision": "8153064df76fa24f4473",
-    "url": "/pr-mebel/static/js/2.7d36a0fe.chunk.js"
+    "revision": "3195fc1784ebcf95cddb",
+    "url": "/pr-mebel/static/js/2.ea1c85ba.chunk.js"
   },
   {
     "revision": "75304a605f9c03e664948edc1c5186bb",
-    "url": "/pr-mebel/static/js/2.7d36a0fe.chunk.js.LICENSE.txt"
+    "url": "/pr-mebel/static/js/2.ea1c85ba.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "fceeeff5fc250861d6ec",
-    "url": "/pr-mebel/static/js/main.402e07ad.chunk.js"
+    "revision": "59b53e3f78c235035c14",
+    "url": "/pr-mebel/static/js/main.93cea1fd.chunk.js"
   },
   {
     "revision": "a242efee147dd90ff80c",
@@ -124,8 +124,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pr-mebel/static/media/design-img4.ce16fd25.svg"
   },
   {
-    "revision": "9d2e5f488ade878790194c0277ee869f",
-    "url": "/pr-mebel/static/media/footer-logo.9d2e5f48.svg"
+    "revision": "eebf684d050420cb80966fa5b6e80b02",
+    "url": "/pr-mebel/static/media/fb.eebf684d.svg"
   },
   {
     "revision": "17d6289304bedac11d6d745a782033e1",
@@ -136,12 +136,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pr-mebel/static/media/img.150478a6.png"
   },
   {
+    "revision": "1b4e3a110c66ab551924501f37088c85",
+    "url": "/pr-mebel/static/media/in.1b4e3a11.svg"
+  },
+  {
     "revision": "a41b57cf3de303b29e52498059ca72e3",
     "url": "/pr-mebel/static/media/lead.a41b57cf.jpg"
   },
   {
+    "revision": "9d2e5f488ade878790194c0277ee869f",
+    "url": "/pr-mebel/static/media/logo_footer.9d2e5f48.svg"
+  },
+  {
     "revision": "c97802fb84851a927696e3a9f6b0f2d2",
-    "url": "/pr-mebel/static/media/logo.c97802fb.svg"
+    "url": "/pr-mebel/static/media/logo_header.c97802fb.svg"
   },
   {
     "revision": "21b06a45ece5ec0ab863a9f9a62c2363",
@@ -170,5 +178,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "4b97e8a5a7f2517fb38199acb79d5974",
     "url": "/pr-mebel/static/media/quality-img.4b97e8a5.jpg"
+  },
+  {
+    "revision": "0d38dec4f9b5aea049b4aa8454f70592",
+    "url": "/pr-mebel/static/media/vk.0d38dec4.svg"
   }
 ]);

@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/pr-mebel/static/css/main.cb0cdd74.chunk.css",
-    "main.js": "/pr-mebel/static/js/main.402e07ad.chunk.js",
-    "main.js.map": "/pr-mebel/static/js/main.402e07ad.chunk.js.map",
+    "main.js": "/pr-mebel/static/js/main.93cea1fd.chunk.js",
+    "main.js.map": "/pr-mebel/static/js/main.93cea1fd.chunk.js.map",
     "runtime-main.js": "/pr-mebel/static/js/runtime-main.83a5afc1.js",
     "runtime-main.js.map": "/pr-mebel/static/js/runtime-main.83a5afc1.js.map",
-    "static/js/2.7d36a0fe.chunk.js": "/pr-mebel/static/js/2.7d36a0fe.chunk.js",
-    "static/js/2.7d36a0fe.chunk.js.map": "/pr-mebel/static/js/2.7d36a0fe.chunk.js.map",
+    "static/js/2.ea1c85ba.chunk.js": "/pr-mebel/static/js/2.ea1c85ba.chunk.js",
+    "static/js/2.ea1c85ba.chunk.js.map": "/pr-mebel/static/js/2.ea1c85ba.chunk.js.map",
     "index.html": "/pr-mebel/index.html",
-    "precache-manifest.e969b14c3701dcf0142705d1067f0149.js": "/pr-mebel/precache-manifest.e969b14c3701dcf0142705d1067f0149.js",
+    "precache-manifest.ddf454269d10e1d45b89f89ca96fb1c3.js": "/pr-mebel/precache-manifest.ddf454269d10e1d45b89f89ca96fb1c3.js",
     "service-worker.js": "/pr-mebel/service-worker.js",
     "static/css/main.cb0cdd74.chunk.css.map": "/pr-mebel/static/css/main.cb0cdd74.chunk.css.map",
-    "static/js/2.7d36a0fe.chunk.js.LICENSE.txt": "/pr-mebel/static/js/2.7d36a0fe.chunk.js.LICENSE.txt",
+    "static/js/2.ea1c85ba.chunk.js.LICENSE.txt": "/pr-mebel/static/js/2.ea1c85ba.chunk.js.LICENSE.txt",
     "static/media/about-img.svg": "/pr-mebel/static/media/about-img.7ab20322.svg",
     "static/media/about-img2.svg": "/pr-mebel/static/media/about-img2.5eb9ef9d.svg",
     "static/media/about-img3.svg": "/pr-mebel/static/media/about-img3.6ee4b074.svg",
@@ -37,23 +37,26 @@
     "static/media/design-img2.svg": "/pr-mebel/static/media/design-img2.162aafb6.svg",
     "static/media/design-img3.svg": "/pr-mebel/static/media/design-img3.c6832e9b.svg",
     "static/media/design-img4.svg": "/pr-mebel/static/media/design-img4.ce16fd25.svg",
-    "static/media/footer-logo.svg": "/pr-mebel/static/media/footer-logo.9d2e5f48.svg",
+    "static/media/fb.eebf684d.svg": "/pr-mebel/static/media/fb.eebf684d.svg",
     "static/media/form-top.jpg": "/pr-mebel/static/media/form-top.17d62893.jpg",
     "static/media/img.png": "/pr-mebel/static/media/img.150478a6.png",
+    "static/media/in.1b4e3a11.svg": "/pr-mebel/static/media/in.1b4e3a11.svg",
     "static/media/lead.jpg": "/pr-mebel/static/media/lead.a41b57cf.jpg",
-    "static/media/logo.svg": "/pr-mebel/static/media/logo.c97802fb.svg",
+    "static/media/logo_footer.9d2e5f48.svg": "/pr-mebel/static/media/logo_footer.9d2e5f48.svg",
+    "static/media/logo_header.svg": "/pr-mebel/static/media/logo_header.c97802fb.svg",
     "static/media/measurer-img.svg": "/pr-mebel/static/media/measurer-img.21b06a45.svg",
     "static/media/measurer-img2.svg": "/pr-mebel/static/media/measurer-img2.4dc084a7.svg",
     "static/media/measurer-img3.svg": "/pr-mebel/static/media/measurer-img3.f16a5361.svg",
     "static/media/measurer-img4.svg": "/pr-mebel/static/media/measurer-img4.2d22fd33.svg",
     "static/media/measurer-img5.svg": "/pr-mebel/static/media/measurer-img5.162aafb6.svg",
     "static/media/production-img.jpg": "/pr-mebel/static/media/production-img.89e635d6.jpg",
-    "static/media/quality-img.jpg": "/pr-mebel/static/media/quality-img.4b97e8a5.jpg"
+    "static/media/quality-img.jpg": "/pr-mebel/static/media/quality-img.4b97e8a5.jpg",
+    "static/media/vk.0d38dec4.svg": "/pr-mebel/static/media/vk.0d38dec4.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.83a5afc1.js",
-    "static/js/2.7d36a0fe.chunk.js",
+    "static/js/2.ea1c85ba.chunk.js",
     "static/css/main.cb0cdd74.chunk.css",
-    "static/js/main.402e07ad.chunk.js"
+    "static/js/main.93cea1fd.chunk.js"
   ]
 }
