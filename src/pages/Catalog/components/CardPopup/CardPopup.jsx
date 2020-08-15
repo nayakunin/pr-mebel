@@ -8,9 +8,11 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { ArrowBack, ArrowForward } from '@material-ui/icons';
 import cx from 'classnames';
-import { MainButton } from '../../../../components/MainButton/MainButton';
-import { LoadingBackground } from '../../../../components/LoadingBackground/LoadingBackground';
-import { LazyImage } from '../../../../components/LazyImage/LazyImage';
+import {
+  MainButton,
+  LoadingBackground,
+  LazyImage,
+} from 'components';
 
 const useStyles = makeStyles({
   root: {
@@ -105,11 +107,11 @@ export const CardPopup = ({
 
   useEffect(() => {
     if (items.length - 5 === currentItemId) {
-      console.log('hello');
       onDownloadMoreCards();
     }
   }, [items.length, currentItemId, onDownloadMoreCards]);
 
+  // TODO Добавить плавный переход между картинками
   return (
     <Dialog
       open={isOpen}

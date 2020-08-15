@@ -1,12 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Typography, Grid } from '@material-ui/core';
-import { BlockTitle } from '../../../../components/BlockTitle/BlockTitle';
-import img1 from './resources/measurer-img.svg';
-import img2 from './resources/measurer-img2.svg';
-import img3 from './resources/measurer-img3.svg';
-import img4 from './resources/measurer-img4.svg';
-import img5 from './resources/measurer-img5.svg';
+import {
+  Container,
+  Typography,
+  Grid,
+} from '@material-ui/core';
+import { BlockTitle } from 'components';
+import img1 from './assets/measurer-img.svg';
+import img2 from './assets/measurer-img2.svg';
+import img3 from './assets/measurer-img3.svg';
+import img4 from './assets/measurer-img4.svg';
+import img5 from './assets/measurer-img5.svg';
 
 const useStyles = makeStyles({
   root: {

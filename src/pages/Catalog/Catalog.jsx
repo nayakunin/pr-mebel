@@ -2,12 +2,10 @@ import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import QueryString from 'query-string';
-import { Header } from '../../components/Header/Header';
-import { Footer } from '../../components/Footer/Footer';
-import { Lead } from './components/Lead/Lead';
-import { Filters } from './components/Filters/Filters';
-import { Gallery } from './components/Gallery/Gallery';
-import { filters } from '../../constants/filters';
+import {
+  Header,
+  Footer,
+} from 'components';
 import {
   fetchCatalog,
   changeFilter,
@@ -19,9 +17,15 @@ import {
   goToNextCard,
   goToPrevCard,
   changePage,
-} from '../../actions/catalog';
+} from 'actions';
+import { filters } from '__constants__';
+import {
+  CardPopup,
+  Filters,
+  Gallery,
+  Lead,
+} from './components';
 import { catalogSelector } from './selectors';
-import { CardPopup } from './components/CardPopup/CardPopup';
 
 export const Catalog = () => {
   const dispatch = useDispatch();

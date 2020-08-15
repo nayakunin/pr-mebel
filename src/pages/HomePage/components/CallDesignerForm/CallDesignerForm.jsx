@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, Container } from '@material-ui/core';
-import { MainButton } from '../../../../components/MainButton/MainButton';
+import { MainButton } from 'components';
 
 const useStyles = makeStyles({
   root: {

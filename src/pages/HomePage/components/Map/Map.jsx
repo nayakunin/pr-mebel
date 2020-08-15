@@ -1,13 +1,17 @@
 import React from 'react';
 import cx from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Typography, Grid } from '@material-ui/core';
+import {
+  Container,
+  Typography,
+  Grid,
+} from '@material-ui/core';
 import RoomIcon from '@material-ui/icons/Room';
 import PhoneIcon from '@material-ui/icons/Phone';
 import MailIcon from '@material-ui/icons/Mail';
 import LocalParkingIcon from '@material-ui/icons/LocalParking';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
-import { BlockTitle } from '../../../../components/BlockTitle/BlockTitle';
+import { BlockTitle } from 'components';
 
 const useStyles = makeStyles({
   root: {

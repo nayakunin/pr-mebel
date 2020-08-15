@@ -1,9 +1,15 @@
 import React, { useState, useCallback } from 'react';
 import cx from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Typography, Grid } from '@material-ui/core';
-import { BlockTitle } from '../../../../components/BlockTitle/BlockTitle';
-import { MainButton } from '../../../../components/MainButton/MainButton';
+import {
+  Container,
+  Typography,
+  Grid,
+} from '@material-ui/core';
+import {
+  BlockTitle,
+  MainButton,
+} from 'components';
 
 const TABS = [
   {

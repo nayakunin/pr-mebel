@@ -1,13 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Grid } from '@material-ui/core';
-import { BlockTitle } from '../../../../components/BlockTitle/BlockTitle';
-import img1 from './resources/about-img.svg';
-import img2 from './resources/about-img2.svg';
-import img3 from './resources/about-img3.svg';
-import img4 from './resources/about-img4.svg';
-import img5 from './resources/about-img5.svg';
-import img6 from './resources/about-img6.svg';
+import { BlockTitle } from 'components';
+import img1 from './assets/about-img.svg';
+import img2 from './assets/about-img2.svg';
+import img3 from './assets/about-img3.svg';
+import img4 from './assets/about-img4.svg';
+import img5 from './assets/about-img5.svg';
+import img6 from './assets/about-img6.svg';
 
 const CARDS = [
   {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Grid } from '@material-ui/core';
-import { BlockTitle } from '../../../../components/BlockTitle/BlockTitle';
-import { Question } from './components/Question/Question';
+import { BlockTitle } from 'components';
+import { Question } from './components';
 
 const useStyles = makeStyles({
   root: {

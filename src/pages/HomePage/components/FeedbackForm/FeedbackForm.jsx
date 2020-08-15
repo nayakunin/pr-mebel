@@ -2,8 +2,8 @@ import React, { useRef, useCallback, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid, Typography } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
-import { MainButton } from '../../../../components/MainButton/MainButton';
-import { getFileDeclination } from '../../../../utils';
+import { MainButton } from 'components';
+import { getFileDeclination } from 'utils';
 
 const useStyles = makeStyles({
   root: {

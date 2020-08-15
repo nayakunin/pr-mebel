@@ -6,9 +6,11 @@ import {
   Grid,
 } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { changePage, fetchCatalog } from '../../../../actions/catalog';
-import { Card } from './components/Card/Card';
-import { Loader } from './components/Loader/Loader';
+import { changePage, fetchCatalog } from 'actions';
+import {
+  Card,
+  Loader,
+} from './components';
 
 const useStyles = makeStyles({
   root: {

@@ -1,12 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Grid } from '@material-ui/core';
-import { BlockTitle } from '../../../../components/BlockTitle/BlockTitle';
-import { DesignCard } from './components/DesignCard/DesignCard';
-import img1 from './resources/design-img.svg';
-import img2 from './resources/design-img2.svg';
-import img3 from './resources/design-img3.svg';
-import img4 from './resources/design-img4.svg';
+import { BlockTitle } from 'components';
+import { DesignCard } from './components';
+import img1 from './assets/design-img.svg';
+import img2 from './assets/design-img2.svg';
+import img3 from './assets/design-img3.svg';
+import img4 from './assets/design-img4.svg';
 
 const useStyles = makeStyles({
   root: {

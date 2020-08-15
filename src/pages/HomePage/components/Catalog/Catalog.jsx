@@ -1,10 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Grid } from '@material-ui/core';
-import { BlockTitle } from '../../../../components/BlockTitle/BlockTitle';
-import { CatalogCard } from './components/CatalogCard/CatalogCard';
-import { MainButton } from '../../../../components/MainButton/MainButton';
-import { catalogMock } from '../../../../__fixtures__/catalog';
+import {
+  OrderForm,
+  BlockTitle,
+  MainButton,
+} from 'components';
+import { catalogMock } from '__fixtures__/catalog';
+import { CatalogCard } from './components';
 
 const useStyles = makeStyles({
   root: {

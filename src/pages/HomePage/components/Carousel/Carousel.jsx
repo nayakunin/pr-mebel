@@ -3,9 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import cx from 'classnames';
-import { Page } from './components/Page/Page';
-import { Pagination } from './components/Pagination/Pagination';
-import { pages } from '../../../../__fixtures__/pages';
+import { pages } from '__fixtures__/pages';
+import {
+  Page,
+  Pagination,
+} from './components';
 
 const useStyles = makeStyles({
   root: {

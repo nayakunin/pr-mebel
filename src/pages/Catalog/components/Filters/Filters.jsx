@@ -10,7 +10,7 @@ import {
   Grid,
   Typography,
 } from '@material-ui/core';
-import { BlockTitle } from '../../../../components/BlockTitle/BlockTitle';
+import { BlockTitle } from 'components';
 
 const useStyles = makeStyles((theme) => ({
   root: {
