@@ -19,7 +19,7 @@ const initialState = {
   filter: {
     section: filters.sections[0].id,
     style: filters.styles[0].id,
-    doorType: filters.styles[0].id,
+    doorType: filters.doorTypes[0].id,
   },
   hasMore: 0,
   page: 0,
@@ -56,6 +56,30 @@ export const catalog = (state = initialState, action) => {
     }
     case CHANGE_FILTER: {
       const { name, value } = action.payload;
+
+      if (name === 'section') {
+        if (value === 'accessories' || value === 'lightingSystems') {
+          return {
+            ...state,
+            filter: {
+              ...state.filter,
+              section: value,
+              style: 'any',
+              doorType: 'any',
+            },
+          };
+        }
+        if (value === 'wardrobes') {
+          return {
+            ...state,
+            filter: {
+              ...state.filter,
+              section: value,
+              doorType: 'any',
+            },
+          };
+        }
+      }
 
       return {
         ...state,
