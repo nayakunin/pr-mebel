@@ -14,8 +14,11 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import PublishIcon from '@material-ui/icons/Publish';
 import { getFileDeclination } from 'utils';
+import * as api from 'utils/api';
 import { closeOrderFormPopup } from 'actions';
-import MainButton from '../MainButton/MainButton';
+import {
+  SubmitButton,
+} from '../SubmitButton/SubmitButton';
 import formTop from './assets/form-top.jpg';
 import {
   orderFormPopupSelector,
@@ -73,6 +76,15 @@ export const OrderFormPopup = () => {
     setFileNames(fileInputRef.current.files);
   }, [fileInputRef]);
 
+  const handleSubmit = useCallback((event) => {
+    event.preventDefault();
+
+    api.sendMessage({
+      text: 'lol',
+      else: 'more',
+    });
+  });
+
   return ReactDOM.createPortal(
     <Dialog
       open={isOpen}
@@ -98,7 +110,7 @@ export const OrderFormPopup = () => {
         </Grid>
         {/* TODO Вынести инпуты в отдельный компонент */}
         <Grid item xs={8}>
-          <form className={classes.form}>
+          <form className={classes.form} onSubmit={handleSubmit}>
             <TextField
               type="text"
               autoComplete="name"
@@ -159,10 +171,9 @@ export const OrderFormPopup = () => {
                 </Grid>
               )}
             </Grid>
-            {/* TODO Добавить callback */}
-            <MainButton onClick={() => ({})}>
+            <SubmitButton>
               Рассчитать стоимость
-            </MainButton>
+            </SubmitButton>
             <Typography variant="body2" align="center" className={classes.copy}>
               Нажимая кнопку &laquo;Рассчитать стоимость&raquo;,
               я&nbsp;даю согласие на&nbsp;обработку персональных данных и&nbsp;подтверждаю,

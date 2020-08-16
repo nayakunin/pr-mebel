@@ -1,4 +1,4 @@
-import * as api from '../utils/api';
+import * as api from 'utils';
 import { getCollectionName } from '../utils';
 
 export const FETCH_CATALOG_REQUEST = 'FETCH_CATALOG_REQUEST';
