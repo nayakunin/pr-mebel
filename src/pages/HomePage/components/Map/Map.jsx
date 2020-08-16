@@ -11,7 +11,10 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import MailIcon from '@material-ui/icons/Mail';
 import LocalParkingIcon from '@material-ui/icons/LocalParking';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
-import { BlockTitle } from 'components';
+import {
+  BlockTitle,
+  Link,
+} from 'components';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,15 +90,17 @@ export const Map = () => {
               <li className={cx(classes['list-contacts__item'], classes.list__item)}>
                 <PhoneIcon className={classes.icon} />
                 <Typography className={classes['list-contacts__text']}>
-                  +7 (495) 278-02-85
+                  <Link to="tel:+7(495)2780285" external>
+                    +7 (495) 278-02-85
+                  </Link>
                 </Typography>
               </li>
               <li className={cx(classes['list-contacts__item'], classes.list__item)}>
                 <MailIcon className={classes.icon} />
                 <Typography className={classes['list-contacts__text']}>
                   E-mail:
-                  {' '}
-                  <a href="/" className={cx(classes.link_black, classes.link)}>zakaz@pr-mebel.ru</a>
+                  {'\xA0'}
+                  <Link to="mailto:zakaz@pr-mebel.ru" external>zakaz@pr-mebel.ru</Link>
                 </Typography>
               </li>
               <li className={cx(classes['list-contacts__item'], classes.list__item)}>
@@ -116,31 +121,31 @@ export const Map = () => {
             <ul className={cx(classes['list-map'], classes.list)}>
               <li className={cx(classes['list-map__item'], classes.list__item)}>
                 <Typography>
-                  <a href="/" className={cx(classes.link, classes.link_grey)}>
+                  <Link to="yandexnavi://build_route_on_map?lat_to=55.809176&lon_to=37.512955" external>
                     Открыть в яндекс навигаторе
-                  </a>
+                  </Link>
                 </Typography>
               </li>
               <li className={cx(classes['list-map__item'], classes.list__item)}>
                 <Typography>
-                  <a href="/" className={cx(classes.link, classes.link_grey)}>
+                  <Link to="comgooglemaps://?q=55.809176,37.512955" external>
                     Открыть Google Maps
-                  </a>
+                  </Link>
                 </Typography>
               </li>
               <li className={cx(classes['list-map__item'], classes.list__item)}>
                 <Typography>
-                  <a href="/" className={cx(classes.link, classes.link_grey)}>
+                  <Link to="http://maps.apple.com/?daddr=55.809176,37.512955" external>
                     Открыть Apple Maps
-                  </a>
+                  </Link>
                 </Typography>
               </li>
             </ul>
             <div className={classes.message}>
               <Typography>
-                <a href="/" className={cx(classes.link, classes.link_red)}>
+                <Link to="mailto:zakaz@pr-mebel.ru" external>
                   Написать письмо
-                </a>
+                </Link>
               </Typography>
             </div>
           </Grid>

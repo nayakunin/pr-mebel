@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/core/styles';

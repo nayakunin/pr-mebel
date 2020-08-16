@@ -75,7 +75,9 @@ export const Footer = () => {
       <Container>
         <Grid container justify="center" className={classes['logo-container']}>
           <Grid item>
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
             <Typography align="center" className={classes.subtitle}>
               Салон мебели премиум класса
             </Typography>

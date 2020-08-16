@@ -1,7 +1,6 @@
 {
   "name": "pr-mebel",
   "version": "0.1.0",
-  "homepage": "http://nayakunin.github.io/pr-mebel",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.1.3",

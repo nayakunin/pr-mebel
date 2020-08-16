@@ -13,7 +13,6 @@ import {
 } from '@material-ui/core';
 import {
   BlockTitle,
-  MainButton,
 } from 'components';
 
 const useStyles = makeStyles((theme) => ({
@@ -28,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   button: {
-    lineHeight: '24px',
+    lineHeight: '45px',
     background: theme.palette.primary.main,
     textAlign: 'center',
     fontSize: '12px',
@@ -42,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       color: theme.palette.primary.main,
       background: 'white',
+    },
+    '&:focus': {
+      outline: 'none',
     },
   },
   label: {
@@ -165,9 +167,9 @@ export const Filters = ({
           <Grid item xs={3} container>
             <Grid item xs={3} />
             <Grid item xs={6} container alignItems="center">
-              <MainButton onClick={handleSubmit} type="submit" className={classes.button}>
+              <button type="submit" className={classes.button}>
                 Применить
-              </MainButton>
+              </button>
             </Grid>
           </Grid>
         </Grid>
