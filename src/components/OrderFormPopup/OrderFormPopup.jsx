@@ -41,13 +41,14 @@ const useStyles = makeStyles({
     display: 'none',
   },
   img: {
-    height: '160px',
+    width: '100%',
   },
   'copyright-link': {
     color: 'black',
   },
   files: {
     marginBottom: '30px',
+    cursor: 'pointer',
   },
   icon: {
     marginRight: '5px',
