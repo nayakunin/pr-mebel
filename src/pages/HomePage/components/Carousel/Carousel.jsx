@@ -16,15 +16,6 @@ const useStyles = makeStyles({
     height: '100vh',
     minHeight: '700px',
     overflow: 'hidden',
-    '&::after': {
-      position: 'absolute',
-      content: '""',
-      width: '100%',
-      top: '0',
-      left: '0',
-      height: '100%',
-      background: 'rgba(0, 0, 0, 0.4)',
-    },
   },
   slider: {
     position: 'relative',
@@ -118,7 +109,7 @@ export const Carousel = () => {
             titles={page.titles}
             texts={page.texts}
             imageSet={page.imageSet}
-            href={page.href}
+            to={page.to}
           />
         ))}
       </div>

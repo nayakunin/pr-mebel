@@ -19,7 +19,7 @@ import topImgMob4 from '../assets/top-img-mob4.jpg';
 import topImgMob5 from '../assets/top-img-mob5.jpg';
 import topImgMob6 from '../assets/top-img-mob6.jpg';
 
-// TODO Add hrefs
+// TODO Add tos
 export const pages = [
   {
     titles: [
@@ -34,7 +34,7 @@ export const pages = [
       medium: topImgTab1,
       large: topImg1,
     },
-    href: '/',
+    to: '/catalog',
   },
   {
     titles: [
@@ -51,7 +51,7 @@ export const pages = [
       medium: topImgTab2,
       large: topImg2,
     },
-    href: '/',
+    to: '/catalog?section=cupboards&style=classic',
   },
   {
     titles: [
@@ -68,7 +68,7 @@ export const pages = [
       medium: topImgTab3,
       large: topImg3,
     },
-    href: '/',
+    to: '/catalog?section=wardrobes',
   },
   {
     titles: [
@@ -84,7 +84,7 @@ export const pages = [
       medium: topImgTab4,
       large: topImg4,
     },
-    href: '/',
+    to: '/catalog?section=cupboards&style=modern',
   },
   {
     titles: [
@@ -100,7 +100,7 @@ export const pages = [
       medium: topImgTab5,
       large: topImg5,
     },
-    href: '/',
+    to: '/catalog?section=accessories',
   },
   {
     titles: [
@@ -116,6 +116,6 @@ export const pages = [
       medium: topImgTab6,
       large: topImg6,
     },
-    href: '/',
+    to: '/catalog?section=lightingSystems',
   },
 ];

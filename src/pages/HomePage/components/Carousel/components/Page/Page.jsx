@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Grid } from '@material-ui/core';
 import cx from 'classnames';
+import { makeStyles } from '@material-ui/core/styles';
+import {
+  Typography,
+  Grid,
+} from '@material-ui/core';
+import {
+  Link,
+} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,9 +24,11 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontStyle: 'italic',
+    fontSize: '80px',
   },
   text: {
     color: 'white',
+    lineHeight: '1.3',
   },
   button: {
     padding: '20px 40px',
@@ -46,7 +54,7 @@ export const Page = ({
   titles,
   texts,
   imageSet,
-  href,
+  to,
 }) => {
   const classes = useStyles();
 
@@ -62,7 +70,6 @@ export const Page = ({
         {titles.map((title) => (
           <Typography
             key={title}
-            variant="h1"
             className={cx(classes.text, classes.title)}
           >
             {title}
@@ -78,11 +85,13 @@ export const Page = ({
           </Typography>
         ))}
         <div className={classes['button-container']}>
-          <button type="button" className={classes.button}>
-            <Typography variant="h6">
-              Подробнее
-            </Typography>
-          </button>
+          <Link to={to}>
+            <button type="button" className={classes.button}>
+              <Typography variant="h6">
+                Подробнее
+              </Typography>
+            </button>
+          </Link>
         </div>
       </Grid>
     </Grid>
@@ -93,5 +102,5 @@ Page.propTypes = {
   titles: PropTypes.arrayOf(PropTypes.string).isRequired,
   texts: PropTypes.arrayOf(PropTypes.string).isRequired,
   imageSet: PropTypes.arrayOf(PropTypes.string).isRequired,
-  href: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
 };
