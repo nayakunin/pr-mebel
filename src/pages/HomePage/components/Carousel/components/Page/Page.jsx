@@ -11,20 +11,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    position: 'relative',
-    '&:before': {
-      position: 'absolute',
-      top: '0',
-      left: '0',
-      width: '100%',
-      height: '100%',
-      content: '""',
-      background: 'rgba(0, 0, 0, 0.3)',
-    },
   },
   content: {
     position: 'relative',
     zIndex: '10',
+  },
+  title: {
+    fontStyle: 'italic',
   },
   text: {
     color: 'white',
@@ -50,9 +43,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Page = ({
-  title,
-  subtitles,
-  image,
+  titles,
+  texts,
+  imageSet,
   href,
 }) => {
   const classes = useStyles();
@@ -63,22 +56,25 @@ export const Page = ({
       alignItems="center"
       justify="center"
       className={classes.root}
-      style={{ backgroundImage: `url(${image})` }}
+      style={{ backgroundImage: `url(${imageSet.large})` }}
     >
       <Grid item xs={9} className={classes.content}>
-        <Typography
-          variant="h1"
-          className={cx(classes.text)}
-        >
-          {title}
-        </Typography>
-        {subtitles.map((subtitle) => (
+        {titles.map((title) => (
           <Typography
-            key={subtitle}
+            key={title}
+            variant="h1"
+            className={cx(classes.text, classes.title)}
+          >
+            {title}
+          </Typography>
+        ))}
+        {texts.map((text) => (
+          <Typography
+            key={text}
             className={cx(classes.text)}
             variant="h4"
           >
-            {subtitle}
+            {text}
           </Typography>
         ))}
         <div className={classes['button-container']}>
@@ -94,8 +90,8 @@ export const Page = ({
 };
 
 Page.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitles: PropTypes.arrayOf(PropTypes.string).isRequired,
-  image: PropTypes.string.isRequired,
+  titles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  texts: PropTypes.arrayOf(PropTypes.string).isRequired,
+  imageSet: PropTypes.arrayOf(PropTypes.string).isRequired,
   href: PropTypes.string.isRequired,
 };

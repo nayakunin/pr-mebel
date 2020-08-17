@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import cx from 'classnames';
-import { pages } from '__fixtures__/pages';
+import { pages } from './constants';
 import {
   Page,
   Pagination,
@@ -114,10 +114,10 @@ export const Carousel = () => {
       <div className={classes.slider} style={{ left: `-${windowWidth * activeSlide}px` }}>
         {pages.map((page) => (
           <Page
-            key={page.title}
-            title={page.title}
-            subtitles={page.subtitles}
-            image={page.image}
+            key={page.titles[0]}
+            titles={page.titles}
+            texts={page.texts}
+            imageSet={page.imageSet}
             href={page.href}
           />
         ))}
