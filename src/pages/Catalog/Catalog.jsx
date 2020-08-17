@@ -24,6 +24,7 @@ import {
   Filters,
   Gallery,
   Lead,
+  Questions,
 } from './components';
 import { catalogSelector } from './selectors';
 
@@ -114,7 +115,7 @@ export const Catalog = () => {
           page={page}
           onCardClick={handleCardClick}
         />
-        {/* <FeedbackForm /> */}
+        <Questions />
       </main>
       {isCardPopupOpen && (
         <CardPopup

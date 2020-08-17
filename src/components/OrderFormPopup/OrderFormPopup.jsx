@@ -83,7 +83,7 @@ export const OrderFormPopup = () => {
       text: 'lol',
       else: 'more',
     });
-  });
+  }, []);
 
   return ReactDOM.createPortal(
     <Dialog
