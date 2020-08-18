@@ -107,6 +107,7 @@ export const Carousel = () => {
           <Page
             key={page.titles[0]}
             titles={page.titles}
+            subtitles={page.subtitles}
             texts={page.texts}
             imageSet={page.imageSet}
             to={page.to}

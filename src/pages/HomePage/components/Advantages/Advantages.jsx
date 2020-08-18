@@ -25,16 +25,22 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: '30px',
     listStyle: 'none',
   },
+  list__text: {
+    fontSize: '16px',
+    lineHeight: '1.2',
+  },
   tabs: {
     marginTop: '10px',
   },
   'list-item': {
     position: 'relative',
-    marginBottom: '2px',
+    marginBottom: '4px',
   },
   check: {
+    width: '20px',
     position: 'absolute',
     left: '-30px',
+    bottom: '-2px',
     color: theme.palette.primary.main,
   },
   img: {
@@ -62,7 +68,7 @@ export const Advantages = () => {
         </BlockTitle>
         <Grid container className={classes.description}>
           <Grid item xs={10}>
-            <Typography>
+            <Typography variant="body2">
               Мы&nbsp;постоянно улучшаем качество,
               эргономические и&nbsp;эстетические параметры нашей мебели.
               Начиная с&nbsp;подбора материалов и&nbsp;комплектующих мы&nbsp;создаем
@@ -76,7 +82,7 @@ export const Advantages = () => {
           <Grid item xs={7} container direction="column">
             <Grid item>
               <BlockTitle>
-                <Typography variant="h4">
+                <Typography variant="h5">
                   Мы используем только премиальные
                   <br />
                   материалы для нашей мебели
@@ -91,7 +97,7 @@ export const Advantages = () => {
                       {tab.list.map((option) => (
                         <li key={option} className={classes['list-item']}>
                           <CheckIcon className={classes.check} />
-                          <Typography>{option}</Typography>
+                          <Typography className={classes.list__text}>{option}</Typography>
                         </li>
                       ))}
                     </ul>

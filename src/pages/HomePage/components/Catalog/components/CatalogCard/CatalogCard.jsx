@@ -60,9 +60,20 @@ const useStyles = makeStyles({
     top: '56%',
     left: '50px',
   },
+  title: {
+    textTransform: 'uppercase',
+    fontSize: '18px',
+    fontWeight: '300',
+  },
+  subtitle: {
+    fontFamily: 'PlayfairDisplay, serif',
+    fontStyle: 'italic',
+    textTransform: 'lowercase',
+  },
   caption: {
     position: 'relative',
-    fontSize: '16px',
+    textTransform: 'uppercase',
+    fontSize: '15px',
     '&:after': {
       position: 'absolute',
       bottom: '0',
@@ -73,9 +84,6 @@ const useStyles = makeStyles({
       background: 'black',
       transition: 'all .3s ease-in-out',
     },
-  },
-  subtitle: {
-    fontStyle: 'italic',
   },
   arrow: {
     position: 'absolute',
@@ -104,7 +112,7 @@ export const CatalogCard = ({
         <LoadingBackground>
           <div className={classes.img} style={{ backgroundImage: `url(${img})` }}>
             <div className={classes.hoverText}>
-              <Typography variant="h5">{title}</Typography>
+              <Typography variant="h5" className={classes.title}>{title}</Typography>
               <Typography className={classes.subtitle}>{subtitle}</Typography>
             </div>
             <ArrowForwardIcon className={classes.arrow} />

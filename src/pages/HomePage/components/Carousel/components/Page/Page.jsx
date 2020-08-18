@@ -22,12 +22,29 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     zIndex: '10',
   },
-  title: {
-    fontStyle: 'italic',
-    fontSize: '80px',
-  },
   text: {
     color: 'white',
+  },
+  title: {
+    fontFamily: 'PlayfairDisplay Italic, serif',
+    fontSize: '90px',
+    lineHeight: '90px',
+    letterSpacing: '2px',
+    '&:last-of-type': {
+      marginBottom: '15px',
+    },
+  },
+  subtitle: {
+    '&:last-of-type': {
+      marginBottom: '20px',
+    },
+    fontFamily: 'PlayfairDisplay Italic, serif',
+    fontSize: '60px',
+    letterSpacing: '2px',
+    lineHeight: '1',
+  },
+  'bottom-text': {
+    fontSize: '36px',
     lineHeight: '1.3',
   },
   button: {
@@ -52,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const Page = ({
   titles,
+  subtitles,
   texts,
   imageSet,
   to,
@@ -75,15 +93,27 @@ export const Page = ({
             {title}
           </Typography>
         ))}
-        {texts.map((text) => (
-          <Typography
-            key={text}
-            className={cx(classes.text)}
-            variant="h4"
-          >
-            {text}
-          </Typography>
-        ))}
+        <div className={classes.subtitles__container}>
+          {subtitles.map((subtitle) => (
+            <Typography
+              key={subtitle}
+              className={cx(classes.text, classes.subtitle)}
+            >
+              {subtitle}
+            </Typography>
+          ))}
+        </div>
+        <div className={classes['bottom-text__container']}>
+          {texts.map((text) => (
+            <Typography
+              key={text}
+              className={cx(classes.text, classes['bottom-text'])}
+              variant="h4"
+            >
+              {text}
+            </Typography>
+          ))}
+        </div>
         <div className={classes['button-container']}>
           <Link to={to}>
             <button type="button" className={classes.button}>
@@ -100,7 +130,12 @@ export const Page = ({
 
 Page.propTypes = {
   titles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  subtitles: PropTypes.arrayOf(PropTypes.string),
   texts: PropTypes.arrayOf(PropTypes.string).isRequired,
   imageSet: PropTypes.arrayOf(PropTypes.string).isRequired,
   to: PropTypes.string.isRequired,
+};
+
+Page.defaultProps = {
+  subtitles: [],
 };

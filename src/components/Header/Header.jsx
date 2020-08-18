@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '0 10px 20px rgba(0,0,0,.1)',
   },
   text: {
-    textTransform: 'capitalize',
+    fontSize: '13px',
+    textTransform: 'uppercase',
   },
   list: {
     listStyle: 'none',
@@ -57,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
   },
   'menu__dropdown-popup': {
+    width: '180px',
     background: 'white',
     padding: '8px',
     position: 'absolute',

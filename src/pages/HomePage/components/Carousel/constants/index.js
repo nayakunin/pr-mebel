@@ -19,12 +19,12 @@ import topImgMob4 from '../assets/top-img-mob4.jpg';
 import topImgMob5 from '../assets/top-img-mob5.jpg';
 import topImgMob6 from '../assets/top-img-mob6.jpg';
 
-// TODO Add tos
 export const pages = [
   {
     titles: [
       'Частный мебельер',
     ],
+    subtitles: [],
     texts: [
       'Шоу-рум мебели премиум класса',
       'по индивидуальным дизайн-проектам',
@@ -39,6 +39,8 @@ export const pages = [
   {
     titles: [
       'Элегантная классика',
+    ],
+    subtitles: [
       'в лучших традиция',
       'качества',
     ],
@@ -58,6 +60,7 @@ export const pages = [
       'Гардеробные',
       'системы',
     ],
+    subtitles: [],
     texts: [
       'Индивидуальное проектирование',
       'любой сложности',
@@ -75,6 +78,7 @@ export const pages = [
       'Дизайнерская мебель',
       'в стиле модерн',
     ],
+    subtitles: [],
     texts: [
       'Совершенный стиль',
       'Безупречное качество',
@@ -91,6 +95,7 @@ export const pages = [
       'Комфорт, продуманный',
       'до мелочей',
     ],
+    subtitles: [],
     texts: [
       'Эксклюзивные решения',
       'для организации хранения',
@@ -107,6 +112,7 @@ export const pages = [
       'Истинное качество',
       'в деталях',
     ],
+    subtitles: [],
     texts: [
       'Современные мебельные технологии,',
       'материалы и комплектующие',

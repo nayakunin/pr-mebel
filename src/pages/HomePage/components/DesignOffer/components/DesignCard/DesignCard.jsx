@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     height: '70px',
     '& path': {
       fill: theme.palette.primary.main,
-    }
+    },
   },
 }));
 
@@ -31,7 +31,7 @@ export const DesignCard = ({
   return (
     <div className={classes.root}>
       <Img className={classes.img} />
-      <Typography className={classes.text}>{children}</Typography>
+      <Typography variant="body2" className={classes.text}>{children}</Typography>
     </div>
   );
 };

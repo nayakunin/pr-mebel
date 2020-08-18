@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     fontSize: '14px',
     fontWeight: '100',
-    lineHeight: '100%',
+    lineHeight: '14px',
   },
   publish: {
     display: 'flex',
@@ -41,9 +41,17 @@ const useStyles = makeStyles((theme) => ({
   },
   text_publish: {
     color: 'white',
-    fontSize: '16px',
-    lineHeight: '16px',
+    fontWeight: '300',
+    textTransform: 'uppercase',
+    fontSize: '12px',
+    lineHeight: '14px',
     marginLeft: '4px',
+  },
+  copy__text: {
+    color: 'white',
+    fontSize: '12px',
+    fontWeight: '100',
+    lineHeight: '12px',
   },
   'copyright-link': {
     color: 'white',
@@ -110,7 +118,7 @@ export const FeedbackForm = () => {
                 />
               </Grid>
               <Grid item xs={12}>
-                <Typography className={classes.text}>
+                <Typography variant="body2" className={classes.text}>
                   Прикрепите, пожалуйста, эскизы вашей мебели или просто план помещения
                   с&nbsp;описанием ваших пожеланий и&nbsp;наш дизайнер
                   в&nbsp;кратчайшие сроки подготовит для вас свои предложения.
@@ -154,7 +162,7 @@ export const FeedbackForm = () => {
             </Grid>
             <Grid item xs container justify="center">
               <Grid item xs={6}>
-                <Typography className={classes.text} align="center">
+                <Typography className={classes.copy__text} align="center">
                   Нажимая кнопку &laquo;Рассчитать стоимость&raquo;,
                   я&nbsp;даю согласие на&nbsp;обработку персональных данных и&nbsp;подтверждаю,
                   что ознакомлен с&nbsp;

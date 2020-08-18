@@ -13,7 +13,7 @@ export const Description = () => {
 
   return (
     <Container className={classes.root}>
-      <Typography>
+      <Typography variant="body1">
         Шоу-рум Частный Мебельер, представляет Вашему внимаю огромное разнообразие различных
         систем хранения премиум класса. От&nbsp;классических гардеробных,
         до&nbsp;современных шкафов купе,

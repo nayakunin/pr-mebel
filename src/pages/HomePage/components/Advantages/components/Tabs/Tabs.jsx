@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
       color: 'black',
       content: '"/"',
       right: '-20px',
-      bottom: '4px',
+      bottom: '0',
     },
     '&:last-of-type&:after': {
       display: 'none',
