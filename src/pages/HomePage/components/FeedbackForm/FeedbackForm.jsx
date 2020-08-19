@@ -65,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
   },
   filenames: {
     color: 'white',
+    fontWeight: '300',
   },
 }));
 
@@ -149,7 +150,9 @@ export const FeedbackForm = () => {
               </Grid>
               <Grid item xs={8}>
                 {fileNames.map((file) => (
-                  <Typography key={file} className={classes.filenames}>{file}</Typography>
+                  <Typography key={file} variant="body1" className={classes.filenames}>
+                    {file}
+                  </Typography>
                 ))}
               </Grid>
             </Grid>
