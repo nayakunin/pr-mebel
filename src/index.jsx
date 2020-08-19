@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { configureStore } from './store';
 import App from './App';
-import { theme } from './styles';
+import { theme } from './theme';
 import './index.css';
 
 ReactDOM.render(
