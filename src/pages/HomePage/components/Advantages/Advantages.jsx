@@ -10,9 +10,6 @@ import { TABS } from './constants';
 import { Tabs } from './components';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: '80px',
-  },
   description: {
     marginTop: '30px',
   },
@@ -61,65 +58,63 @@ export const Advantages = () => {
   }, []);
 
   return (
-    <div className={classes.root}>
-      <Container>
-        <BlockTitle>
-          <Typography variant="h4">Преимущества нашей продукции</Typography>
-        </BlockTitle>
-        <Grid container className={classes.description}>
-          <Grid item xs={10}>
-            <Typography variant="body2">
-              Мы&nbsp;постоянно улучшаем качество,
-              эргономические и&nbsp;эстетические параметры нашей мебели.
-              Начиная с&nbsp;подбора материалов и&nbsp;комплектующих мы&nbsp;создаем
-              эксклюзивный проект будущего изделия, который не&nbsp;просто идеально
-              впишется в&nbsp;ваш интерьер, а&nbsp;будет комфортен, удобен и&nbsp;функционален
-              в&nbsp;использовании, и&nbsp;прослужит Вам долгие годы.
-            </Typography>
+    <Container>
+      <BlockTitle>
+        <Typography variant="h4">Преимущества нашей продукции</Typography>
+      </BlockTitle>
+      <Grid container className={classes.description}>
+        <Grid item xs={10}>
+          <Typography variant="body2">
+            Мы&nbsp;постоянно улучшаем качество,
+            эргономические и&nbsp;эстетические параметры нашей мебели.
+            Начиная с&nbsp;подбора материалов и&nbsp;комплектующих мы&nbsp;создаем
+            эксклюзивный проект будущего изделия, который не&nbsp;просто идеально
+            впишется в&nbsp;ваш интерьер, а&nbsp;будет комфортен, удобен и&nbsp;функционален
+            в&nbsp;использовании, и&nbsp;прослужит Вам долгие годы.
+          </Typography>
+        </Grid>
+      </Grid>
+      <Grid item xs={12} container className={classes.materials} spacing={2}>
+        <Grid item xs={7} container direction="column">
+          <Grid item>
+            <BlockTitle>
+              <Typography variant="h5">
+                Мы используем только премиальные
+                <br />
+                материалы для нашей мебели
+              </Typography>
+            </BlockTitle>
+          </Grid>
+          <Grid item className={classes.tabs}>
+            <Tabs tabs={TABS} activeTab={activeTab} onChange={handleChangeTab}>
+              {TABS.map((tab) => (
+                <div key={tab.title} label={tab.title}>
+                  <ul className={classes.list}>
+                    {tab.list.map((option) => (
+                      <li key={option} className={classes['list-item']}>
+                        <CheckIcon className={classes.check} />
+                        <Typography className={classes.list__text}>{option}</Typography>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </Tabs>
           </Grid>
         </Grid>
-        <Grid item xs={12} container className={classes.materials} spacing={2}>
-          <Grid item xs={7} container direction="column">
-            <Grid item>
-              <BlockTitle>
-                <Typography variant="h5">
-                  Мы используем только премиальные
-                  <br />
-                  материалы для нашей мебели
-                </Typography>
-              </BlockTitle>
-            </Grid>
-            <Grid item className={classes.tabs}>
-              <Tabs tabs={TABS} activeTab={activeTab} onChange={handleChangeTab}>
-                {TABS.map((tab) => (
-                  <div key={tab.title} label={tab.title}>
-                    <ul className={classes.list}>
-                      {tab.list.map((option) => (
-                        <li key={option} className={classes['list-item']}>
-                          <CheckIcon className={classes.check} />
-                          <Typography className={classes.list__text}>{option}</Typography>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </Tabs>
-            </Grid>
-          </Grid>
-          <Grid item xs={5}>
-            <img
-              src={TABS.filter((tab) => tab.title === activeTab)[0].img}
-              alt="smth"
-              className={classes.img}
-            />
-          </Grid>
+        <Grid item xs={5}>
+          <img
+            src={TABS.filter((tab) => tab.title === activeTab)[0].img}
+            alt="smth"
+            className={classes.img}
+          />
         </Grid>
-        <Grid item xs={12} container justify="center" className={classes['button-container']}>
-          <Grid item xs={4}>
-            <MainButton>Рассчитать стоимость</MainButton>
-          </Grid>
+      </Grid>
+      <Grid item xs={12} container justify="center" className={classes['button-container']}>
+        <Grid item xs={4}>
+          <MainButton>Рассчитать стоимость</MainButton>
         </Grid>
-      </Container>
-    </div>
+      </Grid>
+    </Container>
   );
 };

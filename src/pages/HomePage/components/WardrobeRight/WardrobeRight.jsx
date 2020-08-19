@@ -8,9 +8,6 @@ import {
 import img from './assets/quality-img.jpg';
 
 const useStyles = makeStyles({
-  root: {
-    marginTop: '80px',
-  },
   content: {
   },
   description: {
@@ -29,38 +26,36 @@ export const WardrobeRight = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Container>
-        <BlockTitle>
-          <Typography variant="h4">
-            Исключительное качество
-            <br />
-            нашей мебели
+    <Container>
+      <BlockTitle>
+        <Typography variant="h4">
+          Исключительное качество
+          <br />
+          нашей мебели
+        </Typography>
+      </BlockTitle>
+      <Grid container spacing={6} className={classes.content}>
+        <Grid item xs={6} className={classes.description}>
+          <Typography>
+            Каждое наше изделие это сложный инженерный продукт,
+            включающий в&nbsp;себя передовые мировые стандарты производства
+            мебели. Все это сделано для того, чтобы наша мебель
+            безупречно служила вам долгие годы
           </Typography>
-        </BlockTitle>
-        <Grid container spacing={6} className={classes.content}>
-          <Grid item xs={6} className={classes.description}>
-            <Typography>
-              Каждое наше изделие это сложный инженерный продукт,
-              включающий в&nbsp;себя передовые мировые стандарты производства
-              мебели. Все это сделано для того, чтобы наша мебель
-              безупречно служила вам долгие годы
-            </Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <img
-              src={img}
-              alt="шкаф"
-              className={classes.img}
-            />
-          </Grid>
         </Grid>
-        <Grid container justify="center" className={classes['button-container']}>
-          <Grid item xs={4}>
-            <MainButton>Рассчитать стоимость</MainButton>
-          </Grid>
+        <Grid item xs={6}>
+          <img
+            src={img}
+            alt="шкаф"
+            className={classes.img}
+          />
         </Grid>
-      </Container>
-    </div>
+      </Grid>
+      <Grid container justify="center" className={classes['button-container']}>
+        <Grid item xs={4}>
+          <MainButton>Рассчитать стоимость</MainButton>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };

@@ -14,7 +14,6 @@ import img from './assets/connect-bg.jpg';
 
 const useStyles = makeStyles({
   root: {
-    marginTop: '60px',
     backgroundImage: `url('${img}')`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',

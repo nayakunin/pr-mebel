@@ -10,7 +10,6 @@ import { MainButton } from 'components';
 
 const useStyles = makeStyles({
   root: {
-    marginTop: '80px',
     // TODO Добавить цвет в тему
     background: '#303030',
     padding: '80px 0',

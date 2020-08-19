@@ -13,9 +13,6 @@ import {
 import { TABS } from './constants';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: '80px',
-  },
   content: {
     marginTop: '26px',
   },
@@ -55,51 +52,49 @@ export const WardrobeLeft = () => {
   }, []);
 
   return (
-    <div className={classes.root}>
-      <Container>
-        <BlockTitle>
-          <Typography variant="h4">
-            Комфорт и удобство, продуманное до мелочей
+    <Container>
+      <BlockTitle>
+        <Typography variant="h4">
+          Комфорт и удобство, продуманное до мелочей
+        </Typography>
+      </BlockTitle>
+      <Grid container spacing={6} className={classes.content}>
+        <Grid item xs={6}>
+          <img
+            src={TABS.filter((tab) => tab.title === activeTab)[0].img}
+            alt="шкаф"
+            className={classes.img}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Typography>
+            Мы&nbsp;разработали специальные решения для оптимизации
+            хранения ваших вещей, которые позволяют сделать ежедневно
+            пользование мебелью не&nbsp;только удобным и&nbsp;комфортным,
+            но&nbsp;еще и&nbsp;приятным
           </Typography>
-        </BlockTitle>
-        <Grid container spacing={6} className={classes.content}>
-          <Grid item xs={6}>
-            <img
-              src={TABS.filter((tab) => tab.title === activeTab)[0].img}
-              alt="шкаф"
-              className={classes.img}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <Typography>
-              Мы&nbsp;разработали специальные решения для оптимизации
-              хранения ваших вещей, которые позволяют сделать ежедневно
-              пользование мебелью не&nbsp;только удобным и&nbsp;комфортным,
-              но&nbsp;еще и&nbsp;приятным
-            </Typography>
-            <ul className={classes.list}>
-              {TABS.map((tab) => (
-                <li
-                  key={tab.title}
-                  className={cx(classes.option, {
-                    [classes.active]: activeTab === tab.title,
-                  })}
-                  onClick={handleClick(tab.title)}
-                >
-                  <Typography color="inherit" variant="h6">
-                    {tab.title}
-                  </Typography>
-                </li>
-              ))}
-            </ul>
-          </Grid>
+          <ul className={classes.list}>
+            {TABS.map((tab) => (
+              <li
+                key={tab.title}
+                className={cx(classes.option, {
+                  [classes.active]: activeTab === tab.title,
+                })}
+                onClick={handleClick(tab.title)}
+              >
+                <Typography color="inherit" variant="h6">
+                  {tab.title}
+                </Typography>
+              </li>
+            ))}
+          </ul>
         </Grid>
-        <Grid container justify="center" className={classes['button-container']}>
-          <Grid item xs={4}>
-            <MainButton>Рассчитать стоимость</MainButton>
-          </Grid>
+      </Grid>
+      <Grid container justify="center" className={classes['button-container']}>
+        <Grid item xs={4}>
+          <MainButton>Рассчитать стоимость</MainButton>
         </Grid>
-      </Container>
-    </div>
+      </Grid>
+    </Container>
   );
 };

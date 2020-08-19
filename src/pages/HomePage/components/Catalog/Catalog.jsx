@@ -9,9 +9,6 @@ import { CATALOG } from './constants';
 import { CatalogCard } from './components';
 
 const useStyles = makeStyles({
-  root: {
-    marginTop: '65px',
-  },
   title: {
     marginBottom: '60px',
   },
@@ -25,7 +22,7 @@ export const Catalog = () => {
   const classes = useStyles();
 
   return (
-    <Container className={classes.root}>
+    <Container>
       <BlockTitle className={classes.title}>
         <Typography variant="h4">
           Каталог

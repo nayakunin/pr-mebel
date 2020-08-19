@@ -9,10 +9,6 @@ import { ReactComponent as img3 } from './assets/design-img3.svg';
 import { ReactComponent as img4 } from './assets/design-img4.svg';
 
 const useStyles = makeStyles({
-  root: {
-    marginTop: '40px',
-    marginBottom: '80px',
-  },
   container: {
     marginTop: '48px',
   },
@@ -22,7 +18,7 @@ export const DesignOffer = () => {
   const classes = useStyles();
 
   return (
-    <Container className={classes.root}>
+    <Container>
       <BlockTitle>
         <Typography variant="h4">
           Получите дизайн-проект
