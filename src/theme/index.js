@@ -14,43 +14,43 @@ export const theme = createMuiTheme({
   overrides: {
     MuiTypography: {
       h1: {
-        fontFamily: 'Gilroy',
+        fontFamily: 'Gilroy, sans-serif',
       },
       h2: {
-        fontFamily: 'Gilroy',
+        fontFamily: 'Gilroy, sans-serif',
       },
       h3: {
-        fontFamily: 'Gilroy',
+        fontFamily: 'Gilroy, sans-serif',
       },
       h4: {
         textTransform: 'uppercase',
         fontSize: '30px',
         lineHeight: '35px',
         fontWeight: '300',
-        fontFamily: 'Gilroy',
+        fontFamily: 'Gilroy, sans-serif',
       },
       h5: {
         textTransform: 'uppercase',
         fontSize: '24px',
         lineHeight: '28px',
         fontWeight: '300',
-        fontFamily: 'Gilroy',
+        fontFamily: 'Gilroy, sans-serif',
       },
       h6: {
         textTransform: 'uppercase',
         fontSize: '18px',
         lineHeight: '1.3',
         fontWeight: '300',
-        fontFamily: 'Gilroy',
+        fontFamily: 'Gilroy, sans-serif',
       },
       subtitle1: {
-        fontFamily: 'Gilroy',
+        fontFamily: 'Gilroy, sans-serif',
       },
       subtitle2: {
-        fontFamily: 'Gilroy',
+        fontFamily: 'Gilroy, sans-serif',
       },
       body1: {
-        fontFamily: 'Gilroy',
+        fontFamily: 'Gilroy, sans-serif',
         fontSize: '18px',
         lineHeight: '1.4',
         letterSpacing: 'normal',
@@ -59,7 +59,7 @@ export const theme = createMuiTheme({
         fontSize: '16px',
         lineHeight: '18px',
         letterSpacing: 'normal',
-        fontFamily: 'Gilroy',
+        fontFamily: 'Gilroy, sans-serif',
       },
     },
   },
