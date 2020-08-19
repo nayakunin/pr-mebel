@@ -1,6 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography, Container } from '@material-ui/core';
+import {
+  Grid,
+  Typography,
+  Container,
+  TextField,
+} from '@material-ui/core';
 import { MainButton } from 'components';
 
 const useStyles = makeStyles({
@@ -10,17 +15,22 @@ const useStyles = makeStyles({
     background: '#303030',
     padding: '80px 0',
   },
-  input: {
-    width: '100%',
+  input__inner: {
     color: 'white',
-    background: 'none',
-    border: 'none',
-    borderBottom: '1px solid white',
-    boxSizing: 'border-box',
-    padding: '8px',
-    '&:focus': {
-      outline: 'none',
+    '&:placeholder': {
+      color: 'white',
     },
+  },
+  input__root: {
+    '&:hover&:before,&:before': {
+      borderColor: 'white',
+    },
+  },
+  input_outline: {
+    borderColor: 'white',
+  },
+  input__label: {
+    color: 'white',
   },
   text: {
     color: 'white',
@@ -48,22 +58,46 @@ export const CallDesignerForm = () => {
             <Grid item xs={3} />
             <Grid item xs={6} container>
               <Grid item xs={5}>
-                <input
+                <TextField
                   type="text"
                   autoComplete="name"
-                  className={classes.input}
+                  InputProps={{
+                    classes: {
+                      root: classes.input__root,
+                      input: classes.input__inner,
+                    },
+                  }}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.input__label,
+                    },
+                  }}
+                  fullWidth
                   placeholder="Имя"
+                  label="Имя"
                   required
                 />
               </Grid>
               <Grid item xs={2} />
               <Grid item xs={5}>
-                <input
+                <TextField
                   type="tel"
                   autoComplete="tel"
+                  InputProps={{
+                    classes: {
+                      root: classes.input__root,
+                      input: classes.input__inner,
+                    },
+                  }}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.input__label,
+                    },
+                  }}
                   pattern="[7,8]{1}-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
-                  className={classes.input}
+                  fullWidth
                   placeholder="Телефон"
+                  label="Телефон"
                   required
                 />
               </Grid>
@@ -71,12 +105,12 @@ export const CallDesignerForm = () => {
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
               <Grid item xs={4}>
                 {/* TODO Add callback */}
-                <MainButton onClick={() => ({})}>Рассчитать стоимость</MainButton>
+                <MainButton onClick={() => ({})}>Вызвать дизайнера</MainButton>
               </Grid>
             </Grid>
             <Grid item xs container justify="center">
               <Grid item xs={6}>
-                <Typography className={classes.text} align="center">
+                <Typography variant="body2" className={classes.text} align="center">
                   Нажимая кнопку &laquo;Рассчитать стоимость&raquo;,
                   я&nbsp;даю согласие на&nbsp;обработку персональных данных и&nbsp;подтверждаю,
                   что ознакомлен с&nbsp;

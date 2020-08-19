@@ -9,11 +9,12 @@ const useStyles = makeStyles({
   root: {
 
   },
-  grid: {
-    marginTop: '24px',
+  title_middle: {
+    marginTop: '30px',
+    fontWeight: '400',
   },
-  subtitle: {
-    marginTop: '24px',
+  grid: {
+    marginTop: '14px',
   },
 });
 
@@ -28,7 +29,7 @@ export const About = () => {
             О нас
           </Typography>
         </BlockTitle>
-        <Typography variant="h5" align="center">
+        <Typography variant="h5" align="center" className={classes.title_middle}>
           Почему нас выбрали уже более 10 000 клиентов?
         </Typography>
         <Grid container spacing={4} className={classes.grid}>
@@ -41,7 +42,7 @@ export const About = () => {
             />
           ))}
         </Grid>
-        <Typography variant="h5" align="center" className={classes.subtitle}>
+        <Typography variant="h5" align="center" className={classes.title_middle}>
           Приходите, нам есть чем вас удивить!
         </Typography>
       </Container>

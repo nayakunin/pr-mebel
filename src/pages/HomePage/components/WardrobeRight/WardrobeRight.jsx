@@ -39,7 +39,7 @@ export const WardrobeRight = () => {
           </Typography>
         </BlockTitle>
         <Grid container spacing={6} className={classes.content}>
-          <Grid item xs={5} className={classes.description}>
+          <Grid item xs={6} className={classes.description}>
             <Typography>
               Каждое наше изделие это сложный инженерный продукт,
               включающий в&nbsp;себя передовые мировые стандарты производства
@@ -47,7 +47,7 @@ export const WardrobeRight = () => {
               безупречно служила вам долгие годы
             </Typography>
           </Grid>
-          <Grid item xs={7}>
+          <Grid item xs={6}>
             <img
               src={img}
               alt="шкаф"

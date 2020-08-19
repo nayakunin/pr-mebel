@@ -108,7 +108,6 @@ export const Page = ({
             <Typography
               key={text}
               className={cx(classes.text, classes['bottom-text'])}
-              variant="h4"
             >
               {text}
             </Typography>

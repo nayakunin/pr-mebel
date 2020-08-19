@@ -10,10 +10,29 @@ const useStyles = makeStyles((theme) => ({
   root: {
 
   },
+  row_top: {
+    display: 'flex',
+    flexDirection: 'row',
+    height: '57px',
+  },
+  title__container: {
+    marginLeft: '20px',
+    display: 'flex',
+    alignItems: 'center',
+  },
+  row_bottom: {
+    marginTop: '10px',
+  },
   icon: {
+    width: '50px',
+    height: '50px',
     '& path': {
       fill: theme.palette.primary.main,
     },
+  },
+  text: {
+    fontSize: '15px',
+    lineHeight: '17px',
   },
 }));
 
@@ -25,20 +44,20 @@ export const Card = ({
   const classes = useStyles();
 
   return (
-    <Grid item xs={4} container spacing={2}>
-      <Grid item xs={2}>
+    <Grid item xs={4} spacing={2}>
+      <div className={classes.row_top}>
         <Img className={classes.icon} />
-      </Grid>
-      <Grid item xs={10} container alignItems="center">
-        <Typography variant="h6">
-          {title}
-        </Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <Typography variant="body2">
+        <div className={classes.title__container}>
+          <Typography variant="h6">
+            {title}
+          </Typography>
+        </div>
+      </div>
+      <div className={classes.row_bottom}>
+        <Typography variant="body2" className={classes.text}>
           {text}
         </Typography>
-      </Grid>
+      </div>
     </Grid>
   );
 };

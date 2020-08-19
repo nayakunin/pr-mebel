@@ -4,3 +4,9 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Disable font boosting */
+/* https://stackoverflow.com/questions/13430897/how-to-override-font-boosting-in-mobile-chrome */
+html * {
+  max-height: 1000000px;
+}

@@ -19,18 +19,18 @@ const useStyles = makeStyles((theme) => ({
   materials: {
     marginTop: '40px',
   },
+  tabs: {
+    marginTop: '20px',
+  },
   list: {
     margin: '0',
-    marginTop: '10px',
+    marginTop: '20px',
     paddingLeft: '30px',
     listStyle: 'none',
   },
   list__text: {
     fontSize: '16px',
     lineHeight: '1.2',
-  },
-  tabs: {
-    marginTop: '10px',
   },
   'list-item': {
     position: 'relative',

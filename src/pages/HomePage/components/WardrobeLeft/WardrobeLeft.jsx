@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '80px',
   },
   content: {
-    marginTop: '50px',
+    marginTop: '26px',
   },
   img: {
     width: '100%',

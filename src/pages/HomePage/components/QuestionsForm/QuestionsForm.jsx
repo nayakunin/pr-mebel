@@ -19,10 +19,15 @@ const useStyles = makeStyles({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    padding: '40px 0',
+    padding: '80px 0',
   },
   title: {
     color: 'white',
+  },
+  subtitle: {
+    color: 'white',
+    marginTop: '40px',
+    marginBottom: '60px',
   },
   input__inner: {
     color: 'white',
@@ -74,6 +79,9 @@ export const QuestionsForm = () => {
             Остались вопросы?
           </Typography>
         </BlockTitle>
+        <Typography variant="h6" className={classes.subtitle}>
+          Заполните форму ниже. Наш менеджер свяжется с вами и ответит на вопросы
+        </Typography>
         <form>
           <Grid container>
             <Grid item xs={3} />

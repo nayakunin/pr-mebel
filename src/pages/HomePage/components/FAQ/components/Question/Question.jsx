@@ -12,7 +12,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
-    border: `1px solid ${theme.palette.primary.main}`,
+    border: '1px solid rgba(235, 47, 70, 0.2)',
     padding: '10px',
     transition: 'all .3s ease-in-out',
     overflow: 'hidden',
@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
   number: {
     fontSize: '40px',
     color: theme.palette.primary.main,
-    opacity: '0.6',
   },
   dropdown: {
     transition: 'all .3s ease-in-out',
@@ -67,10 +66,10 @@ export const Question = ({
     >
       <Grid container spacing={1} className={classes.top}>
         <Grid item xs={1} container direction="column" justify="center" alignItems="center">
-          <span className={classes.number}>{id}</span>
+          <Typography className={classes.number}>{id}</Typography>
         </Grid>
         <Grid item xs={10} container direction="column" justify="center">
-          <Typography variant="h6">
+          <Typography variant="body1">
             {title}
           </Typography>
         </Grid>
@@ -88,7 +87,7 @@ export const Question = ({
         style={{ height: dropdownActive ? dropdownHeight : '0' }}
       >
         <Grid item xs={12}>
-          <Typography>
+          <Typography variant="body2">
             {children}
           </Typography>
         </Grid>

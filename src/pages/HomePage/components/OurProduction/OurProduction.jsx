@@ -17,11 +17,21 @@ const useStyles = makeStyles({
     width: '100%',
     marginBottom: '24px',
   },
+  section__title: {
+    fontSize: '16px',
+    lineHeight: '18px',
+    fontWeight: '400',
+  },
   text: {
+    marginTop: '24px',
+    fontSize: '15px',
+  },
+  text__container_bottom: {
     marginTop: '24px',
   },
   text_bottom: {
-    marginTop: '24px',
+    fontSize: '24px',
+    lineHeight: '28px',
   },
 });
 
@@ -37,10 +47,10 @@ export const OurProduction = () => {
           </Typography>
         </BlockTitle>
         <img src={img} alt="Производство" className={classes.img} />
-        <Grid container spacing={3}>
+        <Grid container spacing={4}>
           <Grid item xs={3}>
             <BlockTitle>
-              <Typography variant="h5">
+              <Typography variant="h6" className={classes.section__title}>
                 Квалифицированный персонал
               </Typography>
             </BlockTitle>
@@ -51,7 +61,7 @@ export const OurProduction = () => {
           </Grid>
           <Grid item xs={3}>
             <BlockTitle>
-              <Typography variant="h5">
+              <Typography variant="h6" className={classes.section__title}>
                 Инженерное 3D-проектирование
               </Typography>
             </BlockTitle>
@@ -62,7 +72,7 @@ export const OurProduction = () => {
           </Grid>
           <Grid item xs={3}>
             <BlockTitle>
-              <Typography variant="h5">
+              <Typography variant="h6" className={classes.section__title}>
                 Промышленное оборудование
               </Typography>
             </BlockTitle>
@@ -74,7 +84,7 @@ export const OurProduction = () => {
           </Grid>
           <Grid item xs={3}>
             <BlockTitle>
-              <Typography variant="h5">
+              <Typography variant="h6" className={classes.section__title}>
                 Контроль качества на всех участках
               </Typography>
             </BlockTitle>
@@ -85,8 +95,8 @@ export const OurProduction = () => {
             </Typography>
           </Grid>
           <Grid item xs={1} />
-          <Grid item xs={10} className={classes.text_bottom}>
-            <Typography variant="h4" align="center">
+          <Grid item xs={10} className={classes.text__container_bottom}>
+            <Typography variant="h4" align="center" className={classes.text_bottom}>
               Современные технологии производства для идеального качества мебели
             </Typography>
           </Grid>

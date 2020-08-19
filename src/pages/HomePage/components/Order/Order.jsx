@@ -39,41 +39,43 @@ export const Order = () => {
       <Container>
         <BlockTitle>
           <Typography variant="h4">
-            Закажите выезд дизайнера-замерщика
-            <br />
+            Закажите выезд дизайнера-замерщика сегодня
+          </Typography>
+          <Typography variant="h5">
             и получите проект мебели в течение 24 часов
           </Typography>
         </BlockTitle>
         <Grid container className={classes.container}>
           <Grid item xs={4} container direction="column" alignItems="center">
             <Img1 className={classes.img} />
-            <Typography variant="body1" align="center">
+            <Typography variant="body2" align="center">
               Приедет в удобное для вас время
             </Typography>
           </Grid>
           <Grid item xs={4} container direction="column" alignItems="center">
             <Img2 className={classes.img} />
-            <Typography variant="body1" align="center">
+            <Typography variant="body2" align="center">
               Привезет нужные материалы
             </Typography>
           </Grid>
           <Grid item xs={4} container direction="column" alignItems="center">
             <Img3 className={classes.img} />
-            <Typography variant="body1" align="center">
+            <Typography variant="body2" align="center">
               Сделает профессиональный замер помещение
             </Typography>
           </Grid>
           <Grid item xs={2} />
           <Grid item xs={8} container className={classes.row} spacing={4}>
-            <Grid item xs={6} container direction="column" alignItems="center">
+            <Grid item xs={1} />
+            <Grid item xs={5} container direction="column" alignItems="center">
               <Img4 className={classes.img} />
-              <Typography variant="body1" align="center">
+              <Typography variant="body2" align="center">
                 Объяснит, как лучше использовать пространство вашего помещения
               </Typography>
             </Grid>
-            <Grid item xs={6} container direction="column" alignItems="center">
+            <Grid item xs={5} container direction="column" alignItems="center">
               <Img5 className={classes.img} />
-              <Typography variant="body1" align="center">
+              <Typography variant="body2" align="center">
                 Разработает дизайн-проект мебели в 3D в течение 24 часов после замера
               </Typography>
             </Grid>

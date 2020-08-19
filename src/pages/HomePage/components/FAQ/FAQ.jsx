@@ -10,8 +10,6 @@ const useStyles = makeStyles({
   },
   container: {
     marginTop: '30px',
-    // height: '345px',
-    // overflow: 'scroll',
   },
 });
 
