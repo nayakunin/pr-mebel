@@ -201,14 +201,14 @@ export const CardPopup = ({
           </div>
           <div className={classes['description-container_top']}>
             <MainButton>Рассчитать стоимость</MainButton>
-            <Grid container className={classes.socials}>
+            {/* <Grid container className={classes.socials}>
               <Grid item xs={4} />
               <Grid item xs={4} container spacing={2}>
                 <Grid item xs={4} container justify="center">inst</Grid>
                 <Grid item xs={4} container justify="center">vk</Grid>
                 <Grid item xs={4} container justify="center">fb</Grid>
               </Grid>
-            </Grid>
+            </Grid> */}
           </div>
         </Grid>
       </Grid>
