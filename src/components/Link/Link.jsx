@@ -30,6 +30,7 @@ export const Link = ({
   if (asButton) {
     return (
       <Typography
+        component="a"
         className={cx(classes.root, className)}
         onClick={onClick}
       >

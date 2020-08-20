@@ -8,10 +8,9 @@ import {
 } from '@material-ui/core';
 import { MainButton } from 'components';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    // TODO Добавить цвет в тему
-    background: '#303030',
+    background: theme.palette.grey[900],
     padding: '80px 0',
   },
   input__inner: {
@@ -44,7 +43,7 @@ const useStyles = makeStyles({
   'copyright-link': {
     color: 'white',
   },
-});
+}));
 
 export const CallDesignerForm = () => {
   const classes = useStyles();

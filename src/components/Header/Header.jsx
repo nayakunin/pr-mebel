@@ -118,7 +118,6 @@ export const Header = () => {
                   Каталог&nbsp;
                   <ArrowDropDownIcon className={classes.dropdown} />
                 </Typography>
-                {/* TODO Заменить на модалку из mui */}
                 {dropdownVisible && (
                   <ul
                     className={classes['menu__dropdown-popup']}

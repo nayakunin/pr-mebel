@@ -7,13 +7,14 @@ import {
   TextField,
 } from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
-import { MainButton } from 'components';
+import {
+  SubmitButton,
+} from 'components';
 import { getFileDeclination } from 'utils';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // TODO Добавить цвет в тему
-    background: '#303030',
+    background: theme.palette.grey[900],
     padding: '80px 0',
   },
   input__inner: {
@@ -106,6 +107,7 @@ export const FeedbackForm = () => {
   return (
     <div className={classes.root}>
       <Container>
+        {/* TODO доделать отправку формы */}
         <form className={classes.form}>
           <Grid container>
             <Grid item xs={6} container spacing={4}>
@@ -190,11 +192,9 @@ export const FeedbackForm = () => {
                 ))}
               </Grid>
             </Grid>
-            {/* TODO Добавить тип кнопки и доделать отправку формы */}
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
               <Grid item xs={4}>
-                {/* TODO Add callback */}
-                <MainButton onClick={() => ({})}>Рассчитать стоимость</MainButton>
+                <SubmitButton>Рассчитать стоимость</SubmitButton>
               </Grid>
             </Grid>
             <Grid item xs container justify="center">

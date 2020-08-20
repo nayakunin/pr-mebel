@@ -16,8 +16,7 @@ import { Link } from '../Link/Link';
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: '80px',
-    // TODO Добавить цвет в тему
-    background: '#303030',
+    background: theme.palette.grey[900],
     padding: '80px 0',
     color: 'white',
   },
@@ -93,10 +92,9 @@ export const Footer = () => {
                 Каталог
               </Link>
             </Typography>
-            {/* TODO Add search requests for catalog page */}
             <ul className={classes.list}>
               <li>
-                <Typography gutterBottom>
+                <Typography variant="body1" gutterBottom>
                   <Link
                     to="/catalog?section=cupboards&style=classic"
                     className={classes.list__item}

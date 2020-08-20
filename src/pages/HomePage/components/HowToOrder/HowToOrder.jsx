@@ -10,7 +10,7 @@ import {
   MainButton,
 } from 'components';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
     marginTop: '32px',
   },
@@ -21,8 +21,7 @@ const useStyles = makeStyles({
     position: 'absolute',
     fontSize: '120px',
     lineHeight: '120px',
-    // TODO Добавить цвет в тему
-    color: '#eb2f46',
+    color: theme.palette.primary.main,
     opacity: '.07',
     top: '-5px',
     left: '20px',
@@ -35,7 +34,7 @@ const useStyles = makeStyles({
     marginTop: '36px',
     marginBottom: '24px',
   },
-});
+}));
 
 export const HowToOrder = () => {
   const classes = useStyles();

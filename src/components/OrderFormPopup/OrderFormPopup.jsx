@@ -109,7 +109,6 @@ export const OrderFormPopup = () => {
             для Вас индивидуальное предложение
           </Typography>
         </Grid>
-        {/* TODO Вынести инпуты в отдельный компонент */}
         <Grid item xs={8}>
           <form className={classes.form} onSubmit={handleSubmit}>
             <TextField

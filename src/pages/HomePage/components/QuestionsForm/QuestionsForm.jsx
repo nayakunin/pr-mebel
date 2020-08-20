@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import {
   BlockTitle,
-  MainButton,
+  SubmitButton,
 } from 'components';
 import img from './assets/connect-bg.jpg';
 
@@ -152,8 +152,7 @@ export const QuestionsForm = () => {
             </Grid>
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
               <Grid item xs={4}>
-                {/* TODO Add callback */}
-                <MainButton onClick={() => ({})}>Задать вопрос</MainButton>
+                <SubmitButton>Задать вопрос</SubmitButton>
               </Grid>
             </Grid>
             <Grid item xs container justify="center">

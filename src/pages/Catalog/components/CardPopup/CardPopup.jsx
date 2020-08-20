@@ -110,7 +110,6 @@ export const CardPopup = ({
     }
   }, [items.length, currentItemId, onDownloadMoreCards]);
 
-  // TODO Добавить плавный переход между картинками
   return (
     <Dialog
       open={isOpen}
