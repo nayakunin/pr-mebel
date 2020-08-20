@@ -118,28 +118,33 @@ export const OrderFormPopup = () => {
               className={classes.input}
               fullWidth
               placeholder="Имя"
+              label="Имя"
               required
             />
             <TextField
               type="tel"
               autoComplete="tel"
-              pattern="[7,8]{1}-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
               className={classes.input}
+              pattern="[7,8]{1}-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
               fullWidth
               placeholder="Телефон"
+              label="Телефон"
               required
             />
             <TextField
-              type="mail"
+              type="email"
               autoComplete="email"
               className={classes.input}
               fullWidth
-              placeholder="E-mail"
+              placeholder="Почта"
+              label="Почта"
               required
             />
             <TextField
               fullWidth
               multiline
+              label="Описание"
+              required
               variant="outlined"
               placeholder="Описание"
               className={classes.input}
@@ -158,14 +163,14 @@ export const OrderFormPopup = () => {
               className={classes.files}
               onClick={handleFileInputClick}
             >
-              <Grid item xs={6} container>
+              <Grid item xs={7} container direction="row">
                 <PublishIcon className={classes.icon} />
                 <Typography>
                   Прикрепить эскизы
                 </Typography>
               </Grid>
               {!!fileNames.length && (
-                <Grid item xs={6} container justify="center">
+                <Grid item xs={5} container justify="center">
                   <Typography>
                     {`${fileNames.length}\xA0${getFileDeclination(fileNames.legnth)}`}
                   </Typography>
