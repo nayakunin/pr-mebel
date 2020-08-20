@@ -14,12 +14,11 @@ import img from './assets/questions-bg.jpg';
 
 const useStyles = makeStyles({
   root: {
-    margin: '60px 0',
     backgroundImage: `url('${img}')`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    padding: '40px 0',
+    padding: '80px 0',
   },
   title: {
     color: 'white',
