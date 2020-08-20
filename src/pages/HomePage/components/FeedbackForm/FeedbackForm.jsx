@@ -1,6 +1,11 @@
 import React, { useRef, useCallback, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Grid, Typography } from '@material-ui/core';
+import {
+  Container,
+  Grid,
+  Typography,
+  TextField,
+} from '@material-ui/core';
 import PublishIcon from '@material-ui/icons/Publish';
 import { MainButton } from 'components';
 import { getFileDeclination } from 'utils';
@@ -11,17 +16,22 @@ const useStyles = makeStyles((theme) => ({
     background: '#303030',
     padding: '80px 0',
   },
-  input: {
-    width: '100%',
+  input__inner: {
     color: 'white',
-    background: 'none',
-    border: 'none',
-    borderBottom: '1px solid white',
-    boxSizing: 'border-box',
-    padding: '8px',
-    '&:focus': {
-      outline: 'none',
+    '&:placeholder': {
+      color: 'white',
     },
+  },
+  input__root: {
+    '&:hover&:before,&:before': {
+      borderColor: 'white',
+    },
+  },
+  input_outline: {
+    borderColor: 'white',
+  },
+  input__label: {
+    color: 'white',
   },
   text: {
     color: 'white',
@@ -100,21 +110,45 @@ export const FeedbackForm = () => {
           <Grid container>
             <Grid item xs={6} container spacing={4}>
               <Grid item xs={6}>
-                <input
+                <TextField
                   type="text"
                   autoComplete="name"
-                  className={classes.input}
+                  InputProps={{
+                    classes: {
+                      root: classes.input__root,
+                      input: classes.input__inner,
+                    },
+                  }}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.input__label,
+                    },
+                  }}
+                  fullWidth
                   placeholder="Имя"
+                  label="Имя"
                   required
                 />
               </Grid>
               <Grid item xs={6}>
-                <input
+                <TextField
                   type="tel"
                   autoComplete="tel"
+                  InputProps={{
+                    classes: {
+                      root: classes.input__root,
+                      input: classes.input__inner,
+                    },
+                  }}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.input__label,
+                    },
+                  }}
                   pattern="[7,8]{1}-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
-                  className={classes.input}
+                  fullWidth
                   placeholder="Телефон"
+                  label="Телефон"
                   required
                 />
               </Grid>
