@@ -13,8 +13,7 @@ const useStyles = makeStyles({
     marginBottom: '60px',
   },
   'button-container': {
-    display: 'flex',
-    justifyContent: 'center',
+    marginTop: '30px',
   },
 });
 
@@ -41,7 +40,7 @@ export const Catalog = () => {
           </Grid>
         ))}
       </Grid>
-      <Grid container justify="center">
+      <Grid container justify="center" className={classes['button-container']}>
         <Grid item xs={4}>
           <MainButton>Рассчитать стоимость</MainButton>
         </Grid>

@@ -10,7 +10,6 @@ const useStyles = makeStyles({
     position: 'relative',
     width: '100%',
     background: 'white',
-    marginBottom: '30px',
     '&:hover $img:after': {
       background: 'rgba(0,0,0,.3)',
     },
@@ -31,7 +30,7 @@ const useStyles = makeStyles({
   },
   img: {
     width: '100%',
-    height: '252px',
+    paddingTop: '66.66%',
     marginBottom: '12px',
     position: 'relative',
     display: 'block',
