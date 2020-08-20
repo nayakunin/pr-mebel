@@ -307,12 +307,12 @@ export const Footer = () => {
               </a>
             </Grid>
           </Grid>
-          <Typography variant="body2">
+          <Typography variant="body2" gutterBottom>
             <Link to="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit" external>Политика конфиденциальности</Link>
             <span className={classes['vertical-line']}>|</span>
             <Link to="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit" external>Пользовательское соглашение</Link>
           </Typography>
-          <Typography>
+          <Typography variant="body2">
             &copy; Частный Мебельер
             <span className={classes['vertical-line']}>|</span>
             2020 Все права защищены законом.
