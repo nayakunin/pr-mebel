@@ -3,7 +3,6 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import ReactDOM from 'react-dom';
 import {
   useSelector,
   useDispatch,
@@ -22,9 +21,10 @@ import PublishIcon from '@material-ui/icons/Publish';
 import { getFileDeclination } from 'utils';
 import {
   closeOrderFormPopup,
+  openFormSubmitPopup,
   saveForm,
   submitForm,
-  openFileUploadPopup,
+  uploadFiles,
 } from 'actions';
 import {
   SubmitButton,
@@ -75,6 +75,7 @@ export const OrderFormPopup = () => {
 
   const handleClosePopup = useCallback(() => {
     dispatch(closeOrderFormPopup());
+    fileInputRef.current.value = null;
   }, [dispatch]);
 
   const handleFileInputClick = useCallback(() => {
@@ -86,23 +87,23 @@ export const OrderFormPopup = () => {
   }, [fileInputRef]);
 
   const onSubmit = useCallback((data) => {
-    dispatch(saveForm({
-      ...data,
-      files: fileNames,
-    }));
     dispatch(closeOrderFormPopup());
+    dispatch(saveForm(data));
     if (fileNames.length) {
-      dispatch(openFileUploadPopup());
+      dispatch(uploadFiles(fileNames));
+      dispatch(openFormSubmitPopup());
+      fileInputRef.current.value = null;
     } else {
       dispatch(submitForm());
     }
-  }, [fileNames]);
+  }, [fileNames, fileInputRef]);
 
-  return ReactDOM.createPortal(
+  return (
     <Dialog
       open={isOpen}
       onClose={handleClosePopup}
-      // maxWidth="sm"
+      fullWidth
+      maxWidth="sm"
     >
       <img
         className={classes.img}
@@ -207,7 +208,6 @@ export const OrderFormPopup = () => {
           </form>
         </Grid>
       </Grid>
-    </Dialog>,
-    document.getElementById('modal'),
+    </Dialog>
   );
 };

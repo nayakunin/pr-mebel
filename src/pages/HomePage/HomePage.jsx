@@ -9,7 +9,7 @@ import {
   Header,
   Footer,
   OrderFormPopup,
-  FileUploadPopup,
+  FormSubmitPopup,
 } from 'components';
 import {
   Carousel,
@@ -215,7 +215,7 @@ export const HomePage = () => {
       </main>
       <Footer />
       <OrderFormPopup />
-      <FileUploadPopup />
+      <FormSubmitPopup />
     </>
   );
 };
