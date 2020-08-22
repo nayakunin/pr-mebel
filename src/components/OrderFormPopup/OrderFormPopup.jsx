@@ -47,8 +47,17 @@ const useStyles = makeStyles({
   'input-file': {
     display: 'none',
   },
-  img: {
+  img__container: {
     width: '100%',
+    position: 'relative',
+    paddingTop: '27.17%',
+  },
+  img: {
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    top: '0',
+    left: '0',
   },
   'copyright-link': {
     color: 'black',
@@ -105,11 +114,13 @@ export const OrderFormPopup = () => {
       fullWidth
       maxWidth="sm"
     >
-      <img
-        className={classes.img}
-        src={formTop}
-        alt="Картинка в модальном окне"
-      />
+      <div className={classes.img__container}>
+        <img
+          className={classes.img}
+          src={formTop}
+          alt="Картинка в модальном окне"
+        />
+      </div>
       <Grid container justify="center" className={classes.content}>
         <Typography variant="h5" gutterBottom>
           Расчет стоимости проекта

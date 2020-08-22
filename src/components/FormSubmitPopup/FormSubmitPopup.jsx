@@ -20,6 +20,7 @@ import {
 import {
   getFormState,
 } from './selectors';
+import img from './assets/envelop-icon.svg';
 
 const useStyles = makeStyles({
   root: {
@@ -41,6 +42,12 @@ const useStyles = makeStyles({
   },
   loader: {
     width: '50px',
+  },
+  icon: {
+    display: 'inline-block',
+    marginRight: '20px',
+    position: 'relative',
+    top: '10px',
   },
 });
 
@@ -86,7 +93,14 @@ export const FormSubmitPopup = () => {
           align="center"
           gutterBottom
         >
-          {!allUploaded ? 'Загрузка файлов' : 'Письмо отправлено'}
+          {!allUploaded ? 'Загрузка файлов' : (
+            <>
+              <img src={img} alt="Почта отправлена" className={classes.icon} />
+              <span>
+                Письмо отправлено
+              </span>
+            </>
+          )}
         </Typography>
         <Grid
           container
