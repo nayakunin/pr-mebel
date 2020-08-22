@@ -4,7 +4,13 @@ import React, {
   useState,
 } from 'react';
 import ReactDOM from 'react-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import {
+  useSelector,
+  useDispatch,
+} from 'react-redux';
+import {
+  useForm,
+} from 'react-hook-form';
 import {
   Dialog,
   Grid,
@@ -14,8 +20,12 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import PublishIcon from '@material-ui/icons/Publish';
 import { getFileDeclination } from 'utils';
-import * as api from 'utils/api';
-import { closeOrderFormPopup } from 'actions';
+import {
+  closeOrderFormPopup,
+  saveForm,
+  submitForm,
+  openFileUploadPopup,
+} from 'actions';
 import {
   SubmitButton,
 } from '../SubmitButton/SubmitButton';
@@ -25,9 +35,6 @@ import {
 } from './selectors';
 
 const useStyles = makeStyles({
-  root: {
-
-  },
   content: {
     padding: '20px',
   },
@@ -60,6 +67,7 @@ const useStyles = makeStyles({
 
 export const OrderFormPopup = () => {
   const classes = useStyles();
+  const { register, handleSubmit } = useForm();
   const fileInputRef = useRef();
   const [fileNames, setFileNames] = useState([]);
   const dispatch = useDispatch();
@@ -77,21 +85,24 @@ export const OrderFormPopup = () => {
     setFileNames(fileInputRef.current.files);
   }, [fileInputRef]);
 
-  const handleSubmit = useCallback((event) => {
-    event.preventDefault();
-
-    api.sendMessage({
-      text: 'lol',
-      else: 'more',
-    });
-  }, []);
+  const onSubmit = useCallback((data) => {
+    dispatch(saveForm({
+      ...data,
+      files: fileNames,
+    }));
+    dispatch(closeOrderFormPopup());
+    if (fileNames.length) {
+      dispatch(openFileUploadPopup());
+    } else {
+      dispatch(submitForm());
+    }
+  }, [fileNames]);
 
   return ReactDOM.createPortal(
     <Dialog
       open={isOpen}
       onClose={handleClosePopup}
-      maxWidth="sm"
-      className={classes.root}
+      // maxWidth="sm"
     >
       <img
         className={classes.img}
@@ -110,8 +121,10 @@ export const OrderFormPopup = () => {
           </Typography>
         </Grid>
         <Grid item xs={8}>
-          <form className={classes.form} onSubmit={handleSubmit}>
+          <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
             <TextField
+              inputRef={register}
+              name="name"
               type="text"
               autoComplete="name"
               className={classes.input}
@@ -121,6 +134,8 @@ export const OrderFormPopup = () => {
               required
             />
             <TextField
+              inputRef={register}
+              name="tel"
               type="tel"
               autoComplete="tel"
               className={classes.input}
@@ -131,6 +146,8 @@ export const OrderFormPopup = () => {
               required
             />
             <TextField
+              inputRef={register}
+              name="email"
               type="email"
               autoComplete="email"
               className={classes.input}
@@ -140,6 +157,8 @@ export const OrderFormPopup = () => {
               required
             />
             <TextField
+              inputRef={register}
+              name="description"
               fullWidth
               multiline
               label="Описание"
