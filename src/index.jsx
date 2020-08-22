@@ -1,4 +1,3 @@
-// TODO Подумать о React.lazy
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {

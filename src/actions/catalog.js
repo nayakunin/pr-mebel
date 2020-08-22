@@ -23,8 +23,6 @@ export const fetchCatalog = () => async (dispatch, getState) => {
   try {
     const response = await api.fetchCatalogByFilter(filter, page);
 
-    // TODO Add error handling
-
     dispatch({
       type: FETCH_CATALOG_SUCCESS,
       payload: response.data[getCollectionName(filter.section)],

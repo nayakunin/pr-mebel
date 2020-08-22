@@ -3,6 +3,7 @@ import React, {
   useState,
 } from 'react';
 import cx from 'classnames';
+import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import { Grid, Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -22,6 +23,20 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     backgroundColor: 'white',
     boxShadow: '0 10px 20px rgba(0,0,0,.1)',
+    transition: '.1s height',
+  },
+  root_dense: {
+    height: '50px',
+  },
+  logo: {
+    height: '50px',
+    transition: '.1s height',
+  },
+  logo_dense: {
+    height: '40px',
+  },
+  logo__container: {
+    display: 'block',
   },
   text: {
     fontSize: '13px',
@@ -88,6 +103,7 @@ const useStyles = makeStyles((theme) => ({
 export const Header = () => {
   const classes = useStyles();
 
+  const [smallHeader, setSmallHeader] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
   const handleOpenDropdown = useCallback(() => {
@@ -98,13 +114,30 @@ export const Header = () => {
     setDropdownVisible(false);
   }, []);
 
+  useScrollPosition(({ currPos }) => {
+    if (currPos.y < -500) {
+      setSmallHeader(true);
+    } else {
+      setSmallHeader(false);
+    }
+  }, [], false, false, 300);
+
   return (
-    <header className={classes.root}>
+    <header className={cx(classes.root, {
+      [classes.root_dense]: smallHeader,
+    })}
+    >
       <Container>
         <Grid container>
           <Grid item xs={2}>
-            <Link to="/">
-              <img src={logo} alt="logo" />
+            <Link to="/" className={classes.logo__container}>
+              <img
+                src={logo}
+                alt="logo"
+                className={cx(classes.logo, {
+                  [classes.logo_dense]: smallHeader,
+                })}
+              />
             </Link>
           </Grid>
           <Grid item xs={7} container justify="center" alignItems="center">
@@ -175,13 +208,20 @@ export const Header = () => {
                   <Link to="tel:+74952780285" external>+7 (495) 278-02-85</Link>
                 </Typography>
               </li>
-              <li>
-                {/* TODO Add link to ymaps */}
-                <Typography variant="body2" className={classes.text}>м. сокол</Typography>
-              </li>
-              <li>
-                <Typography variant="body2" className={classes.text}>10:00 - 20:00</Typography>
-              </li>
+              {!smallHeader && (
+                <>
+                  <li>
+                    <Typography variant="body2" className={classes.text}>
+                      <Link to="https://yandex.ru/maps/-/CCQtFQdaLA" external>
+                        м. сокол
+                      </Link>
+                    </Typography>
+                  </li>
+                  <li>
+                    <Typography variant="body2" className={classes.text}>10:00 - 20:00</Typography>
+                  </li>
+                </>
+              )}
             </ul>
             <ul className={cx(classes.list, classes.social)}>
               <li>

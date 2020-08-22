@@ -50,8 +50,6 @@ export const catalog = (state = initialState, action) => {
         items: [],
         isLoading: false,
         hasMore: 0,
-        // TODO Add error handling
-        isError: true,
       };
     }
     case CHANGE_FILTER: {
