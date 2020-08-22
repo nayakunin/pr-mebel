@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Grid,
@@ -6,7 +6,10 @@ import {
   Container,
   TextField,
 } from '@material-ui/core';
-import { MainButton } from 'components';
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { saveForm, submitForm } from 'actions';
+import { SubmitButton } from 'components';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,16 +50,26 @@ const useStyles = makeStyles((theme) => ({
 
 export const CallDesignerForm = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSubmit = useCallback((data) => {
+    dispatch(saveForm(data));
+    dispatch(submitForm());
+    reset();
+  }, [reset, dispatch]);
 
   return (
     <div className={classes.root}>
       <Container>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container>
             <Grid item xs={3} />
             <Grid item xs={6} container>
               <Grid item xs={5}>
                 <TextField
+                  inputRef={register}
+                  name="name"
                   type="text"
                   autoComplete="name"
                   InputProps={{
@@ -79,6 +92,8 @@ export const CallDesignerForm = () => {
               <Grid item xs={2} />
               <Grid item xs={5}>
                 <TextField
+                  inputRef={register}
+                  name="tel"
                   type="tel"
                   autoComplete="tel"
                   InputProps={{
@@ -102,8 +117,7 @@ export const CallDesignerForm = () => {
             </Grid>
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
               <Grid item xs={4}>
-                {/* TODO Add callback */}
-                <MainButton onClick={() => ({})}>Вызвать дизайнера</MainButton>
+                <SubmitButton>Вызвать дизайнера</SubmitButton>
               </Grid>
             </Grid>
             <Grid item xs container justify="center">

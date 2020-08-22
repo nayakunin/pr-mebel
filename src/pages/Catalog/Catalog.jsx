@@ -6,6 +6,7 @@ import {
   Header,
   Footer,
   OrderFormPopup,
+  FormSubmitPopup,
 } from 'components';
 import {
   fetchCatalog,
@@ -130,6 +131,7 @@ export const Catalog = () => {
       )}
       <Footer />
       <OrderFormPopup />
+      <FormSubmitPopup />
     </>
   );
 };

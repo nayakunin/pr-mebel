@@ -96,7 +96,7 @@ export const OrderFormPopup = () => {
     } else {
       dispatch(submitForm());
     }
-  }, [fileNames, fileInputRef]);
+  }, [fileNames, fileInputRef, dispatch]);
 
   return (
     <Dialog

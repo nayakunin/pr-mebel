@@ -1,4 +1,8 @@
-import React, { useRef, useCallback, useState } from 'react';
+import React, {
+  useRef,
+  useCallback,
+  useState,
+} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Container,
@@ -6,6 +10,14 @@ import {
   Typography,
   TextField,
 } from '@material-ui/core';
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import {
+  saveForm,
+  submitForm,
+  openFormSubmitPopup,
+  uploadFiles,
+} from 'actions';
 import PublishIcon from '@material-ui/icons/Publish';
 import {
   SubmitButton,
@@ -83,6 +95,8 @@ const useStyles = makeStyles((theme) => ({
 export const FeedbackForm = () => {
   const classes = useStyles();
   const fileInputRef = useRef();
+  const dispatch = useDispatch();
+  const { register, handleSubmit, reset } = useForm();
   const [fileNames, setFileNames] = useState([]);
 
   const handleFileInputClick = useCallback(() => {
@@ -104,15 +118,29 @@ export const FeedbackForm = () => {
     setFileNames(names);
   }, [fileInputRef]);
 
+  const onSubmit = useCallback((data) => {
+    dispatch(saveForm(data));
+    if (fileNames.length) {
+      dispatch(uploadFiles(fileInputRef.current.files));
+      dispatch(openFormSubmitPopup());
+      fileInputRef.current.value = null;
+      setFileNames([]);
+    } else {
+      dispatch(submitForm());
+    }
+    reset();
+  }, [reset, fileNames, fileInputRef, dispatch]);
+
   return (
     <div className={classes.root}>
       <Container>
-        {/* TODO доделать отправку формы */}
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
           <Grid container>
             <Grid item xs={6} container spacing={4}>
               <Grid item xs={6}>
                 <TextField
+                  inputRef={register}
+                  name="name"
                   type="text"
                   autoComplete="name"
                   InputProps={{
@@ -134,6 +162,8 @@ export const FeedbackForm = () => {
               </Grid>
               <Grid item xs={6}>
                 <TextField
+                  inputRef={register}
+                  name="tel"
                   type="tel"
                   autoComplete="tel"
                   InputProps={{

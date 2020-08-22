@@ -67,7 +67,7 @@ export const FormSubmitPopup = () => {
     if (allUploaded && files.length) {
       dispatch(submitForm());
     }
-  }, [allUploaded, files]);
+  }, [allUploaded, files, dispatch]);
 
   const handleClose = useCallback(() => {
     dispatch(closeFormSubmitPopup());

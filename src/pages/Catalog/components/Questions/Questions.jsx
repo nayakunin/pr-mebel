@@ -6,6 +6,12 @@ import {
   Grid,
   TextField,
 } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import {
+  saveForm,
+  submitForm,
+} from 'actions';
 import {
   BlockTitle,
   SubmitButton,
@@ -71,12 +77,14 @@ const useStyles = makeStyles({
 
 export const Questions = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const { register, handleSubmit, reset } = useForm();
 
-  const handleSubmit = useCallback((event) => {
-    event.preventDefault();
-
-    console.log('something');
-  }, []);
+  const onSubmit = useCallback((data) => {
+    dispatch(saveForm(data));
+    dispatch(submitForm());
+    reset();
+  }, [reset, dispatch]);
 
   return (
     <div className={classes.root}>
@@ -92,12 +100,14 @@ export const Questions = () => {
           пожеланий и&nbsp;наш дизайнер в&nbsp;кротчайшие
           сроки подготовит для вас предложение!
         </Typography>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container>
             <Grid item xs={3} />
             <Grid item xs={6} container>
               <Grid item xs={12} className={classes.input__container}>
                 <TextField
+                  inputRef={register}
+                  name="name"
                   type="text"
                   autoComplete="name"
                   InputProps={{
@@ -119,6 +129,8 @@ export const Questions = () => {
               </Grid>
               <Grid item xs={12} className={classes.input__container}>
                 <TextField
+                  inputRef={register}
+                  name="tel"
                   type="tel"
                   autoComplete="tel"
                   InputProps={{
@@ -141,6 +153,8 @@ export const Questions = () => {
               </Grid>
               <Grid item xs={12} className={classes.input__container}>
                 <TextField
+                  inputRef={register}
+                  name="email"
                   type="email"
                   autoComplete="email"
                   InputProps={{
@@ -161,6 +175,8 @@ export const Questions = () => {
                 />
               </Grid>
               <TextField
+                inputRef={register}
+                name="description"
                 fullWidth
                 multiline
                 className={classes.textarea}

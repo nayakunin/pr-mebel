@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Container,
@@ -6,6 +6,12 @@ import {
   Grid,
   TextField,
 } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import {
+  submitForm,
+  saveForm,
+} from 'actions';
 import {
   BlockTitle,
   SubmitButton,
@@ -69,6 +75,14 @@ const useStyles = makeStyles({
 
 export const QuestionsForm = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSubmit = useCallback((data) => {
+    dispatch(saveForm(data));
+    dispatch(submitForm());
+    reset();
+  }, [reset, dispatch]);
 
   return (
     <div className={classes.root}>
@@ -81,12 +95,14 @@ export const QuestionsForm = () => {
         <Typography variant="h6" className={classes.subtitle}>
           Заполните форму ниже. Наш менеджер свяжется с вами и ответит на вопросы
         </Typography>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container>
             <Grid item xs={3} />
             <Grid item xs={6} container>
               <Grid item xs={5}>
                 <TextField
+                  inputRef={register}
+                  name="name"
                   type="text"
                   autoComplete="name"
                   InputProps={{
@@ -109,6 +125,8 @@ export const QuestionsForm = () => {
               <Grid item xs={2} />
               <Grid item xs={5}>
                 <TextField
+                  inputRef={register}
+                  name="tel"
                   type="tel"
                   autoComplete="tel"
                   InputProps={{
@@ -130,6 +148,8 @@ export const QuestionsForm = () => {
                 />
               </Grid>
               <TextField
+                inputRef={register}
+                name="description"
                 fullWidth
                 multiline
                 className={classes.textarea}
