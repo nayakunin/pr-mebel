@@ -3,7 +3,7 @@ import React, {
   useState,
 } from 'react';
 import cx from 'classnames';
-import { useScrollPosition } from '@n8tb1t/use-scroll-position'
+import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import { Grid, Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';

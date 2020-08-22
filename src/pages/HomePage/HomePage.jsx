@@ -10,6 +10,7 @@ import {
   Footer,
   OrderFormPopup,
   FormSubmitPopup,
+  GoTopButton,
 } from 'components';
 import {
   Carousel,
@@ -216,6 +217,7 @@ export const HomePage = () => {
       <Footer />
       <OrderFormPopup />
       <FormSubmitPopup />
+      <GoTopButton />
     </>
   );
 };
