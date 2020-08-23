@@ -1,5 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Container, Typography, Grid } from '@material-ui/core';
 import { BlockTitle } from 'components';
 import { CARDS } from './constants';
@@ -20,6 +21,8 @@ const useStyles = makeStyles({
 
 export const About = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isXsDown = useMediaQuery(theme.breakpoints.down('xs'));
 
   return (
     <div className={classes.root}>
@@ -32,14 +35,15 @@ export const About = () => {
         <Typography variant="h5" align="center" className={classes.title_middle}>
           Почему нас выбрали уже более 10 000 клиентов?
         </Typography>
-        <Grid container spacing={4} className={classes.grid}>
+        <Grid container spacing={isXsDown ? 2 : 4} className={classes.grid}>
           {CARDS.map((card) => (
-            <Card
-              key={card.id}
-              Img={card.img}
-              title={card.title}
-              text={card.text}
-            />
+            <Grid item xs={10} sm={6} md={4} spacing={isXsDown ? 1 : 2} key={card.id}>
+              <Card
+                Img={card.img}
+                title={card.title}
+                text={card.text}
+              />
+            </Grid>
           ))}
         </Grid>
         <Typography variant="h5" align="center" className={classes.title_middle}>

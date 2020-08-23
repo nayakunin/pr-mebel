@@ -90,7 +90,7 @@ export const Filters = ({
       </BlockTitle>
       <form className={classes.form} onSubmit={handleSubmit}>
         <Grid container spacing={4}>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3}>
             <FormControl
               className={classes['form-control']}
             >
@@ -112,7 +112,7 @@ export const Filters = ({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3}>
             <FormControl
               className={classes['form-control']}
               disabled={styleSelectDisabled}
@@ -138,7 +138,7 @@ export const Filters = ({
               )}
             </FormControl>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3}>
             <FormControl
               className={classes['form-control']}
               disabled={doorTypeSelectDisabled}
@@ -164,9 +164,9 @@ export const Filters = ({
               )}
             </FormControl>
           </Grid>
-          <Grid item xs={3} container>
-            <Grid item xs={3} />
-            <Grid item xs={6} container alignItems="center">
+          <Grid item xs={6} md={3} container>
+            <Grid item xs={0} md={3} />
+            <Grid item xs={12} md={6} container alignItems="center">
               <button type="submit" className={classes.button}>
                 Применить
               </button>

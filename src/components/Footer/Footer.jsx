@@ -35,6 +35,13 @@ const useStyles = makeStyles((theme) => ({
     listStyle: 'none',
     padding: '0',
     margin: '0',
+    '@media (max-width: 960px)': {
+      '&': {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      },
+    },
   },
   list__item: {
     fontSize: '14px',
@@ -84,7 +91,7 @@ export const Footer = () => {
           </Grid>
         </Grid>
         <Grid container spacing={4}>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3} container direction="column" alignItems="center">
             <Typography className={classes['column-title']}>
               <Link
                 to="/catalog"
@@ -135,7 +142,7 @@ export const Footer = () => {
               </li>
             </ul>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3} container direction="column" alignItems="center">
             <Typography className={classes['column-title']}>
               <Link
                 to="/#advantages"
@@ -176,7 +183,7 @@ export const Footer = () => {
               </li>
             </ul>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3} container direction="column" alignItems="center">
             <Typography className={classes['column-title']}>
               <Link
                 to="/#about"
@@ -227,7 +234,7 @@ export const Footer = () => {
               </li>
             </ul>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3} container direction="column" alignItems="center">
             <Typography className={classes['column-title']}>
               <Link
                 asButton
@@ -310,7 +317,7 @@ export const Footer = () => {
             <span className={classes['vertical-line']}>|</span>
             <Link to="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit" external>Пользовательское соглашение</Link>
           </Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" align="center">
             &copy; Частный Мебельер
             <span className={classes['vertical-line']}>|</span>
             2020 Все права защищены законом.

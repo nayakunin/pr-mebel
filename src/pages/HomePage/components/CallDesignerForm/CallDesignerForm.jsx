@@ -64,9 +64,9 @@ export const CallDesignerForm = () => {
       <Container>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container>
-            <Grid item xs={3} />
-            <Grid item xs={6} container>
-              <Grid item xs={5}>
+            <Grid item xs={2} sm={3} />
+            <Grid item xs={8} sm={6} container>
+              <Grid item xs={12} md={5}>
                 <TextField
                   inputRef={register}
                   name="name"
@@ -89,8 +89,8 @@ export const CallDesignerForm = () => {
                   required
                 />
               </Grid>
-              <Grid item xs={2} />
-              <Grid item xs={5}>
+              <Grid item xs={0} md={2} />
+              <Grid item xs={12} md={5}>
                 <TextField
                   inputRef={register}
                   name="tel"
@@ -116,12 +116,12 @@ export const CallDesignerForm = () => {
               </Grid>
             </Grid>
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
-              <Grid item xs={4}>
+              <Grid item xs={8} sm={6} md={4}>
                 <SubmitButton>Вызвать дизайнера</SubmitButton>
               </Grid>
             </Grid>
             <Grid item xs container justify="center">
-              <Grid item xs={6}>
+              <Grid item xs={10} sm={6}>
                 <Typography variant="body2" className={classes.text} align="center">
                   Нажимая кнопку &laquo;Рассчитать стоимость&raquo;,
                   я&nbsp;даю согласие на&nbsp;обработку персональных данных и&nbsp;подтверждаю,

@@ -1,14 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Typography, Grid, Hidden } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
   text: {
     marginTop: '16px',
     textAlign: 'center',
@@ -18,6 +13,14 @@ const useStyles = makeStyles((theme) => ({
     height: '70px',
     '& path': {
       fill: theme.palette.primary.main,
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: '45px',
+      height: '45px',
+    },
+    '@media (max-width: 400px)': {
+      width: '35px',
+      height: '35px',
     },
   },
 }));
@@ -29,10 +32,28 @@ export const DesignCard = ({
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Img className={classes.img} />
-      <Typography variant="body2" className={classes.text}>{children}</Typography>
-    </div>
+    <>
+      <Hidden smUp>
+        <Grid container alignItems="center" spacing={1}>
+          <Grid item xs={2}>
+            <Img className={classes.img} />
+          </Grid>
+          <Grid item xs={10}>
+            <Typography variant="body2">{children}</Typography>
+          </Grid>
+        </Grid>
+      </Hidden>
+      <Hidden xsDown>
+        <Grid container direction="column" alignItems="center" spacing={1}>
+          <Grid item xs={12}>
+            <Img className={classes.img} />
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="body2" align="center">{children}</Typography>
+          </Grid>
+        </Grid>
+      </Hidden>
+    </>
   );
 };
 

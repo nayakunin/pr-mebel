@@ -65,10 +65,10 @@ export const Question = ({
       onClick={handleToggle}
     >
       <Grid container spacing={1} className={classes.top}>
-        <Grid item xs={1} container direction="column" justify="center" alignItems="center">
+        <Grid item xs={2} container direction="column" justify="center" alignItems="center">
           <Typography className={classes.number}>{id}</Typography>
         </Grid>
-        <Grid item xs={10} container direction="column" justify="center">
+        <Grid item xs={9} container direction="column" justify="center">
           <Typography variant="body1">
             {title}
           </Typography>

@@ -29,7 +29,7 @@ export const Catalog = () => {
       </BlockTitle>
       <Grid container spacing={4}>
         {CATALOG.map((item) => (
-          <Grid item xs={4} key={item.id}>
+          <Grid item xs={12} sm={6} md={4} key={item.id}>
             <CatalogCard
               title={item.title}
               subtitle={item.subtitle}
@@ -41,7 +41,7 @@ export const Catalog = () => {
         ))}
       </Grid>
       <Grid container justify="center" className={classes['button-container']}>
-        <Grid item xs={4}>
+        <Grid item xs={10} sm={6} md={4}>
           <MainButton>Рассчитать стоимость</MainButton>
         </Grid>
       </Grid>

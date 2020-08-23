@@ -97,8 +97,8 @@ export const QuestionsForm = () => {
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container>
-            <Grid item xs={3} />
-            <Grid item xs={6} container>
+            <Grid item xs={1} md={3} />
+            <Grid item xs={10} md={6} container>
               <Grid item xs={5}>
                 <TextField
                   inputRef={register}
@@ -171,12 +171,12 @@ export const QuestionsForm = () => {
               />
             </Grid>
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
-              <Grid item xs={4}>
+              <Grid item xs={6} md={4}>
                 <SubmitButton>Задать вопрос</SubmitButton>
               </Grid>
             </Grid>
             <Grid item xs container justify="center">
-              <Grid item xs={6}>
+              <Grid item xs={10} md={6}>
                 <Typography className={classes.text} align="center">
                   Нажимая кнопку &laquo;Рассчитать стоимость&raquo;,
                   я&nbsp;даю согласие на&nbsp;обработку персональных данных и&nbsp;подтверждаю,

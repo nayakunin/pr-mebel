@@ -1,18 +1,22 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Typography, Grid } from '@material-ui/core';
+import {
+  Container,
+  Typography,
+  Grid,
+} from '@material-ui/core';
 import { BlockTitle } from 'components';
 import { DesignCard } from './components';
-import { ReactComponent as img1 } from './assets/design-img.svg';
-import { ReactComponent as img2 } from './assets/design-img2.svg';
-import { ReactComponent as img3 } from './assets/design-img3.svg';
-import { ReactComponent as img4 } from './assets/design-img4.svg';
+import { LIST } from './constants';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
     marginTop: '48px',
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '24px',
+    },
   },
-});
+}));
 
 export const DesignOffer = () => {
   const classes = useStyles();
@@ -27,26 +31,13 @@ export const DesignOffer = () => {
         </Typography>
       </BlockTitle>
       <Grid container className={classes.container} spacing={4}>
-        <Grid item xs={3}>
-          <DesignCard Img={img1}>
-            Пришлите нам эскизы вашей мебели или просто оставьте свои контактные данные
-          </DesignCard>
-        </Grid>
-        <Grid item xs={3}>
-          <DesignCard Img={img2}>
-            При необходимости, мы&nbsp;уточним детали и&nbsp;бесплатно разработаем проект в&nbsp;ЗД
-          </DesignCard>
-        </Grid>
-        <Grid item xs={3}>
-          <DesignCard Img={img3}>
-            Предложим разные варианты наполнение шкафа или гардеробной
-          </DesignCard>
-        </Grid>
-        <Grid item xs={3}>
-          <DesignCard Img={img4}>
-            Сформируем лучшее предложение в рамках бюджета
-          </DesignCard>
-        </Grid>
+        {LIST.map((item) => (
+          <Grid item xs={12} sm={6} md={3}>
+            <DesignCard Img={item.img}>
+              {item.title}
+            </DesignCard>
+          </Grid>
+        ))}
       </Grid>
     </Container>
   );

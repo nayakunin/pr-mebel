@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {
   Container,
   Typography,
@@ -92,15 +93,21 @@ const useStyles = makeStyles((theme) => ({
   },
   hl: {
     marginTop: '20px',
-    width: '60%',
+    width: '265px',
     height: '1px',
     background: theme.palette.grey[300],
     content: '""',
+  },
+  map__container: {
+    marginTop: '30px',
+    minHeight: '400px',
   },
 }));
 
 export const Map = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isXsDown = useMediaQuery(theme.breakpoints.down('xs'));
 
   return (
     <Container>
@@ -110,7 +117,7 @@ export const Map = () => {
         </Typography>
       </BlockTitle>
       <Grid container className={classes.content}>
-        <Grid item xs={5}>
+        <Grid item xs={12} sm={5}>
           <Typography variant="body2">
             Мы&nbsp;с&nbsp;удовольствием покажем весь ассортимент
             нашей мебели и&nbsp;поможем вам сделать правильный выбор.
@@ -198,8 +205,15 @@ export const Map = () => {
             </Typography>
           </div>
         </Grid>
-        <Grid item xs={1} />
-        <Grid item xs={6}>
+        <Grid item xs={0} sm={1} />
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          className={cx({
+            [classes.map__container]: isXsDown,
+          })}
+        >
           <YMapsProvider>
             <YMap
               width="100%"
