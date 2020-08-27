@@ -31,7 +31,7 @@ import { NB_SP } from '__constants__';
 const useStyles = makeStyles((theme) => ({
   root: {
     background: theme.palette.grey[900],
-    padding: '80px 0',
+    padding: '63px 0',
   },
   input__inner: {
     color: 'white',

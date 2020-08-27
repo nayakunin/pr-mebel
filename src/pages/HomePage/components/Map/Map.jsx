@@ -219,7 +219,7 @@ export const Map = () => {
               width="100%"
               height="100%"
               defaultState={{
-                center: [55.809209, 37.512966],
+                center: [55.808543, 37.512389],
                 zoom: 17,
                 controls: [
                   'zoomControl',
@@ -237,7 +237,7 @@ export const Map = () => {
                 'control.TypeSelector',
               ]}
             >
-              <Placemark defaultGeometry={[55.809209, 37.512966]} />
+              <Placemark defaultGeometry={[55.808543, 37.512389]} />
             </YMap>
           </YMapsProvider>
         </Grid>

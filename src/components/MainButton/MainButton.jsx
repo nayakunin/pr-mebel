@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.primary.main,
     textAlign: 'center',
     fontSize: '12px',
-    fontWeight: '400',
+    fontWeight: '600',
     textTransform: 'uppercase',
     color: 'white',
     border: `1px solid ${theme.palette.primary.main}`,

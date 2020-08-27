@@ -43,8 +43,11 @@ const useStyles = makeStyles((theme) => ({
   'button-container': {
     marginTop: '30px',
     [theme.breakpoints.down('xs')]: {
-      marginTop: '20px',
+      marginTop: '50px',
     },
+  },
+  'bottom-title': {
+    marginTop: '30px',
   },
 }));
 
@@ -100,9 +103,16 @@ export const OurProduction = () => {
             />
           </Grid>
         </Hidden>
+        <Grid container justify="center">
+          <Grid item xs={12} md={10}>
+            <Typography variant="h5" className={classes['bottom-title']} align="center">
+              Современные технологии производства для идеального качества вашей мебели
+            </Typography>
+          </Grid>
+        </Grid>
         <Grid container justify="center" className={classes['button-container']}>
           <Grid item xs={6} md={4}>
-            <MainButton>Рассчитать стоимость</MainButton>
+            <MainButton>Получить проект</MainButton>
           </Grid>
         </Grid>
       </Grid>

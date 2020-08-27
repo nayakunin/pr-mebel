@@ -14,7 +14,7 @@ import { SubmitButton } from 'components';
 const useStyles = makeStyles((theme) => ({
   root: {
     background: theme.palette.grey[900],
-    padding: '80px 0',
+    padding: '65px 0',
   },
   input__inner: {
     color: 'white',
@@ -123,7 +123,7 @@ export const CallDesignerForm = () => {
             <Grid item xs container justify="center">
               <Grid item xs={10} sm={6}>
                 <Typography variant="body2" className={classes.text} align="center">
-                  Нажимая кнопку &laquo;Рассчитать стоимость&raquo;,
+                  Нажимая кнопку &laquo;Вызвать дизайнера&raquo;,
                   я&nbsp;даю согласие на&nbsp;обработку персональных данных и&nbsp;подтверждаю,
                   что ознакомлен с&nbsp;
                   <a href="/" className={classes['copyright-link']}>пользовательским соглашением</a>

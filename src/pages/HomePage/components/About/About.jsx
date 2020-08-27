@@ -37,6 +37,7 @@ export const About = () => {
         </Typography>
         <Grid container spacing={isXsDown ? 2 : 4} className={classes.grid}>
           {CARDS.map((card) => (
+            // TODO Понять почему тут вешается spacing
             <Grid item xs={10} sm={6} md={4} spacing={isXsDown ? 1 : 2} key={card.id}>
               <Card
                 Img={card.img}

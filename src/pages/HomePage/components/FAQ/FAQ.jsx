@@ -2,12 +2,15 @@ import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Container, Typography, Grid } from '@material-ui/core';
-import { BlockTitle } from 'components';
+import { BlockTitle, MainButton } from 'components';
 import { Question } from './components';
 import { LIST } from './constants';
 
 const useStyles = makeStyles({
   container: {
+    marginTop: '30px',
+  },
+  'button-container': {
     marginTop: '30px',
   },
 });
@@ -33,12 +36,17 @@ export const FAQ = () => {
                 id={item.id}
                 title={item.title}
               >
-                {item.title}
+                {item.text}
               </Question>
             </Grid>
             {isMdUp && (<Grid item xs={0} md={2} />)}
           </>
         ))}
+      </Grid>
+      <Grid container justify="center" className={classes['button-container']}>
+        <Grid item xs={4}>
+          <MainButton onClick={() => ({})}>Показать еще</MainButton>
+        </Grid>
       </Grid>
     </Container>
   );

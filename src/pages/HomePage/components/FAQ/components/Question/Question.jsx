@@ -7,7 +7,7 @@ import React, {
 import PropTypes from 'prop-types';
 import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,21 +18,21 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
     cursor: 'pointer',
   },
-  top: {
-    marginTop: '8px',
-    marginBottom: '8px',
-  },
   number: {
     fontSize: '40px',
     color: theme.palette.primary.main,
   },
+  title: {
+    paddingLeft: '10px',
+  },
   dropdown: {
     transition: 'all .3s ease-in-out',
+    paddingLeft: '8px',
     overflow: 'hidden',
   },
   dropdown__icon: {
-    width: '40px',
-    height: '40px',
+    width: '30px',
+    height: '30px',
     color: theme.palette.primary.main,
     transition: 'all .3s ease-in-out',
   },
@@ -65,18 +65,18 @@ export const Question = ({
       onClick={handleToggle}
     >
       <Grid container spacing={1} className={classes.top}>
-        <Grid item xs={2} container direction="column" justify="center" alignItems="center">
+        <Grid item xs={1} container direction="column" justify="center" alignItems="center">
           <Typography className={classes.number}>{id}</Typography>
         </Grid>
-        <Grid item xs={9} container direction="column" justify="center">
-          <Typography variant="body1">
+        <Grid item xs={10} container direction="column" justify="center">
+          <Typography variant="body1" className={classes.title}>
             {title}
           </Typography>
         </Grid>
         <Grid item xs={1} container direction="column" justify="center" alignItems="center">
-          <ArrowDropDownIcon
+          <ArrowForwardIosIcon
             className={classes.dropdown__icon}
-            style={{ transform: dropdownActive ? 'rotate(180deg)' : 'rotate(0deg)' }}
+            style={{ transform: dropdownActive ? 'rotate(-90deg)' : 'rotate(90deg)' }}
           />
         </Grid>
       </Grid>
