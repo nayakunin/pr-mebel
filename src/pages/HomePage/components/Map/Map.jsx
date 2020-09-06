@@ -205,7 +205,7 @@ export const Map = () => {
             </Typography>
           </div>
         </Grid>
-        <Grid item xs={0} sm={1} />
+        <Grid item sm={1} />
         <Grid
           item
           xs={12}

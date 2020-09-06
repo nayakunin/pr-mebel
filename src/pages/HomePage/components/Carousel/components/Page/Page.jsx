@@ -2,36 +2,80 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Typography,
-  Grid,
-} from '@material-ui/core';
-import {
-  Link,
-} from 'react-router-dom';
+import { Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     height: '100%',
+    display: 'flex',
+    position: 'relative',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
   },
+  imageContainer: {
+    position: 'absolute',
+    objectPosition: 'center',
+    width: '100%',
+    height: '100%',
+    top: '0',
+    left: '0',
+  },
+  image: {
+    height: '100%',
+    width: '100%',
+    objectFit: 'cover',
+  },
   content: {
     position: 'relative',
+    padding: '0',
+    width: '1140px',
     zIndex: '10',
+    boxSizing: 'border-box',
+    '@media (max-width: 1250px)': {
+      width: '930px',
+    },
+    '@media (max-width: 990px)': {
+      width: '690px',
+    },
+    '@media (max-width: 768px)': {
+      width: '510px',
+    },
+    '@media (max-width: 550px)': {
+      width: '100%',
+      padding: '15px',
+    },
   },
   text: {
     color: 'white',
   },
   title: {
     fontFamily: 'PlayfairDisplay Italic, serif',
-    fontSize: '90px',
-    lineHeight: '90px',
+    fontSize: '7.4vh',
+    lineHeight: '1.1',
     letterSpacing: '2px',
     '&:last-of-type': {
       marginBottom: '15px',
+    },
+    '@media (max-width: 990px)': {
+      fontSize: '72px',
+      lineHeight: '68px',
+    },
+    '@media (max-width: 768px)': {
+      fontSize: '65px',
+      lineHeight: '62px',
+    },
+    '@media (max-width: 550px)': {
+      fontSize: '42px',
+      lineHeight: '38px',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '40px',
     },
   },
   subtitle: {
@@ -39,16 +83,39 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: '20px',
     },
     fontFamily: 'PlayfairDisplay Italic, serif',
-    fontSize: '60px',
+    fontSize: '4.6vh',
     letterSpacing: '2px',
     lineHeight: '1',
+    '@media (max-width: 990px)': {
+      fontSize: '45px',
+      // lineHeight: '1.1',
+    },
+    '@media (max-width: 768px)': {
+      fontSize: '38px',
+    },
+    '@media (max-width: 550px)': {
+      fontSize: '28px',
+    },
+    '@media (max-width: 375px)': {
+      fontSize: '24px',
+    },
   },
-  'bottom-text': {
-    fontSize: '36px',
+  bottomText: {
+    fontSize: '2.8vh',
     lineHeight: '1.3',
+    '@media (max-width: 990px)': {
+      fontSize: '25px',
+    },
+    '@media (max-width: 768px)': {
+      fontSize: '20px',
+    },
+    '@media (max-width: 550px)': {
+      fontSize: '16px',
+    },
   },
   button: {
-    padding: '20px 40px',
+    padding: '15px 50px',
+    textTransform: 'capitalize',
     borderRadius: '50px',
     background: 'none',
     color: 'white',
@@ -62,7 +129,10 @@ const useStyles = makeStyles((theme) => ({
       outline: 'none',
     },
   },
-  'button-container': {
+  buttonText: {
+    textTransform: 'capitalize',
+  },
+  buttonContainer: {
     marginTop: '60px',
   },
 }));
@@ -77,14 +147,16 @@ export const Page = ({
   const classes = useStyles();
 
   return (
-    <Grid
-      container
-      alignItems="center"
-      justify="center"
+    <div
       className={classes.root}
-      style={{ backgroundImage: `url(${imageSet.large})` }}
     >
-      <Grid item xs={9} className={classes.content}>
+      <picture className={classes.imageContainer}>
+        <source className={classes.image} srcSet={imageSet.small} media="(max-width: 575px)" />
+        <source className={classes.image} srcSet={imageSet.medium} media="(max-width: 990px)" />
+        <source className={classes.image} srcSet={imageSet.large} />
+        <img className={classes.image} src={imageSet.small} alt="Фоновое изображение" />
+      </picture>
+      <div className={classes.content}>
         {titles.map((title) => (
           <Typography
             key={title}
@@ -93,7 +165,7 @@ export const Page = ({
             {title}
           </Typography>
         ))}
-        <div className={classes.subtitles__container}>
+        <div className={classes.subtitlesContainer}>
           {subtitles.map((subtitle) => (
             <Typography
               key={subtitle}
@@ -103,27 +175,27 @@ export const Page = ({
             </Typography>
           ))}
         </div>
-        <div className={classes['bottom-text__container']}>
+        <div className={classes.bottomTextContainer}>
           {texts.map((text) => (
             <Typography
               key={text}
-              className={cx(classes.text, classes['bottom-text'])}
+              className={cx(classes.text, classes.bottomText)}
             >
               {text}
             </Typography>
           ))}
         </div>
-        <div className={classes['button-container']}>
+        <div className={classes.buttonContainer}>
           <Link to={to}>
             <button type="button" className={classes.button}>
-              <Typography variant="h6">
+              <Typography className={classes.buttonText}>
                 Подробнее
               </Typography>
             </button>
           </Link>
         </div>
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
 };
 
@@ -131,7 +203,7 @@ Page.propTypes = {
   titles: PropTypes.arrayOf(PropTypes.string).isRequired,
   subtitles: PropTypes.arrayOf(PropTypes.string),
   texts: PropTypes.arrayOf(PropTypes.string).isRequired,
-  imageSet: PropTypes.arrayOf(PropTypes.string).isRequired,
+  imageSet: PropTypes.object.isRequired,
   to: PropTypes.string.isRequired,
 };
 

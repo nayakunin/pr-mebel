@@ -238,7 +238,7 @@ export const FeedbackForm = () => {
                 </Grid>
               </Hidden>
             </Grid>
-            <Grid item xs={0} sm={1} />
+            <Grid item sm={1} />
             <Grid
               item
               xs={8}

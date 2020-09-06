@@ -59,7 +59,7 @@ export const HowToOrder = () => {
           Как заказать нашу мебель
         </Typography>
       </BlockTitle>
-      <Grid container spacing={6} className={classes.container}>
+      <Grid container spacing={4} className={classes.container}>
         <Hidden xsDown>
           <Grid item xs={4} className={classes.item}>
             <Typography className={classes.number}>01</Typography>

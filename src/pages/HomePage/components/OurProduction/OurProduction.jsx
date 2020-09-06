@@ -111,7 +111,7 @@ export const OurProduction = () => {
           </Grid>
         </Grid>
         <Grid container justify="center" className={classes['button-container']}>
-          <Grid item xs={6} md={4}>
+          <Grid item xs={8} sm={6} md={4}>
             <MainButton>Получить проект</MainButton>
           </Grid>
         </Grid>

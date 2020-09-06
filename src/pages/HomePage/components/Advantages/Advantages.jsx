@@ -121,8 +121,6 @@ export const Advantages = () => {
             </Typography>
           </Grid>
         </Grid>
-      </Hidden>
-      <Hidden xsDown>
         <Grid item xs={12} container className={classes.materials} spacing={2}>
           <Grid item xs={12} sm={7} container direction="column">
             <Grid item>
@@ -169,7 +167,6 @@ export const Advantages = () => {
           xs={12}
           container
           className={classes.materials}
-          spacing={2}
           direction="column"
         >
           <Grid item xs={12}>
@@ -222,7 +219,7 @@ export const Advantages = () => {
         </Grid>
       </Hidden>
       <Grid item xs={12} container justify="center" className={classes['button-container']}>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={8} sm={6} md={4}>
           <MainButton>Рассчитать стоимость</MainButton>
         </Grid>
       </Grid>

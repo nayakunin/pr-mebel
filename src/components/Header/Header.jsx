@@ -3,13 +3,13 @@ import React, {
   useState,
 } from 'react';
 import cx from 'classnames';
-import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import {
   Grid,
   Container,
   Typography,
   Hidden,
   Drawer,
+  useScrollTrigger,
 } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -33,25 +33,39 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'white',
     boxShadow: '0 10px 20px rgba(0,0,0,.1)',
     transition: '.1s height',
+    [theme.breakpoints.down('xs')]: {
+      height: '50px',
+    },
   },
   root_dense: {
     height: '50px',
   },
+  innerWrapperSm: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   logo: {
-    height: '50px',
+    height: '47px',
     transition: '.1s height',
   },
   logo_dense: {
     height: '40px',
   },
-  logo__container: {
-    display: 'block',
+  logoContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
-  logo__container_sm: {
-    height: '40px',
+  logoContainerSm: {
+    width: '110px',
+    [theme.breakpoints.up('sm')]: {
+      width: '150px',
+    },
   },
-  logo_sm: {
-    height: '100%',
+  logoSm: {
+    width: '100%',
   },
   text: {
     fontSize: '13px',
@@ -139,7 +153,7 @@ export const Header = () => {
 
   const theme = useTheme();
   const isMdDown = useMediaQuery(theme.breakpoints.down('md'));
-  const [smallHeader, setSmallHeader] = useState(false);
+  const smallHeader = useScrollTrigger(500);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -159,25 +173,16 @@ export const Header = () => {
     setDropdownVisible(false);
   }, []);
 
-  // TODO Replace with useScrollTrigger
-  useScrollPosition(({ currPos }) => {
-    if (currPos.y < -500) {
-      setSmallHeader(true);
-    } else {
-      setSmallHeader(false);
-    }
-  }, [], false, false, 300);
-
   return (
     <header className={cx(classes.root, {
       [classes.root_dense]: smallHeader && !isMdDown,
     })}
     >
       <Container>
-        <Grid container>
-          <Hidden mdDown>
-            <Grid item xs={2}>
-              <Link to="/" className={classes.logo__container}>
+        <Hidden mdDown>
+          <Grid container>
+            <Grid item xs={2} className={classes.logoContainer}>
+              <Link to="/" className={classes.logoWrapper}>
                 <img
                   src={logo}
                   alt="logo"
@@ -188,12 +193,15 @@ export const Header = () => {
               </Link>
             </Grid>
             <Grid item xs={7} container justify="center" alignItems="center">
-              <ul className={cx(classes.menu, classes.list)}>
+              <ul
+                className={cx(classes.menu, classes.list)}
+                onMouseEnter={handleOpenDropdown}
+                onMouseLeave={handleCloseDropdown}
+              >
                 <li>
                   <Typography
                     className={cx(classes.text, classes.menu__dropdown)}
                     align="center"
-                    onClick={handleOpenDropdown}
                   >
                     Каталог&nbsp;
                     <ArrowDropDownIcon className={classes.dropdown} />
@@ -201,7 +209,6 @@ export const Header = () => {
                   {dropdownVisible && (
                     <ul
                       className={classes['menu__dropdown-popup']}
-                      onMouseLeave={handleCloseDropdown}
                     >
                       <li>
                         <Typography className={classes.text} gutterBottom>
@@ -288,125 +295,126 @@ export const Header = () => {
                 </li>
               </ul>
             </Grid>
-          </Hidden>
-          <Hidden lgUp>
-            <Grid item xs={2}>
-              <Link to="/" className={cx(classes.logo__container, classes.logo__container_sm)}>
-                <img
-                  src={logo}
-                  alt="logo"
-                  className={classes.logo_sm}
-                />
-              </Link>
-            </Grid>
-            <Grid item xs={8} />
-            <Grid item xs={2} container alignItems="center" justify="flex-end">
+          </Grid>
+        </Hidden>
+        <Hidden lgUp>
+          <Container className={classes.containerSm}>
+            <div className={classes.innerWrapperSm}>
+              <div className={classes.logoWrapperSm}>
+                <Link to="/" className={cx(classes.logoContainer, classes.logoContainerSm)}>
+                  <img
+                    src={logo}
+                    alt="logo"
+                    className={classes.logoSm}
+                  />
+                </Link>
+              </div>
               <MenuIcon className={classes.menu__icon} onClick={handleOpenDrawer} />
-            </Grid>
-            <Drawer
-              anchor="right"
-              open={isDrawerOpen}
-              PaperProps={{
-                classes: {
-                  root: classes.drawer,
-                },
-              }}
-              onClick={handleCloseDrawer}
-              onClose={handleCloseDrawer}
-            >
-              <Grid container>
-                <Grid item xs={12}>
-                  <Typography>
-                    <Link to="/catalog">Каталог</Link>
-                  </Typography>
-                </Grid>
-                <div className={classes.hl} />
-                <Grid item xs={12} container spacing={1} direction="column" style={{ paddingLeft: '10px' }}>
-                  <Grid item xs>
-                    <Typography>
-                      <Link to="/catalog?section=cupboards">Шкафы</Link>
-                    </Typography>
-                  </Grid>
-                  <Grid item xs>
-                    <Typography>
-                      <Link to="/catalog?section=wardrobes">Гардеробные</Link>
-                    </Typography>
-                  </Grid>
-                  <Grid item xs>
-                    <Typography>
-                      <Link to="/catalog?section=accessories">Аксессуары</Link>
-                    </Typography>
-                  </Grid>
-                  <Grid item xs>
-                    <Typography>
-                      <Link to="/catalog?section=lightingSystems">Системы подсветки</Link>
-                    </Typography>
-                  </Grid>
-                </Grid>
-                <div className={classes.hl} />
-                <Grid item xs={12} container spacing={1} direction="column">
-                  <Grid item xs>
-                    <Typography>
-                      <Link to="/#design-offer">Рассчитать стоимость</Link>
-                    </Typography>
-                  </Grid>
-                  <Grid item xs>
-                    <Typography>
-                      <Link to="/#advantages">Преимущества</Link>
-                    </Typography>
-                  </Grid>
-                  <Grid item xs>
-                    <Typography>
-                      <Link to="/#about">О нас</Link>
-                    </Typography>
-                  </Grid>
-                  <Grid item xs>
-                    <Typography>
-                      <Link to="/#contacts">Контакты</Link>
-                    </Typography>
-                  </Grid>
-                </Grid>
+            </div>
+          </Container>
+          <Drawer
+            anchor="right"
+            open={isDrawerOpen}
+            PaperProps={{
+              classes: {
+                root: classes.drawer,
+              },
+            }}
+            onClick={handleCloseDrawer}
+            onClose={handleCloseDrawer}
+          >
+            <Grid container>
+              <Grid item xs={12}>
+                <Typography>
+                  <Link to="/catalog">Каталог</Link>
+                </Typography>
               </Grid>
-              <Grid container direction="column" spacing={2}>
-                <Grid item xs container direction="column" justify="center">
-                  <Typography variant="body2" className={classes.text} align="center">
-                    <Link to="tel:+74952780285" external>+7 (495) 278-02-85</Link>
+              <div className={classes.hl} />
+              <Grid item xs={12} container spacing={1} direction="column" style={{ paddingLeft: '10px' }}>
+                <Grid item xs>
+                  <Typography>
+                    <Link to="/catalog?section=cupboards">Шкафы</Link>
                   </Typography>
-                  <Typography variant="body2" className={classes.text} align="center">
-                    <Link to="https://yandex.ru/maps/-/CCQtFQdaLA" external>
-                      м. сокол
-                    </Link>
-                  </Typography>
-                  <Typography variant="body2" className={classes.text} align="center">
-                    10:00 - 20:00
-                  </Typography>
-                </Grid>
-                <Grid item xs container justify="center">
-                  <ul className={cx(classes.list, classes.social)}>
-                    <li>
-                      <a href="https://vk.com/public185518769">
-                        <Vk className={classes.social__icon} />
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://www.instagram.com/pr_mebel.ru/">
-                        <Inst className={classes.social__icon} />
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://www.facebook.com/%D0%A7%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B9-%D0%BC%D0%B5%D0%B1%D0%B5%D0%BB%D1%8C%D0%B5%D1%80-108136607213942">
-                        <Fb className={classes.social__icon} />
-                      </a>
-                    </li>
-                  </ul>
                 </Grid>
                 <Grid item xs>
-                  <MainButton>Заказать звонок</MainButton>
+                  <Typography>
+                    <Link to="/catalog?section=wardrobes">Гардеробные</Link>
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Typography>
+                    <Link to="/catalog?section=accessories">Аксессуары</Link>
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Typography>
+                    <Link to="/catalog?section=lightingSystems">Системы подсветки</Link>
+                  </Typography>
                 </Grid>
               </Grid>
-            </Drawer>
-          </Hidden>
-        </Grid>
+              <div className={classes.hl} />
+              <Grid item xs={12} container spacing={1} direction="column">
+                <Grid item xs>
+                  <Typography>
+                    <Link to="/#design-offer">Рассчитать стоимость</Link>
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Typography>
+                    <Link to="/#advantages">Преимущества</Link>
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Typography>
+                    <Link to="/#about">О нас</Link>
+                  </Typography>
+                </Grid>
+                <Grid item xs>
+                  <Typography>
+                    <Link to="/#contacts">Контакты</Link>
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid container direction="column" spacing={2}>
+              <Grid item xs container direction="column" justify="center">
+                <Typography variant="body2" className={classes.text} align="center">
+                  <Link to="tel:+74952780285" external>+7 (495) 278-02-85</Link>
+                </Typography>
+                <Typography variant="body2" className={classes.text} align="center">
+                  <Link to="https://yandex.ru/maps/-/CCQtFQdaLA" external>
+                    м. сокол
+                  </Link>
+                </Typography>
+                <Typography variant="body2" className={classes.text} align="center">
+                  10:00 - 20:00
+                </Typography>
+              </Grid>
+              <Grid item xs container justify="center">
+                <ul className={cx(classes.list, classes.social)}>
+                  <li>
+                    <a href="https://vk.com/public185518769">
+                      <Vk className={classes.social__icon} />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.instagram.com/pr_mebel.ru/">
+                      <Inst className={classes.social__icon} />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.facebook.com/%D0%A7%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B9-%D0%BC%D0%B5%D0%B1%D0%B5%D0%BB%D1%8C%D0%B5%D1%80-108136607213942">
+                      <Fb className={classes.social__icon} />
+                    </a>
+                  </li>
+                </ul>
+              </Grid>
+              <Grid item xs>
+                <MainButton>Заказать звонок</MainButton>
+              </Grid>
+            </Grid>
+          </Drawer>
+        </Hidden>
       </Container>
     </header>
   );

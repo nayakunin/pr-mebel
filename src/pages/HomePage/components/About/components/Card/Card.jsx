@@ -91,7 +91,7 @@ export const Card = ({
 };
 
 Card.propTypes = {
-  Img: PropTypes.func.isRequired,
+  Img: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
 };

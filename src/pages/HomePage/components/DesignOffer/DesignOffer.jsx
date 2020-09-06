@@ -32,7 +32,7 @@ export const DesignOffer = () => {
       </BlockTitle>
       <Grid container className={classes.container} spacing={4}>
         {LIST.map((item) => (
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid key={item.title} item xs={12} sm={6} md={3}>
             <DesignCard Img={item.img}>
               {item.title}
             </DesignCard>

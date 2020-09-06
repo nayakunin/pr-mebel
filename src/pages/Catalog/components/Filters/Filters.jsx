@@ -165,7 +165,7 @@ export const Filters = ({
             </FormControl>
           </Grid>
           <Grid item xs={6} md={3} container>
-            <Grid item xs={0} md={3} />
+            <Grid item md={3} />
             <Grid item xs={12} md={6} container alignItems="center">
               <button type="submit" className={classes.button}>
                 Применить

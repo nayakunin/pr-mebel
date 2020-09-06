@@ -58,6 +58,6 @@ export const DesignCard = ({
 };
 
 DesignCard.propTypes = {
-  Img: PropTypes.func.isRequired,
+  Img: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
 };

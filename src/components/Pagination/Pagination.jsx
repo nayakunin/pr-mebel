@@ -82,6 +82,7 @@ export const Pagination = ({
       <div className={classes.list__container}>
         {list.map((item, index) => (
           <div
+            key={JSON.stringify(item)}
             className={cx(classes.circle, {
               [classes.active]: index === activeIndex,
             })}

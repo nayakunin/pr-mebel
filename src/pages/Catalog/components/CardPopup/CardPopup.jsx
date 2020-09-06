@@ -146,6 +146,7 @@ export const CardPopup = ({
                   />
                 </>
               )}
+              {/* TODO Избавиться от LazyImage */}
               <LazyImage
                 className={cx(classes.img, classes.img_center)}
                 src={items[currentItemId].imageMedium.url}

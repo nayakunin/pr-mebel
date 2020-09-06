@@ -10,6 +10,7 @@ export const theme = createMuiTheme({
       xl: 1920,
     },
   },
+  spacing: 6,
   palette: {
     primary: {
       main: '#ff001f',
