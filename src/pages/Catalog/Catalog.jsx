@@ -6,11 +6,13 @@ import {
   Header,
   Footer,
   OrderFormPopup,
+  FormSubmitPopup,
 } from 'components';
 import {
   fetchCatalog,
   changeFilter,
   resetCatalog,
+  resetFilters,
   openCardPopup,
   closeCardPopup,
   goToNextCard,
@@ -23,6 +25,7 @@ import {
   Filters,
   Gallery,
   Lead,
+  Questions,
 } from './components';
 import { catalogSelector } from './selectors';
 
@@ -79,13 +82,6 @@ export const Catalog = () => {
     dispatch(fetchCatalog());
   }, [dispatch, page]);
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-    });
-  }, []);
-
   // Разбирает поиск из урла, подставляет параметры в селекты, и делает по ним запрос
   useEffect(() => {
     const search = QueryString.parse(location.search);
@@ -96,9 +92,11 @@ export const Catalog = () => {
           value: search[key],
         }));
       });
+    } else {
+      dispatch(resetFilters());
     }
-    dispatch(fetchCatalog());
-  }, [location.search, dispatch]);
+    handleApplyFilter();
+  }, [location, dispatch, handleApplyFilter]);
 
   return (
     <>
@@ -118,7 +116,7 @@ export const Catalog = () => {
           page={page}
           onCardClick={handleCardClick}
         />
-        {/* <FeedbackForm /> */}
+        <Questions />
       </main>
       {isCardPopupOpen && (
         <CardPopup
@@ -133,6 +131,7 @@ export const Catalog = () => {
       )}
       <Footer />
       <OrderFormPopup />
+      <FormSubmitPopup />
     </>
   );
 };

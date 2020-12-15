@@ -3,8 +3,13 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import ReactDOM from 'react-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import {
+  useSelector,
+  useDispatch,
+} from 'react-redux';
+import {
+  useForm,
+} from 'react-hook-form';
 import {
   Dialog,
   Grid,
@@ -14,17 +19,22 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import PublishIcon from '@material-ui/icons/Publish';
 import { getFileDeclination } from 'utils';
-import { closeOrderFormPopup } from 'actions';
-import MainButton from '../MainButton/MainButton';
+import {
+  closeOrderFormPopup,
+  openFormSubmitPopup,
+  saveForm,
+  submitForm,
+  uploadFiles,
+} from 'actions';
+import {
+  SubmitButton,
+} from '../SubmitButton/SubmitButton';
 import formTop from './assets/form-top.jpg';
 import {
   orderFormPopupSelector,
 } from './selectors';
 
 const useStyles = makeStyles({
-  root: {
-
-  },
   content: {
     padding: '20px',
   },
@@ -37,14 +47,24 @@ const useStyles = makeStyles({
   'input-file': {
     display: 'none',
   },
+  img__container: {
+    width: '100%',
+    position: 'relative',
+    paddingTop: '27.17%',
+  },
   img: {
-    height: '160px',
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    top: '0',
+    left: '0',
   },
   'copyright-link': {
     color: 'black',
   },
   files: {
     marginBottom: '30px',
+    cursor: 'pointer',
   },
   icon: {
     marginRight: '5px',
@@ -56,6 +76,7 @@ const useStyles = makeStyles({
 
 export const OrderFormPopup = () => {
   const classes = useStyles();
+  const { register, handleSubmit } = useForm();
   const fileInputRef = useRef();
   const [fileNames, setFileNames] = useState([]);
   const dispatch = useDispatch();
@@ -63,7 +84,8 @@ export const OrderFormPopup = () => {
 
   const handleClosePopup = useCallback(() => {
     dispatch(closeOrderFormPopup());
-  }, []);
+    fileInputRef.current.value = null;
+  }, [dispatch]);
 
   const handleFileInputClick = useCallback(() => {
     fileInputRef.current.click();
@@ -73,18 +95,32 @@ export const OrderFormPopup = () => {
     setFileNames(fileInputRef.current.files);
   }, [fileInputRef]);
 
-  return ReactDOM.createPortal(
+  const onSubmit = useCallback((data) => {
+    dispatch(closeOrderFormPopup());
+    dispatch(saveForm(data));
+    if (fileNames.length) {
+      dispatch(uploadFiles(fileNames));
+      dispatch(openFormSubmitPopup());
+      fileInputRef.current.value = null;
+    } else {
+      dispatch(submitForm());
+    }
+  }, [fileNames, fileInputRef, dispatch]);
+
+  return (
     <Dialog
       open={isOpen}
       onClose={handleClosePopup}
+      fullWidth
       maxWidth="sm"
-      className={classes.root}
     >
-      <img
-        className={classes.img}
-        src={formTop}
-        alt="Картинка в модальном окне"
-      />
+      <div className={classes.img__container}>
+        <img
+          className={classes.img}
+          src={formTop}
+          alt="Картинка в модальном окне"
+        />
+      </div>
       <Grid container justify="center" className={classes.content}>
         <Typography variant="h5" gutterBottom>
           Расчет стоимости проекта
@@ -96,37 +132,49 @@ export const OrderFormPopup = () => {
             для Вас индивидуальное предложение
           </Typography>
         </Grid>
-        {/* TODO Вынести инпуты в отдельный компонент */}
         <Grid item xs={8}>
-          <form className={classes.form}>
+          <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
             <TextField
+              inputRef={register}
+              name="name"
               type="text"
               autoComplete="name"
               className={classes.input}
               fullWidth
               placeholder="Имя"
+              label="Имя"
               required
             />
             <TextField
+              inputRef={register}
+              name="tel"
               type="tel"
               autoComplete="tel"
-              pattern="[7,8]{1}-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
               className={classes.input}
+              pattern="[7,8]{1}-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
               fullWidth
               placeholder="Телефон"
+              label="Телефон"
               required
             />
             <TextField
-              type="mail"
+              inputRef={register}
+              name="email"
+              type="email"
               autoComplete="email"
               className={classes.input}
               fullWidth
-              placeholder="E-mail"
+              placeholder="Почта"
+              label="Почта"
               required
             />
             <TextField
+              inputRef={register}
+              name="description"
               fullWidth
               multiline
+              label="Описание"
+              required
               variant="outlined"
               placeholder="Описание"
               className={classes.input}
@@ -145,24 +193,23 @@ export const OrderFormPopup = () => {
               className={classes.files}
               onClick={handleFileInputClick}
             >
-              <Grid item xs={6} container>
+              <Grid item xs={7} container direction="row">
                 <PublishIcon className={classes.icon} />
                 <Typography>
                   Прикрепить эскизы
                 </Typography>
               </Grid>
               {!!fileNames.length && (
-                <Grid item xs={6} container justify="center">
+                <Grid item xs={5} container justify="center">
                   <Typography>
                     {`${fileNames.length}\xA0${getFileDeclination(fileNames.legnth)}`}
                   </Typography>
                 </Grid>
               )}
             </Grid>
-            {/* TODO Добавить callback */}
-            <MainButton onClick={() => ({})}>
+            <SubmitButton>
               Рассчитать стоимость
-            </MainButton>
+            </SubmitButton>
             <Typography variant="body2" align="center" className={classes.copy}>
               Нажимая кнопку &laquo;Рассчитать стоимость&raquo;,
               я&nbsp;даю согласие на&nbsp;обработку персональных данных и&nbsp;подтверждаю,
@@ -172,7 +219,6 @@ export const OrderFormPopup = () => {
           </form>
         </Grid>
       </Grid>
-    </Dialog>,
-    document.getElementById('modal'),
+    </Dialog>
   );
 };

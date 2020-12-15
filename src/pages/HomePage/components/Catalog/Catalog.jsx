@@ -9,15 +9,11 @@ import { CATALOG } from './constants';
 import { CatalogCard } from './components';
 
 const useStyles = makeStyles({
-  root: {
-    marginTop: '65px',
-  },
   title: {
     marginBottom: '60px',
   },
   'button-container': {
-    display: 'flex',
-    justifyContent: 'center',
+    marginTop: '30px',
   },
 });
 
@@ -25,7 +21,7 @@ export const Catalog = () => {
   const classes = useStyles();
 
   return (
-    <Container className={classes.root}>
+    <Container>
       <BlockTitle className={classes.title}>
         <Typography variant="h4">
           Каталог
@@ -33,7 +29,7 @@ export const Catalog = () => {
       </BlockTitle>
       <Grid container spacing={4}>
         {CATALOG.map((item) => (
-          <Grid item xs={4} key={item.id}>
+          <Grid item xs={12} sm={6} md={4} key={item.id}>
             <CatalogCard
               title={item.title}
               subtitle={item.subtitle}
@@ -44,8 +40,8 @@ export const Catalog = () => {
           </Grid>
         ))}
       </Grid>
-      <Grid container justify="center">
-        <Grid item xs={4}>
+      <Grid container justify="center" className={classes['button-container']}>
+        <Grid item xs={8} sm={6} md={4}>
           <MainButton>Рассчитать стоимость</MainButton>
         </Grid>
       </Grid>

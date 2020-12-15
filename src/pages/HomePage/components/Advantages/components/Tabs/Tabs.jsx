@@ -10,10 +10,12 @@ const useStyles = makeStyles((theme) => ({
     padding: '0',
     listStyle: 'none',
     display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'flex-start',
   },
   tab: {
     marginRight: '30px',
+    lineHeight: '25px',
     position: 'relative',
     transition: 'all .3s',
     cursor: 'pointer',
@@ -24,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
       color: 'black',
       content: '"/"',
       right: '-20px',
-      bottom: '4px',
+      bottom: '0',
     },
     '&:last-of-type&:after': {
       display: 'none',
@@ -37,18 +39,11 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'default',
     color: theme.palette.primary.main,
   },
-  'tab-content': {
-    display: 'none',
-  },
-  'tab-content_visible': {
-    display: 'block',
-  },
 }));
 
 export const Tabs = ({
   activeTab,
   tabs,
-  children,
   onChange,
 }) => {
   const classes = useStyles();
@@ -62,35 +57,24 @@ export const Tabs = ({
   return (
     <>
       <ul className={classes.tabs}>
-        {tabs.map((tab) => (
+        {tabs.map((tab, i) => (
           <li
             key={tab.title}
             className={cx(classes.tab, {
-              [classes.active]: activeTab === tab.title,
+              [classes.active]: activeTab === i,
             })}
-            onClick={handeChangeTab(tab.title)}
+            onClick={handeChangeTab(i)}
           >
             <Typography component="span" variant="h6" color="inherit">{tab.title}</Typography>
           </li>
         ))}
       </ul>
-      {children.map((child) => (
-        <div
-          key={child.props.label}
-          className={cx(classes['tab-content'], {
-            [classes['tab-content_visible']]: activeTab === child.props.label,
-          })}
-        >
-          {child}
-        </div>
-      ))}
     </>
   );
 };
 
 Tabs.propTypes = {
-  activeTab: PropTypes.string.isRequired,
+  activeTab: PropTypes.number.isRequired,
   tabs: PropTypes.arrayOf(PropTypes.object).isRequired,
-  children: PropTypes.arrayOf(PropTypes.node).isRequired,
   onChange: PropTypes.func.isRequired,
 };

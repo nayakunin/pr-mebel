@@ -5,6 +5,7 @@ import {
   CHANGE_FILTER,
   CHANGE_PAGE,
   RESET_CATALOG,
+  RESET_FILTERS,
   OPEN_CARD_POPUP,
   CLOSE_CARD_POPUP,
   GO_TO_NEXT_CARD,
@@ -18,7 +19,7 @@ const initialState = {
   filter: {
     section: filters.sections[0].id,
     style: filters.styles[0].id,
-    doorType: filters.styles[0].id,
+    doorType: filters.doorTypes[0].id,
   },
   hasMore: 0,
   page: 0,
@@ -49,12 +50,34 @@ export const catalog = (state = initialState, action) => {
         items: [],
         isLoading: false,
         hasMore: 0,
-        // TODO Add error handling
-        isError: true,
       };
     }
     case CHANGE_FILTER: {
       const { name, value } = action.payload;
+
+      if (name === 'section') {
+        if (value === 'accessories' || value === 'lightingSystems') {
+          return {
+            ...state,
+            filter: {
+              ...state.filter,
+              section: value,
+              style: 'any',
+              doorType: 'any',
+            },
+          };
+        }
+        if (value === 'wardrobes') {
+          return {
+            ...state,
+            filter: {
+              ...state.filter,
+              section: value,
+              doorType: 'any',
+            },
+          };
+        }
+      }
 
       return {
         ...state,
@@ -76,6 +99,16 @@ export const catalog = (state = initialState, action) => {
         items: [],
         page: 0,
         hasMore: 0,
+      };
+    }
+    case RESET_FILTERS: {
+      return {
+        ...state,
+        filter: {
+          section: filters.sections[0].id,
+          style: filters.styles[0].id,
+          doorType: filters.styles[0].id,
+        },
       };
     }
     case OPEN_CARD_POPUP: {

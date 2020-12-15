@@ -1,26 +1,37 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography, Container } from '@material-ui/core';
-import { MainButton } from 'components';
+import {
+  Grid,
+  Typography,
+  Container,
+  TextField,
+} from '@material-ui/core';
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { saveForm, submitForm } from 'actions';
+import { SubmitButton } from 'components';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: '80px',
-    // TODO Добавить цвет в тему
-    background: '#303030',
-    padding: '80px 0',
+    background: theme.palette.grey[900],
+    padding: '65px 0',
   },
-  input: {
-    width: '100%',
+  input__inner: {
     color: 'white',
-    background: 'none',
-    border: 'none',
-    borderBottom: '1px solid white',
-    boxSizing: 'border-box',
-    padding: '8px',
-    '&:focus': {
-      outline: 'none',
+    '&:placeholder': {
+      color: 'white',
     },
+  },
+  input__root: {
+    '&:hover&:before,&:before': {
+      borderColor: 'white',
+    },
+  },
+  input_outline: {
+    borderColor: 'white',
+  },
+  input__label: {
+    color: 'white',
   },
   text: {
     color: 'white',
@@ -35,49 +46,84 @@ const useStyles = makeStyles({
   'copyright-link': {
     color: 'white',
   },
-});
+}));
 
 export const CallDesignerForm = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSubmit = useCallback((data) => {
+    dispatch(saveForm(data));
+    dispatch(submitForm());
+    reset();
+  }, [reset, dispatch]);
 
   return (
     <div className={classes.root}>
       <Container>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container>
-            <Grid item xs={3} />
-            <Grid item xs={6} container>
-              <Grid item xs={5}>
-                <input
+            <Grid item xs={2} sm={3} />
+            <Grid item xs={8} sm={6} container>
+              <Grid item xs={12} md={5}>
+                <TextField
+                  inputRef={register}
+                  name="name"
                   type="text"
                   autoComplete="name"
-                  className={classes.input}
+                  InputProps={{
+                    classes: {
+                      root: classes.input__root,
+                      input: classes.input__inner,
+                    },
+                  }}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.input__label,
+                    },
+                  }}
+                  fullWidth
                   placeholder="Имя"
+                  label="Имя"
                   required
                 />
               </Grid>
-              <Grid item xs={2} />
-              <Grid item xs={5}>
-                <input
+              <Grid item md={2} />
+              <Grid item xs={12} md={5}>
+                <TextField
+                  inputRef={register}
+                  name="tel"
                   type="tel"
                   autoComplete="tel"
+                  InputProps={{
+                    classes: {
+                      root: classes.input__root,
+                      input: classes.input__inner,
+                    },
+                  }}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.input__label,
+                    },
+                  }}
                   pattern="[7,8]{1}-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
-                  className={classes.input}
+                  fullWidth
                   placeholder="Телефон"
+                  label="Телефон"
                   required
                 />
               </Grid>
             </Grid>
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
-              <Grid item xs={4}>
-                {/* TODO Add callback */}
-                <MainButton onClick={() => ({})}>Рассчитать стоимость</MainButton>
+              <Grid item xs={8} sm={6} md={4}>
+                <SubmitButton>Вызвать дизайнера</SubmitButton>
               </Grid>
             </Grid>
             <Grid item xs container justify="center">
-              <Grid item xs={6}>
-                <Typography className={classes.text} align="center">
-                  Нажимая кнопку &laquo;Рассчитать стоимость&raquo;,
+              <Grid item xs={10} sm={6}>
+                <Typography variant="body2" className={classes.text} align="center">
+                  Нажимая кнопку &laquo;Вызвать дизайнера&raquo;,
                   я&nbsp;даю согласие на&nbsp;обработку персональных данных и&nbsp;подтверждаю,
                   что ознакомлен с&nbsp;
                   <a href="/" className={classes['copyright-link']}>пользовательским соглашением</a>

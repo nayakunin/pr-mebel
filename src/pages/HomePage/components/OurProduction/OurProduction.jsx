@@ -1,97 +1,121 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {
   Container,
   Typography,
   Grid,
+  Hidden,
 } from '@material-ui/core';
-import { BlockTitle } from 'components';
+import {
+  BlockTitle,
+  MainButton,
+  Pagination,
+} from 'components';
+import { LIST } from './constants';
 import img from './assets/production-img.jpg';
 
-const useStyles = makeStyles({
-  root: {
-    marginTop: '80px',
-  },
+const useStyles = makeStyles((theme) => ({
   img: {
     marginTop: '30px',
     width: '100%',
     marginBottom: '24px',
   },
+  section__title: {
+    fontSize: '16px',
+    lineHeight: '18px',
+    fontWeight: '400',
+  },
   text: {
+    marginTop: '24px',
+    fontSize: '15px',
+  },
+  text__container_bottom: {
     marginTop: '24px',
   },
   text_bottom: {
-    marginTop: '24px',
+    fontSize: '24px',
+    lineHeight: '28px',
   },
-});
+  content_sm: {
+    minHeight: '114px',
+  },
+  'button-container': {
+    marginTop: '30px',
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '50px',
+    },
+  },
+  'bottom-title': {
+    marginTop: '30px',
+  },
+}));
 
 export const OurProduction = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isXsDown = useMediaQuery(theme.breakpoints.down('xs'));
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className={classes.root}>
-      <Container>
-        <BlockTitle>
-          <Typography variant="h4">
-            Наше производство
-          </Typography>
-        </BlockTitle>
-        <img src={img} alt="Производство" className={classes.img} />
-        <Grid container spacing={3}>
-          <Grid item xs={3}>
+    <Container>
+      <BlockTitle>
+        <Typography variant="h4">
+          Наше производство
+        </Typography>
+      </BlockTitle>
+      <img src={img} alt="Производство" className={classes.img} />
+      <Grid
+        container
+        spacing={isXsDown ? 2 : 4}
+      >
+        <Hidden xsDown>
+          {LIST.map((item) => (
+            <Grid key={item.title} item xs={6} md={3}>
+              <BlockTitle>
+                <Typography variant="h6" className={classes.section__title}>
+                  {item.title}
+                </Typography>
+              </BlockTitle>
+              <Typography className={classes.text} variant="body2">
+                {item.text}
+              </Typography>
+            </Grid>
+          ))}
+        </Hidden>
+        <Hidden smUp>
+          <Grid item xs={12} className={classes.content_sm}>
             <BlockTitle>
               <Typography variant="h5">
-                Квалифицированный персонал
+                {LIST[activeIndex].title}
               </Typography>
             </BlockTitle>
-            <Typography className={classes.text} variant="body2">
-              Все сотрудники нашей фабрики имеют многолетний опыт работы
-              и&nbsp;проходят ежегодную аттестацию.
+            <Typography variant="body2" className={classes.text}>
+              {LIST[activeIndex].text}
             </Typography>
           </Grid>
-          <Grid item xs={3}>
-            <BlockTitle>
-              <Typography variant="h5">
-                Инженерное 3D-проектирование
-              </Typography>
-            </BlockTitle>
-            <Typography className={classes.text} variant="body2">
-              Каждый проект проходит стадию инженерного 3Д-проектирования,
-              что обеспечивает максимально качественную реализацию проекта.
-            </Typography>
+          <Grid item xs={2} />
+          <Grid item xs={8}>
+            <Pagination
+              list={LIST}
+              activeIndex={activeIndex}
+              onChange={setActiveIndex}
+            />
           </Grid>
-          <Grid item xs={3}>
-            <BlockTitle>
-              <Typography variant="h5">
-                Промышленное оборудование
-              </Typography>
-            </BlockTitle>
-            <Typography className={classes.text} variant="body2">
-              Наша фабрика оснащена европейским промышленным оборудованием
-              с&nbsp;числовым программным управлением.
-              Максимум автоматизации, минимум ручного труда.
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <BlockTitle>
-              <Typography variant="h5">
-                Контроль качества на всех участках
-              </Typography>
-            </BlockTitle>
-            <Typography className={classes.text} variant="body2">
-              Качество нашей продукции оценивается более чем
-              по&nbsp;1000&nbsp;параметрам, что позволяет
-              свести риск возникновения брака к&nbsp;минимуму.
-            </Typography>
-          </Grid>
-          <Grid item xs={1} />
-          <Grid item xs={10} className={classes.text_bottom}>
-            <Typography variant="h4" align="center">
-              Современные технологии производства для идеального качества мебели
+        </Hidden>
+        <Grid container justify="center">
+          <Grid item xs={12} md={10}>
+            <Typography variant="h5" className={classes['bottom-title']} align="center">
+              Современные технологии производства для идеального качества вашей мебели
             </Typography>
           </Grid>
         </Grid>
-      </Container>
-    </div>
+        <Grid container justify="center" className={classes['button-container']}>
+          <Grid item xs={8} sm={6} md={4}>
+            <MainButton>Получить проект</MainButton>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };

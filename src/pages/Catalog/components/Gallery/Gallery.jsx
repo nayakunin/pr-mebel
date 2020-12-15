@@ -53,7 +53,7 @@ export const Gallery = ({
         {items.map((item, i) => {
           if (i === items.length - 1) {
             return (
-              <Grid item xs={4} key={item.id} ref={observedNodeRef}>
+              <Grid item xs={12} sm={6} md={4} key={item.id} ref={observedNodeRef}>
                 <Card
                   imageUrlMin={item.imageMinified.url}
                   collection={item.collection}
@@ -64,7 +64,7 @@ export const Gallery = ({
             );
           }
           return (
-            <Grid item xs={4} key={item.id}>
+            <Grid item xs={12} sm={6} md={4} key={item.id}>
               <Card
                 imageUrlMin={item.imageMinified.url}
                 collection={item.collection}

@@ -1,33 +1,48 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import cx from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Container,
   Typography,
   Grid,
+  Hidden,
 } from '@material-ui/core';
 import {
   BlockTitle,
   MainButton,
+  Pagination,
 } from 'components';
-import { TABS } from './constants';
+import { AdditionalBlock } from './components';
+import { TABS, ADDITIONAL } from './constants';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: '80px',
-  },
   content: {
-    marginTop: '50px',
+    marginTop: '26px',
+  },
+  img__container: {
+    position: 'relative',
+    paddingTop: '71.9%',
   },
   img: {
     width: '100%',
-    position: 'relative',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      height: '100%',
+      position: 'absolute',
+      top: '0',
+      left: '0',
+    },
   },
   list: {
     margin: '0',
     padding: '0',
     listStyle: 'none',
     marginTop: '40px',
+  },
+  list_horizontal: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   option: {
     color: 'black',
@@ -41,6 +56,10 @@ const useStyles = makeStyles((theme) => ({
   active: {
     color: theme.palette.primary.main,
   },
+  text_bottom: {
+    marginTop: '30px',
+    minHeight: '130px',
+  },
   'button-container': {
     marginTop: '32px',
   },
@@ -48,24 +67,35 @@ const useStyles = makeStyles((theme) => ({
 
 export const WardrobeLeft = () => {
   const classes = useStyles();
-  const [activeTab, setActiveTab] = useState(TABS[0].title);
+  const [activePage, setActivePage] = useState(0);
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
+  const [currentImg, setCurrentImg] = useState(TABS[0].img);
 
-  const handleClick = useCallback((tab) => () => {
-    setActiveTab(tab);
+  const handleClick = useCallback((index) => () => {
+    setActivePage(0);
+    setActiveTabIndex(index);
   }, []);
 
+  useEffect(() => {
+    if (activePage === 0) {
+      setCurrentImg(TABS[activeTabIndex].img);
+    } else {
+      setCurrentImg(ADDITIONAL[activePage - 1].img);
+    }
+  }, [activePage, activeTabIndex]);
+
   return (
-    <div className={classes.root}>
-      <Container>
-        <BlockTitle>
-          <Typography variant="h4">
-            Комфорт и удобство, продуманное до мелочей
-          </Typography>
-        </BlockTitle>
+    <Container>
+      <BlockTitle>
+        <Typography variant="h4">
+          Комфорт и удобство, продуманное до&nbsp;мелочей
+        </Typography>
+      </BlockTitle>
+      <Hidden smDown>
         <Grid container spacing={6} className={classes.content}>
           <Grid item xs={6}>
             <img
-              src={TABS.filter((tab) => tab.title === activeTab)[0].img}
+              src={currentImg}
               alt="шкаф"
               className={classes.img}
             />
@@ -78,13 +108,13 @@ export const WardrobeLeft = () => {
               но&nbsp;еще и&nbsp;приятным
             </Typography>
             <ul className={classes.list}>
-              {TABS.map((tab) => (
+              {TABS.map((tab, i) => (
                 <li
                   key={tab.title}
                   className={cx(classes.option, {
-                    [classes.active]: activeTab === tab.title,
+                    [classes.active]: activeTabIndex === i,
                   })}
-                  onClick={handleClick(tab.title)}
+                  onClick={handleClick(i)}
                 >
                   <Typography color="inherit" variant="h6">
                     {tab.title}
@@ -94,12 +124,64 @@ export const WardrobeLeft = () => {
             </ul>
           </Grid>
         </Grid>
-        <Grid container justify="center" className={classes['button-container']}>
-          <Grid item xs={4}>
-            <MainButton>Рассчитать стоимость</MainButton>
+      </Hidden>
+      <Hidden mdUp>
+        <Grid container justify="center">
+          <Grid item xs>
+            <ul className={cx(classes.list, classes.list_horizontal)}>
+              {TABS.map((tab, i) => (
+                <li
+                  key={tab.title}
+                  className={cx(classes.option, {
+                    [classes.active]: activeTabIndex === i,
+                  })}
+                  onClick={handleClick(i)}
+                >
+                  <Typography color="inherit" variant="h6">
+                    {tab.title}
+                  </Typography>
+                </li>
+              ))}
+            </ul>
           </Grid>
+          <Grid item xs={12} className={classes.img__container}>
+            <img
+              src={currentImg}
+              alt="шкаф"
+              className={classes.img}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Pagination
+              list={ADDITIONAL}
+              activeIndex={activePage}
+              onChange={setActivePage}
+            />
+          </Grid>
+          {activePage !== 0 ? (
+            <Grid item xs={10} className={classes.text_bottom}>
+              <AdditionalBlock
+                title={ADDITIONAL[activePage - 1].title}
+                text={ADDITIONAL[activePage - 1].text}
+              />
+            </Grid>
+          ) : (
+            <Grid item xs={10} className={classes.text_bottom}>
+              <Typography variant="body2">
+                Мы&nbsp;разработали специальные решения для оптимизации
+                хранения ваших вещей, которые позволяют сделать ежедневно
+                пользование мебелью не&nbsp;только удобным и&nbsp;комфортным,
+                но&nbsp;еще и&nbsp;приятным
+              </Typography>
+            </Grid>
+          )}
         </Grid>
-      </Container>
-    </div>
+      </Hidden>
+      <Grid container justify="center" className={classes['button-container']}>
+        <Grid item xs={8} sm={6} md={4}>
+          <MainButton>Рассчитать стоимость</MainButton>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };

@@ -1,22 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Typography, Hidden } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { LoadingBackground } from 'components';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
     width: '100%',
     background: 'white',
-    marginBottom: '30px',
-    '&:hover $img:after': {
+    '&:hover $image': {
+      transform: 'scale(1.1)',
+    },
+    '&:hover $imageContainer:after': {
       background: 'rgba(0,0,0,.3)',
     },
-    '&:hover $hoverText': {
+    '&:hover $hoverTextContainer': {
       opacity: 1,
-      top: '40%',
+      top: '0',
     },
     '&:hover $caption:after': {
       width: '100%',
@@ -29,9 +32,9 @@ const useStyles = makeStyles({
     textDecoration: 'none',
     color: 'inherit',
   },
-  img: {
+  imageContainer: {
     width: '100%',
-    height: '252px',
+    paddingTop: '66.66%',
     marginBottom: '12px',
     position: 'relative',
     display: 'block',
@@ -39,6 +42,7 @@ const useStyles = makeStyles({
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     overflow: 'hidden',
+    transition: 'all .5s',
     '&:after': {
       position: 'absolute',
       content: '""',
@@ -48,21 +52,61 @@ const useStyles = makeStyles({
       left: '0',
       background: 'rgba(0,0,0,0)',
       transition: 'background .3s',
+      zIndex: '20',
+    },
+    [theme.breakpoints.down('xs')]: {
+      margin: '0',
+      '&:after': {
+        display: 'none',
+      },
     },
   },
-  hoverText: {
-    fontSize: '18px',
-    color: 'white',
+  image: {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    width: '100%',
+    height: '100%',
+    zIndex: '10',
+    transition: 'all .5s',
+  },
+  hoverTextContainer: {
+    width: '100%',
+    height: '100%',
+    boxSizing: 'border-box',
     opacity: '0',
     position: 'absolute',
-    zIndex: '20',
+    zIndex: '30',
     transition: 'all .3s ease-in-out',
-    top: '56%',
-    left: '50px',
+    top: '10%',
+    left: '0',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    paddingLeft: '30px',
+    paddingRight: '30px',
+    [theme.breakpoints.down('xs')]: {
+      paddingLeft: '25px',
+      paddingRight: '25px',
+    },
+  },
+  title: {
+    textTransform: 'uppercase',
+    fontSize: '18px',
+    color: 'white',
+    fontWeight: '300',
+  },
+  subtitle: {
+    fontFamily: 'PlayfairDisplay, serif',
+    fontSize: '18px',
+    color: 'white',
+    fontStyle: 'italic',
+    textTransform: 'lowercase',
   },
   caption: {
     position: 'relative',
-    fontSize: '16px',
+    textTransform: 'uppercase',
+    fontSize: '15px',
     '&:after': {
       position: 'absolute',
       bottom: '0',
@@ -74,8 +118,11 @@ const useStyles = makeStyles({
       transition: 'all .3s ease-in-out',
     },
   },
-  subtitle: {
-    fontStyle: 'italic',
+  captionSm: {
+    color: 'white',
+    '&:after': {
+      background: 'white',
+    },
   },
   arrow: {
     position: 'absolute',
@@ -85,9 +132,21 @@ const useStyles = makeStyles({
     height: '30px',
     bottom: '5px',
     right: '-30px',
-    zIndex: '20',
+    zIndex: '30',
   },
-});
+  imgHeader: {
+    height: '40px',
+    width: '100%',
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: 'rgba(0, 0, 0, .5)',
+    zIndex: '30',
+  },
+}));
 
 export const CatalogCard = ({
   title,
@@ -101,21 +160,42 @@ export const CatalogCard = ({
   return (
     <div className={classes.root}>
       <a href={href} className={classes.link}>
-        <LoadingBackground>
-          <div className={classes.img} style={{ backgroundImage: `url(${img})` }}>
-            <div className={classes.hoverText}>
-              <Typography variant="h5">{title}</Typography>
-              <Typography className={classes.subtitle}>{subtitle}</Typography>
+        <Hidden xsDown>
+          <LoadingBackground>
+            <div className={classes.imageContainer}>
+              <img src={img} alt={caption} className={classes.image} />
+              <div className={classes.hoverTextContainer}>
+                <div className={classes.hoverTextInnerContainer}>
+                  <Typography variant="h5" className={classes.title}>{title}</Typography>
+                  <Typography className={classes.subtitle}>{subtitle}</Typography>
+                </div>
+              </div>
+              <ArrowForwardIcon className={classes.arrow} />
             </div>
-            <ArrowForwardIcon className={classes.arrow} />
-          </div>
-        </LoadingBackground>
-        <Typography
-          component="span"
-          className={classes.caption}
-        >
-          {caption}
-        </Typography>
+          </LoadingBackground>
+          <Typography
+            component="span"
+            className={classes.caption}
+          >
+            {caption}
+          </Typography>
+        </Hidden>
+        <Hidden smUp>
+          <LoadingBackground>
+            <div className={classes.imageContainer}>
+              <img src={img} alt={caption} className={classes.image} />
+              <div className={classes.imgHeader}>
+                <Typography
+                  component="span"
+                  className={cx(classes.caption, classes.captionSm)}
+                >
+                  {caption}
+                </Typography>
+              </div>
+              <ArrowForwardIcon className={classes.arrow} />
+            </div>
+          </LoadingBackground>
+        </Hidden>
       </a>
     </div>
   );

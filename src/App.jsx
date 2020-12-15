@@ -13,7 +13,6 @@ function App() {
         <Route exact path="/">
           <HomePage />
         </Route>
-        {/* TODO Check if exact is needed */}
         <Route exact path="/catalog">
           <Catalog />
         </Route>

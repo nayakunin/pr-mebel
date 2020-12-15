@@ -6,3 +6,7 @@ export * from './Link/Link';
 export * from './LoadingBackground/LoadingBackground';
 export { default as MainButton } from './MainButton/MainButton';
 export * from './OrderFormPopup/OrderFormPopup';
+export * from './SubmitButton/SubmitButton';
+export * from './FormSubmitPopup/FormSubmitPopup';
+export * from './GoTopButton/GoTopButton';
+export * from './Pagination/Pagination';

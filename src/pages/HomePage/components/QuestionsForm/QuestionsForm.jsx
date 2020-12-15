@@ -1,39 +1,58 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Container,
   Typography,
   Grid,
+  TextField,
 } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import {
+  submitForm,
+  saveForm,
+} from 'actions';
 import {
   BlockTitle,
-  MainButton,
+  SubmitButton,
 } from 'components';
 import img from './assets/connect-bg.jpg';
 
 const useStyles = makeStyles({
   root: {
-    marginTop: '60px',
     backgroundImage: `url('${img}')`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    padding: '40px 0',
+    padding: '80px 0',
   },
   title: {
     color: 'white',
   },
-  input: {
-    width: '100%',
+  subtitle: {
     color: 'white',
-    background: 'none',
-    border: 'none',
-    borderBottom: '1px solid white',
-    boxSizing: 'border-box',
-    padding: '8px',
-    '&:focus': {
-      outline: 'none',
+    marginTop: '40px',
+    marginBottom: '60px',
+  },
+  input__inner: {
+    color: 'white',
+    '&:placeholder': {
+      color: 'white',
     },
+  },
+  input__root: {
+    '&:hover&:before,&:before': {
+      borderColor: 'white',
+    },
+  },
+  input_outline: {
+    borderColor: 'white',
+  },
+  input__label: {
+    color: 'white',
+  },
+  textarea: {
+    marginTop: '20px',
   },
   container: {
     position: 'relative',
@@ -54,9 +73,16 @@ const useStyles = makeStyles({
   },
 });
 
-// TODO Добавить textArea
 export const QuestionsForm = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSubmit = useCallback((data) => {
+    dispatch(saveForm(data));
+    dispatch(submitForm());
+    reset();
+  }, [reset, dispatch]);
 
   return (
     <div className={classes.root}>
@@ -66,43 +92,93 @@ export const QuestionsForm = () => {
             Остались вопросы?
           </Typography>
         </BlockTitle>
-        <form>
+        <Typography variant="h6" className={classes.subtitle}>
+          Заполните форму ниже. Наш менеджер свяжется с вами и ответит на вопросы
+        </Typography>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container>
-            <Grid item xs={3} />
-            <Grid item xs={6} container>
+            <Grid item xs={1} md={3} />
+            <Grid item xs={10} md={6} container>
               <Grid item xs={5}>
-                {/* TODO Заменить инпуты на инпуты из MUI */}
-                <input
+                <TextField
+                  inputRef={register}
+                  name="name"
                   type="text"
                   autoComplete="name"
-                  className={classes.input}
+                  InputProps={{
+                    classes: {
+                      root: classes.input__root,
+                      input: classes.input__inner,
+                    },
+                  }}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.input__label,
+                    },
+                  }}
+                  fullWidth
                   placeholder="Имя"
+                  label="Имя"
                   required
                 />
               </Grid>
               <Grid item xs={2} />
               <Grid item xs={5}>
-                <input
+                <TextField
+                  inputRef={register}
+                  name="tel"
                   type="tel"
                   autoComplete="tel"
+                  InputProps={{
+                    classes: {
+                      root: classes.input__root,
+                      input: classes.input__inner,
+                    },
+                  }}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.input__label,
+                    },
+                  }}
                   pattern="[7,8]{1}-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
-                  className={classes.input}
+                  fullWidth
                   placeholder="Телефон"
+                  label="Телефон"
                   required
                 />
               </Grid>
-              {/* TODO Добавить textarea */}
+              <TextField
+                inputRef={register}
+                name="description"
+                fullWidth
+                multiline
+                className={classes.textarea}
+                InputProps={{
+                  classes: {
+                    root: classes.input__root,
+                    input: classes.input__inner,
+                  },
+                }}
+                InputLabelProps={{
+                  classes: {
+                    root: classes.input__label,
+                  },
+                }}
+                variant="filled"
+                placeholder="Описание"
+                label="Описание"
+                rows={5}
+              />
             </Grid>
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
-              <Grid item xs={4}>
-                {/* TODO Add callback */}
-                <MainButton onClick={() => ({})}>Задать вопрос</MainButton>
+              <Grid item xs={8} sm={6} md={4}>
+                <SubmitButton>Задать вопрос</SubmitButton>
               </Grid>
             </Grid>
             <Grid item xs container justify="center">
-              <Grid item xs={6}>
+              <Grid item xs={10} md={6}>
                 <Typography className={classes.text} align="center">
-                  Нажимая кнопку &laquo;Рассчитать стоимость&raquo;,
+                  Нажимая кнопку &laquo;Задать вопрос&raquo;,
                   я&nbsp;даю согласие на&nbsp;обработку персональных данных и&nbsp;подтверждаю,
                   что ознакомлен с&nbsp;
                   <a href="/" className={classes['copyright-link']}>пользовательским соглашением</a>

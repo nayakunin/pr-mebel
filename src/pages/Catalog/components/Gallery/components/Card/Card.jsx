@@ -1,15 +1,12 @@
-import React, { useCallback, useState } from 'react';
-import cx from 'classnames';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { LoadingBackground } from '../../../../../../components/LoadingBackground/LoadingBackground';
-import { LazyImage } from '../../../../../../components/LazyImage/LazyImage';
 
 const useStyles = makeStyles({
   root: {
-    // 3 / 2 ratio
     paddingTop: '66.66%',
     position: 'relative',
     overflow: 'hidden',
@@ -36,7 +33,7 @@ const useStyles = makeStyles({
     padding: '5px 40px 5px 15px',
     backgroundColor: 'rgba(119, 119, 119, 0.72)',
   },
-  tooltip__text: {
+  tooltipText: {
     color: 'white',
   },
   arrow: {
@@ -53,35 +50,27 @@ export const Card = ({
   currentItemId,
   onClick,
 }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
   const classes = useStyles();
 
   const handleClick = useCallback(() => {
     onClick(currentItemId);
   }, [onClick, currentItemId]);
 
-  const handleLoad = useCallback(() => {
-    setIsLoaded(true);
-  }, []);
-
   return (
     <LoadingBackground>
       <div
-        className={cx(classes.root, {
-          [classes.root_loaded]: isLoaded,
-        })}
+        className={classes.root}
         onClick={handleClick}
       >
-        <LazyImage
+        <img
           className={classes.img}
           src={imageUrlMin}
-          alt="Изображение"
-          onLoad={handleLoad}
+          alt={`Товар из коллекции ${collection}`}
         />
         <div
           className={classes.tooltip}
         >
-          <Typography className={classes.tooltip__text}>{collection}</Typography>
+          <Typography className={classes.tooltipText}>{collection}</Typography>
           <ArrowForwardIcon className={classes.arrow} />
         </div>
       </div>

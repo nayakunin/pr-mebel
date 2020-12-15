@@ -9,8 +9,11 @@ import {
   Container,
   Grid,
   Typography,
+  FormHelperText,
 } from '@material-ui/core';
-import { BlockTitle } from 'components';
+import {
+  BlockTitle,
+} from 'components';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   button: {
-    lineHeight: '24px',
-    background: theme.palette.primary.mai,
+    lineHeight: '45px',
+    background: theme.palette.primary.main,
     textAlign: 'center',
     fontSize: '12px',
     fontWeight: '400',
@@ -36,8 +39,11 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     width: '100%',
     '&:hover': {
-      color: theme.palette.primary.mai,
+      color: theme.palette.primary.main,
       background: 'white',
+    },
+    '&:focus': {
+      outline: 'none',
     },
   },
   label: {
@@ -55,6 +61,11 @@ export const Filters = ({
 }) => {
   const classes = useStyles();
 
+  const styleSelectDisabled = filter.section === 'accessories'
+    || filter.section === 'lightingSystems';
+
+  const doorTypeSelectDisabled = filter.section !== 'cupboards';
+
   const handleChange = useCallback((event) => {
     const { name, value } = event.target;
 
@@ -70,7 +81,6 @@ export const Filters = ({
     onApplyFilter();
   }, [onApplyFilter]);
 
-  // TODO подумать над изменением цвета фильтров
   return (
     <Container className={classes.root}>
       <BlockTitle>
@@ -80,8 +90,10 @@ export const Filters = ({
       </BlockTitle>
       <form className={classes.form} onSubmit={handleSubmit}>
         <Grid container spacing={4}>
-          <Grid item xs={3}>
-            <FormControl className={classes['form-control']}>
+          <Grid item xs={6} md={3}>
+            <FormControl
+              className={classes['form-control']}
+            >
               <InputLabel
                 id="filter-sections-label"
                 className={classes.label}
@@ -100,8 +112,11 @@ export const Filters = ({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={3}>
-            <FormControl className={classes['form-control']}>
+          <Grid item xs={6} md={3}>
+            <FormControl
+              className={classes['form-control']}
+              disabled={styleSelectDisabled}
+            >
               <InputLabel
                 id="filter-styles-label"
                 className={classes.label}
@@ -118,10 +133,16 @@ export const Filters = ({
                   <MenuItem value={el.id} key={el.id}>{el.title}</MenuItem>
                 ))}
               </Select>
+              {styleSelectDisabled && (
+                <FormHelperText>Фильтр не применим для выбранной секции</FormHelperText>
+              )}
             </FormControl>
           </Grid>
-          <Grid item xs={3}>
-            <FormControl className={classes['form-control']}>
+          <Grid item xs={6} md={3}>
+            <FormControl
+              className={classes['form-control']}
+              disabled={doorTypeSelectDisabled}
+            >
               <InputLabel
                 id="filter-doorTypes-label"
                 className={classes.label}
@@ -138,11 +159,14 @@ export const Filters = ({
                   <MenuItem value={el.id} key={el.id}>{el.title}</MenuItem>
                 ))}
               </Select>
+              {doorTypeSelectDisabled && (
+                <FormHelperText>Фильтр не применим для выбранной секции</FormHelperText>
+              )}
             </FormControl>
           </Grid>
-          <Grid item xs={3} container>
-            <Grid item xs={3} />
-            <Grid item xs={6} container alignItems="center">
+          <Grid item xs={6} md={3} container>
+            <Grid item md={3} />
+            <Grid item xs={12} md={6} container alignItems="center">
               <button type="submit" className={classes.button}>
                 Применить
               </button>

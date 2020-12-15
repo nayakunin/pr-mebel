@@ -4,6 +4,8 @@ import {
   Typography,
   Grid,
 } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { openOrderFormPopup } from 'actions';
 import { makeStyles } from '@material-ui/core/styles';
 import { ReactComponent as Logo } from 'assets/logo_footer.svg';
 import { ReactComponent as Vk } from 'assets/vk.svg';
@@ -13,8 +15,8 @@ import { Link } from '../Link/Link';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // TODO Добавить цвет в тему
-    background: '#303030',
+    marginTop: '80px',
+    background: theme.palette.grey[900],
     padding: '80px 0',
     color: 'white',
   },
@@ -33,6 +35,13 @@ const useStyles = makeStyles((theme) => ({
     listStyle: 'none',
     padding: '0',
     margin: '0',
+    '@media (max-width: 960px)': {
+      '&': {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      },
+    },
   },
   list__item: {
     fontSize: '14px',
@@ -66,129 +75,216 @@ const useStyles = makeStyles((theme) => ({
 
 export const Footer = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   return (
     <footer className={classes.root}>
       <Container>
         <Grid container justify="center" className={classes['logo-container']}>
           <Grid item>
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
             <Typography align="center" className={classes.subtitle}>
               Салон мебели премиум класса
             </Typography>
           </Grid>
         </Grid>
         <Grid container spacing={4}>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3} container direction="column" alignItems="center">
             <Typography className={classes['column-title']}>
-              <Link to="/catalog">Каталог</Link>
+              <Link
+                to="/catalog"
+              >
+                Каталог
+              </Link>
             </Typography>
-            {/* TODO Add search requests for catalog page */}
             <ul className={classes.list}>
               <li>
-                <Typography gutterBottom className={classes.list__item}>
-                  <Link to="/catalog/">Шкафы классические</Link>
+                <Typography variant="body1" gutterBottom>
+                  <Link
+                    to="/catalog?section=cupboards&style=classic"
+                    className={classes.list__item}
+                  >
+                    Шкафы классические
+                  </Link>
                 </Typography>
               </li>
               <li>
-                <Typography gutterBottom className={classes.list__item}>
-                  <Link to="/">Шкафы современные</Link>
+                <Typography gutterBottom>
+                  <Link
+                    to="/catalog?section=cupboards&style=modern"
+                    className={classes.list__item}
+                  >
+                    Шкафы современные
+                  </Link>
                 </Typography>
               </li>
               <li>
-                <Typography gutterBottom className={classes.list__item}>
-                  <Link to="/">Гардеробные классические</Link>
+                <Typography gutterBottom>
+                  <Link
+                    to="/catalog?section=wardrobes&style=classic"
+                    className={classes.list__item}
+                  >
+                    Гардеробные классические
+                  </Link>
                 </Typography>
               </li>
               <li>
-                <Typography gutterBottom className={classes.list__item}>
-                  <Link to="/">Гардеробные современные</Link>
+                <Typography gutterBottom>
+                  <Link
+                    to="/catalog?section=wardrobes&style=modern"
+                    className={classes.list__item}
+                  >
+                    Гардеробные современные
+                  </Link>
                 </Typography>
               </li>
             </ul>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3} container direction="column" alignItems="center">
             <Typography className={classes['column-title']}>
-              <Link to="/#advantages">
+              <Link
+                to="/#advantages"
+              >
                 Преимущества
               </Link>
             </Typography>
             <ul className={classes.list}>
               <li>
-                <Typography gutterBottom className={classes.list__item}>
-                  <Link to="/#advantages">Наши материалы</Link>
+                <Typography gutterBottom>
+                  <Link
+                    to="/#advantages"
+                    className={classes.list__item}
+                  >
+                    Наши материалы
+                  </Link>
                 </Typography>
               </li>
               <li>
-                <Typography gutterBottom className={classes.list__item}>
-                  <Link to="/#comfort">Комфорт и удобство</Link>
+                <Typography gutterBottom>
+                  <Link
+                    to="/#comfort"
+                    className={classes.list__item}
+                  >
+                    Комфорт и удобство
+                  </Link>
                 </Typography>
               </li>
               <li>
-                <Typography gutterBottom className={classes.list__item}>
-                  <Link to="/#quality">Исключительное качество</Link>
+                <Typography gutterBottom>
+                  <Link
+                    to="/#quality"
+                    className={classes.list__item}
+                  >
+                    Исключительное качество
+                  </Link>
                 </Typography>
               </li>
             </ul>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={6} md={3} container direction="column" alignItems="center">
             <Typography className={classes['column-title']}>
-              <Link to="/#about">
+              <Link
+                to="/#about"
+              >
                 О нас
               </Link>
             </Typography>
             <ul className={classes.list}>
               <li>
                 <Typography gutterBottom className={classes.list__item}>
-                  <Link to="/#about">Почему следует выбрать нас</Link>
+                  <Link
+                    to="/#about"
+                    className={classes.list__item}
+                  >
+                    Почему следует выбрать нас
+                  </Link>
                 </Typography>
               </li>
               <li>
-                <Typography gutterBottom className={classes.list__item}>
-                  <Link to="/production">Наше производство</Link>
+                <Typography gutterBottom>
+                  <Link
+                    to="/#production"
+                    className={classes.list__item}
+                  >
+                    Наше производство
+                  </Link>
                 </Typography>
               </li>
               <li>
-                <Typography gutterBottom className={classes.list__item}>
-                  <Link to="/#how-to-order">Как заказать нашу мебель</Link>
+                <Typography gutterBottom>
+                  <Link
+                    to="/#how-to-order"
+                    className={classes.list__item}
+                  >
+                    Как заказать нашу мебель
+                  </Link>
                 </Typography>
               </li>
               <li>
-                <Typography gutterBottom className={classes.list__item}>
-                  <Link to="/#faq">Часто задаваемые вопросы</Link>
+                <Typography gutterBottom>
+                  <Link
+                    to="/#faq"
+                    className={classes.list__item}
+                  >
+                    Часто задаваемые вопросы
+                  </Link>
                 </Typography>
               </li>
             </ul>
           </Grid>
-          <Grid item xs={3}>
-            {/* TODO Add popup with feedback form */}
+          <Grid item xs={6} md={3} container direction="column" alignItems="center">
             <Typography className={classes['column-title']}>
-              <Link to="/">
+              <Link
+                asButton
+                onClick={() => dispatch(openOrderFormPopup())}
+              >
                 Связаться с нами
               </Link>
             </Typography>
             <ul className={classes.list}>
               <li>
-                {/* TODO Add popup with feedback form */}
-                <Typography gutterBottom className={classes.list__item}>
-                  <Link to="/">Заказать звонок</Link>
+                <Typography gutterBottom>
+                  <Link
+                    asButton
+                    className={classes.list__item}
+                    onClick={() => dispatch(openOrderFormPopup())}
+                  >
+                    Заказать звонок
+                  </Link>
                 </Typography>
               </li>
               <li>
-                {/* TODO Add popup with feedback form */}
-                <Typography gutterBottom className={classes.list__item}>
-                  <Link to="/">Получить проект</Link>
+                <Typography gutterBottom>
+                  <Link
+                    asButton
+                    className={classes.list__item}
+                    onClick={() => dispatch(openOrderFormPopup())}
+                  >
+                    Получить проект
+                  </Link>
                 </Typography>
               </li>
               <li>
-                {/* TODO Add popup with feedback form */}
-                <Typography gutterBottom className={classes.list__item}>
-                  <Link to="/">Вызвать дизайнера-замерщика</Link>
+                <Typography gutterBottom>
+                  <Link
+                    asButton
+                    className={classes.list__item}
+                    onClick={() => dispatch(openOrderFormPopup())}
+                  >
+                    Вызвать дизайнера замерщика
+                  </Link>
                 </Typography>
               </li>
               <li>
-                <Typography gutterBottom className={classes.list__item}>
-                  <Link to="/#questions">Задать вопрос</Link>
+                <Typography gutterBottom>
+                  <Link
+                    to="/#questions"
+                    className={classes.list__item}
+                  >
+                    Задать вопрос
+                  </Link>
                 </Typography>
               </li>
             </ul>
@@ -199,31 +295,29 @@ export const Footer = () => {
           <Typography className={classes.social__title}>
             Мы в соц.сетях
           </Typography>
-          {/* TODO Add links to socials */}
           <Grid item xs={4} container className={classes['social__icons-container']}>
             <Grid item xs={4} container justify="center">
-              <a href="/">
+              <a href="https://vk.com/public185518769">
                 <Vk className={classes.social__icon} />
               </a>
             </Grid>
             <Grid item xs={4} container justify="center">
-              <a href="/">
+              <a href="https://www.instagram.com/pr_mebel.ru/">
                 <Inst className={classes.social__icon} />
               </a>
             </Grid>
             <Grid item xs={4} container justify="center">
-              <a href="/">
+              <a href="https://www.facebook.com/%D0%A7%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B9-%D0%BC%D0%B5%D0%B1%D0%B5%D0%BB%D1%8C%D0%B5%D1%80-108136607213942">
                 <Fb className={classes.social__icon} />
               </a>
             </Grid>
           </Grid>
-          {/* TODO Add links to copyright */}
-          <Typography variant="body2">
-            <Link to="/" external>Политика конфиденциальности</Link>
+          <Typography variant="body2" gutterBottom>
+            <Link to="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit" external>Политика конфиденциальности</Link>
             <span className={classes['vertical-line']}>|</span>
-            <Link to="/" external>Пользовательское соглашение</Link>
+            <Link to="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit" external>Пользовательское соглашение</Link>
           </Typography>
-          <Typography>
+          <Typography variant="body2" align="center">
             &copy; Частный Мебельер
             <span className={classes['vertical-line']}>|</span>
             2020 Все права защищены законом.

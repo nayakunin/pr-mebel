@@ -1,85 +1,28 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Container, Typography, Grid } from '@material-ui/core';
 import { BlockTitle } from 'components';
-import img1 from './assets/about-img.svg';
-import img2 from './assets/about-img2.svg';
-import img3 from './assets/about-img3.svg';
-import img4 from './assets/about-img4.svg';
-import img5 from './assets/about-img5.svg';
-import img6 from './assets/about-img6.svg';
-
-const CARDS = [
-  {
-    id: 1,
-    title: 'Богатый ассортимент',
-    text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
-    вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
-    Более 1000 вариантов материалов и\xa0отделок будут доступны для вашего выбора.
-    Это удобно, выгодно и\xa0позволит сэкономит массу Вашего времени.`,
-    img: img1,
-  },
-  {
-    id: 2,
-    title: 'Богатый ассортимент',
-    text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
-    вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
-    Более 1000 вариантов материалов и\xa0отделок будут доступны для вашего выбора.
-    Это удобно, выгодно и\xa0позволит сэкономит массу Вашего времени.`,
-    img: img2,
-  },
-  {
-    id: 3,
-    title: 'Богатый ассортимент',
-    text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
-    вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
-    Более 1000 вариантов материалов и\xa0отделок будут доступны для вашего выбора.
-    Это удобно, выгодно и\xa0позволит сэкономит массу Вашего времени.`,
-    img: img3,
-  },
-  {
-    id: 4,
-    title: 'Богатый ассортимент',
-    text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
-    вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
-    Более 1000 вариантов материалов и\xa0отделок будут доступны для вашего выбора.
-    Это удобно, выгодно и\xa0позволит сэкономит массу Вашего времени.`,
-    img: img4,
-  },
-  {
-    id: 5,
-    title: 'Богатый ассортимент',
-    text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
-    вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
-    Более 1000 вариантов материалов и\xa0отделок будут доступны для вашего выбора.
-    Это удобно, выгодно и\xa0позволит сэкономит массу Вашего времени.`,
-    img: img5,
-  },
-  {
-    id: 6,
-    title: 'Богатый ассортимент',
-    text: `Мы\xa0можем предложить Вам корпусную мебель для любой из\xa0зон
-    вашего дома\xa0\u2014 от\xa0кухни до\xa0детской комнаты.
-    Более 1000 вариантов материалов и\xa0отделок будут доступны для вашего выбора.
-    Это удобно, выгодно и\xa0позволит сэкономит массу Вашего времени.`,
-    img: img6,
-  },
-];
+import { CARDS } from './constants';
+import { Card } from './components';
 
 const useStyles = makeStyles({
   root: {
 
   },
-  grid: {
-    marginTop: '24px',
+  title_middle: {
+    marginTop: '30px',
+    fontWeight: '400',
   },
-  subtitle: {
-    marginTop: '24px',
+  grid: {
+    marginTop: '14px',
   },
 });
 
 export const About = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isXsDown = useMediaQuery(theme.breakpoints.down('xs'));
 
   return (
     <div className={classes.root}>
@@ -89,33 +32,24 @@ export const About = () => {
             О нас
           </Typography>
         </BlockTitle>
-        <Typography variant="h5" align="center">
+        <Typography variant="h5" align="center" className={classes.title_middle}>
           Почему нас выбрали уже более 10 000 клиентов?
         </Typography>
-        <Grid container spacing={4} className={classes.grid}>
+        <Grid container spacing={isXsDown ? 2 : 4} className={classes.grid}>
           {CARDS.map((card) => (
-            <Grid key={card.id} item xs={4} container spacing={2}>
-              <Grid item xs={2}>
-                <img src={card.img} alt="icon" />
-              </Grid>
-              <Grid item xs={10} container alignItems="center">
-                <Typography variant="h6">
-                  {card.title}
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography variant="body2">
-                  {card.text}
-                </Typography>
-              </Grid>
+            <Grid item xs={10} sm={6} md={4} key={card.id}>
+              <Card
+                Img={card.img}
+                title={card.title}
+                text={card.text}
+              />
             </Grid>
           ))}
         </Grid>
-        <Typography variant="h5" align="center" className={classes.subtitle}>
+        <Typography variant="h5" align="center" className={classes.title_middle}>
           Приходите, нам есть чем вас удивить!
         </Typography>
       </Container>
-
     </div>
   );
 };

@@ -1,2 +1,3 @@
-export { getFileDeclination } from './getFileDeclintaion';
-export { getCollectionName } from './getCollectionName';
+export * from './getFileDeclintaion';
+export * from './getCollectionName';
+export * from './api';

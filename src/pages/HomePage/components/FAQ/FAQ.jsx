@@ -1,164 +1,102 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Typography, Grid } from '@material-ui/core';
-import { BlockTitle } from 'components';
-import { Question } from './components';
+import {
+  Container,
+  Typography,
+  Grid,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+} from '@material-ui/core';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import { BlockTitle, MainButton } from 'components';
+import { LIST } from './constants';
 
-const useStyles = makeStyles({
-  root: {
-    marginTop: '60px',
-  },
-  container: {
+const useStyles = makeStyles((theme) => ({
+  listContainer: {
     marginTop: '30px',
-    // height: '345px',
-    // overflow: 'scroll',
   },
-});
+  summaryContainer: {
+    alignItems: 'center',
+  },
+  number: {
+    fontSize: '40px',
+    color: theme.palette.primary.main,
+    marginRight: '20px',
+  },
+  dropdownIcon: {
+    color: theme.palette.primary.main,
+    transform: 'rotate(90deg)',
+  },
+  buttonContainer: {
+    marginTop: '30px',
+  },
+}));
 
 export const FAQ = () => {
   const classes = useStyles();
+  const [isShowMoreClicked, setIsShowMoreClicked] = useState(false);
+
+  const handleShowMore = useCallback(() => {
+    setIsShowMoreClicked(true);
+  }, []);
 
   return (
-    <div className={classes.root}>
-      <Container>
-        <BlockTitle>
-          <Typography variant="h4">
-            Часто задаваемые вопросы
-          </Typography>
-        </BlockTitle>
-        <Grid container>
-          <Grid item xs={2} />
-          <Grid item xs={8} container spacing={3} className={classes.container}>
-            <Grid item>
-              <Question
-                id="01"
-                title="Сколько лет ваша компания существует на рынке?"
+    <Container>
+      <BlockTitle>
+        <Typography variant="h4">
+          Часто задаваемые вопросы
+        </Typography>
+      </BlockTitle>
+      <Grid container spacing={3} direction="column" alignItems="center" className={classes.listContainer}>
+        {LIST.map((item, i) => {
+          if (i > 4 && !isShowMoreClicked) return null;
+
+          return (
+            <Grid item xs={12} md={10} key={item.title}>
+              <Accordion
+                className={classes.accordion}
               >
-                Наш салон расположен на&nbsp;одном и&nbsp;том&nbsp;же
-                месте и&nbsp;успешно работает уже более 20&nbsp;лет.
-                Приходите, мы&nbsp;будем рады вас видеть и&nbsp;поделимся
-                с&nbsp;вами всем нашим опытом!
+                <AccordionSummary
+                  expandIcon={<ArrowForwardIosIcon className={classes.dropdownIcon} />}
+                  classes={{
+                    content: classes.summaryContainer,
+                  }}
+                >
+                  <Typography className={classes.number}>{item.id}</Typography>
+                  <Typography>{item.title}</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>{item.text}</Typography>
+                </AccordionDetails>
+              </Accordion>
+            </Grid>
+          );
+        })}
+      </Grid>
+      {/* <Grid container className={classes.container} spacing={3}>
+        {LIST.map((item) => (
+          <React.Fragment key={item.title}>
+            <Hidden smDown><Grid item md={2} /></Hidden>
+            <Grid item xs={12} md={8}>
+              <Question
+                id={item.id}
+                title={item.title}
+              >
+                {item.text}
               </Question>
             </Grid>
-            <Grid item>
-              <Question
-                id="02"
-                title="Какую продукцию кроме шкафов я могу у вас заказать?"
-              >
-                Мы&nbsp;изготавливаем любую корпусную мебель
-                по&nbsp;индивидуальным проектам&nbsp;&mdash; прихожие,
-                кабинеты, гостиные, гардеробные, библиотеки и&nbsp;даже кухни.
-                Вы&nbsp;можете заказать изделия как в&nbsp;современном,
-                так и&nbsp;в&nbsp;классическом стиле, основываясь
-                на&nbsp;разработанных нами моделях,
-                либо реализовать ваши собственные дизайнерские идеи.
-              </Question>
-            </Grid>
-            <Grid item>
-              <Question
-                id="03"
-                title="Могу ли я заказать шкаф под дизайн межкомнатных дверей или другой имеющейся мебели?"
-              >
-                Да, наши специалисты могут разработать дизайн изделия
-                как под ваши межкомнатные двери, так и&nbsp;под любые
-                другие предметы интерьера. Мы&nbsp;максимально точно
-                повторим как само дизайнерское решение, так и&nbsp;отделку.
-              </Question>
-            </Grid>
-            <Grid item>
-              <Question
-                id="04"
-                title="Насколько безопасны применяемые материалы?"
-              >
-                Все используемые нами материалы имеют соответствующие
-                сертификаты качества и&nbsp;абсолютно безопасны. Например,
-                применяемые нами ламинированные панели из&nbsp;ДСП имеют
-                экологическую чистоту класса&nbsp;Е1, что позволяет их&nbsp;применять
-                в&nbsp;детских комнатах и&nbsp;больницах, а&nbsp;используемые
-                в&nbsp;фасадах стекла всегда имеют специальную защитную пленку.
-              </Question>
-            </Grid>
-            <Grid item>
-              <Question
-                id="05"
-                title="Каковы сроки изготовления вашей мебели?"
-              >
-                Сроки изготовления мебели напрямую зависят от&nbsp;выбранной
-                модели изделия и&nbsp;составляет от&nbsp;20&nbsp;до&nbsp;60&nbsp;
-                дней. Например, сроки изготовления гардеробной комнаты из&nbsp;
-                ЛДСП значительно ниже, чем у&nbsp;классического шкафа купе с&nbsp;
-                фасадами, покрытыми эмалью. Это связано с&nbsp;особенностями
-                производственного процесса изготовления изделий, в&nbsp;случае
-                с&nbsp;эмалью он&nbsp;значительно более сложный и&nbsp;длительный.
-              </Question>
-            </Grid>
-            <Grid item>
-              <Question
-                id="06"
-                title="Почему срок изготовления дольше, чем у многих интернет-магазинов?"
-              >
-                Срок изготовления премиальной высококачественной мебели на&nbsp;
-                заказ складывается из&nbsp;множества факторов, выстроенных и&nbsp;
-                оптимизированных за&nbsp;долгие годы работы. Чтобы в&nbsp;
-                итоге получился качественный результат, изделие проходит множество
-                производственных стадий, начиная с&nbsp;детальной инженерной
-                проработки дизайн проекта заканчивая несколькими этапами
-                контроля качества, которые требуют времени.
-              </Question>
-            </Grid>
-            <Grid item>
-              <Question
-                id="07"
-                title="Сколько стоит ваша продукция?"
-              >
-                Итоговая стоимость изделия складывается из&nbsp;множества факторов.
-                Для ответа на&nbsp;этот вопрос нам необходимо знать габариты изделия,
-                определить его конструктивные особенности, встроенное&nbsp;ли это будет
-                изделие или корпусное, и&nbsp;разумеется выбрать подходящие именно вам
-                материалы, комплектующие и&nbsp;дополнительные аксессуары. Каждое
-                изделие изготавливается по&nbsp;индивидуальному дизайн-проекту,
-                стоимость которого определяется на&nbsp;основании сделанного вами выбора.
-                Стоимость&nbsp;1.м.п. изделия может варьироваться
-                от&nbsp;30&nbsp;до&nbsp;150&nbsp;тыс. рублей.
-              </Question>
-            </Grid>
-            <Grid item>
-              <Question
-                id="08"
-                title="Почему ваша продукция стоит дороже, чем у некоторых других компаний?"
-              >
-                Итоговая стоимость изготовления мебели на&nbsp;заказ напрямую
-                зависит от&nbsp;качества используемых материалов и&nbsp;комплектующих,
-                применяемых технологий и&nbsp;производственных процессов компании.
-                Наша компания ориентирована на&nbsp;изготовление мебели, которая
-                будет безупречно служить и&nbsp;радовать вас долгие годы, поэтому
-                мы&nbsp;никогда не&nbsp;применяем решений, которые способны снизить
-                стоимость, но&nbsp;могут ухудшить качество вашего изделия.
-              </Question>
-            </Grid>
-            <Grid item>
-              <Question
-                id="09"
-                title="Нужно ли оплачивать всю сумму заказа сразу?"
-              >
-                Для запуска изделия в&nbsp;производство необходимо заключить
-                договор и&nbsp;внести предоплату&nbsp;50% от&nbsp;суммы
-                договора. После выполнения заказа вносится остаток суммы.
-              </Question>
-            </Grid>
-            <Grid item>
-              <Question
-                id="10"
-                title="Можно ли приобрести вашу мебель в кредит или рассрочку?"
-              >
-                Да, мы&nbsp;сотрудничаем с&nbsp;банками, предоставляющие
-                кредит или рассрочку. Подробную информацию нужно
-                уточнять у&nbsp;нашего менеджера.
-              </Question>
-            </Grid>
+            <Hidden smDown><Grid item md={2} /></Hidden>
+          </React.Fragment>
+        ))}
+      </Grid> */}
+      {!isShowMoreClicked && (
+        <Grid container justify="center" className={classes.buttonContainer}>
+          <Grid item xs={8} sm={6} md={4}>
+            <MainButton onClick={handleShowMore}>Показать еще</MainButton>
           </Grid>
         </Grid>
-      </Container>
-    </div>
+      )}
+    </Container>
   );
 };

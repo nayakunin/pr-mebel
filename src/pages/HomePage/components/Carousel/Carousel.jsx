@@ -1,55 +1,80 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import cx from 'classnames';
-import { pages } from '__fixtures__/pages';
-import {
-  Page,
-  Pagination,
-} from './components';
+import { Container } from '@material-ui/core';
+import { pages } from './constants';
+import { Page, Pagination } from './components';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
     width: '100vw',
     height: '100vh',
     minHeight: '700px',
     overflow: 'hidden',
-    '&::after': {
-      position: 'absolute',
-      content: '""',
-      width: '100%',
-      top: '0',
-      left: '0',
-      height: '100%',
-      background: 'rgba(0, 0, 0, 0.4)',
-    },
   },
   slider: {
     position: 'relative',
     display: 'flex',
     width: `${pages.length}00%`,
     height: '100%',
-    transition: 'left .7s ease-in-out',
+    transition: 'all .4s ease-in-out',
+  },
+  paginationContainer: {
+    position: 'absolute',
+    bottom: '100px',
+    width: '100%',
+    '@media (max-width: 1250px)': {
+      bottom: '50px',
+    },
+  },
+  paginationInnerContainer: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    boxSizing: 'border-box',
+    padding: '0',
+    '@media (max-width: 1250px)': {
+      justifyContent: 'center',
+    },
   },
   nav: {
-    width: '50px',
-    height: '50px',
+    color: 'white',
+  },
+  navDesktop: {
+    width: '40px',
+    height: '40px',
     color: 'white',
     position: 'absolute',
     cursor: 'pointer',
     zIndex: '50',
+    '@media (max-width: 1250px)': {
+      display: 'none',
+    },
   },
-  prev: {
+  prevDesktop: {
     top: '50%',
-    left: '20px',
+    left: '30px',
   },
-  next: {
+  nextDesktop: {
     top: '50%',
-    right: '20px',
+    right: '30px',
   },
-});
+  navMobile: {
+    display: 'none',
+    '@media (max-width: 1250px)': {
+      display: 'block',
+    },
+  },
+  prevMobile: {
+    marginRight: theme.spacing(3),
+  },
+  nextMobile: {
+    marginLeft: theme.spacing(3),
+  },
+}));
 
 export const Carousel = () => {
   const classes = useStyles();
@@ -57,38 +82,29 @@ export const Carousel = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  const handleClickPrev = useCallback(
-    () => {
-      setActiveSlide((prev) => {
-        if (prev > 0) {
-          return prev - 1;
-        }
+  const handleClickPrev = useCallback(() => {
+    setActiveSlide((prev) => {
+      if (prev > 0) {
+        return prev - 1;
+      }
 
-        return pages.length - 1;
-      });
-    },
-    [],
-  );
+      return pages.length - 1;
+    });
+  }, []);
 
-  const handleClickNext = useCallback(
-    () => {
-      setActiveSlide((prev) => {
-        if (prev < pages.length - 1) {
-          return prev + 1;
-        }
+  const handleClickNext = useCallback(() => {
+    setActiveSlide((prev) => {
+      if (prev < pages.length - 1) {
+        return prev + 1;
+      }
 
-        return 0;
-      });
-    },
-    [],
-  );
+      return 0;
+    });
+  }, []);
 
-  const handleChangeSlide = useCallback(
-    (value) => {
-      setActiveSlide(value);
-    },
-    [],
-  );
+  const handleChangeSlide = useCallback((value) => {
+    setActiveSlide(value);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -99,7 +115,7 @@ export const Carousel = () => {
       handleClickNext();
     };
 
-    const interval = setInterval(() => handleRotate(), 15000);
+    const interval = setInterval(() => handleRotate(), 199905000);
 
     window.addEventListener('resize', handleResize);
     return () => {
@@ -110,24 +126,62 @@ export const Carousel = () => {
 
   return (
     <div className={classes.root}>
-      <NavigateBeforeIcon onClick={handleClickPrev} className={cx(classes.prev, classes.nav)} />
-      <div className={classes.slider} style={{ left: `-${windowWidth * activeSlide}px` }}>
+      <ArrowBackIosIcon
+        className={cx(
+          classes.prevDesktop,
+          classes.navDesktop,
+          classes.nav,
+        )}
+        onClick={handleClickPrev}
+      />
+      <div
+        className={classes.slider}
+        style={{ transform: `translateX(-${windowWidth * activeSlide}px)` }}
+      >
         {pages.map((page) => (
           <Page
-            key={page.title}
-            title={page.title}
+            key={page.titles[0]}
+            titles={page.titles}
             subtitles={page.subtitles}
-            image={page.image}
-            href={page.href}
+            texts={page.texts}
+            imageSet={page.imageSet}
+            to={page.to}
           />
         ))}
       </div>
-      <NavigateNextIcon onClick={handleClickNext} className={cx(classes.next, classes.nav)} />
-      <Pagination
-        currentPage={activeSlide}
-        pages={pages}
-        onChangeSlide={handleChangeSlide}
+      <ArrowForwardIosIcon
+        className={cx(
+          classes.nextDesktop,
+          classes.navDesktop,
+          classes.nav,
+        )}
+        onClick={handleClickNext}
       />
+      <div className={classes.paginationContainer}>
+        <Container className={classes.paginationInnerContainer}>
+          <ArrowBackIosIcon
+            className={cx(
+              classes.prevMobile,
+              classes.navMobile,
+              classes.nav,
+            )}
+            onClick={handleClickPrev}
+          />
+          <Pagination
+            currentPage={activeSlide}
+            pages={pages}
+            onChangeSlide={handleChangeSlide}
+          />
+          <ArrowForwardIosIcon
+            className={cx(
+              classes.nextMobile,
+              classes.navMobile,
+              classes.nav,
+            )}
+            onClick={handleClickNext}
+          />
+        </Container>
+      </div>
     </div>
   );
 };

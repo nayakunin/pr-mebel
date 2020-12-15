@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     textDecoration: 'none',
+    cursor: 'pointer',
     color: 'inherit',
     transition: 'color .2s',
     '&:hover': {
@@ -18,10 +20,24 @@ const useStyles = makeStyles((theme) => ({
 export const Link = ({
   to,
   external,
+  asButton,
   children,
   className,
+  onClick,
 }) => {
   const classes = useStyles();
+
+  if (asButton) {
+    return (
+      <Typography
+        component="a"
+        className={cx(classes.root, className)}
+        onClick={onClick}
+      >
+        {children}
+      </Typography>
+    );
+  }
 
   if (external) {
     return (
@@ -39,16 +55,21 @@ Link.propTypes = {
     PropTypes.string,
     PropTypes.object,
     PropTypes.func,
-  ]).isRequired,
+  ]),
   children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,
   ]).isRequired,
   external: PropTypes.bool,
   className: PropTypes.string,
+  asButton: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 Link.defaultProps = {
   external: false,
+  asButton: false,
   className: '',
+  to: '/',
+  onClick: () => ({}),
 };

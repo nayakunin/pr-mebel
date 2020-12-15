@@ -35,8 +35,7 @@ const useStyles = makeStyles((theme) => ({
       animation: '$spin 1s infinite',
     },
     '&:after': {
-      // TODO Добавить цвет в тему
-      border: '10px solid #ccc',
+      border: `10px solid ${theme.palette.grey[400]}`,
     },
   },
 }));

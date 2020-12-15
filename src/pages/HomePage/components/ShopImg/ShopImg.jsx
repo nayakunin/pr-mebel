@@ -6,7 +6,6 @@ const useStyles = makeStyles({
   root: {
     width: '100%',
     paddingTop: '30%',
-    marginTop: '40px',
     backgroundImage: `url('${img}')`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',

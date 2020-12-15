@@ -1,9 +1,42 @@
+@import url('fonts/stylesheet.css');
+
 body {
-    font-family: 'Roboto';
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-body .MuiTypography-root {
-  font-weight: 300;
+/* Disable font boosting */
+/* https://stackoverflow.com/questions/13430897/how-to-override-font-boosting-in-mobile-chrome */
+html * {
+  max-height: 1000000px;
+}
+
+@media (max-width: 960px) {
+  body .MuiTypography-h4 {
+    font-size: 26px;
+  }
+  body .MuiTypography-h6 {
+    font-size: 16px;
+  }
+  body .MuiTypography-body2 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  body .MuiTypography-h4 {
+    font-size: 22px;
+    line-height: 25px;
+  }
+  body .MuiTypography-h5 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  body .MuiTypography-h6 {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  body .MuiTypography-body2 {
+    font-size: 15px;
+  }
 }

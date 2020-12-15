@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.primary.main,
     textAlign: 'center',
     fontSize: '12px',
-    fontWeight: '400',
+    fontWeight: '600',
     textTransform: 'uppercase',
     color: 'white',
     border: `1px solid ${theme.palette.primary.main}`,
@@ -26,10 +26,16 @@ const useStyles = makeStyles((theme) => ({
     '&:focus': {
       outline: 'none',
     },
+    '&:disabled, &:hover&:disabled': {
+      color: theme.palette.primary.main,
+      background: theme.palette.grey[200],
+      cursor: 'auto',
+    },
   },
 }));
 
 const MainButton = ({
+  disabled,
   children,
   onClick,
 }) => {
@@ -38,6 +44,7 @@ const MainButton = ({
   return (
     <button
       type="button"
+      disabled={disabled}
       className={classes.root}
       onClick={onClick}
     >
@@ -47,8 +54,13 @@ const MainButton = ({
 };
 
 MainButton.propTypes = {
+  disabled: PropTypes.bool,
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func.isRequired,
+};
+
+MainButton.defaultProps = {
+  disabled: false,
 };
 
 export default connect(
