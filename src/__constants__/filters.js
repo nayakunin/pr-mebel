@@ -19,7 +19,7 @@ export const filters = {
   ],
   styles: [
     {
-      title: 'Любой',
+      title: 'Все',
       id: 'any',
     },
     {
@@ -41,7 +41,7 @@ export const filters = {
   ],
   doorTypes: [
     {
-      title: 'Любой',
+      title: 'Все',
       id: 'any',
     },
     {

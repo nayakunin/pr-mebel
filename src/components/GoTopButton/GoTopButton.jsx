@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react';
 import cx from 'classnames';
-import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import { makeStyles } from '@material-ui/core/styles';
 import img from './assets/top-btn.svg';
 
@@ -36,6 +35,7 @@ const useStyles = makeStyles({
   },
 });
 
+// TODO: Fix it
 export const GoTopButton = () => {
   const classes = useStyles();
   const [visible, setVisible] = useState(false);
@@ -47,14 +47,6 @@ export const GoTopButton = () => {
       behavior: 'smooth',
     });
   }, []);
-
-  useScrollPosition(({ currPos }) => {
-    if (currPos.y < -500) {
-      setVisible(true);
-    } else {
-      setVisible(false);
-    }
-  }, [], false, false, 300);
 
   return (
     <div

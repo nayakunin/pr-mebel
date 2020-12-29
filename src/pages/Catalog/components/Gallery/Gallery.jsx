@@ -1,6 +1,5 @@
 import React, { useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
 import {
   Container,
   Grid,
@@ -12,13 +11,6 @@ import {
   Loader,
 } from './components';
 
-const useStyles = makeStyles({
-  root: {
-    marginTop: '40px',
-    marginBottom: '80px',
-  },
-});
-
 export const Gallery = ({
   items,
   isLoading,
@@ -26,7 +18,6 @@ export const Gallery = ({
   page,
   onCardClick,
 }) => {
-  const classes = useStyles();
   const dispatch = useDispatch();
 
   const observer = useRef();
@@ -48,7 +39,7 @@ export const Gallery = ({
   }, [isLoading, hasMore, dispatch, page]);
 
   return (
-    <Container className={classes.root}>
+    <Container>
       <Grid container spacing={3}>
         {items.map((item, i) => {
           if (i === items.length - 1) {

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { makeStyles } from '@material-ui/core/styles';
 import { useLocation } from 'react-router-dom';
 import QueryString from 'query-string';
 import {
@@ -29,7 +30,18 @@ import {
 } from './components';
 import { catalogSelector } from './selectors';
 
+const useStyles = makeStyles(() => ({
+  filterSection: {
+    marginTop: '60px',
+  },
+  gallerySection: {
+    marginTop: '20px',
+    marginBottom: '60px',
+  },
+}));
+
 export const Catalog = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const {
     items,
@@ -49,13 +61,15 @@ export const Catalog = () => {
     dispatch(fetchCatalog());
   }, [dispatch]);
 
-  // Поменять значение одного из селектов
+  // Поменять значение одного из параметра фильтра
   const handleChangeFilter = useCallback(({ name, value }) => {
     dispatch(changeFilter({
       name,
       value,
     }));
-  }, [dispatch]);
+
+    handleApplyFilter();
+  }, [dispatch, handleApplyFilter]);
 
   // Открыть модальное окно с итемом
   const handleCardClick = useCallback((itemId) => {
@@ -103,19 +117,22 @@ export const Catalog = () => {
       <Header />
       <main>
         <Lead />
-        <Filters
-          filter={filter}
-          options={filters}
-          onApplyFilter={handleApplyFilter}
-          onChange={handleChangeFilter}
-        />
-        <Gallery
-          items={items}
-          isLoading={isLoading}
-          hasMore={hasMore}
-          page={page}
-          onCardClick={handleCardClick}
-        />
+        <section className={classes.filterSection}>
+          <Filters
+            filter={filter}
+            options={filters}
+            onChange={handleChangeFilter}
+          />
+        </section>
+        <section className={classes.gallerySection}>
+          <Gallery
+            items={items}
+            isLoading={isLoading}
+            hasMore={hasMore}
+            page={page}
+            onCardClick={handleCardClick}
+          />
+        </section>
         <Questions />
       </main>
       {isCardPopupOpen && (
