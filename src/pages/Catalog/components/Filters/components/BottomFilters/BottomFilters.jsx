@@ -126,6 +126,8 @@ export const BottomFilters = ({
 
               return (
                 <Typography
+                  variant="body2"
+                  component="span"
                   className={cx(classes.option, {
                     [classes.selectedOption]: filter.doorType === option.id,
                   })}

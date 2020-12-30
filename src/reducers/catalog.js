@@ -13,8 +13,6 @@ import {
 } from 'actions';
 import { filters } from '__constants__';
 
-console.log(filters);
-
 const initialState = {
   items: [],
   isLoading: false,

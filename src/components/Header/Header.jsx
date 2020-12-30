@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from 'assets/logo_header.svg';
 import { ReactComponent as Fb } from 'assets/fb.svg';
@@ -92,8 +92,10 @@ const useStyles = makeStyles((theme) => ({
   },
   dropdown: {
     position: 'relative',
-    top: '3px',
-    color: 'inherit',
+    width: '11px',
+    top: '-1px',
+    color: theme.palette.primary.main,
+    transform: 'rotate(-90deg)',
     fontSize: 'inherit',
   },
   menu__dropdown: {
@@ -204,7 +206,7 @@ export const Header = () => {
                     align="center"
                   >
                     Каталог&nbsp;
-                    <ArrowDropDownIcon className={classes.dropdown} />
+                    <ArrowBackIosIcon className={classes.dropdown} />
                   </Typography>
                   {dropdownVisible && (
                     <ul
