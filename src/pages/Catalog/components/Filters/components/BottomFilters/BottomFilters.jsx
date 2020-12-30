@@ -27,10 +27,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const BottomFilters = ({
-  styleOptions,
-  selectedStyle,
-  doorTypeOptions,
-  selectedDoorType,
+  filter,
+  options,
   onChange,
 }) => {
   const classes = useStyles();
@@ -44,112 +42,125 @@ export const BottomFilters = ({
 
   return (
     <Grid container spacing={2}>
-      <Grid item container xs={12} sm={6}>
-        <Grid item container xs={12} justify="center">
-          <Typography variant="h6" className={classes.subtitle}>
-            Стиль
-          </Typography>
-        </Grid>
-        <Grid item container xs={12} justify="center" className={classes.optionContainer}>
-          {styleOptions.map((option, i) => {
-            if (i !== styleOptions.length - 1) {
-              return (
-                <>
-                  <Typography
-                    variant="body2"
-                    component="span"
-                    className={cx(classes.option, {
-                      [classes.selectedOption]: selectedStyle === option.id,
-                    })}
-                    onClick={handleClick(option.id, 'style')}
-                  >
-                    {option.title}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    component="span"
-                    className={classes.dash}
-                  >
-                    -
-                  </Typography>
-                </>
-              );
-            }
+      {![options.sections[2].id, options.sections[3].id].includes(filter.section) && (
+        <Grid item container xs={12} sm={filter.section === options.sections[0].id ? 6 : 12}>
+          <Grid item container xs={12} justify="center">
+            <Typography variant="h6" className={classes.subtitle}>
+              Стиль
+            </Typography>
+          </Grid>
+          <Grid item container xs={12} justify="center" className={classes.optionContainer}>
+            {options.styles.map((option, i) => {
+              if (i !== options.styles.length - 1) {
+                return (
+                  <>
+                    <Typography
+                      variant="body2"
+                      component="span"
+                      className={cx(classes.option, {
+                        [classes.selectedOption]: filter.style === option.id,
+                      })}
+                      onClick={handleClick(option.id, 'style')}
+                    >
+                      {option.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      component="span"
+                      className={classes.dash}
+                    >
+                      -
+                    </Typography>
+                  </>
+                );
+              }
 
-            return (
-              <Typography
-                variant="body2"
-                component="span"
-                className={cx(classes.option, {
-                  [classes.selectedOption]: selectedStyle === option.id,
-                })}
-                onClick={handleClick(option.id, 'style')}
-              >
-                {option.title}
-              </Typography>
-            );
-          })}
-        </Grid>
-      </Grid>
-      <Grid item container xs={12} sm={6}>
-        <Grid item container xs={12} justify="center">
-          <Typography variant="h6" className={classes.subtitle}>
-            Тип открывания дверей
-          </Typography>
-        </Grid>
-        <Grid item container xs={12} justify="center" className={classes.optionContainer}>
-          {doorTypeOptions.map((option, i) => {
-            if (i !== doorTypeOptions.length - 1) {
               return (
-                <>
-                  <Typography
-                    variant="body2"
-                    component="span"
-                    className={cx(classes.option, {
-                      [classes.selectedOption]: selectedDoorType === option.id,
-                    })}
-                    onClick={handleClick(option.id, 'doorType')}
-                  >
-                    {option.title}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    component="span"
-                    className={classes.dash}
-                  >
-                    -
-                  </Typography>
-                </>
+                <Typography
+                  variant="body2"
+                  component="span"
+                  className={cx(classes.option, {
+                    [classes.selectedOption]: filter.style === option.id,
+                  })}
+                  onClick={handleClick(option.id, 'style')}
+                >
+                  {option.title}
+                </Typography>
               );
-            }
-
-            return (
-              <Typography
-                className={cx(classes.option, {
-                  [classes.selectedOption]: selectedDoorType === option.id,
-                })}
-                onClick={handleClick(option.id, 'doorType')}
-              >
-                {option.title}
-              </Typography>
-            );
-          })}
+            })}
+          </Grid>
         </Grid>
-      </Grid>
+      )}
+      {filter.section === options.sections[0].id && (
+        <Grid item container xs={12} sm={6}>
+          <Grid item container xs={12} justify="center">
+            <Typography variant="h6" className={classes.subtitle}>
+              Тип открывания дверей
+            </Typography>
+          </Grid>
+          <Grid item container xs={12} justify="center" className={classes.optionContainer}>
+            {options.doorTypes.map((option, i) => {
+              if (i !== options.doorTypes.length - 1) {
+                return (
+                  <>
+                    <Typography
+                      variant="body2"
+                      component="span"
+                      className={cx(classes.option, {
+                        [classes.selectedOption]: filter.doorType === option.id,
+                      })}
+                      onClick={handleClick(option.id, 'doorType')}
+                    >
+                      {option.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      component="span"
+                      className={classes.dash}
+                    >
+                      -
+                    </Typography>
+                  </>
+                );
+              }
+
+              return (
+                <Typography
+                  className={cx(classes.option, {
+                    [classes.selectedOption]: filter.doorType === option.id,
+                  })}
+                  onClick={handleClick(option.id, 'doorType')}
+                >
+                  {option.title}
+                </Typography>
+              );
+            })}
+          </Grid>
+        </Grid>
+      )}
     </Grid>
   );
 };
 
 BottomFilters.propTypes = {
-  selectedStyle: PropTypes.string.isRequired,
-  styleOptions: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-  })).isRequired,
-  selectedDoorType: PropTypes.string.isRequired,
-  doorTypeOptions: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-  })).isRequired,
+  options: PropTypes.shape({
+    sections: PropTypes.arrayOf(PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+    })),
+    styles: PropTypes.arrayOf(PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+    })),
+    doorTypes: PropTypes.arrayOf(PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+    })),
+  }).isRequired,
+  filter: PropTypes.shape({
+    section: PropTypes.string.isRequired,
+    style: PropTypes.string.isRequired,
+    doorType: PropTypes.string.isRequired,
+  }).isRequired,
   onChange: PropTypes.func.isRequired,
 };

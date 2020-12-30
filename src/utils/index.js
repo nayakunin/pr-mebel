@@ -1,3 +1,3 @@
 export * from './getFileDeclintaion';
-export * from './getCollectionName';
 export * from './api';
+export * from './retrieveItemsFromResponse';

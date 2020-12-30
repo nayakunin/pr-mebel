@@ -66,10 +66,8 @@ export const Filters = ({
       </section>
       <section className={classes.bottomFiltersSection}>
         <BottomFilters
-          styleOptions={options.styles}
-          selectedStyle={filter.style}
-          doorTypeOptions={options.doorTypes}
-          selectedDoorType={filter.doorType}
+          filter={filter}
+          options={options}
           onChange={onChange}
         />
       </section>

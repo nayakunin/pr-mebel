@@ -1,15 +1,23 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
   Container,
   Grid,
 } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
 import { changePage, fetchCatalog } from 'actions';
+import { MainButton } from 'components';
 import {
   Card,
   Loader,
 } from './components';
+
+const useStyles = makeStyles(() => ({
+  buttonContainer: {
+    marginTop: '60px',
+  },
+}));
 
 export const Gallery = ({
   items,
@@ -18,57 +26,44 @@ export const Gallery = ({
   page,
   onCardClick,
 }) => {
+  const classes = useStyles();
   const dispatch = useDispatch();
 
-  const observer = useRef();
-
-  const observedNodeRef = useCallback((node) => {
-    if (isLoading) return;
-    if (observer.current) observer.current.disconnect();
-
-    const handleUpdate = (entries) => {
-      if (entries[0].isIntersecting && hasMore) {
-        dispatch(changePage(page + 1));
-        dispatch(fetchCatalog());
-      }
-    };
-
-    observer.current = new IntersectionObserver(handleUpdate);
-
-    if (node) observer.current.observe(node);
+  const handleLoadMore = useCallback(() => {
+    if (!isLoading && hasMore) {
+      dispatch(changePage(page + 1));
+      dispatch(fetchCatalog());
+    }
   }, [isLoading, hasMore, dispatch, page]);
 
   return (
     <Container>
       <Grid container spacing={3}>
-        {items.map((item, i) => {
-          if (i === items.length - 1) {
-            return (
-              <Grid item xs={12} sm={6} md={4} key={item.id} ref={observedNodeRef}>
-                <Card
-                  imageUrlMin={item.imageMinified.url}
-                  collection={item.collection}
-                  currentItemId={i}
-                  onClick={onCardClick}
-                />
-              </Grid>
-            );
-          }
-          return (
-            <Grid item xs={12} sm={6} md={4} key={item.id}>
-              <Card
-                imageUrlMin={item.imageMinified.url}
-                collection={item.collection}
-                currentItemId={i}
-                onClick={onCardClick}
-              />
-            </Grid>
-          );
-        })}
+        {items.map((item, i) => (
+          <Grid item xs={12} sm={6} md={4} key={item.id}>
+            <Card
+              imageUrlMin={item.imageMinified.url}
+              collection={item.collection}
+              currentItemId={i}
+              onClick={onCardClick}
+            />
+          </Grid>
+        ))}
         {isLoading && (
           <Loader />
         )}
       </Grid>
+      {hasMore && (
+        <Grid container justify="center" className={classes.buttonContainer}>
+          <Grid item xs={6}>
+            <MainButton
+              onClick={handleLoadMore}
+            >
+              Показать еще
+            </MainButton>
+          </Grid>
+        </Grid>
+      )}
     </Container>
   );
 };

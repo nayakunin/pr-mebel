@@ -2,11 +2,11 @@ export const filters = {
   sections: [
     {
       title: 'Шкафы',
-      id: 'cupboards',
+      id: 'cupboard',
     },
     {
       title: 'Гардеробные',
-      id: 'wardrobes',
+      id: 'wardrobe',
     },
     {
       title: 'Аксессуары',

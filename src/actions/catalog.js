@@ -1,5 +1,5 @@
 import * as api from 'utils';
-import { getCollectionName } from '../utils';
+import { retrieveItemsFromResponse } from '../utils';
 
 export const FETCH_CATALOG_REQUEST = 'FETCH_CATALOG_REQUEST';
 export const FETCH_CATALOG_SUCCESS = 'FETCH_CATALOG_SUCCESS';
@@ -25,7 +25,7 @@ export const fetchCatalog = () => async (dispatch, getState) => {
 
     dispatch({
       type: FETCH_CATALOG_SUCCESS,
-      payload: response.data[getCollectionName(filter.section)],
+      payload: retrieveItemsFromResponse(response, filter),
     });
   } catch (error) {
     console.log(error);
