@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   wrapper: {
+    borderRadius: '5px',
     height: '27px',
     padding: '11px 48px 10px',
     display: 'inline-flex',
@@ -25,9 +26,17 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'default',
     color: theme.palette.primary.main,
   },
+  [theme.breakpoints.down('sm')]: {
+    wrapper: {
+      padding: '8px 15px 7px',
+    },
+    option: {
+      padding: '0 10px',
+      fontSize: '14px',
+    },
+  },
 }));
 
-// TODO Доверстать селект секции
 export const SectionPicker = ({ options, value, onChange }) => {
   const classes = useStyles();
 

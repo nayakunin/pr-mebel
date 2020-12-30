@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'white',
     boxShadow: '0 10px 20px rgba(0,0,0,.1)',
     transition: '.1s height',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('md')]: {
       height: '50px',
     },
   },

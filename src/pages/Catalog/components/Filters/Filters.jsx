@@ -28,6 +28,14 @@ const useStyles = makeStyles((theme) => ({
   bottomFiltersSection: {
     marginTop: '20px',
   },
+  [theme.breakpoints.down('sm')]: {
+    leadTextSection: {
+      marginTop: '30px',
+    },
+    sectionPickerSection: {
+      marginTop: '20px',
+    },
+  },
 }));
 
 export const Filters = ({

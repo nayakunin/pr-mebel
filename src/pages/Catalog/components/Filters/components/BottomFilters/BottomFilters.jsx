@@ -24,6 +24,14 @@ const useStyles = makeStyles((theme) => ({
   dash: {
     margin: '0 10px',
   },
+  [theme.breakpoints.down('md')]: {
+    dash: {
+      display: 'none',
+    },
+    option: {
+      padding: '0 7px',
+    },
+  },
 }));
 
 export const BottomFilters = ({
