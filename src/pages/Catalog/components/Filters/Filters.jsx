@@ -36,6 +36,11 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '20px',
     },
   },
+  [theme.breakpoints.down('xs')]: {
+    secondTitle: {
+      marginTop: '20px',
+    },
+  },
 }));
 
 export const Filters = ({

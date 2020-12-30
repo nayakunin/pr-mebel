@@ -55,10 +55,10 @@ export const theme = createMuiTheme({
         fontFamily: 'Gilroy, sans-serif',
       },
       body1: {
-        fontFamily: 'Gilroy, sans-serif',
         fontSize: '18px',
         lineHeight: '1.4',
         letterSpacing: 'normal',
+        fontFamily: 'Gilroy, sans-serif',
       },
       body2: {
         fontSize: '16px',

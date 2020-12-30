@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
   },
   wrapper: {
     borderRadius: '5px',
-    height: '27px',
     padding: '11px 48px 10px',
     display: 'inline-flex',
     alignItems: 'center',
@@ -19,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
   },
   option: {
     cursor: 'pointer',
-    lineHeight: '1',
     padding: '0 20px',
+    textTransform: 'uppercase',
   },
   selectedOption: {
     cursor: 'default',
@@ -29,10 +28,17 @@ const useStyles = makeStyles((theme) => ({
   [theme.breakpoints.down('sm')]: {
     wrapper: {
       padding: '8px 15px 7px',
+      background: 'none',
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    dash: {
+      display: 'none',
     },
     option: {
-      padding: '0 10px',
+      padding: '3px 10px',
       fontSize: '14px',
+      fontWeight: '600',
     },
   },
 }));
@@ -55,7 +61,7 @@ export const SectionPicker = ({ options, value, onChange }) => {
             return (
               <>
                 <Typography
-                  variant="h6"
+                  variant="body1"
                   className={cx(classes.option, {
                     [classes.selectedOption]: value === section.id,
                   })}
@@ -70,7 +76,7 @@ export const SectionPicker = ({ options, value, onChange }) => {
 
           return (
             <Typography
-              variant="h6"
+              variant="body1"
               className={cx(classes.option, {
                 [classes.selectedOption]: value === section.id,
               })}

@@ -30,13 +30,18 @@ import {
 } from './components';
 import { catalogSelector } from './selectors';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   filterSection: {
     marginTop: '60px',
   },
   gallerySection: {
     marginTop: '20px',
     marginBottom: '60px',
+  },
+  [theme.breakpoints.down('md')]: {
+    filterSection: {
+      marginTop: '40px',
+    },
   },
 }));
 
@@ -48,7 +53,6 @@ export const Catalog = () => {
     hasMore,
     isLoading,
     page,
-    // isError,
     filter,
     currentItemId,
     isCardPopupOpen,

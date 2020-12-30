@@ -7,6 +7,7 @@ import { Typography, Grid } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   option: {
     display: 'inline-block',
+    fontSize: '14px',
     color: theme.palette.grey[500],
     cursor: 'pointer',
   },
@@ -17,8 +18,9 @@ const useStyles = makeStyles((theme) => ({
   subtitle: {
     fontSize: '14px',
     fontWeight: '600',
+    textTransform: 'uppercase',
   },
-  optionContainer: {
+  optionsContainer: {
     marginTop: '10px',
   },
   dash: {
@@ -30,6 +32,11 @@ const useStyles = makeStyles((theme) => ({
     },
     option: {
       padding: '0 7px',
+    },
+  },
+  [theme.breakpoints.down('xs')]: {
+    secondOptionsGroup: {
+      marginTop: '20px',
     },
   },
 }));
@@ -49,15 +56,15 @@ export const BottomFilters = ({
   }, [onChange]);
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} alignItems="flex-start">
       {![options.sections[2].id, options.sections[3].id].includes(filter.section) && (
         <Grid item container xs={12} sm={filter.section === options.sections[0].id ? 6 : 12}>
-          <Grid item container xs={12} justify="center">
-            <Typography variant="h6" className={classes.subtitle}>
+          <Grid item container xs={12} justify="center" className={classes.firstOptionsGroup}>
+            <Typography variant="body1" className={classes.subtitle}>
               Стиль
             </Typography>
           </Grid>
-          <Grid item container xs={12} justify="center" className={classes.optionContainer}>
+          <Grid item container xs={12} justify="center" className={classes.optionsContainer}>
             {options.styles.map((option, i) => {
               if (i !== options.styles.length - 1) {
                 return (
@@ -101,12 +108,12 @@ export const BottomFilters = ({
       )}
       {filter.section === options.sections[0].id && (
         <Grid item container xs={12} sm={6}>
-          <Grid item container xs={12} justify="center">
-            <Typography variant="h6" className={classes.subtitle}>
+          <Grid item container xs={12} justify="center" className={classes.secondOptionsGroup}>
+            <Typography variant="body1" className={classes.subtitle}>
               Тип открывания дверей
             </Typography>
           </Grid>
-          <Grid item container xs={12} justify="center" className={classes.optionContainer}>
+          <Grid item container xs={12} justify="center" className={classes.optionsContainer}>
             {options.doorTypes.map((option, i) => {
               if (i !== options.doorTypes.length - 1) {
                 return (

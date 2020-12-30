@@ -18,6 +18,12 @@ const useStyles = makeStyles((theme) => ({
       background: theme.palette.primary.main,
     },
   },
+  [theme.breakpoints.down('sm')]: {
+    root: {
+      fontSize: '22px',
+      lineHeight: '25px',
+    },
+  },
 }));
 
 export const BlockTitle = ({
