@@ -11,7 +11,6 @@ import cx from 'classnames';
 import {
   MainButton,
   LoadingBackground,
-  LazyImage,
 } from 'components';
 import { ReactComponent as Fb } from 'assets/fb.svg';
 import { ReactComponent as Inst } from 'assets/in.svg';
@@ -117,15 +116,13 @@ export const CardPopup = ({
   onClickBack,
   onClickForward,
   onDownloadMoreCards,
+  onFullScreenPopupOpen,
 }) => {
   const classes = useStyles();
-  // const theme = useTheme();
 
-  // const smDown = useMediaQuery(theme.breakpoints.down('sm'));
-
-  // const handleImageClick = useCallback(() => {
-  //   onImageClick(currentItemId);
-  // });
+  const handleImageClick = useCallback(() => {
+    onFullScreenPopupOpen(currentItemId);
+  }, [onFullScreenPopupOpen, currentItemId]);
 
   const handleClickBack = useCallback(() => {
     onClickBack();
@@ -181,10 +178,11 @@ export const CardPopup = ({
                 </>
               )}
               {/* TODO Избавиться от LazyImage */}
-              <LazyImage
+              <img
                 className={cx(classes.img, classes.imgCenter)}
                 src={items[currentItemId].imageMedium.url}
                 alt="Картинка в модальном окне"
+                onClick={handleImageClick}
               />
               {currentItemId < items.length - 1 && (
                 <>
@@ -280,4 +278,5 @@ CardPopup.propTypes = {
   onClickBack: PropTypes.func.isRequired,
   onClickForward: PropTypes.func.isRequired,
   onDownloadMoreCards: PropTypes.func.isRequired,
+  onFullScreenPopupOpen: PropTypes.func.isRequired,
 };

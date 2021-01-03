@@ -64,7 +64,7 @@ export const OldFilters = ({
   const styleSelectDisabled = filter.section === 'accessories'
     || filter.section === 'lightingSystems';
 
-  const doorTypeSelectDisabled = filter.section !== 'cupboards';
+  const doorTypeSelectDisabled = filter.section !== 'cupboard';
 
   const handleChange = useCallback((event) => {
     const { name, value } = event.target;

@@ -10,6 +10,20 @@ const useStyles = makeStyles({
   img: {
     width: '100%',
     height: '100%',
+    opacity: '1',
+    objectFit: 'cover',
+    transition: 'opacity .5s ease-out',
+  },
+  paperRoot: {
+    display: 'flex',
+    overflow: 'hidden',
+    position: 'relative',
+    minWidth: '100px',
+    background: 'rgba(0, 0, 0, 0)',
+    boxShadow: 'none',
+    minHeight: '100px',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
@@ -25,7 +39,11 @@ export const FullScreenPopup = ({
       open={isOpen}
       onClose={onClose}
       fullWidth
+      maxWidth="lg"
       className={classes.root}
+      PaperProps={{
+        className: classes.paperRoot,
+      }}
     >
       <img className={classes.img} src={img} alt="Товар" />
     </Dialog>

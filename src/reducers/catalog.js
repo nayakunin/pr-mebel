@@ -10,6 +10,8 @@ import {
   CLOSE_CARD_POPUP,
   GO_TO_NEXT_CARD,
   GO_TO_PREV_CARD,
+  OPEN_FULL_SCREEN_POPUP,
+  CLOSE_FULL_SCREEN_POPUP,
 } from 'actions';
 import { filters } from '__constants__';
 
@@ -25,6 +27,7 @@ const initialState = {
   page: 0,
   currentItemId: 0,
   isCardPopupOpen: false,
+  isFullScreenPopupOpen: false,
 };
 
 export const catalog = (state = initialState, action) => {
@@ -135,6 +138,19 @@ export const catalog = (state = initialState, action) => {
       return {
         ...state,
         currentItemId: state.currentItemId - 1,
+      };
+    }
+    case OPEN_FULL_SCREEN_POPUP: {
+      return {
+        ...state,
+        currentItemId: action.payload,
+        isFullScreenPopupOpen: true,
+      };
+    }
+    case CLOSE_FULL_SCREEN_POPUP: {
+      return {
+        ...state,
+        isFullScreenPopupOpen: false,
       };
     }
     default: {

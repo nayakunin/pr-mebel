@@ -214,12 +214,12 @@ export const Header = () => {
                     >
                       <li>
                         <Typography className={classes.text} gutterBottom>
-                          <Link to="/catalog?section=cupboards">Шкафы</Link>
+                          <Link to="/catalog?section=cupboard">Шкафы</Link>
                         </Typography>
                       </li>
                       <li>
                         <Typography className={classes.text} gutterBottom>
-                          <Link to="/catalog?section=wardrobes">Гардеробные</Link>
+                          <Link to="/catalog?section=wardrobe">Гардеробные</Link>
                         </Typography>
                       </li>
                       <li>
@@ -335,12 +335,12 @@ export const Header = () => {
               <Grid item xs={12} container spacing={1} direction="column" style={{ paddingLeft: '10px' }}>
                 <Grid item xs>
                   <Typography>
-                    <Link to="/catalog?section=cupboards">Шкафы</Link>
+                    <Link to="/catalog?section=cupboard">Шкафы</Link>
                   </Typography>
                 </Grid>
                 <Grid item xs>
                   <Typography>
-                    <Link to="/catalog?section=wardrobes">Гардеробные</Link>
+                    <Link to="/catalog?section=wardrobe">Гардеробные</Link>
                   </Typography>
                 </Grid>
                 <Grid item xs>

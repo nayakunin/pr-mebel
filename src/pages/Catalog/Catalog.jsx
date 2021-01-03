@@ -19,6 +19,8 @@ import {
   goToNextCard,
   goToPrevCard,
   changePage,
+  openFullScreenPopup,
+  closeFullScreenPopup,
 } from 'actions';
 import { filters } from '__constants__';
 import {
@@ -27,6 +29,7 @@ import {
   Gallery,
   Lead,
   Questions,
+  FullScreenPopup,
 } from './components';
 import { catalogSelector } from './selectors';
 
@@ -56,6 +59,7 @@ export const Catalog = () => {
     filter,
     currentItemId,
     isCardPopupOpen,
+    isFullScreenPopupOpen,
   } = useSelector(catalogSelector);
   const location = useLocation();
 
@@ -64,6 +68,16 @@ export const Catalog = () => {
     dispatch(resetCatalog());
     dispatch(fetchCatalog());
   }, [dispatch]);
+
+  // Открыть картинку на полный экран
+  const handleOpenFullScreenPopup = useCallback((itemId) => {
+    dispatch(openFullScreenPopup(itemId));
+  }, [dispatch, openFullScreenPopup]);
+
+  // Закрыть картинку, открытую на полный экран
+  const handleCloseFullScreenPopup = useCallback((itemId) => {
+    dispatch(closeFullScreenPopup(itemId));
+  }, [dispatch, closeFullScreenPopup]);
 
   // Поменять значение одного из параметра фильтра
   const handleChangeFilter = useCallback(({ name, value }) => {
@@ -148,6 +162,14 @@ export const Catalog = () => {
           onClickBack={handleGoToPevCard}
           onClickForward={handleGoToNextCard}
           onDownloadMoreCards={handleDownloadMoreCards}
+          onFullScreenPopupOpen={handleOpenFullScreenPopup}
+        />
+      )}
+      {isFullScreenPopupOpen && (
+        <FullScreenPopup
+          img={items[currentItemId].imageFull.url}
+          isOpen={isFullScreenPopupOpen}
+          onClose={handleCloseFullScreenPopup}
         />
       )}
       <Footer />
