@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import { Loader } from 'components';
 import { Dialog } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -33,6 +34,15 @@ export const FullScreenPopup = ({
   onClose,
 }) => {
   const classes = useStyles();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSetLoaded = useCallback(() => {
+    setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
+  }, [img]);
 
   return (
     <Dialog
@@ -45,7 +55,17 @@ export const FullScreenPopup = ({
         className: classes.paperRoot,
       }}
     >
-      <img className={classes.img} src={img} alt="Товар" />
+      {isLoading && (
+        <div>
+          <Loader />
+        </div>
+      )}
+      <img
+        className={classes.img}
+        src={img}
+        alt="Товар"
+        onLoad={handleSetLoaded}
+      />
     </Dialog>
   );
 };
