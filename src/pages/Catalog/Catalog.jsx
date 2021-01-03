@@ -134,7 +134,7 @@ export const Catalog = () => {
     <>
       <Header />
       <main>
-        <Lead />
+        <Lead sectionId={filter.section} />
         <section className={classes.filterSection}>
           <Filters
             filter={filter}

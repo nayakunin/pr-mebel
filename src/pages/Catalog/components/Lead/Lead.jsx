@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import lead from './assets/lead.jpg';
+import { images } from './config';
 
 const useStyles = makeStyles({
   root: {
@@ -21,10 +22,14 @@ const useStyles = makeStyles({
   },
 });
 
-export const Lead = () => {
+export const Lead = ({ sectionId }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root} style={{ backgroundImage: `url("${lead}")` }} />
+    <div className={classes.root} style={{ backgroundImage: `url("${images[sectionId]}")` }} />
   );
+};
+
+Lead.propTypes = {
+  sectionId: PropTypes.string.isRequired,
 };

@@ -1,4 +1,9 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  useRef,
+} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
@@ -10,7 +15,7 @@ import { Page, Pagination } from './components';
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
-    width: '100vw',
+    width: '100%',
     height: '100vh',
     minHeight: '700px',
     overflow: 'hidden',
@@ -31,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paginationInnerContainer: {
+    maxWidth: '1140px',
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -78,9 +84,10 @@ const useStyles = makeStyles((theme) => ({
 
 export const Carousel = () => {
   const classes = useStyles();
+  const rootRef = useRef(null);
 
   const [activeSlide, setActiveSlide] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   const handleClickPrev = useCallback(() => {
     setActiveSlide((prev) => {
@@ -108,24 +115,28 @@ export const Carousel = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+      setWindowWidth(rootRef.current ? rootRef.current.offsetWidth : 0);
     };
 
     const handleRotate = () => {
       handleClickNext();
     };
 
-    const interval = setInterval(() => handleRotate(), 199905000);
+    if (rootRef.current) {
+      handleResize();
+    }
+
+    const interval = setInterval(() => handleRotate(), 7000);
 
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
       clearInterval(interval);
     };
-  }, [handleClickNext]);
+  }, [handleClickNext, rootRef]);
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} ref={rootRef}>
       <ArrowBackIosIcon
         className={cx(
           classes.prevDesktop,
