@@ -23,7 +23,7 @@ const initialState = {
     style: filters.styles[0].id,
     doorType: filters.doorTypes[0].id,
   },
-  hasMore: 0,
+  hasMore: true,
   page: 0,
   currentItemId: 0,
   isCardPopupOpen: false,
@@ -40,11 +40,13 @@ export const catalog = (state = initialState, action) => {
     }
     case FETCH_CATALOG_SUCCESS: {
       const { items, total } = action.payload;
+      const newItems = [...state.items, ...items];
+
       return {
         ...state,
-        items: [...state.items, ...items],
+        items: newItems,
         isLoading: false,
-        hasMore: total,
+        hasMore: total > newItems.length,
       };
     }
     case FETCH_CATALOG_FAILURE: {
@@ -52,7 +54,7 @@ export const catalog = (state = initialState, action) => {
         ...state,
         items: [],
         isLoading: false,
-        hasMore: 0,
+        hasMore: false,
       };
     }
     case CHANGE_FILTER: {
@@ -101,7 +103,7 @@ export const catalog = (state = initialState, action) => {
         ...state,
         items: [],
         page: 0,
-        hasMore: 0,
+        hasMore: true,
       };
     }
     case RESET_FILTERS: {
