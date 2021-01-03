@@ -11,6 +11,7 @@ import cx from 'classnames';
 import {
   MainButton,
   LoadingBackground,
+  Loader,
 } from 'components';
 import { ReactComponent as Fb } from 'assets/fb.svg';
 import { ReactComponent as Inst } from 'assets/in.svg';
@@ -92,6 +93,18 @@ const useStyles = makeStyles((theme) => ({
   text: {
     fontSize: '16px',
   },
+  loaderContainer: {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: '100',
+    width: '100%',
+    height: '100%',
+    background: 'rgba(0, 0, 0, .3)',
+  },
   [theme.breakpoints.down('sm')]: {
     paperRoot: {
       height: '100%',
@@ -112,6 +125,7 @@ export const CardPopup = ({
   items,
   currentItemId,
   isOpen,
+  isLoading,
   onClose,
   onClickBack,
   onClickForward,
@@ -133,10 +147,10 @@ export const CardPopup = ({
   }, [onClickForward]);
 
   useEffect(() => {
-    if (items.length - 5 === currentItemId) {
+    if (!isLoading && items.length - 5 === currentItemId) {
       onDownloadMoreCards();
     }
-  }, [items.length, currentItemId, onDownloadMoreCards]);
+  }, [items.length, currentItemId, isLoading, onDownloadMoreCards]);
 
   return (
     <Dialog
@@ -151,16 +165,19 @@ export const CardPopup = ({
     >
       <Grid container className={classes.container}>
         <Grid item xs={12} md={7} className={classes.gridItem}>
+          {isLoading && (
+            <div className={classes.loaderContainer}>
+              <Loader />
+            </div>
+          )}
           <LoadingBackground>
             <div className={classes.imgContainer}>
               {currentItemId > 1 && (
-
                 <img
                   className={cx(classes.img, classes.imgPrev2)}
                   src={items[currentItemId - 2].imageMedium.url}
                   alt="Картинка в модальном окне"
                 />
-
               )}
               {currentItemId > 0 && (
                 <>
@@ -265,6 +282,7 @@ export const CardPopup = ({
 
 CardPopup.propTypes = {
   isOpen: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   items: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     collection: PropTypes.string.isRequired,

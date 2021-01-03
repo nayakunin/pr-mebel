@@ -72,12 +72,12 @@ export const Catalog = () => {
   // Открыть картинку на полный экран
   const handleOpenFullScreenPopup = useCallback((itemId) => {
     dispatch(openFullScreenPopup(itemId));
-  }, [dispatch, openFullScreenPopup]);
+  }, [dispatch]);
 
   // Закрыть картинку, открытую на полный экран
-  const handleCloseFullScreenPopup = useCallback((itemId) => {
-    dispatch(closeFullScreenPopup(itemId));
-  }, [dispatch, closeFullScreenPopup]);
+  const handleCloseFullScreenPopup = useCallback(() => {
+    dispatch(closeFullScreenPopup());
+  }, [dispatch]);
 
   // Поменять значение одного из параметра фильтра
   const handleChangeFilter = useCallback(({ name, value }) => {
@@ -105,7 +105,7 @@ export const Catalog = () => {
   }, [dispatch]);
 
   // Открыть предыдущий итем внутри модального окна итемов
-  const handleGoToPevCard = useCallback(() => {
+  const handleGoToPrevCard = useCallback(() => {
     dispatch(goToPrevCard());
   }, [dispatch]);
 
@@ -158,8 +158,9 @@ export const Catalog = () => {
           items={items}
           currentItemId={currentItemId}
           isOpen={isCardPopupOpen}
+          isLoading={isLoading}
           onClose={handleCloseCardPopup}
-          onClickBack={handleGoToPevCard}
+          onClickBack={handleGoToPrevCard}
           onClickForward={handleGoToNextCard}
           onDownloadMoreCards={handleDownloadMoreCards}
           onFullScreenPopupOpen={handleOpenFullScreenPopup}

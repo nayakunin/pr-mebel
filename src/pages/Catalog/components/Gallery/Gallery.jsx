@@ -7,11 +7,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
 import { changePage, fetchCatalog } from 'actions';
-import { MainButton } from 'components';
-import {
-  Card,
-  Loader,
-} from './components';
+import { MainButton, Loader } from 'components';
+import { Card } from './components';
 
 const useStyles = makeStyles(() => ({
   buttonContainer: {
