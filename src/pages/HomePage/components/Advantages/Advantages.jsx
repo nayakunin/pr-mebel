@@ -33,15 +33,15 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: '30px',
     listStyle: 'none',
   },
-  list__text: {
+  listText: {
     fontSize: '16px',
     lineHeight: '1.2',
   },
-  'list-item': {
+  listItem: {
     position: 'relative',
     marginBottom: '4px',
   },
-  list__container: {
+  listContainer: {
     minHeight: '175px',
   },
   check: {
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     top: '-3px',
     color: theme.palette.primary.main,
   },
-  img__container: {
+  imgContainer: {
     position: 'relative',
     margin: 'auto',
   },
@@ -64,14 +64,19 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
     cursor: 'pointer',
   },
-  icon_back: {
+  iconBack: {
     left: '-30px',
   },
-  icon_forward: {
+  iconForward: {
     right: '-30px',
   },
-  'button-container': {
+  buttonContainer: {
     marginTop: '32px',
+  },
+  [theme.breakpoints.down('xs')]: {
+    buttonContainer: {
+      marginTop: '20px',
+    },
   },
 }));
 
@@ -127,6 +132,7 @@ export const Advantages = () => {
               <BlockTitle>
                 <Typography variant="h5">
                   Мы используем только премиальные
+                  {' '}
                   <Hidden xsDown>
                     <br />
                   </Hidden>
@@ -142,9 +148,9 @@ export const Advantages = () => {
                 <div key={tab.title} label={tab.title}>
                   <ul className={classes.list}>
                     {tab.list.map((option) => (
-                      <li key={option} className={classes['list-item']}>
+                      <li key={option} className={classes.listItem}>
                         <CheckIcon className={classes.check} />
-                        <Typography className={classes.list__text}>{option}</Typography>
+                        <Typography className={classes.listText}>{option}</Typography>
                       </li>
                     ))}
                   </ul>
@@ -173,6 +179,7 @@ export const Advantages = () => {
             <BlockTitle>
               <Typography variant="h5">
                 Мы используем только премиальные
+                {' '}
                 <Hidden xsDown>
                   <br />
                 </Hidden>
@@ -186,10 +193,10 @@ export const Advantages = () => {
           <Grid
             item
             xs={10}
-            className={classes.img__container}
+            className={classes.imgContainer}
           >
             <ArrowBackIosIcon
-              className={cx(classes.icon, classes.icon_back)}
+              className={cx(classes.icon, classes.iconBack)}
               onClick={handlePrevTab}
             />
             <img
@@ -198,18 +205,18 @@ export const Advantages = () => {
               className={classes.img}
             />
             <ArrowForwardIosIcon
-              className={cx(classes.icon, classes.icon_forward)}
+              className={cx(classes.icon, classes.iconForward)}
               onClick={handleNextTab}
             />
           </Grid>
-          <Grid item xs={12} className={classes.list__container}>
+          <Grid item xs={12} className={classes.listContainer}>
             <Options activeTab={activeTab}>
               {TABS.map((tab) => (
                 <ul key={tab.title} className={classes.list}>
                   {tab.list.map((option) => (
-                    <li key={option} className={classes['list-item']}>
+                    <li key={option} className={classes.listItem}>
                       <CheckIcon className={classes.check} />
-                      <Typography className={classes.list__text}>{option}</Typography>
+                      <Typography className={classes.listText}>{option}</Typography>
                     </li>
                   ))}
                 </ul>
@@ -218,8 +225,8 @@ export const Advantages = () => {
           </Grid>
         </Grid>
       </Hidden>
-      <Grid item xs={12} container justify="center" className={classes['button-container']}>
-        <Grid item xs={8} sm={6} md={4}>
+      <Grid item xs={12} container justify="center" className={classes.buttonContainer}>
+        <Grid item xs={10} sm={6} md={4}>
           <MainButton>Рассчитать стоимость</MainButton>
         </Grid>
       </Grid>

@@ -116,7 +116,7 @@ export const CallDesignerForm = () => {
               </Grid>
             </Grid>
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
-              <Grid item xs={8} sm={6} md={4}>
+              <Grid item xs={10} sm={6} md={4}>
                 <SubmitButton>Вызвать дизайнера</SubmitButton>
               </Grid>
             </Grid>

@@ -19,7 +19,7 @@ import topImgMob4 from '../assets/top-img-mob4.jpg';
 import topImgMob5 from '../assets/top-img-mob5.jpg';
 import topImgMob6 from '../assets/top-img-mob6.jpg';
 
-export const pages = [
+export const PAGES = [
   {
     titles: [
       'Частный мебельер',

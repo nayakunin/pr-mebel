@@ -1,17 +1,19 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import cx from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import img from './assets/top-btn.svg';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     position: 'fixed',
     left: '40px',
     bottom: '40px',
     cursor: 'pointer',
     opacity: '0',
-    transition: '.1s all',
-    '&:after': {
+    zIndex: '1000',
+    transition: '.3s all',
+    '&::after': {
       position: 'absolute',
       top: '0',
       left: '0',
@@ -19,11 +21,11 @@ const useStyles = makeStyles({
       height: '50px',
       content: '""',
       borderRadius: '50%',
-      background: 'rgba(255, 255, 255, 0.2)',
-      transition: '.1s all',
+      backgroundColor: theme.palette.primary.main,
+      transition: '.3s all',
     },
-    '&:hover&:after': {
-      background: 'rgba(255, 255, 255, 0.5)',
+    '&:hover&::after': {
+      backgroundColor: '#000',
     },
   },
   root_visible: {
@@ -31,14 +33,21 @@ const useStyles = makeStyles({
   },
   img: {
     position: 'relative',
-    zIndex: '10',
+    zIndex: '1010',
   },
-});
+  [theme.breakpoints.down('xs')]: {
+    root: {
+      left: '20px',
+      bottom: '20px',
+    },
+  },
+}));
 
-// TODO: Fix it
 export const GoTopButton = () => {
   const classes = useStyles();
-  const [visible, setVisible] = useState(false);
+  const trigger = useScrollTrigger({
+    threshold: '500',
+  });
 
   const handleClick = useCallback(() => {
     window.scrollTo({
@@ -52,7 +61,7 @@ export const GoTopButton = () => {
     <div
       onClick={handleClick}
       className={cx(classes.root, {
-        [classes.root_visible]: visible,
+        [classes.root_visible]: trigger,
       })}
     >
       <img

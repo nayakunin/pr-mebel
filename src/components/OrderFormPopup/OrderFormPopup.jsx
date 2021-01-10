@@ -34,20 +34,40 @@ import {
   orderFormPopupSelector,
 } from './selectors';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   content: {
     padding: '20px',
+  },
+  title: {
+    fontSize: '20px',
+    fontWeight: '400',
+  },
+  text: {
+    fontSize: '14px',
+    lineHeight: '16.8px',
+  },
+  textContainer: {
+    position: 'relative',
+    '&::after': {
+      position: 'absolute',
+      content: '""',
+      bottom: '-15px',
+      left: '25%',
+      width: '50%',
+      height: '1px',
+      background: theme.palette.primary.main,
+    },
   },
   form: {
     marginTop: '20px',
   },
   input: {
-    marginBottom: '15px',
+    marginBottom: '10px',
   },
-  'input-file': {
+  inputFile: {
     display: 'none',
   },
-  img__container: {
+  imgContainer: {
     width: '100%',
     position: 'relative',
     paddingTop: '27.17%',
@@ -59,20 +79,30 @@ const useStyles = makeStyles({
     top: '0',
     left: '0',
   },
-  'copyright-link': {
-    color: 'black',
-  },
   files: {
-    marginBottom: '30px',
+    marginTop: '10px',
+    marginBottom: '20px',
     cursor: 'pointer',
   },
   icon: {
     marginRight: '5px',
   },
   copy: {
-    marginTop: '20px',
+    marginTop: '15px',
+    fontSize: '14px',
+    lineHeight: '1',
   },
-});
+  copyrightLink: {
+    color: 'black',
+  },
+  [theme.breakpoints.down('xs')]: {
+    paperRoot: {
+      maxWidth: 'unset !important',
+      width: 'calc(100% - 8px)',
+      margin: 'auto',
+    },
+  },
+}));
 
 export const OrderFormPopup = () => {
   const classes = useStyles();
@@ -111,10 +141,14 @@ export const OrderFormPopup = () => {
     <Dialog
       open={isOpen}
       onClose={handleClosePopup}
+      scroll="body"
       fullWidth
-      maxWidth="sm"
+      maxWidth="xs"
+      PaperProps={{
+        className: classes.paperRoot,
+      }}
     >
-      <div className={classes.img__container}>
+      <div className={classes.imgContainer}>
         <img
           className={classes.img}
           src={formTop}
@@ -122,17 +156,17 @@ export const OrderFormPopup = () => {
         />
       </div>
       <Grid container justify="center" className={classes.content}>
-        <Typography variant="h5" gutterBottom>
+        <Typography variant="h5" gutterBottom className={classes.title}>
           Расчет стоимости проекта
         </Typography>
-        <Grid item xs={10}>
-          <Typography variant="body1" align="center">
+        <Grid item xs={12} className={classes.textContainer}>
+          <Typography variant="body1" align="center" className={classes.text}>
             Отправьте эскизы, план помещения или просто напишите свои
             пожелания к&nbsp;будущему проекту и&nbsp;мы&nbsp;подготовим
             для Вас индивидуальное предложение
           </Typography>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={11} sm={10}>
           <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
             <TextField
               inputRef={register}
@@ -184,7 +218,7 @@ export const OrderFormPopup = () => {
               type="file"
               multiple
               ref={fileInputRef}
-              className={classes['input-file']}
+              className={classes.inputFile}
               onChange={handleFileUploadChange}
             />
             <Grid
@@ -193,14 +227,14 @@ export const OrderFormPopup = () => {
               className={classes.files}
               onClick={handleFileInputClick}
             >
-              <Grid item xs={7} container direction="row">
+              <Grid item xs={12} sm={7} container justify="center">
                 <PublishIcon className={classes.icon} />
                 <Typography>
                   Прикрепить эскизы
                 </Typography>
               </Grid>
               {!!fileNames.length && (
-                <Grid item xs={5} container justify="center">
+                <Grid item xs={12} sm={5} container justify="center">
                   <Typography>
                     {`${fileNames.length}\xA0${getFileDeclination(fileNames.legnth)}`}
                   </Typography>
@@ -214,7 +248,7 @@ export const OrderFormPopup = () => {
               Нажимая кнопку &laquo;Рассчитать стоимость&raquo;,
               я&nbsp;даю согласие на&nbsp;обработку персональных данных и&nbsp;подтверждаю,
               что ознакомлен с&nbsp;
-              <a href="/" className={classes['copyright-link']}>пользовательским соглашением</a>
+              <a href="/" className={classes.copyrightLink}>пользовательским соглашением</a>
             </Typography>
           </form>
         </Grid>

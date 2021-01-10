@@ -20,14 +20,17 @@ const useStyles = makeStyles((theme) => ({
     padding: '80px 0',
     color: 'white',
   },
-  'logo-container': {
+  logo: {
+    width: '100%',
+  },
+  logoContainer: {
     marginBottom: '48px',
   },
   subtitle: {
     marginTop: '3px',
     textTransform: 'uppercase',
   },
-  'column-title': {
+  columnTitle: {
     fontSize: '18px',
     marginBottom: '12px',
   },
@@ -35,28 +38,21 @@ const useStyles = makeStyles((theme) => ({
     listStyle: 'none',
     padding: '0',
     margin: '0',
-    '@media (max-width: 960px)': {
-      '&': {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      },
-    },
   },
-  list__item: {
+  listItem: {
     fontSize: '14px',
   },
   social: {
     marginTop: '40px',
   },
-  social__title: {
+  socialTitle: {
     fontSize: '24px',
     marginBottom: '24px',
   },
-  'social__icons-container': {
+  socialIconsContainer: {
     marginBottom: '24px',
   },
-  social__icon: {
+  socialIcon: {
     width: '35px',
     height: '35px',
     '& path': {
@@ -67,9 +63,27 @@ const useStyles = makeStyles((theme) => ({
       transition: 'fill .1s',
     },
   },
-  'vertical-line': {
+  verticalLine: {
     fontSize: '20px',
     margin: '0 8px',
+  },
+
+  [theme.breakpoints.down('md')]: {
+    list: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+  },
+
+  [theme.breakpoints.down('xs')]: {
+    list: {
+      display: 'none',
+    },
+    logoContainer: {
+      width: '290px',
+      margin: '0 auto 48px',
+    },
   },
 }));
 
@@ -80,10 +94,10 @@ export const Footer = () => {
   return (
     <footer className={classes.root}>
       <Container>
-        <Grid container justify="center" className={classes['logo-container']}>
-          <Grid item>
+        <Grid container justify="center" className={classes.logoContainer}>
+          <Grid item xs={12}>
             <Link to="/">
-              <Logo />
+              <Logo className={classes.logo} />
             </Link>
             <Typography align="center" className={classes.subtitle}>
               Салон мебели премиум класса
@@ -91,8 +105,8 @@ export const Footer = () => {
           </Grid>
         </Grid>
         <Grid container spacing={4}>
-          <Grid item xs={6} md={3} container direction="column" alignItems="center">
-            <Typography className={classes['column-title']}>
+          <Grid item xs={12} sm={6} md={3} container direction="column" alignItems="center">
+            <Typography className={classes.columnTitle}>
               <Link
                 to="/catalog"
               >
@@ -104,7 +118,7 @@ export const Footer = () => {
                 <Typography variant="body1" gutterBottom>
                   <Link
                     to="/catalog?section=cupboard&style=classic"
-                    className={classes.list__item}
+                    className={classes.listItem}
                   >
                     Шкафы классические
                   </Link>
@@ -114,7 +128,7 @@ export const Footer = () => {
                 <Typography gutterBottom>
                   <Link
                     to="/catalog?section=cupboard&style=modern"
-                    className={classes.list__item}
+                    className={classes.listItem}
                   >
                     Шкафы современные
                   </Link>
@@ -124,7 +138,7 @@ export const Footer = () => {
                 <Typography gutterBottom>
                   <Link
                     to="/catalog?section=wardrobe&style=classic"
-                    className={classes.list__item}
+                    className={classes.listItem}
                   >
                     Гардеробные классические
                   </Link>
@@ -134,7 +148,7 @@ export const Footer = () => {
                 <Typography gutterBottom>
                   <Link
                     to="/catalog?section=wardrobe&style=modern"
-                    className={classes.list__item}
+                    className={classes.listItem}
                   >
                     Гардеробные современные
                   </Link>
@@ -142,8 +156,8 @@ export const Footer = () => {
               </li>
             </ul>
           </Grid>
-          <Grid item xs={6} md={3} container direction="column" alignItems="center">
-            <Typography className={classes['column-title']}>
+          <Grid item xs={12} sm={6} md={3} container direction="column" alignItems="center">
+            <Typography className={classes.columnTitle}>
               <Link
                 to="/#advantages"
               >
@@ -155,7 +169,7 @@ export const Footer = () => {
                 <Typography gutterBottom>
                   <Link
                     to="/#advantages"
-                    className={classes.list__item}
+                    className={classes.listItem}
                   >
                     Наши материалы
                   </Link>
@@ -165,7 +179,7 @@ export const Footer = () => {
                 <Typography gutterBottom>
                   <Link
                     to="/#comfort"
-                    className={classes.list__item}
+                    className={classes.listItem}
                   >
                     Комфорт и удобство
                   </Link>
@@ -175,7 +189,7 @@ export const Footer = () => {
                 <Typography gutterBottom>
                   <Link
                     to="/#quality"
-                    className={classes.list__item}
+                    className={classes.listItem}
                   >
                     Исключительное качество
                   </Link>
@@ -183,8 +197,8 @@ export const Footer = () => {
               </li>
             </ul>
           </Grid>
-          <Grid item xs={6} md={3} container direction="column" alignItems="center">
-            <Typography className={classes['column-title']}>
+          <Grid item xs={12} sm={6} md={3} container direction="column" alignItems="center">
+            <Typography className={classes.columnTitle}>
               <Link
                 to="/#about"
               >
@@ -193,10 +207,10 @@ export const Footer = () => {
             </Typography>
             <ul className={classes.list}>
               <li>
-                <Typography gutterBottom className={classes.list__item}>
+                <Typography gutterBottom className={classes.listItem}>
                   <Link
                     to="/#about"
-                    className={classes.list__item}
+                    className={classes.listItem}
                   >
                     Почему следует выбрать нас
                   </Link>
@@ -206,7 +220,7 @@ export const Footer = () => {
                 <Typography gutterBottom>
                   <Link
                     to="/#production"
-                    className={classes.list__item}
+                    className={classes.listItem}
                   >
                     Наше производство
                   </Link>
@@ -216,7 +230,7 @@ export const Footer = () => {
                 <Typography gutterBottom>
                   <Link
                     to="/#how-to-order"
-                    className={classes.list__item}
+                    className={classes.listItem}
                   >
                     Как заказать нашу мебель
                   </Link>
@@ -226,7 +240,7 @@ export const Footer = () => {
                 <Typography gutterBottom>
                   <Link
                     to="/#faq"
-                    className={classes.list__item}
+                    className={classes.listItem}
                   >
                     Часто задаваемые вопросы
                   </Link>
@@ -234,8 +248,8 @@ export const Footer = () => {
               </li>
             </ul>
           </Grid>
-          <Grid item xs={6} md={3} container direction="column" alignItems="center">
-            <Typography className={classes['column-title']}>
+          <Grid item xs={12} sm={6} md={3} container direction="column" alignItems="center">
+            <Typography className={classes.columnTitle}>
               <Link
                 asButton
                 onClick={() => dispatch(openOrderFormPopup())}
@@ -248,7 +262,7 @@ export const Footer = () => {
                 <Typography gutterBottom>
                   <Link
                     asButton
-                    className={classes.list__item}
+                    className={classes.listItem}
                     onClick={() => dispatch(openOrderFormPopup())}
                   >
                     Заказать звонок
@@ -259,7 +273,7 @@ export const Footer = () => {
                 <Typography gutterBottom>
                   <Link
                     asButton
-                    className={classes.list__item}
+                    className={classes.listItem}
                     onClick={() => dispatch(openOrderFormPopup())}
                   >
                     Получить проект
@@ -270,7 +284,7 @@ export const Footer = () => {
                 <Typography gutterBottom>
                   <Link
                     asButton
-                    className={classes.list__item}
+                    className={classes.listItem}
                     onClick={() => dispatch(openOrderFormPopup())}
                   >
                     Вызвать дизайнера замерщика
@@ -281,7 +295,7 @@ export const Footer = () => {
                 <Typography gutterBottom>
                   <Link
                     to="/#questions"
-                    className={classes.list__item}
+                    className={classes.listItem}
                   >
                     Задать вопрос
                   </Link>
@@ -290,36 +304,43 @@ export const Footer = () => {
             </ul>
           </Grid>
         </Grid>
-        {/* TODO consider adding contacts here */}
         <Grid container alignItems="center" direction="column" className={classes.social}>
-          <Typography className={classes.social__title}>
+          <Typography variant="body1">
+            <Link to="tel:+7(495)2780285" external>
+              +7 (495) 278-02-85
+            </Link>
+          </Typography>
+          <Typography variant="body1" className={classes.address}>
+            м. Сокол, ул. Балтийская, д.9. С 10:00 до 20:00
+          </Typography>
+          <Typography className={classes.socialTitle}>
             Мы в соц.сетях
           </Typography>
-          <Grid item xs={4} container className={classes['social__icons-container']}>
+          <Grid item xs={4} container className={classes.socialIconsContainer}>
             <Grid item xs={4} container justify="center">
               <a href="https://vk.com/public185518769">
-                <Vk className={classes.social__icon} />
+                <Vk className={classes.socialIcon} />
               </a>
             </Grid>
             <Grid item xs={4} container justify="center">
               <a href="https://www.instagram.com/pr_mebel.ru/">
-                <Inst className={classes.social__icon} />
+                <Inst className={classes.socialIcon} />
               </a>
             </Grid>
             <Grid item xs={4} container justify="center">
               <a href="https://www.facebook.com/%D0%A7%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B9-%D0%BC%D0%B5%D0%B1%D0%B5%D0%BB%D1%8C%D0%B5%D1%80-108136607213942">
-                <Fb className={classes.social__icon} />
+                <Fb className={classes.socialIcon} />
               </a>
             </Grid>
           </Grid>
           <Typography variant="body2" gutterBottom>
             <Link to="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit" external>Политика конфиденциальности</Link>
-            <span className={classes['vertical-line']}>|</span>
+            <span className={classes.verticalLine}>|</span>
             <Link to="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit" external>Пользовательское соглашение</Link>
           </Typography>
           <Typography variant="body2" align="center">
             &copy; Частный Мебельер
-            <span className={classes['vertical-line']}>|</span>
+            <span className={classes.verticalLine}>|</span>
             2020 Все права защищены законом.
             {' '}
             Копирование и цитирование только с письменного разрешения автора.
