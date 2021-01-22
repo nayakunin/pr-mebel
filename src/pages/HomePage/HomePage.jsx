@@ -11,12 +11,12 @@ import {
   OrderFormPopup,
   FormSubmitPopup,
   GoTopButton,
+  DesignOffer,
 } from 'components';
 import {
   Carousel,
   Description,
   Catalog,
-  DesignOffer,
   FeedbackForm,
   Advantages,
   WardrobeLeft,
@@ -32,59 +32,55 @@ import {
   Map,
 } from './components';
 
-const useStyles = makeStyles({
+const marginTop80 = {
+  marginTop: '80px',
+};
+
+const marginTop40 = {
+  marginTop: '40px',
+};
+
+const useStyles = makeStyles((theme) => ({
   carousel: {
 
   },
   description: {
     marginTop: '65px',
   },
-  catalog: {
-    marginTop: '80px',
+  catalog: marginTop80,
+  designOffer: marginTop80,
+  feedbackForm: marginTop80,
+  advantages: marginTop80,
+  wardrobe_left: marginTop80,
+  wardrobe_right: marginTop80,
+  about: marginTop80,
+  callDesigner: marginTop80,
+  callDesignerForm: marginTop80,
+  ourProduction: marginTop80,
+  howToOrder: marginTop80,
+  faq: marginTop80,
+  questionsForm: marginTop80,
+  shopImg: marginTop40,
+  contacts: marginTop80,
+  [theme.breakpoints.down('xs')]: {
+    description: marginTop40,
+    catalog: marginTop40,
+    designOffer: marginTop40,
+    feedbackForm: marginTop40,
+    advantages: marginTop40,
+    wardrobe_left: marginTop40,
+    wardrobe_right: marginTop40,
+    about: marginTop40,
+    callDesigner: marginTop40,
+    callDesignerForm: marginTop40,
+    ourProduction: marginTop40,
+    howToOrder: marginTop40,
+    faq: marginTop40,
+    questionsForm: marginTop40,
+    shopImg: marginTop40,
+    contacts: marginTop40,
   },
-  'design-offer': {
-    marginTop: '80px',
-  },
-  'feedback-form': {
-    marginTop: '80px',
-  },
-  advantages: {
-    marginTop: '80px',
-  },
-  wardrobe_left: {
-    marginTop: '80px',
-  },
-  wardrobe_right: {
-    marginTop: '80px',
-  },
-  about: {
-    marginTop: '80px',
-  },
-  'call-designer': {
-    marginTop: '80px',
-  },
-  'call-designer-form': {
-    marginTop: '80px',
-  },
-  'our-production': {
-    marginTop: '80px',
-  },
-  'how-to-order': {
-    marginTop: '80px',
-  },
-  faq: {
-    marginTop: '80px',
-  },
-  'questions-form': {
-    marginTop: '80px',
-  },
-  'shop-img': {
-    marginTop: '40px',
-  },
-  contacts: {
-    marginTop: '80px',
-  },
-});
+}));
 
 export const HomePage = () => {
   const classes = useStyles();
@@ -133,12 +129,12 @@ export const HomePage = () => {
         </section>
         <section
           ref={(el) => { refsMap.current['#design-offer'] = el; }}
-          className={classes['design-offer']}
+          className={classes.designOffer}
         >
           <DesignOffer />
         </section>
         <section
-          className={classes['feedback-form']}
+          className={classes.feedbackForm}
         >
           <FeedbackForm />
         </section>
@@ -168,24 +164,24 @@ export const HomePage = () => {
         </section>
         <section
           ref={(el) => { refsMap.current['#call-designer'] = el; }}
-          className={classes['call-designer']}
+          className={classes.callDesigner}
         >
           <CallDesigner />
         </section>
         <section
-          className={classes['call-designer-form']}
+          className={classes.callDesignerForm}
         >
           <CallDesignerForm />
         </section>
         <section
           ref={(el) => { refsMap.current['#production'] = el; }}
-          className={classes['our-production']}
+          className={classes.ourProduction}
         >
           <OurProduction />
         </section>
         <section
           ref={(el) => { refsMap.current['#how-to-order'] = el; }}
-          className={classes['how-to-order']}
+          className={classes.howToOrder}
         >
           <HowToOrder />
         </section>
@@ -197,13 +193,13 @@ export const HomePage = () => {
         </section>
         <section
           ref={(el) => { refsMap.current['#questions'] = el; }}
-          className={classes['questions-form']}
+          className={classes.questionsForm}
         >
           <QuestionsForm />
         </section>
         <section
           ref={(el) => { refsMap.current['#shop-img'] = el; }}
-          className={classes['shop-img']}
+          className={classes.shopImg}
         >
           <ShopImg />
         </section>

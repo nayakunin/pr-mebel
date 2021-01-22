@@ -5,7 +5,6 @@ export * from './CallDesignerForm/CallDesignerForm';
 export * from './Carousel/Carousel';
 export * from './Catalog/Catalog';
 export * from './Description/Description';
-export * from './DesignOffer/DesignOffer';
 export * from './FAQ/FAQ';
 export * from './FeedbackForm/FeedbackForm';
 export * from './HowToOrder/HowToOrder';

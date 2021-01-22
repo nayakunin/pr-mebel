@@ -8,6 +8,7 @@ import {
   Footer,
   OrderFormPopup,
   FormSubmitPopup,
+  DesignOffer,
 } from 'components';
 import {
   fetchCatalog,
@@ -40,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
   gallerySection: {
     marginTop: '20px',
     marginBottom: '60px',
+  },
+  designOfferSection: {
+    margin: '40px 0',
   },
   [theme.breakpoints.down('md')]: {
     filterSection: {
@@ -150,6 +154,9 @@ export const Catalog = () => {
             page={page}
             onCardClick={handleCardClick}
           />
+        </section>
+        <section className={classes.designOfferSection}>
+          <DesignOffer />
         </section>
         <Questions />
       </main>

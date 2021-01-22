@@ -10,3 +10,4 @@ export * from './FormSubmitPopup/FormSubmitPopup';
 export * from './GoTopButton/GoTopButton';
 export * from './Pagination/Pagination';
 export * from './Loader/Loader';
+export * from './DesignOffer/DesignOffer';

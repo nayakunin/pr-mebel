@@ -4,10 +4,10 @@ import cx from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
-  'tab-content': {
+  tabContent: {
     display: 'none',
   },
-  'tab-content_visible': {
+  tabContentVisible: {
     display: 'block',
   },
 });
@@ -23,8 +23,8 @@ export const Options = ({
       {children.map((child, i) => (
         <div
           key={child.props.label}
-          className={cx(classes['tab-content'], {
-            [classes['tab-content_visible']]: activeTab === i,
+          className={cx(classes.tabContent, {
+            [classes.tabContentVisible]: activeTab === i,
           })}
         >
           {child}
