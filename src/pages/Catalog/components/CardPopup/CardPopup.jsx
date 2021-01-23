@@ -254,8 +254,8 @@ export const CardPopup = ({
           <div className={classes.descriptionContainerTop}>
             <MainButton>Рассчитать стоимость</MainButton>
             <Grid container className={classes.socials}>
-              <Grid item xs={4} />
-              <Grid item xs={4} container spacing={2}>
+              <Grid item xs={3} sm={4} />
+              <Grid item xs={6} sm={4} container spacing={2}>
                 <Grid item xs={4} container justify="center">
                   <a href="https://www.instagram.com/pr_mebel.ru/">
                     <Inst className={classes.socialIcon} />

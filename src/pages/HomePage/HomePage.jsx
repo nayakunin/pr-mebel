@@ -12,6 +12,8 @@ import {
   FormSubmitPopup,
   GoTopButton,
   DesignOffer,
+  Map,
+  ShopImg,
 } from 'components';
 import {
   Carousel,
@@ -28,8 +30,6 @@ import {
   HowToOrder,
   FAQ,
   QuestionsForm,
-  ShopImg,
-  Map,
 } from './components';
 
 const marginTop80 = {

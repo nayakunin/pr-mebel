@@ -225,9 +225,8 @@ export const OrderFormPopup = () => {
               container
               justify="center"
               className={classes.files}
-              onClick={handleFileInputClick}
             >
-              <Grid item xs={12} sm={7} container justify="center">
+              <Grid item xs={12} sm={7} container justify="center" onClick={handleFileInputClick}>
                 <PublishIcon className={classes.icon} />
                 <Typography>
                   Прикрепить эскизы

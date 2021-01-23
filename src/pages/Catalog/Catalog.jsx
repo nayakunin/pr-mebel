@@ -9,6 +9,8 @@ import {
   OrderFormPopup,
   FormSubmitPopup,
   DesignOffer,
+  Map,
+  ShopImg,
 } from 'components';
 import {
   fetchCatalog,
@@ -45,8 +47,22 @@ const useStyles = makeStyles((theme) => ({
   designOfferSection: {
     margin: '40px 0',
   },
+  shopImgSection: {
+    marginTop: '40px',
+  },
+  mapSection: {
+    marginTop: '80px',
+  },
   [theme.breakpoints.down('md')]: {
     filterSection: {
+      marginTop: '40px',
+    },
+    mapSection: {
+      marginTop: '60px',
+    },
+  },
+  [theme.breakpoints.down('sm')]: {
+    mapSection: {
       marginTop: '40px',
     },
   },
@@ -158,7 +174,15 @@ export const Catalog = () => {
         <section className={classes.designOfferSection}>
           <DesignOffer />
         </section>
-        <Questions />
+        <section className={classes.questionsSection}>
+          <Questions />
+        </section>
+        <section className={classes.shopImgSection}>
+          <ShopImg />
+        </section>
+        <section className={classes.mapSection}>
+          <Map />
+        </section>
       </main>
       {isCardPopupOpen && (
         <CardPopup

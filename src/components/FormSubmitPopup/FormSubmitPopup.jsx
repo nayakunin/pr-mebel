@@ -95,7 +95,7 @@ export const FormSubmitPopup = () => {
         >
           {!allUploaded ? 'Загрузка файлов' : (
             <>
-              <img src={img} alt="Почта отправлена" className={classes.icon} />
+              <img src={img} alt="Письмо отправлена" className={classes.icon} />
               <span>
                 Письмо отправлено
               </span>

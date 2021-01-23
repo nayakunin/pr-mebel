@@ -10,9 +10,14 @@ import { changePage, fetchCatalog } from 'actions';
 import { MainButton, Loader } from 'components';
 import { Card } from './components';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   buttonContainer: {
     marginTop: '60px',
+  },
+  [theme.breakpoints.down('xs')]: {
+    buttonContainer: {
+      marginTop: '30px',
+    },
   },
 }));
 
@@ -52,7 +57,7 @@ export const Gallery = ({
       </Grid>
       {hasMore && (
         <Grid container justify="center" className={classes.buttonContainer}>
-          <Grid item xs={6}>
+          <Grid item xs={10} sm={8} md={6}>
             <MainButton
               onClick={handleLoadMore}
             >

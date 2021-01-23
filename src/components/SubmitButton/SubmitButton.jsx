@@ -23,6 +23,11 @@ const useStyles = makeStyles((theme) => ({
       outline: 'none',
     },
   },
+  [theme.breakpoints.down('xs')]: {
+    root: {
+      fontSize: '10px',
+    },
+  },
 }));
 
 export const SubmitButton = ({

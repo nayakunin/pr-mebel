@@ -81,6 +81,9 @@ const useStyles = makeStyles((theme) => ({
     columnTitle: {
       textAlign: 'center',
     },
+    root: {
+      marginTop: '60px',
+    },
   },
 
   [theme.breakpoints.down('xs')]: {
@@ -98,6 +101,9 @@ const useStyles = makeStyles((theme) => ({
     },
     copyLink: {
       marginBottom: '10px',
+    },
+    root: {
+      marginTop: '40px',
     },
   },
 }));
@@ -361,7 +367,7 @@ export const Footer = () => {
           </Grid>
           <Grid item xs={3} sm={4} />
           <Grid item xs={12}>
-            <Typography variant="body2" gutterBottom className={classes.copyContainer}>
+            <Typography variant="body2" gutterBottom className={classes.copyContainer} align="center">
               <Link
                 className={classes.copyLink}
                 to="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit"

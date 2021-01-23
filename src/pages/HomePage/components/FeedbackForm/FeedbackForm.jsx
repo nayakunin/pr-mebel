@@ -296,7 +296,9 @@ export const FeedbackForm = () => {
             </Grid>
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
               <Grid item xs={10} sm={6} md={4}>
-                <SubmitButton>Рассчитать стоимость</SubmitButton>
+                <SubmitButton>
+                  Рассчитать стоимость
+                </SubmitButton>
               </Grid>
             </Grid>
             <Grid item xs container justify="center">

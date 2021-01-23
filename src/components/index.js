@@ -11,3 +11,5 @@ export * from './GoTopButton/GoTopButton';
 export * from './Pagination/Pagination';
 export * from './Loader/Loader';
 export * from './DesignOffer/DesignOffer';
+export * from './Map/Map';
+export * from './ShopImg/ShopImg';

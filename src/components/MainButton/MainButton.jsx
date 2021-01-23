@@ -32,6 +32,11 @@ const useStyles = makeStyles((theme) => ({
       cursor: 'auto',
     },
   },
+  [theme.breakpoints.down('xs')]: {
+    root: {
+      fontSize: '10px',
+    },
+  },
 }));
 
 const MainButton = ({
