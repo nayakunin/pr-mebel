@@ -33,6 +33,13 @@ export const theme = createMuiTheme({
         lineHeight: '35px',
         fontWeight: '300',
         fontFamily: 'Gilroy, sans-serif',
+        '@media (max-width: 960px)': {
+          fontSize: '26px',
+        },
+        '@media (max-width: 600px)': {
+          fontSize: '22px',
+          lineHeight: '25px',
+        },
       },
       h5: {
         textTransform: 'uppercase',
@@ -40,6 +47,10 @@ export const theme = createMuiTheme({
         lineHeight: '28px',
         fontWeight: '300',
         fontFamily: 'Gilroy, sans-serif',
+        '@media (max-width: 600px)': {
+          fontSize: '16px',
+          lineHeight: '20px',
+        },
       },
       h6: {
         textTransform: 'uppercase',
@@ -47,6 +58,13 @@ export const theme = createMuiTheme({
         lineHeight: '1.3',
         fontWeight: '300',
         fontFamily: 'Gilroy, sans-serif',
+        '@media (max-width: 960px)': {
+          fontSize: '16px',
+        },
+        '@media (max-width: 600px)': {
+          fontSize: '14px',
+          lineHeight: '16px',
+        },
       },
       subtitle1: {
         fontFamily: 'Gilroy, sans-serif',
@@ -65,6 +83,17 @@ export const theme = createMuiTheme({
         lineHeight: '18px',
         letterSpacing: 'normal',
         fontFamily: 'Gilroy, sans-serif',
+        '@media (max-width: 960px)': {
+          fontSize: '15px',
+        },
+      },
+    },
+    MuiContainer: {
+      root: {
+        '@media (min-width: 600px)': {
+          paddingLeft: '5%',
+          paddingRight: '5%',
+        },
       },
     },
   },

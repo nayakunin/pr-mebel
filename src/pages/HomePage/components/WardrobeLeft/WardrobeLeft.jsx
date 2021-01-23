@@ -12,7 +12,8 @@ import {
   MainButton,
   Pagination,
 } from 'components';
-import { AdditionalBlock } from './components';
+import { WardrobeAdditionalBlock } from '../WardrobeAdditionalBlock';
+import { WardrobeSnippet } from '../WardrobeSnippet';
 import { TABS, ADDITIONAL } from './constants';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     paddingTop: '71.9%',
   },
+  imgWrapper: {
+    position: 'relative',
+  },
   img: {
     width: '100%',
     [theme.breakpoints.down('sm')]: {
@@ -32,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
       top: '0',
       left: '0',
     },
+  },
+  point: {
+    position: 'absolute',
   },
   list: {
     margin: '0',
@@ -93,12 +100,31 @@ export const WardrobeLeft = () => {
       </BlockTitle>
       <Hidden smDown>
         <Grid container spacing={6} className={classes.content}>
-          <Grid item xs={6}>
-            <img
-              src={currentImg}
-              alt="шкаф"
-              className={classes.img}
-            />
+          <Grid item xs={6} className={classes.imgContainerLarge}>
+            <div className={classes.imgWrapper}>
+              <img
+                src={currentImg}
+                alt="шкаф"
+                className={classes.img}
+              />
+              {ADDITIONAL.map((point) => (
+                <div
+                  key={`${point.left} x ${point.top}`}
+                  className={classes.point}
+                  style={{
+                    left: point.left,
+                    top: point.top,
+                  }}
+                >
+                  <WardrobeSnippet
+                    img={point.img}
+                    title={point.title}
+                    text={point.text}
+                    direction={point.direction}
+                  />
+                </div>
+              ))}
+            </div>
           </Grid>
           <Grid item xs={6}>
             <Typography>
@@ -160,7 +186,7 @@ export const WardrobeLeft = () => {
           </Grid>
           {activePage !== 0 ? (
             <Grid item xs={10} className={classes.text_bottom}>
-              <AdditionalBlock
+              <WardrobeAdditionalBlock
                 title={ADDITIONAL[activePage - 1].title}
                 text={ADDITIONAL[activePage - 1].text}
               />

@@ -36,7 +36,7 @@ export const DesignCard = ({
 }) => {
   const classes = useStyles();
   const theme = useTheme();
-  const isXsDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const isXsDown = useMediaQuery(theme.breakpoints.down('xs'));
 
   return (
     <Grid
@@ -45,7 +45,7 @@ export const DesignCard = ({
       spacing={1}
       direction={isXsDown ? 'row' : 'column'}
     >
-      <Grid item xs={2} sm={12}>
+      <Grid item xs={2} sm={12} align="center">
         <Img className={classes.img} />
       </Grid>
       <Grid item xs={10} sm={12}>

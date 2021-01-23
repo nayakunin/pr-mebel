@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     title: {
       marginBottom: '40px',
     },
+    buttonText: {
+      fontSize: '10px',
+    },
   },
 }));
 
@@ -47,7 +50,11 @@ export const Catalog = () => {
       </Grid>
       <Grid container justify="center" className={classes.buttonContainer}>
         <Grid item xs={10} sm={6} md={4}>
-          <MainButton>Рассчитать стоимость</MainButton>
+          <MainButton>
+            <span className={classes.buttonText}>
+              Рассчитать стоимость
+            </span>
+          </MainButton>
         </Grid>
       </Grid>
     </Container>

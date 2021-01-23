@@ -12,7 +12,8 @@ import {
   Pagination,
 } from 'components';
 import { ADDITIONAL } from './constants';
-import { AdditionalBlock } from './components';
+import { WardrobeAdditionalBlock } from '../WardrobeAdditionalBlock';
+import { WardrobeSnippet } from '../WardrobeSnippet';
 import img from './assets/quality-img.jpg';
 
 const useStyles = makeStyles((theme) => ({
@@ -25,6 +26,12 @@ const useStyles = makeStyles((theme) => ({
   img__container: {
     position: 'relative',
     paddingTop: '71.9%',
+  },
+  imgWrapper: {
+    position: 'relative',
+  },
+  point: {
+    position: 'absolute',
   },
   img: {
     width: '100%',
@@ -78,11 +85,30 @@ export const WardrobeRight = () => {
             </Typography>
           </Grid>
           <Grid item xs={6}>
-            <img
-              src={img}
-              alt="шкаф"
-              className={classes.img}
-            />
+            <div className={classes.imgWrapper}>
+              <img
+                src={img}
+                alt="шкаф"
+                className={classes.img}
+              />
+              {ADDITIONAL.map((point) => (
+                <div
+                  key={`${point.left} x ${point.top}`}
+                  className={classes.point}
+                  style={{
+                    left: point.left,
+                    top: point.top,
+                  }}
+                >
+                  <WardrobeSnippet
+                    img={point.img}
+                    title={point.title}
+                    text={point.text}
+                    direction={point.direction}
+                  />
+                </div>
+              ))}
+            </div>
           </Grid>
         </Grid>
       </Hidden>
@@ -104,7 +130,7 @@ export const WardrobeRight = () => {
           </Grid>
           {activePage !== 0 ? (
             <Grid item xs={10} className={classes.text_bottom}>
-              <AdditionalBlock
+              <WardrobeAdditionalBlock
                 title={ADDITIONAL[activePage - 1].title}
                 text={ADDITIONAL[activePage - 1].text}
               />

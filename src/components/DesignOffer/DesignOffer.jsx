@@ -38,6 +38,16 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '24px',
     },
   },
+  '@media (max-width: 480px)': {
+    biggerTitle: {
+      fontSize: '20px',
+      lineHeight: '23px',
+    },
+    smallerTitle: {
+      fontSize: '14px',
+      lineHeight: '23px',
+    },
+  },
 }));
 
 export const DesignOffer = () => {
