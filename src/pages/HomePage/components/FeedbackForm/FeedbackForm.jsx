@@ -26,7 +26,6 @@ import {
   SubmitButton,
 } from 'components';
 import { getFileDeclination } from 'utils';
-import { NB_SP } from '__constants__';
 
 const useStyles = makeStyles((theme) => ({
   root: {
