@@ -390,8 +390,8 @@ export const Header = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid container direction="column" spacing={2}>
-              <Grid item xs container direction="column" justify="center">
+            <Grid container spacing={2}>
+              <Grid item xs={12} align="center">
                 <Typography variant="body2" className={classes.text} align="center">
                   <Link to="tel:+74952780285" external>+7 (495) 278-02-85</Link>
                 </Typography>
@@ -404,7 +404,7 @@ export const Header = () => {
                   10:00 - 20:00
                 </Typography>
               </Grid>
-              <Grid item xs container justify="center">
+              <Grid item xs={12} align="center">
                 <ul className={classNames(classes.list, classes.social)}>
                   <li>
                     <a href="https://vk.com/public185518769">

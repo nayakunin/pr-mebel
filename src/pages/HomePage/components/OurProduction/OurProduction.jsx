@@ -94,8 +94,7 @@ export const OurProduction = () => {
               {LIST[activeIndex].text}
             </Typography>
           </Grid>
-          <Grid item xs={2} />
-          <Grid item xs={8}>
+          <Grid item xs={12}>
             <Pagination
               list={LIST}
               activeIndex={activeIndex}

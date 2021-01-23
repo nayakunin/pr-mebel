@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     width: '100%',
     height: '100vh',
-    minHeight: '700px',
     overflow: 'hidden',
   },
   slider: {

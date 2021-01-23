@@ -162,12 +162,13 @@ export const FeedbackForm = () => {
       <Container>
         <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
           <Grid container justify="center">
+            <Grid item xs={1} />
             <Grid
               item
-              xs={8}
+              xs={10}
               sm={6}
               container
-              direction={smDown ? 'column' : 'row'}
+              direction="row"
               spacing={smDown ? 2 : 4}
             >
               <Grid
@@ -218,7 +219,6 @@ export const FeedbackForm = () => {
                       root: classes.input__label,
                     },
                   }}
-                  pattern="[7,8]{1}-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
                   fullWidth
                   placeholder="Телефон"
                   label="Телефон"
@@ -238,10 +238,10 @@ export const FeedbackForm = () => {
                 </Grid>
               </Hidden>
             </Grid>
-            <Grid item sm={1} />
+            <Grid item xs={1} />
             <Grid
               item
-              xs={8}
+              xs={10}
               sm={5}
               container
               spacing={4}

@@ -64,8 +64,8 @@ export const CallDesignerForm = () => {
       <Container>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container>
-            <Grid item xs={2} sm={3} />
-            <Grid item xs={8} sm={6} container>
+            <Grid item xs={1} sm={3} />
+            <Grid item xs={10} sm={6} container>
               <Grid item xs={12} md={5}>
                 <TextField
                   inputRef={register}

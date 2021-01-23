@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   list__container: {
     display: 'flex',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     width: '70%',
     margin: 'auto',
   },
@@ -27,10 +27,10 @@ const useStyles = makeStyles((theme) => ({
     top: '0',
   },
   icon_back: {
-    left: '20px',
+    left: '10px',
   },
   icon_next: {
-    right: '20px',
+    right: '10px',
   },
   circle: {
     width: '10px',
@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     content: '""',
     border: `1px solid ${theme.palette.primary.main}`,
     borderRadius: '50%',
+    margin: '0 5px',
   },
   active: {
     background: theme.palette.primary.main,

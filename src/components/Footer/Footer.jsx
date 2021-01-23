@@ -70,7 +70,6 @@ const useStyles = makeStyles((theme) => ({
   },
   address: {
     marginBottom: '30px',
-    textAlign: 'center',
   },
 
   [theme.breakpoints.down('sm')]: {
@@ -328,19 +327,22 @@ export const Footer = () => {
             </div>
           </Grid>
         </Grid>
-        <Grid container alignItems="center" direction="column" className={classes.social}>
-          <Typography variant="body1">
-            <Link to="tel:+7(495)2780285" external>
-              +7 (495) 278-02-85
-            </Link>
-          </Typography>
-          <Typography variant="body1" className={classes.address}>
-            м. Сокол, ул. Балтийская, д.9. С 10:00 до 20:00
-          </Typography>
-          <Typography className={classes.socialTitle}>
-            Мы в соц.сетях
-          </Typography>
-          <Grid item xs={4} container className={classes.socialIconsContainer}>
+        <Grid container alignItems="center" className={classes.social}>
+          <Grid item xs={12}>
+            <Typography variant="body1" align="center">
+              <Link to="tel:+7(495)2780285" external>
+                +7 (495) 278-02-85
+              </Link>
+            </Typography>
+            <Typography variant="body1" className={classes.address} align="center">
+              м. Сокол, ул. Балтийская, д.9. С 10:00 до 20:00
+            </Typography>
+            <Typography className={classes.socialTitle} align="center">
+              Мы в соц.сетях
+            </Typography>
+          </Grid>
+          <Grid item xs={3} sm={4} />
+          <Grid item xs={6} sm={4} container className={classes.socialIconsContainer}>
             <Grid item xs={4} container justify="center">
               <a href="https://vk.com/public185518769">
                 <Vk className={classes.socialIcon} />
@@ -357,30 +359,33 @@ export const Footer = () => {
               </a>
             </Grid>
           </Grid>
-          <Typography variant="body2" gutterBottom className={classes.copyContainer}>
-            <Link
-              className={classes.copyLink}
-              to="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit"
-              external
-            >
-              Политика конфиденциальности
-            </Link>
-            <Hidden smDown><span className={classes.verticalLine}>|</span></Hidden>
-            <Link
-              className={classes.copyLink}
-              to="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit"
-              external
-            >
-              Пользовательское соглашение
-            </Link>
-          </Typography>
-          <Typography variant="body2" align="center">
-            &copy; Частный Мебельер
-            <span className={classes.verticalLine}>|</span>
-            2020 Все права защищены законом.
-            {' '}
-            Копирование и цитирование только с письменного разрешения автора.
-          </Typography>
+          <Grid item xs={3} sm={4} />
+          <Grid item xs={12}>
+            <Typography variant="body2" gutterBottom className={classes.copyContainer}>
+              <Link
+                className={classes.copyLink}
+                to="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit"
+                external
+              >
+                Политика конфиденциальности
+              </Link>
+              <Hidden smDown><span className={classes.verticalLine}>|</span></Hidden>
+              <Link
+                className={classes.copyLink}
+                to="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit"
+                external
+              >
+                Пользовательское соглашение
+              </Link>
+            </Typography>
+            <Typography variant="body2" align="center">
+              &copy; Частный Мебельер
+              <span className={classes.verticalLine}>|</span>
+              2020 Все права защищены законом.
+              {' '}
+              Копирование и цитирование только с письменного разрешения автора.
+            </Typography>
+          </Grid>
         </Grid>
       </Container>
     </footer>
