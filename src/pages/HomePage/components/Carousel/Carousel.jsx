@@ -1,24 +1,28 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  useRef,
+} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import cx from 'classnames';
 import { Container } from '@material-ui/core';
-import { pages } from './constants';
+import { PAGES } from './constants';
 import { Page, Pagination } from './components';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
-    width: '100vw',
+    width: '100%',
     height: '100vh',
-    minHeight: '700px',
     overflow: 'hidden',
   },
   slider: {
     position: 'relative',
     display: 'flex',
-    width: `${pages.length}00%`,
+    width: `${PAGES.length}00%`,
     height: '100%',
     transition: 'all .4s ease-in-out',
   },
@@ -31,14 +35,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paginationInnerContainer: {
+    maxWidth: '1140px',
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
     boxSizing: 'border-box',
     padding: '0',
-    '@media (max-width: 1250px)': {
-      justifyContent: 'center',
-    },
   },
   nav: {
     color: 'white',
@@ -50,9 +52,6 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     cursor: 'pointer',
     zIndex: '50',
-    '@media (max-width: 1250px)': {
-      display: 'none',
-    },
   },
   prevDesktop: {
     top: '50%',
@@ -64,9 +63,6 @@ const useStyles = makeStyles((theme) => ({
   },
   navMobile: {
     display: 'none',
-    '@media (max-width: 1250px)': {
-      display: 'block',
-    },
   },
   prevMobile: {
     marginRight: theme.spacing(3),
@@ -74,13 +70,25 @@ const useStyles = makeStyles((theme) => ({
   nextMobile: {
     marginLeft: theme.spacing(3),
   },
+  '@media (max-width: 1250px)': {
+    paginationInnerContainer: {
+      justifyContent: 'center',
+    },
+    navDesktop: {
+      display: 'none',
+    },
+    navMobile: {
+      display: 'block',
+    },
+  },
 }));
 
 export const Carousel = () => {
   const classes = useStyles();
+  const rootRef = useRef(null);
 
   const [activeSlide, setActiveSlide] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   const handleClickPrev = useCallback(() => {
     setActiveSlide((prev) => {
@@ -88,13 +96,13 @@ export const Carousel = () => {
         return prev - 1;
       }
 
-      return pages.length - 1;
+      return PAGES.length - 1;
     });
   }, []);
 
   const handleClickNext = useCallback(() => {
     setActiveSlide((prev) => {
-      if (prev < pages.length - 1) {
+      if (prev < PAGES.length - 1) {
         return prev + 1;
       }
 
@@ -108,24 +116,28 @@ export const Carousel = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+      setWindowWidth(rootRef.current ? rootRef.current.offsetWidth : 0);
     };
 
     const handleRotate = () => {
       handleClickNext();
     };
 
-    const interval = setInterval(() => handleRotate(), 199905000);
+    if (rootRef.current) {
+      handleResize();
+    }
+
+    const interval = setInterval(() => handleRotate(), 7000);
 
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
       clearInterval(interval);
     };
-  }, [handleClickNext]);
+  }, [handleClickNext, rootRef]);
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} ref={rootRef}>
       <ArrowBackIosIcon
         className={cx(
           classes.prevDesktop,
@@ -138,7 +150,7 @@ export const Carousel = () => {
         className={classes.slider}
         style={{ transform: `translateX(-${windowWidth * activeSlide}px)` }}
       >
-        {pages.map((page) => (
+        {PAGES.map((page) => (
           <Page
             key={page.titles[0]}
             titles={page.titles}
@@ -169,7 +181,7 @@ export const Carousel = () => {
           />
           <Pagination
             currentPage={activeSlide}
-            pages={pages}
+            pages={PAGES}
             onChangeSlide={handleChangeSlide}
           />
           <ArrowForwardIosIcon

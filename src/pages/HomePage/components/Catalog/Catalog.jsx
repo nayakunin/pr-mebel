@@ -8,14 +8,19 @@ import {
 import { CATALOG } from './constants';
 import { CatalogCard } from './components';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   title: {
     marginBottom: '60px',
   },
-  'button-container': {
+  buttonContainer: {
     marginTop: '30px',
   },
-});
+  [theme.breakpoints.down('xs')]: {
+    title: {
+      marginBottom: '40px',
+    },
+  },
+}));
 
 export const Catalog = () => {
   const classes = useStyles();
@@ -40,9 +45,11 @@ export const Catalog = () => {
           </Grid>
         ))}
       </Grid>
-      <Grid container justify="center" className={classes['button-container']}>
-        <Grid item xs={8} sm={6} md={4}>
-          <MainButton>Рассчитать стоимость</MainButton>
+      <Grid container justify="center" className={classes.buttonContainer}>
+        <Grid item xs={10} sm={6} md={4}>
+          <MainButton>
+            Рассчитать стоимость
+          </MainButton>
         </Grid>
       </Grid>
     </Container>

@@ -12,10 +12,16 @@ const useStyles = makeStyles((theme) => ({
       display: 'block',
       position: 'absolute',
       left: '0',
-      bottom: '-11px',
-      width: '95px',
+      bottom: '-2px',
+      width: '65px',
       height: '1px',
       background: theme.palette.primary.main,
+    },
+  },
+  [theme.breakpoints.down('sm')]: {
+    root: {
+      fontSize: '22px',
+      lineHeight: '25px',
     },
   },
 }));

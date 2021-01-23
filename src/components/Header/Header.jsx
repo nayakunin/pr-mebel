@@ -2,7 +2,7 @@ import React, {
   useCallback,
   useState,
 } from 'react';
-import cx from 'classnames';
+import classNames from 'classnames';
 import {
   Grid,
   Container,
@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from 'assets/logo_header.svg';
 import { ReactComponent as Fb } from 'assets/fb.svg';
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'white',
     boxShadow: '0 10px 20px rgba(0,0,0,.1)',
     transition: '.1s height',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('md')]: {
       height: '50px',
     },
   },
@@ -92,8 +92,10 @@ const useStyles = makeStyles((theme) => ({
   },
   dropdown: {
     position: 'relative',
-    top: '3px',
-    color: 'inherit',
+    width: '11px',
+    top: '-1px',
+    color: theme.palette.primary.main,
+    transform: 'rotate(-90deg)',
     fontSize: 'inherit',
   },
   menu__dropdown: {
@@ -174,7 +176,7 @@ export const Header = () => {
   }, []);
 
   return (
-    <header className={cx(classes.root, {
+    <header className={classNames(classes.root, {
       [classes.root_dense]: smallHeader && !isMdDown,
     })}
     >
@@ -186,7 +188,7 @@ export const Header = () => {
                 <img
                   src={logo}
                   alt="logo"
-                  className={cx(classes.logo, {
+                  className={classNames(classes.logo, {
                     [classes.logo_dense]: smallHeader,
                   })}
                 />
@@ -194,17 +196,17 @@ export const Header = () => {
             </Grid>
             <Grid item xs={7} container justify="center" alignItems="center">
               <ul
-                className={cx(classes.menu, classes.list)}
+                className={classNames(classes.menu, classes.list)}
                 onMouseEnter={handleOpenDropdown}
                 onMouseLeave={handleCloseDropdown}
               >
                 <li>
                   <Typography
-                    className={cx(classes.text, classes.menu__dropdown)}
+                    className={classNames(classes.text, classes.menu__dropdown)}
                     align="center"
                   >
                     Каталог&nbsp;
-                    <ArrowDropDownIcon className={classes.dropdown} />
+                    <ArrowBackIosIcon className={classes.dropdown} />
                   </Typography>
                   {dropdownVisible && (
                     <ul
@@ -212,12 +214,12 @@ export const Header = () => {
                     >
                       <li>
                         <Typography className={classes.text} gutterBottom>
-                          <Link to="/catalog?section=cupboards">Шкафы</Link>
+                          <Link to="/catalog?section=cupboard">Шкафы</Link>
                         </Typography>
                       </li>
                       <li>
                         <Typography className={classes.text} gutterBottom>
-                          <Link to="/catalog?section=wardrobes">Гардеробные</Link>
+                          <Link to="/catalog?section=wardrobe">Гардеробные</Link>
                         </Typography>
                       </li>
                       <li>
@@ -256,7 +258,7 @@ export const Header = () => {
               </ul>
             </Grid>
             <Grid item xs={3} container justify="space-between" alignItems="center">
-              <ul className={cx(classes.list, classes.contacts)}>
+              <ul className={classNames(classes.list, classes.contacts)}>
                 <li>
                   <Typography variant="body2" className={classes.text}>
                     <Link to="tel:+74952780285" external>+7 (495) 278-02-85</Link>
@@ -277,7 +279,7 @@ export const Header = () => {
                   </>
                 )}
               </ul>
-              <ul className={cx(classes.list, classes.social)}>
+              <ul className={classNames(classes.list, classes.social)}>
                 <li>
                   <a href="https://vk.com/public185518769">
                     <Vk className={classes.social__icon} />
@@ -298,20 +300,32 @@ export const Header = () => {
           </Grid>
         </Hidden>
         <Hidden lgUp>
-          <Container className={classes.containerSm}>
-            <div className={classes.innerWrapperSm}>
-              <div className={classes.logoWrapperSm}>
-                <Link to="/" className={cx(classes.logoContainer, classes.logoContainerSm)}>
-                  <img
-                    src={logo}
-                    alt="logo"
-                    className={classes.logoSm}
-                  />
-                </Link>
-              </div>
-              <MenuIcon className={classes.menu__icon} onClick={handleOpenDrawer} />
+          <div className={classes.innerWrapperSm}>
+            <div className={classes.logoWrapperSm}>
+              <Link to="/" className={classNames(classes.logoContainer, classes.logoContainerSm)}>
+                <img
+                  src={logo}
+                  alt="logo"
+                  className={classes.logoSm}
+                />
+              </Link>
             </div>
-          </Container>
+            <div className={classes.addressContainerSm}>
+              <Typography className={classes.text} align="center">
+                <Link to="tel:+74952780285" external>+7 (495) 278-02-85</Link>
+              </Typography>
+              <Hidden xsDown>
+                <Typography className={classes.text} align="center">
+                  <Link to="https://yandex.ru/maps/-/CCQtFQdaLA" external>
+                    м. сокол
+                  </Link>
+                  {' '}
+                  10:00 - 20:00
+                </Typography>
+              </Hidden>
+            </div>
+            <MenuIcon className={classes.menu__icon} onClick={handleOpenDrawer} />
+          </div>
           <Drawer
             anchor="right"
             open={isDrawerOpen}
@@ -333,12 +347,12 @@ export const Header = () => {
               <Grid item xs={12} container spacing={1} direction="column" style={{ paddingLeft: '10px' }}>
                 <Grid item xs>
                   <Typography>
-                    <Link to="/catalog?section=cupboards">Шкафы</Link>
+                    <Link to="/catalog?section=cupboard">Шкафы</Link>
                   </Typography>
                 </Grid>
                 <Grid item xs>
                   <Typography>
-                    <Link to="/catalog?section=wardrobes">Гардеробные</Link>
+                    <Link to="/catalog?section=wardrobe">Гардеробные</Link>
                   </Typography>
                 </Grid>
                 <Grid item xs>
@@ -376,8 +390,8 @@ export const Header = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid container direction="column" spacing={2}>
-              <Grid item xs container direction="column" justify="center">
+            <Grid container spacing={2}>
+              <Grid item xs={12} align="center">
                 <Typography variant="body2" className={classes.text} align="center">
                   <Link to="tel:+74952780285" external>+7 (495) 278-02-85</Link>
                 </Typography>
@@ -390,8 +404,8 @@ export const Header = () => {
                   10:00 - 20:00
                 </Typography>
               </Grid>
-              <Grid item xs container justify="center">
-                <ul className={cx(classes.list, classes.social)}>
+              <Grid item xs={12} align="center">
+                <ul className={classNames(classes.list, classes.social)}>
                   <li>
                     <a href="https://vk.com/public185518769">
                       <Vk className={classes.social__icon} />

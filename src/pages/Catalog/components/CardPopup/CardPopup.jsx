@@ -6,19 +6,30 @@ import {
   Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { ArrowBack, ArrowForward } from '@material-ui/icons';
+import { ArrowBack, ArrowForward, Clear as ClearIcon } from '@material-ui/icons';
 import cx from 'classnames';
 import {
   MainButton,
   LoadingBackground,
-  LazyImage,
+  Loader,
 } from 'components';
+import { ReactComponent as Fb } from 'assets/fb.svg';
+import { ReactComponent as Inst } from 'assets/in.svg';
+import { ReactComponent as Vk } from 'assets/vk.svg';
 
-const useStyles = makeStyles({
-  root: {
-
+const useStyles = makeStyles((theme) => ({
+  paperRoot: {
+    position: 'relative',
   },
-  'img-container': {
+  closeIcon: {
+    width: '30px',
+    height: '30px',
+    top: '5px',
+    right: '5px',
+    position: 'absolute',
+    zIndex: '10',
+  },
+  imgContainer: {
     width: '100%',
     paddingTop: '66.66%',
     position: 'relative',
@@ -31,25 +42,25 @@ const useStyles = makeStyles({
     height: '100%',
     cursor: 'pointer',
   },
-  img_prev2: {
+  imgPrev2: {
     left: '-200%',
   },
-  img_prev1: {
+  imgPrev1: {
     left: '-100%',
   },
-  img_center: {
+  imgCenter: {
     left: '0',
   },
-  img_next1: {
+  imgNext1: {
     left: '100%',
   },
-  img_next2: {
+  imgNext2: {
     left: '200%',
   },
   label: {
     fontWeight: 'bold',
   },
-  'description-container': {
+  descriptionContainer: {
     padding: '20px',
     display: 'flex',
     flexDirection: 'column',
@@ -70,31 +81,70 @@ const useStyles = makeStyles({
     top: 'calc(50% - 15px)',
     cursor: 'pointer',
   },
-  arrow_left: {
+  arrowLeft: {
     left: '0',
   },
-  arrow_right: {
+  arrowRight: {
     right: '0',
   },
   icon: {
     color: 'white',
   },
-});
+  title: {
+    fontSize: '16px',
+    textTransform: 'capitalize',
+    fontWeight: '500',
+  },
+  description: {
+    marginBottom: '10px',
+  },
+  text: {
+    fontSize: '16px',
+  },
+  loaderContainer: {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: '100',
+    width: '100%',
+    height: '100%',
+    background: 'rgba(0, 0, 0, .3)',
+  },
+  [theme.breakpoints.down('sm')]: {
+    paperRoot: {
+      height: '100%',
+    },
+    container: {
+      height: '100%',
+      flexDirection: 'column',
+      flexWrap: 'nowrap',
+    },
+    gridItem: {
+      flexGrow: '0',
+      flexBasis: 'unset',
+    },
+  },
+}));
 
 export const CardPopup = ({
   items,
   currentItemId,
   isOpen,
+  isLoading,
   onClose,
   onClickBack,
   onClickForward,
   onDownloadMoreCards,
+  onFullScreenPopupOpen,
 }) => {
   const classes = useStyles();
 
-  // const handleImageClick = useCallback(() => {
-  //   onImageClick(currentItemId);
-  // });
+  const handleImageClick = useCallback(() => {
+    onFullScreenPopupOpen(currentItemId);
+  }, [onFullScreenPopupOpen, currentItemId]);
 
   const handleClickBack = useCallback(() => {
     onClickBack();
@@ -105,10 +155,10 @@ export const CardPopup = ({
   }, [onClickForward]);
 
   useEffect(() => {
-    if (items.length - 5 === currentItemId) {
+    if (!isLoading && items.length - 5 === currentItemId) {
       onDownloadMoreCards();
     }
-  }, [items.length, currentItemId, onDownloadMoreCards]);
+  }, [items.length, currentItemId, isLoading, onDownloadMoreCards]);
 
   return (
     <Dialog
@@ -117,50 +167,61 @@ export const CardPopup = ({
       fullWidth
       maxWidth="lg"
       className={classes.root}
+      PaperProps={{
+        className: classes.paperRoot,
+      }}
     >
-      <Grid container className={classes.grid}>
-        <Grid item xs={7}>
+      <ClearIcon
+        className={classes.closeIcon}
+        onClick={onClose}
+      />
+      <Grid container className={classes.container}>
+        <Grid item xs={12} md={7} className={classes.gridItem}>
+          {isLoading && (
+            <div className={classes.loaderContainer}>
+              <Loader />
+            </div>
+          )}
           <LoadingBackground>
-            <div className={classes['img-container']}>
+            <div className={classes.imgContainer}>
               {currentItemId > 1 && (
-
                 <img
-                  className={cx(classes.img, classes.img_prev2)}
+                  className={cx(classes.img, classes.imgPrev2)}
                   src={items[currentItemId - 2].imageMedium.url}
                   alt="Картинка в модальном окне"
                 />
-
               )}
               {currentItemId > 0 && (
                 <>
                   <div
-                    className={cx(classes.arrow, classes.arrow_left)}
+                    className={cx(classes.arrow, classes.arrowLeft)}
                     onClick={handleClickBack}
                   >
                     <ArrowBack className={classes.icon} />
                   </div>
                   <img
-                    className={cx(classes.img, classes.img_prev1)}
+                    className={cx(classes.img, classes.imgPrev1)}
                     src={items[currentItemId - 1].imageMedium.url}
                     alt="Картинка в модальном окне"
                   />
                 </>
               )}
               {/* TODO Избавиться от LazyImage */}
-              <LazyImage
-                className={cx(classes.img, classes.img_center)}
+              <img
+                className={cx(classes.img, classes.imgCenter)}
                 src={items[currentItemId].imageMedium.url}
                 alt="Картинка в модальном окне"
+                onClick={handleImageClick}
               />
               {currentItemId < items.length - 1 && (
                 <>
                   <img
-                    className={cx(classes.img, classes.img_next1)}
+                    className={cx(classes.img, classes.imgNext1)}
                     src={items[currentItemId + 1].imageMedium.url}
                     alt="Картинка в модальном окне"
                   />
                   <div
-                    className={cx(classes.arrow, classes.arrow_right)}
+                    className={cx(classes.arrow, classes.arrowRight)}
                     onClick={handleClickForward}
                   >
                     <ArrowForward className={classes.icon} />
@@ -169,7 +230,7 @@ export const CardPopup = ({
               )}
               {currentItemId < items.length - 2 && (
                 <img
-                  className={cx(classes.img, classes.img_next2)}
+                  className={cx(classes.img, classes.imgNext2)}
                   src={items[currentItemId + 2].imageMedium.url}
                   alt="Картинка в модальном окне"
                 />
@@ -177,39 +238,53 @@ export const CardPopup = ({
             </div>
           </LoadingBackground>
         </Grid>
-        <Grid item xs={5} className={classes['description-container']}>
-          <div className={classes['description-container_top']}>
-            <Typography variant="h6" gutterBottom>
+        <Grid item xs={12} md={5} className={classes.descriptionContainer}>
+          <div className={classes.descriptionContainerTop}>
+            <Typography variant="body1" gutterBottom className={classes.title}>
               Коллекция:&nbsp;
-              <Typography varaint="body1" component="span">
+              <Typography varaint="body1" component="span" className={classes.text}>
                 {items[currentItemId].collection}
               </Typography>
             </Typography>
-            <Typography variant="h6" gutterBottom>
+            {items[currentItemId].description && (
+              <div className={classes.description}>
+                <Typography variant="body1" className={classes.title}>
+                  Описание:
+                </Typography>
+                <Typography varaint="body1" className={classes.text}>
+                  {items[currentItemId].description}
+                </Typography>
+              </div>
+            )}
+            <Typography variant="body1" gutterBottom className={classes.title}>
               Артикул:&nbsp;
-              <Typography varaint="body1" component="span">
+              <Typography varaint="body1" component="span" className={classes.text}>
                 {items[currentItemId].id}
               </Typography>
             </Typography>
-            {items[currentItemId].description && (
-              <>
-                <Typography variant="h6">Описание:</Typography>
-                <Typography varaint="body1" component="span">
-                  {items[currentItemId].description}
-                </Typography>
-              </>
-            )}
           </div>
-          <div className={classes['description-container_top']}>
+          <div className={classes.descriptionContainerTop}>
             <MainButton>Рассчитать стоимость</MainButton>
-            {/* <Grid container className={classes.socials}>
-              <Grid item xs={4} />
-              <Grid item xs={4} container spacing={2}>
-                <Grid item xs={4} container justify="center">inst</Grid>
-                <Grid item xs={4} container justify="center">vk</Grid>
-                <Grid item xs={4} container justify="center">fb</Grid>
+            <Grid container className={classes.socials}>
+              <Grid item xs={3} sm={4} />
+              <Grid item xs={6} sm={4} container spacing={2}>
+                <Grid item xs={4} container justify="center">
+                  <a href="https://www.instagram.com/pr_mebel.ru/">
+                    <Inst className={classes.socialIcon} />
+                  </a>
+                </Grid>
+                <Grid item xs={4} container justify="center">
+                  <a href="https://vk.com/public185518769">
+                    <Vk className={classes.socialIcon} />
+                  </a>
+                </Grid>
+                <Grid item xs={4} container justify="center">
+                  <a href="https://www.facebook.com/%D0%A7%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B9-%D0%BC%D0%B5%D0%B1%D0%B5%D0%BB%D1%8C%D0%B5%D1%80-108136607213942">
+                    <Fb className={classes.socialIcon} />
+                  </a>
+                </Grid>
               </Grid>
-            </Grid> */}
+            </Grid>
           </div>
         </Grid>
       </Grid>
@@ -219,6 +294,7 @@ export const CardPopup = ({
 
 CardPopup.propTypes = {
   isOpen: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   items: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     collection: PropTypes.string.isRequired,
@@ -232,4 +308,5 @@ CardPopup.propTypes = {
   onClickBack: PropTypes.func.isRequired,
   onClickForward: PropTypes.func.isRequired,
   onDownloadMoreCards: PropTypes.func.isRequired,
+  onFullScreenPopupOpen: PropTypes.func.isRequired,
 };

@@ -19,7 +19,7 @@ import topImgMob4 from '../assets/top-img-mob4.jpg';
 import topImgMob5 from '../assets/top-img-mob5.jpg';
 import topImgMob6 from '../assets/top-img-mob6.jpg';
 
-export const pages = [
+export const PAGES = [
   {
     titles: [
       'Частный мебельер',
@@ -53,7 +53,7 @@ export const pages = [
       medium: topImgTab2,
       large: topImg2,
     },
-    to: '/catalog?section=cupboards&style=classic',
+    to: '/catalog?section=cupboard&style=classic',
   },
   {
     titles: [
@@ -71,7 +71,7 @@ export const pages = [
       medium: topImgTab3,
       large: topImg3,
     },
-    to: '/catalog?section=wardrobes',
+    to: '/catalog?section=wardrobe',
   },
   {
     titles: [
@@ -88,7 +88,7 @@ export const pages = [
       medium: topImgTab4,
       large: topImg4,
     },
-    to: '/catalog?section=cupboards&style=modern',
+    to: '/catalog?section=cupboard&style=modern',
   },
   {
     titles: [

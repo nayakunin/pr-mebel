@@ -15,17 +15,17 @@ const useStyles = makeStyles((theme) => ({
     height: '300px',
   },
   loader: {
-    width: '50px',
-    height: '50px',
+    width: '70px',
+    height: '70px',
     borderRadius: '100%',
     position: 'relative',
     margin: '0 auto',
 
     '&:before, &:after': {
       content: '""',
-      width: '100%',
+      width: 'calc(100% - 20px)',
       position: 'absolute',
-      height: '100%',
+      height: 'calc(100% - 20px)',
       borderRadius: '100%',
       border: '10px solid transparent',
       borderTopColor: theme.palette.primary.main,

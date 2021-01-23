@@ -171,7 +171,7 @@ export const QuestionsForm = () => {
               />
             </Grid>
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
-              <Grid item xs={8} sm={6} md={4}>
+              <Grid item xs={10} sm={6} md={4}>
                 <SubmitButton>Задать вопрос</SubmitButton>
               </Grid>
             </Grid>

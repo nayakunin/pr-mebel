@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { makeStyles } from '@material-ui/core/styles';
 import { useLocation } from 'react-router-dom';
 import QueryString from 'query-string';
 import {
@@ -7,6 +8,9 @@ import {
   Footer,
   OrderFormPopup,
   FormSubmitPopup,
+  DesignOffer,
+  Map,
+  ShopImg,
 } from 'components';
 import {
   fetchCatalog,
@@ -18,6 +22,8 @@ import {
   goToNextCard,
   goToPrevCard,
   changePage,
+  openFullScreenPopup,
+  closeFullScreenPopup,
 } from 'actions';
 import { filters } from '__constants__';
 import {
@@ -26,20 +32,54 @@ import {
   Gallery,
   Lead,
   Questions,
+  FullScreenPopup,
 } from './components';
 import { catalogSelector } from './selectors';
 
+const useStyles = makeStyles((theme) => ({
+  filterSection: {
+    marginTop: '60px',
+  },
+  gallerySection: {
+    marginTop: '20px',
+    marginBottom: '60px',
+  },
+  designOfferSection: {
+    margin: '40px 0',
+  },
+  shopImgSection: {
+    marginTop: '40px',
+  },
+  mapSection: {
+    marginTop: '80px',
+  },
+  [theme.breakpoints.down('md')]: {
+    filterSection: {
+      marginTop: '40px',
+    },
+    mapSection: {
+      marginTop: '60px',
+    },
+  },
+  [theme.breakpoints.down('sm')]: {
+    mapSection: {
+      marginTop: '40px',
+    },
+  },
+}));
+
 export const Catalog = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const {
     items,
     hasMore,
     isLoading,
     page,
-    // isError,
     filter,
     currentItemId,
     isCardPopupOpen,
+    isFullScreenPopupOpen,
   } = useSelector(catalogSelector);
   const location = useLocation();
 
@@ -49,13 +89,25 @@ export const Catalog = () => {
     dispatch(fetchCatalog());
   }, [dispatch]);
 
-  // Поменять значение одного из селектов
+  // Открыть картинку на полный экран
+  const handleOpenFullScreenPopup = useCallback((itemId) => {
+    dispatch(openFullScreenPopup(itemId));
+  }, [dispatch]);
+
+  // Закрыть картинку, открытую на полный экран
+  const handleCloseFullScreenPopup = useCallback(() => {
+    dispatch(closeFullScreenPopup());
+  }, [dispatch]);
+
+  // Поменять значение одного из параметра фильтра
   const handleChangeFilter = useCallback(({ name, value }) => {
     dispatch(changeFilter({
       name,
       value,
     }));
-  }, [dispatch]);
+
+    handleApplyFilter();
+  }, [dispatch, handleApplyFilter]);
 
   // Открыть модальное окно с итемом
   const handleCardClick = useCallback((itemId) => {
@@ -73,7 +125,7 @@ export const Catalog = () => {
   }, [dispatch]);
 
   // Открыть предыдущий итем внутри модального окна итемов
-  const handleGoToPevCard = useCallback(() => {
+  const handleGoToPrevCard = useCallback(() => {
     dispatch(goToPrevCard());
   }, [dispatch]);
 
@@ -102,31 +154,54 @@ export const Catalog = () => {
     <>
       <Header />
       <main>
-        <Lead />
-        <Filters
-          filter={filter}
-          options={filters}
-          onApplyFilter={handleApplyFilter}
-          onChange={handleChangeFilter}
-        />
-        <Gallery
-          items={items}
-          isLoading={isLoading}
-          hasMore={hasMore}
-          page={page}
-          onCardClick={handleCardClick}
-        />
-        <Questions />
+        <Lead sectionId={filter.section} />
+        <section className={classes.filterSection}>
+          <Filters
+            filter={filter}
+            options={filters}
+            onChange={handleChangeFilter}
+          />
+        </section>
+        <section className={classes.gallerySection}>
+          <Gallery
+            items={items}
+            isLoading={isLoading}
+            hasMore={hasMore}
+            page={page}
+            onCardClick={handleCardClick}
+          />
+        </section>
+        <section className={classes.designOfferSection}>
+          <DesignOffer />
+        </section>
+        <section className={classes.questionsSection}>
+          <Questions />
+        </section>
+        <section className={classes.shopImgSection}>
+          <ShopImg />
+        </section>
+        <section className={classes.mapSection}>
+          <Map />
+        </section>
       </main>
       {isCardPopupOpen && (
         <CardPopup
           items={items}
           currentItemId={currentItemId}
           isOpen={isCardPopupOpen}
+          isLoading={isLoading}
           onClose={handleCloseCardPopup}
-          onClickBack={handleGoToPevCard}
+          onClickBack={handleGoToPrevCard}
           onClickForward={handleGoToNextCard}
           onDownloadMoreCards={handleDownloadMoreCards}
+          onFullScreenPopupOpen={handleOpenFullScreenPopup}
+        />
+      )}
+      {isFullScreenPopupOpen && (
+        <FullScreenPopup
+          img={items[currentItemId].imageFull.url}
+          isOpen={isFullScreenPopupOpen}
+          onClose={handleCloseFullScreenPopup}
         />
       )}
       <Footer />

@@ -5,15 +5,47 @@ import {
   Typography,
   Grid,
 } from '@material-ui/core';
-import { BlockTitle } from 'components';
+import { BlockTitle } from '../BlockTitle/BlockTitle';
 import { DesignCard } from './components';
 import { LIST } from './constants';
 
 const useStyles = makeStyles((theme) => ({
   container: {
     marginTop: '48px',
-    [theme.breakpoints.down('xs')]: {
+  },
+  biggerTitle: {
+    fontSize: '30px',
+    lineHeight: '35px',
+  },
+  smallerTitle: {
+    fontSize: '30px',
+    lineHeight: '35px',
+  },
+
+  '@media (max-width: 1200px)': {
+    biggerTitle: {
+      fontSize: '26px',
+      lineHeight: '30px',
+    },
+    smallerTitle: {
+      fontSize: '18px',
+      lineHeight: '30px',
+    },
+  },
+
+  [theme.breakpoints.down('xs')]: {
+    container: {
       marginTop: '24px',
+    },
+  },
+  '@media (max-width: 480px)': {
+    biggerTitle: {
+      fontSize: '20px',
+      lineHeight: '23px',
+    },
+    smallerTitle: {
+      fontSize: '14px',
+      lineHeight: '23px',
     },
   },
 }));
@@ -24,9 +56,10 @@ export const DesignOffer = () => {
   return (
     <Container>
       <BlockTitle>
-        <Typography variant="h4">
+        <Typography variant="h4" className={classes.biggerTitle}>
           Получите дизайн-проект
-          <br />
+        </Typography>
+        <Typography variant="h5" className={classes.smallerTitle}>
           и стоимость вашего проекта сегодня
         </Typography>
       </BlockTitle>

@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
   imageContainer: {
     width: '100%',
     paddingTop: '66.66%',
-    marginBottom: '12px',
     position: 'relative',
     display: 'block',
     backgroundRepeat: 'no-repeat',
@@ -55,7 +54,6 @@ const useStyles = makeStyles((theme) => ({
       zIndex: '20',
     },
     [theme.breakpoints.down('xs')]: {
-      margin: '0',
       '&:after': {
         display: 'none',
       },
@@ -106,6 +104,7 @@ const useStyles = makeStyles((theme) => ({
   caption: {
     position: 'relative',
     textTransform: 'uppercase',
+    marginTop: '12px',
     fontSize: '15px',
     '&:after': {
       position: 'absolute',
@@ -116,6 +115,9 @@ const useStyles = makeStyles((theme) => ({
       height: '1px',
       background: 'black',
       transition: 'all .3s ease-in-out',
+    },
+    [theme.breakpoints.down('xs')]: {
+      margin: '0',
     },
   },
   captionSm: {
@@ -174,7 +176,6 @@ export const CatalogCard = ({
             </div>
           </LoadingBackground>
           <Typography
-            component="span"
             className={classes.caption}
           >
             {caption}

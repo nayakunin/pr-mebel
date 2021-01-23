@@ -1,17 +1,23 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Container,
   Typography,
   Grid,
   TextField,
+  Hidden,
 } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import {
   saveForm,
   submitForm,
+  uploadFiles,
+  openFormSubmitPopup,
 } from 'actions';
+import { getFileDeclination } from 'utils';
+import PublishIcon from '@material-ui/icons/Publish';
+import ClearIcon from '@material-ui/icons/Clear';
 import {
   BlockTitle,
   SubmitButton,
@@ -73,37 +79,91 @@ const useStyles = makeStyles({
     marginTop: '36px',
     marginBottom: '24px',
   },
+  inputFile: {
+    display: 'none',
+  },
+  files: {
+    marginTop: '30px',
+    marginBottom: '20px',
+  },
+  fileInputContainer: {
+    cursor: 'pointer',
+  },
+  icon: {
+    marginRight: '5px',
+    color: 'white',
+  },
+  deleteFilesIcon: {
+    color: 'white',
+    width: '20px',
+    height: '20px',
+    position: 'absolute',
+    right: '-30px',
+    bottom: '1px',
+  },
+  fileInputText: {
+    color: 'white',
+    position: 'relative',
+  },
 });
 
 export const Questions = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const fileInputRef = useRef(null);
+  const [fileNames, setFileNames] = useState([]);
   const { register, handleSubmit, reset } = useForm();
+
+  const handleFileInputClick = useCallback(() => {
+    fileInputRef.current.click();
+  }, [fileInputRef]);
+
+  const handleFileUploadChange = useCallback(() => {
+    setFileNames(fileInputRef.current.files);
+  }, [fileInputRef]);
+
+  const handleDeleteSelectedFiles = useCallback(() => {
+    fileInputRef.current.value = null;
+    setFileNames([]);
+  }, []);
 
   const onSubmit = useCallback((data) => {
     dispatch(saveForm(data));
     dispatch(submitForm());
+    if (fileNames.length) {
+      dispatch(uploadFiles(fileNames));
+      dispatch(openFormSubmitPopup());
+      fileInputRef.current.value = null;
+    } else {
+      dispatch(submitForm());
+    }
     reset();
-  }, [reset, dispatch]);
+  }, [fileNames, reset, dispatch]);
 
   return (
     <div className={classes.root}>
       <Container className={classes.container}>
         <BlockTitle>
           <Typography variant="h4" className={classes.title} gutterBottom>
-            Остались вопросы? Задайте их тут!
+            Остались вопросы?
+            <Hidden smUp>
+              <br />
+            </Hidden>
+            Задайте их тут!
           </Typography>
         </BlockTitle>
-        <Typography className={classes.subtitle} gutterBottom>
-          А&nbsp;если вы&nbsp;хотите получить расчет конкретной модели,
-          прикрепите свои эскизы или план помещения с&nbsp;описанием
-          пожеланий и&nbsp;наш дизайнер в&nbsp;кротчайшие
-          сроки подготовит для вас предложение!
-        </Typography>
+        <Hidden smDown>
+          <Typography className={classes.subtitle} gutterBottom>
+            А&nbsp;если вы&nbsp;хотите получить расчет конкретной модели,
+            прикрепите свои эскизы или план помещения с&nbsp;описанием
+            пожеланий и&nbsp;наш дизайнер в&nbsp;кротчайшие
+            сроки подготовит для вас предложение!
+          </Typography>
+        </Hidden>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container>
-            <Grid item xs={3} />
-            <Grid item xs={6} container>
+            <Grid item xs={1} sm={3} />
+            <Grid item xs={10} sm={6} container>
               <Grid item xs={12} className={classes.input__container}>
                 <TextField
                   inputRef={register}
@@ -196,23 +256,60 @@ export const Questions = () => {
                 label="Описание"
                 rows={5}
               />
+              <Grid
+                container
+                justify="center"
+                className={classes.files}
+              >
+                <input
+                  type="file"
+                  multiple
+                  ref={fileInputRef}
+                  className={classes.inputFile}
+                  onChange={handleFileUploadChange}
+                />
+                <Grid
+                  item
+                  xs={12}
+                  sm={7}
+                  container
+                  justify="center"
+                  onClick={handleFileInputClick}
+                  className={classes.fileInputContainer}
+                >
+                  <PublishIcon className={classes.icon} />
+                  <Typography className={classes.fileInputText}>
+                    Прикрепить эскизы
+                  </Typography>
+                </Grid>
+                {!!fileNames.length && (
+                  <Grid item xs={12} sm={5} container justify="center">
+                    <Typography className={classes.fileInputText}>
+                      {`${fileNames.length}\xA0${getFileDeclination(fileNames.length)}`}
+                      <ClearIcon
+                        className={classes.deleteFilesIcon}
+                        onClick={handleDeleteSelectedFiles}
+                      />
+                    </Typography>
+                  </Grid>
+                )}
+              </Grid>
             </Grid>
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
-              <Grid item xs={4}>
+              <Grid item xs={8} sm={6} md={4}>
                 <SubmitButton>
-                  Задать вопрос
+                  Отправить
                 </SubmitButton>
               </Grid>
             </Grid>
-            <Grid item xs container justify="center">
-              <Grid item xs={6}>
-                <Typography className={classes.text} align="center">
-                  Нажимая кнопку &laquo;Рассчитать стоимость&raquo;,
-                  я&nbsp;даю согласие на&nbsp;обработку персональных данных и&nbsp;подтверждаю,
-                  что ознакомлен с&nbsp;
-                  <a href="/" className={classes['copyright-link']}>пользовательским соглашением</a>
-                </Typography>
-              </Grid>
+            <Grid item xs={1} sm={2} md={3} />
+            <Grid item xs={10} sm={8} md={6}>
+              <Typography className={classes.text} align="center">
+                Нажимая кнопку &laquo;Рассчитать стоимость&raquo;,
+                я&nbsp;даю согласие на&nbsp;обработку персональных данных и&nbsp;подтверждаю,
+                что ознакомлен с&nbsp;
+                <a href="/" className={classes['copyright-link']}>пользовательским соглашением</a>
+              </Typography>
             </Grid>
           </Grid>
         </form>

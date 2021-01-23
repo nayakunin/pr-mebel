@@ -37,19 +37,6 @@ const useStyles = makeStyles((theme) => ({
     width: '1140px',
     zIndex: '10',
     boxSizing: 'border-box',
-    '@media (max-width: 1250px)': {
-      width: '930px',
-    },
-    '@media (max-width: 990px)': {
-      width: '690px',
-    },
-    '@media (max-width: 768px)': {
-      width: '510px',
-    },
-    '@media (max-width: 550px)': {
-      width: '100%',
-      padding: '15px',
-    },
   },
   text: {
     color: 'white',
@@ -62,21 +49,6 @@ const useStyles = makeStyles((theme) => ({
     '&:last-of-type': {
       marginBottom: '15px',
     },
-    '@media (max-width: 990px)': {
-      fontSize: '72px',
-      lineHeight: '68px',
-    },
-    '@media (max-width: 768px)': {
-      fontSize: '65px',
-      lineHeight: '62px',
-    },
-    '@media (max-width: 550px)': {
-      fontSize: '42px',
-      lineHeight: '38px',
-    },
-    '@media (max-width: 375px)': {
-      fontSize: '40px',
-    },
   },
   subtitle: {
     '&:last-of-type': {
@@ -86,32 +58,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '4.6vh',
     letterSpacing: '2px',
     lineHeight: '1',
-    '@media (max-width: 990px)': {
-      fontSize: '45px',
-      // lineHeight: '1.1',
-    },
-    '@media (max-width: 768px)': {
-      fontSize: '38px',
-    },
-    '@media (max-width: 550px)': {
-      fontSize: '28px',
-    },
-    '@media (max-width: 375px)': {
-      fontSize: '24px',
-    },
   },
   bottomText: {
     fontSize: '2.8vh',
     lineHeight: '1.3',
-    '@media (max-width: 990px)': {
-      fontSize: '25px',
-    },
-    '@media (max-width: 768px)': {
-      fontSize: '20px',
-    },
-    '@media (max-width: 550px)': {
-      fontSize: '16px',
-    },
   },
   button: {
     padding: '15px 50px',
@@ -134,6 +84,82 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonContainer: {
     marginTop: '60px',
+  },
+
+  '@media (max-width: 1250px)': {
+    content: {
+      width: '930px',
+    },
+  },
+
+  '@media (max-width: 990px)': {
+    content: {
+      width: '690px',
+    },
+    title: {
+      fontSize: '72px',
+      lineHeight: '68px',
+    },
+    subtitle: {
+      fontSize: '45px',
+    },
+    bottomText: {
+      fontSize: '25px',
+    },
+    button: {
+      padding: '10px 35px',
+    },
+    buttonText: {
+      fontSize: '16px',
+    },
+  },
+
+  '@media (max-width: 768px)': {
+    content: {
+      width: '510px',
+    },
+    title: {
+      fontSize: '65px',
+      lineHeight: '62px',
+    },
+    subtitle: {
+      fontSize: '38px',
+    },
+    bottomText: {
+      fontSize: '20px',
+    },
+  },
+
+  '@media (max-width: 550px)': {
+    content: {
+      width: '100%',
+      padding: '15px',
+    },
+    title: {
+      fontSize: '42px',
+      lineHeight: '38px',
+    },
+    subtitle: {
+      fontSize: '28px',
+    },
+    bottomText: {
+      fontSize: '16px',
+    },
+    button: {
+      padding: '7px 25px',
+    },
+    buttonText: {
+      fontSize: '12px',
+    },
+  },
+
+  '@media (max-width: 375px)': {
+    title: {
+      fontSize: '40px',
+    },
+    subtitle: {
+      fontSize: '24px',
+    },
   },
 }));
 

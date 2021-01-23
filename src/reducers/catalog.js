@@ -10,6 +10,8 @@ import {
   CLOSE_CARD_POPUP,
   GO_TO_NEXT_CARD,
   GO_TO_PREV_CARD,
+  OPEN_FULL_SCREEN_POPUP,
+  CLOSE_FULL_SCREEN_POPUP,
 } from 'actions';
 import { filters } from '__constants__';
 
@@ -21,10 +23,11 @@ const initialState = {
     style: filters.styles[0].id,
     doorType: filters.doorTypes[0].id,
   },
-  hasMore: 0,
+  hasMore: true,
   page: 0,
   currentItemId: 0,
   isCardPopupOpen: false,
+  isFullScreenPopupOpen: false,
 };
 
 export const catalog = (state = initialState, action) => {
@@ -37,11 +40,13 @@ export const catalog = (state = initialState, action) => {
     }
     case FETCH_CATALOG_SUCCESS: {
       const { items, total } = action.payload;
+      const newItems = [...state.items, ...items];
+
       return {
         ...state,
-        items: [...state.items, ...items],
+        items: newItems,
         isLoading: false,
-        hasMore: total,
+        hasMore: total > newItems.length,
       };
     }
     case FETCH_CATALOG_FAILURE: {
@@ -49,7 +54,7 @@ export const catalog = (state = initialState, action) => {
         ...state,
         items: [],
         isLoading: false,
-        hasMore: 0,
+        hasMore: false,
       };
     }
     case CHANGE_FILTER: {
@@ -67,7 +72,7 @@ export const catalog = (state = initialState, action) => {
             },
           };
         }
-        if (value === 'wardrobes') {
+        if (value === 'wardrobe') {
           return {
             ...state,
             filter: {
@@ -98,7 +103,7 @@ export const catalog = (state = initialState, action) => {
         ...state,
         items: [],
         page: 0,
-        hasMore: 0,
+        hasMore: true,
       };
     }
     case RESET_FILTERS: {
@@ -135,6 +140,19 @@ export const catalog = (state = initialState, action) => {
       return {
         ...state,
         currentItemId: state.currentItemId - 1,
+      };
+    }
+    case OPEN_FULL_SCREEN_POPUP: {
+      return {
+        ...state,
+        currentItemId: action.payload,
+        isFullScreenPopupOpen: true,
+      };
+    }
+    case CLOSE_FULL_SCREEN_POPUP: {
+      return {
+        ...state,
+        isFullScreenPopupOpen: false,
       };
     }
     default: {

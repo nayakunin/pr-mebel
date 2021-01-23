@@ -1,5 +1,5 @@
 import * as api from 'utils';
-import { getCollectionName } from '../utils';
+import { retrieveItemsFromResponse } from '../utils';
 
 export const FETCH_CATALOG_REQUEST = 'FETCH_CATALOG_REQUEST';
 export const FETCH_CATALOG_SUCCESS = 'FETCH_CATALOG_SUCCESS';
@@ -12,6 +12,8 @@ export const OPEN_CARD_POPUP = 'OPEN_CARD_POPUP';
 export const CLOSE_CARD_POPUP = 'CLOSE_CARD_POPUP';
 export const GO_TO_NEXT_CARD = 'GO_TO_NEXT_CARD';
 export const GO_TO_PREV_CARD = 'GO_TO_PREV_CARD';
+export const OPEN_FULL_SCREEN_POPUP = 'OPEN_FULL_SCREEN_POPUP';
+export const CLOSE_FULL_SCREEN_POPUP = 'CLOSE_FULL_SCREEN_POPUP';
 
 export const fetchCatalog = () => async (dispatch, getState) => {
   const { filter, page } = getState().catalog;
@@ -25,7 +27,7 @@ export const fetchCatalog = () => async (dispatch, getState) => {
 
     dispatch({
       type: FETCH_CATALOG_SUCCESS,
-      payload: response.data[getCollectionName(filter.section)],
+      payload: retrieveItemsFromResponse(response, filter),
     });
   } catch (error) {
     console.log(error);
@@ -65,4 +67,13 @@ export const goToNextCard = () => ({
 
 export const goToPrevCard = () => ({
   type: GO_TO_PREV_CARD,
+});
+
+export const openFullScreenPopup = (currentItemId) => ({
+  type: OPEN_FULL_SCREEN_POPUP,
+  payload: currentItemId,
+});
+
+export const closeFullScreenPopup = () => ({
+  type: CLOSE_FULL_SCREEN_POPUP,
 });

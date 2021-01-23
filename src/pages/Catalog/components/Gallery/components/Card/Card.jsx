@@ -10,11 +10,28 @@ const useStyles = makeStyles({
     paddingTop: '66.66%',
     position: 'relative',
     overflow: 'hidden',
-  },
-  root_loaded: {
     cursor: 'pointer',
     '&:hover $tooltip': {
       transform: 'translateY(0)',
+    },
+    '&:hover $img': {
+      transform: 'scale(1.1)',
+    },
+    '&:hover': {
+      '&::after': {
+        background: 'rgba(0, 0, 0, .3)',
+      },
+    },
+    '&::after': {
+      top: '0',
+      left: '0',
+      width: '100%',
+      height: '100%',
+      content: '""',
+      zIndex: '20',
+      position: 'absolute',
+      background: 'rgba(0,0,0,0)',
+      transition: 'background .3s',
     },
   },
   img: {
@@ -23,11 +40,13 @@ const useStyles = makeStyles({
     height: '100%',
     top: '0',
     left: '0',
+    transition: 'all .5s',
   },
   tooltip: {
     transform: 'translateY(100%)',
     transition: 'transform .2s ease-out',
     position: 'absolute',
+    zIndex: '30',
     bottom: '0',
     left: '0',
     padding: '5px 40px 5px 15px',

@@ -94,8 +94,7 @@ export const OurProduction = () => {
               {LIST[activeIndex].text}
             </Typography>
           </Grid>
-          <Grid item xs={2} />
-          <Grid item xs={8}>
+          <Grid item xs={12}>
             <Pagination
               list={LIST}
               activeIndex={activeIndex}
@@ -111,7 +110,7 @@ export const OurProduction = () => {
           </Grid>
         </Grid>
         <Grid container justify="center" className={classes['button-container']}>
-          <Grid item xs={8} sm={6} md={4}>
+          <Grid item xs={10} sm={6} md={4}>
             <MainButton>Получить проект</MainButton>
           </Grid>
         </Grid>

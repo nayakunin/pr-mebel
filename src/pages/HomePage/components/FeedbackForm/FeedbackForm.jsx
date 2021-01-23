@@ -21,12 +21,11 @@ import {
   uploadFiles,
 } from 'actions';
 import PublishIcon from '@material-ui/icons/Publish';
-import DeleteIcon from '@material-ui/icons/Delete';
+import ClearIcon from '@material-ui/icons/Clear';
 import {
   SubmitButton,
 } from 'components';
 import { getFileDeclination } from 'utils';
-import { NB_SP } from '__constants__';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,7 +67,6 @@ const useStyles = makeStyles((theme) => ({
   },
   text_publish: {
     color: 'white',
-    fontWeight: '300',
     textTransform: 'uppercase',
     fontSize: '12px',
     lineHeight: '14px',
@@ -105,9 +103,25 @@ const useStyles = makeStyles((theme) => ({
   },
   'file-upload__container': {
     position: 'relative',
-    [theme.breakpoints.down('xs')]: {
-      marginTop: '10px',
+    [theme.breakpoints.up('sm')]: {
+      paddingTop: '16px',
     },
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '20px',
+    },
+  },
+  deleteFilesIcon: {
+    color: 'white',
+    width: '20px',
+    height: '20px',
+    position: 'absolute',
+    right: '-30px',
+    bottom: '1px',
+  },
+  fileInputText: {
+    color: 'white',
+    position: 'relative',
+    fontSize: '16px',
   },
 }));
 
@@ -126,17 +140,7 @@ export const FeedbackForm = () => {
 
   const handleFileUploadChange = useCallback(() => {
     const { files } = fileInputRef.current;
-    const names = [];
-
-    for (let i = 0; i < files.length; i++) {
-      if (i > 2) {
-        names.push(`и еще ${files.length - i}${NB_SP}${getFileDeclination(files.length - i)}`);
-        break;
-      }
-      names.push(files[i].name);
-    }
-
-    setFileNames(names);
+    setFileNames(files);
   }, [fileInputRef]);
 
   const handleClearFiles = useCallback(() => {
@@ -162,12 +166,13 @@ export const FeedbackForm = () => {
       <Container>
         <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
           <Grid container justify="center">
+            <Grid item xs={1} />
             <Grid
               item
-              xs={8}
-              sm={6}
+              xs={10}
+              md={6}
               container
-              direction={smDown ? 'column' : 'row'}
+              direction="row"
               spacing={smDown ? 2 : 4}
             >
               <Grid
@@ -218,7 +223,6 @@ export const FeedbackForm = () => {
                       root: classes.input__label,
                     },
                   }}
-                  pattern="[7,8]{1}-[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
                   fullWidth
                   placeholder="Телефон"
                   label="Телефон"
@@ -238,18 +242,21 @@ export const FeedbackForm = () => {
                 </Grid>
               </Hidden>
             </Grid>
-            <Grid item sm={1} />
+            <Grid item xs={1} />
             <Grid
               item
-              xs={8}
-              sm={5}
+              xs={10}
+              md={4}
               container
-              spacing={4}
+              justify="center"
+              alignItems={smDown ? 'center' : 'flex-start'}
               className={classes['file-upload__container']}
             >
               <Grid
                 item
-                xs={12}
+                xs={6}
+                container
+                justify="center"
               >
                 <input
                   type="file"
@@ -267,36 +274,31 @@ export const FeedbackForm = () => {
                   </Typography>
                 </div>
               </Grid>
-              <Grid item xs={12} className={classes['file-name__container']}>
-                {fileNames.map((file, i) => (
-                  <>
-                    <Typography
-                      key={file}
-                      variant="body2"
-                      display="inline"
-                      className={classes.filenames}
-                    >
-                      {file}
+              <Grid item xs={6}>
+                {!!fileNames.length && (
+                  <Grid
+                    item
+                    xs={12}
+                    container
+                    justify="center"
+                    className={classes['file-name__container']}
+                  >
+                    <Typography className={classes.fileInputText}>
+                      {`${fileNames.length}\xA0${getFileDeclination(fileNames.length)}`}
+                      <ClearIcon
+                        className={classes.deleteFilesIcon}
+                        onClick={handleClearFiles}
+                      />
                     </Typography>
-                    {i !== fileNames.length - 1 && (
-                      <Typography
-                        variant="body2"
-                        display="inline"
-                        className={classes.filenames}
-                      >
-                        {', '}
-                      </Typography>
-                    )}
-                  </>
-                ))}
+                  </Grid>
+                )}
               </Grid>
-              {!!fileNames.length && (
-                <DeleteIcon className={classes['delete-icon']} onClick={handleClearFiles} />
-              )}
             </Grid>
             <Grid item xs={12} container justify="center" className={classes['button-container']}>
-              <Grid item xs={8} sm={6} md={4}>
-                <SubmitButton>Рассчитать стоимость</SubmitButton>
+              <Grid item xs={10} sm={6} md={4}>
+                <SubmitButton>
+                  Рассчитать стоимость
+                </SubmitButton>
               </Grid>
             </Grid>
             <Grid item xs container justify="center">
