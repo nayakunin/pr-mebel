@@ -127,7 +127,7 @@ export const Carousel = () => {
       handleResize();
     }
 
-    const interval = setInterval(() => handleRotate(), 7999000);
+    const interval = setInterval(() => handleRotate(), 7000);
 
     window.addEventListener('resize', handleResize);
     return () => {

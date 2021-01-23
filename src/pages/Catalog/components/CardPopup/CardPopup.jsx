@@ -6,7 +6,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { ArrowBack, ArrowForward } from '@material-ui/icons';
+import { ArrowBack, ArrowForward, Clear as ClearIcon } from '@material-ui/icons';
 import cx from 'classnames';
 import {
   MainButton,
@@ -18,8 +18,16 @@ import { ReactComponent as Inst } from 'assets/in.svg';
 import { ReactComponent as Vk } from 'assets/vk.svg';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-
+  paperRoot: {
+    position: 'relative',
+  },
+  closeIcon: {
+    width: '30px',
+    height: '30px',
+    top: '5px',
+    right: '5px',
+    position: 'absolute',
+    zIndex: '10',
   },
   imgContainer: {
     width: '100%',
@@ -163,6 +171,10 @@ export const CardPopup = ({
         className: classes.paperRoot,
       }}
     >
+      <ClearIcon
+        className={classes.closeIcon}
+        onClick={onClose}
+      />
       <Grid container className={classes.container}>
         <Grid item xs={12} md={7} className={classes.gridItem}>
           {isLoading && (

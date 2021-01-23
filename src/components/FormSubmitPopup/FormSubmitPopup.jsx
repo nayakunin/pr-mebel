@@ -17,6 +17,7 @@ import {
   submitForm,
   closeFormSubmitPopup,
 } from 'actions';
+import ClearIcon from '@material-ui/icons/Clear';
 import {
   getFormState,
 } from './selectors';
@@ -28,6 +29,15 @@ const useStyles = makeStyles({
     minHeight: '200px',
     display: 'flex',
     flexDirection: 'column',
+    position: 'relative',
+  },
+  closeIcon: {
+    width: '30px',
+    height: '30px',
+    top: '5px',
+    right: '5px',
+    position: 'absolute',
+    zIndex: '10',
   },
   container: {
     flexGrow: '1',
@@ -88,6 +98,10 @@ export const FormSubmitPopup = () => {
       maxWidth="sm"
     >
       <div className={classes.root}>
+        <ClearIcon
+          className={classes.closeIcon}
+          onClick={handleClose}
+        />
         <Typography
           variant="body1"
           align="center"

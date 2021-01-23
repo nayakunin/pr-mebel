@@ -3,6 +3,8 @@ export const getFileDeclination = (num) => {
   const remainder = num % 100;
   const remainderOfTen = remainder % 10;
 
+  console.log(remainder, remainderOfTen);
+
   if (remainder > 4 && remainder < 20) {
     return variants[2];
   }

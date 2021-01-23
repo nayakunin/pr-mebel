@@ -123,6 +123,7 @@ export const Questions = () => {
   }, [fileInputRef]);
 
   const handleDeleteSelectedFiles = useCallback(() => {
+    fileInputRef.current.value = null;
     setFileNames([]);
   }, []);
 
@@ -284,7 +285,7 @@ export const Questions = () => {
                 {!!fileNames.length && (
                   <Grid item xs={12} sm={5} container justify="center">
                     <Typography className={classes.fileInputText}>
-                      {`${fileNames.length}\xA0${getFileDeclination(fileNames.legnth)}`}
+                      {`${fileNames.length}\xA0${getFileDeclination(fileNames.length)}`}
                       <ClearIcon
                         className={classes.deleteFilesIcon}
                         onClick={handleDeleteSelectedFiles}

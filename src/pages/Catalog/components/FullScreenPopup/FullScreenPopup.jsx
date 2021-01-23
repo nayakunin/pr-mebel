@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Loader } from 'components';
 import { Dialog } from '@material-ui/core';
+import ClearIcon from '@material-ui/icons/Clear';
 
 const useStyles = makeStyles({
   root: {
@@ -25,6 +26,14 @@ const useStyles = makeStyles({
     minHeight: '100px',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  closeIcon: {
+    width: '30px',
+    height: '30px',
+    top: '5px',
+    right: '5px',
+    position: 'absolute',
+    zIndex: '10',
   },
 });
 
@@ -55,6 +64,10 @@ export const FullScreenPopup = ({
         className: classes.paperRoot,
       }}
     >
+      <ClearIcon
+        className={classes.closeIcon}
+        onClick={onClose}
+      />
       {isLoading && (
         <div>
           <Loader />

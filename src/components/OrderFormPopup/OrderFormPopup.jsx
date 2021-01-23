@@ -18,6 +18,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PublishIcon from '@material-ui/icons/Publish';
+import ClearIcon from '@material-ui/icons/Clear';
 import { getFileDeclination } from 'utils';
 import {
   closeOrderFormPopup,
@@ -35,12 +36,23 @@ import {
 } from './selectors';
 
 const useStyles = makeStyles((theme) => ({
+  paperRoot: {
+    position: 'relative',
+  },
   content: {
     padding: '20px',
   },
   title: {
     fontSize: '20px',
     fontWeight: '400',
+  },
+  closeIcon: {
+    width: '30px',
+    height: '30px',
+    top: '5px',
+    right: '5px',
+    position: 'absolute',
+    zIndex: '10',
   },
   text: {
     fontSize: '14px',
@@ -148,6 +160,10 @@ export const OrderFormPopup = () => {
         className: classes.paperRoot,
       }}
     >
+      <ClearIcon
+        className={classes.closeIcon}
+        onClick={handleClosePopup}
+      />
       <div className={classes.imgContainer}>
         <img
           className={classes.img}
@@ -235,7 +251,7 @@ export const OrderFormPopup = () => {
               {!!fileNames.length && (
                 <Grid item xs={12} sm={5} container justify="center">
                   <Typography>
-                    {`${fileNames.length}\xA0${getFileDeclination(fileNames.legnth)}`}
+                    {`${fileNames.length}\xA0${getFileDeclination(fileNames.length)}`}
                   </Typography>
                 </Grid>
               )}
