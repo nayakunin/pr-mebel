@@ -138,7 +138,7 @@ export const Questions = () => {
       dispatch(submitForm());
     }
     reset();
-  }, [reset, dispatch]);
+  }, [fileNames, reset, dispatch]);
 
   return (
     <div className={classes.root}>
