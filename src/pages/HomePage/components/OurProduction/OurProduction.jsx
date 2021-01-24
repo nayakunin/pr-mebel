@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import LazyLoad from 'react-lazyload';
 import {
   Container,
   Typography,
@@ -64,7 +65,9 @@ export const OurProduction = () => {
           Наше производство
         </Typography>
       </BlockTitle>
-      <img src={img} alt="Производство" className={classes.img} />
+      <LazyLoad>
+        <img src={img} alt="Производство" className={classes.img} />
+      </LazyLoad>
       <Grid
         container
         spacing={isXsDown ? 2 : 4}

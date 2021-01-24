@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import LazyLoad from 'react-lazyload';
 import {
   Container,
   Typography,
@@ -86,11 +87,13 @@ export const WardrobeRight = () => {
           </Grid>
           <Grid item xs={6}>
             <div className={classes.imgWrapper}>
-              <img
-                src={img}
-                alt="шкаф"
-                className={classes.img}
-              />
+              <LazyLoad height={450} offset={500}>
+                <img
+                  src={img}
+                  alt="шкаф"
+                  className={classes.img}
+                />
+              </LazyLoad>
               {ADDITIONAL.map((point) => (
                 <div
                   key={`${point.left} x ${point.top}`}
@@ -115,11 +118,13 @@ export const WardrobeRight = () => {
       <Hidden mdUp>
         <Grid container justify="center" className={classes.content_sm}>
           <Grid item xs={12} className={classes.img__container}>
-            <img
-              src={currentImg}
-              alt="шкаф"
-              className={classes.img}
-            />
+            <LazyLoad height={400} offset={300}>
+              <img
+                src={currentImg}
+                alt="шкаф"
+                className={classes.img}
+              />
+            </LazyLoad>
           </Grid>
           <Grid item xs={12}>
             <Pagination

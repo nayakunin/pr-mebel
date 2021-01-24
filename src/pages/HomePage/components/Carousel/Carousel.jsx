@@ -127,7 +127,7 @@ export const Carousel = () => {
       handleResize();
     }
 
-    const interval = setInterval(() => handleRotate(), 7000);
+    const interval = setInterval(() => handleRotate(), 997000);
 
     window.addEventListener('resize', handleResize);
     return () => {
@@ -150,9 +150,10 @@ export const Carousel = () => {
         className={classes.slider}
         style={{ transform: `translateX(-${windowWidth * activeSlide}px)` }}
       >
-        {PAGES.map((page) => (
+        {PAGES.map((page, i) => (
           <Page
             key={page.titles[0]}
+            id={i}
             titles={page.titles}
             subtitles={page.subtitles}
             texts={page.texts}

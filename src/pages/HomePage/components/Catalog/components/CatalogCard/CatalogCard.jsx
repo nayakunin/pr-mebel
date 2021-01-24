@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import LazyLoad from 'react-lazyload';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Hidden } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -167,7 +168,9 @@ export const CatalogCard = ({
         <Hidden xsDown>
           <LoadingBackground>
             <div className={classes.imageContainer}>
-              <img src={img} alt={caption} className={classes.image} />
+              <LazyLoad height={250} offset={500}>
+                <img src={img} alt={caption} className={classes.image} />
+              </LazyLoad>
               <div className={classes.hoverTextContainer}>
                 <div className={classes.hoverTextInnerContainer}>
                   <Typography variant="h5" className={classes.title}>{title}</Typography>
@@ -189,7 +192,9 @@ export const CatalogCard = ({
         <Hidden smUp>
           <LoadingBackground>
             <div className={classes.imageContainer}>
-              <img src={img} alt={caption} className={classes.image} />
+              <LazyLoad height={300} offset={400}>
+                <img src={img} alt={caption} className={classes.image} />
+              </LazyLoad>
               <div className={classes.imgHeader}>
                 <Typography
                   component="span"

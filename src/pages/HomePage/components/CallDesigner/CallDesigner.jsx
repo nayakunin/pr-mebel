@@ -91,7 +91,7 @@ export const CallDesigner = () => {
         </Grid>
       </Hidden>
       <Hidden smUp>
-        <Grid container className={classes.container} direction="column" alignItems="left" spacing={1}>
+        <Grid container className={classes.container} direction="column" alignItems="flex-start" spacing={1}>
           <Grid item xs={10} container direction="row" alignItems="center">
             <Grid item xs={2}>
               <Img1 className={classes.img} />
@@ -112,7 +112,7 @@ export const CallDesigner = () => {
               </Typography>
             </Grid>
           </Grid>
-          <Grid item xs={10} container direction="row" justify="left" alignItems="center">
+          <Grid item xs={10} container direction="row" justify="flex-start" alignItems="center">
             <Grid item xs={2}>
               <Img3 className={classes.img} />
             </Grid>

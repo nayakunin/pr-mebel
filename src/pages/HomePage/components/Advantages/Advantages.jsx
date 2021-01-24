@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import cx from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
+import LazyLoad from 'react-lazyload';
+import { v4 } from 'uuid';
 import {
   Container,
   Typography,
@@ -145,10 +147,10 @@ export const Advantages = () => {
             <Tabs tabs={TABS} activeTab={activeTab} onChange={handleChangeTab} />
             <Options activeTab={activeTab}>
               {TABS.map((tab) => (
-                <div key={tab.title} label={tab.title}>
+                <div key={v4()} label={tab.title}>
                   <ul className={classes.list}>
                     {tab.list.map((option) => (
-                      <li key={option} className={classes.listItem}>
+                      <li key={v4()} className={classes.listItem}>
                         <CheckIcon className={classes.check} />
                         <Typography className={classes.listText}>{option}</Typography>
                       </li>
@@ -159,11 +161,13 @@ export const Advantages = () => {
             </Options>
           </Grid>
           <Grid item xs={5}>
-            <img
-              src={TABS.filter((tab, i) => i === activeTab)[0].img}
-              alt="smth"
-              className={classes.img}
-            />
+            <LazyLoad height={300} offset={500}>
+              <img
+                src={TABS.filter((tab, i) => i === activeTab)[0].img}
+                alt="smth"
+                className={classes.img}
+              />
+            </LazyLoad>
           </Grid>
         </Grid>
       </Hidden>
@@ -199,11 +203,13 @@ export const Advantages = () => {
               className={cx(classes.icon, classes.iconBack)}
               onClick={handlePrevTab}
             />
-            <img
-              src={TABS.filter((tab, i) => i === activeTab)[0].img}
-              alt="smth"
-              className={classes.img}
-            />
+            <LazyLoad height={300} offset={300}>
+              <img
+                src={TABS.filter((tab, i) => i === activeTab)[0].img}
+                alt="smth"
+                className={classes.img}
+              />
+            </LazyLoad>
             <ArrowForwardIosIcon
               className={cx(classes.icon, classes.iconForward)}
               onClick={handleNextTab}

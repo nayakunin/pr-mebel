@@ -17,10 +17,8 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import MailIcon from '@material-ui/icons/Mail';
 import LocalParkingIcon from '@material-ui/icons/LocalParking';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
-import {
-  BlockTitle,
-  Link,
-} from 'components';
+import { BlockTitle } from '../BlockTitle/BlockTitle';
+import { Link } from '../Link/Link';
 import apple from './assets/apple.png';
 import google from './assets/google.png';
 import yandex from './assets/yandex.png';

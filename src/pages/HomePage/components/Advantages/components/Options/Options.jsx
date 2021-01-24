@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { v4 } from 'uuid';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -22,7 +23,7 @@ export const Options = ({
     <>
       {children.map((child, i) => (
         <div
-          key={child.props.label}
+          key={v4()}
           className={cx(classes.tabContent, {
             [classes.tabContentVisible]: activeTab === i,
           })}

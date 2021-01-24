@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import LazyLoad from 'react-lazyload';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -165,6 +166,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const Page = ({
   titles,
+  id,
   subtitles,
   texts,
   imageSet,
@@ -176,12 +178,24 @@ export const Page = ({
     <div
       className={classes.root}
     >
-      <picture className={classes.imageContainer}>
-        <source className={classes.image} srcSet={imageSet.small} media="(max-width: 575px)" />
-        <source className={classes.image} srcSet={imageSet.medium} media="(max-width: 990px)" />
-        <source className={classes.image} srcSet={imageSet.large} />
-        <img className={classes.image} src={imageSet.small} alt="Фоновое изображение" />
-      </picture>
+      {id === 0 ? (
+        <picture className={classes.imageContainer}>
+          <source className={classes.image} srcSet={imageSet.small} media="(max-width: 575px)" />
+          <source className={classes.image} srcSet={imageSet.medium} media="(max-width: 990px)" />
+          <source className={classes.image} srcSet={imageSet.large} />
+          <img className={classes.image} src={imageSet.small} alt="Фоновое изображение" />
+        </picture>
+      ) : (
+        <LazyLoad>
+          <picture className={classes.imageContainer}>
+            <source className={classes.image} srcSet={imageSet.small} media="(max-width: 575px)" />
+            <source className={classes.image} srcSet={imageSet.medium} media="(max-width: 990px)" />
+            <source className={classes.image} srcSet={imageSet.large} />
+            <img className={classes.image} src={imageSet.small} alt="Фоновое изображение" />
+          </picture>
+        </LazyLoad>
+      )}
+
       <div className={classes.content}>
         {titles.map((title) => (
           <Typography
@@ -226,6 +240,7 @@ export const Page = ({
 };
 
 Page.propTypes = {
+  id: PropTypes.number.isRequired,
   titles: PropTypes.arrayOf(PropTypes.string).isRequired,
   subtitles: PropTypes.arrayOf(PropTypes.string),
   texts: PropTypes.arrayOf(PropTypes.string).isRequired,

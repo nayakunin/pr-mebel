@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import LazyLoad from 'react-lazyload';
 import img from './assets/img.png';
 
 const useStyles = makeStyles({
@@ -17,8 +18,10 @@ export const ShopImg = () => {
   const classes = useStyles();
 
   return (
-    <div
-      className={classes.root}
-    />
+    <LazyLoad height={400}>
+      <div
+        className={classes.root}
+      />
+    </LazyLoad>
   );
 };
