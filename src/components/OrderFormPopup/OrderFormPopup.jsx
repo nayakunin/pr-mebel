@@ -143,7 +143,7 @@ export const OrderFormPopup = () => {
 
   const handleFileInputClick = useCallback(() => {
     fileInputRef.current.click();
-  }, [fileInputRef, fileInputRef]);
+  }, [fileInputRef]);
 
   const handleFileUploadChange = useCallback(() => {
     setFileNames(fileInputRef.current.files);

@@ -68,7 +68,7 @@ export const BottomFilters = ({
             {options.styles.map((option, i) => {
               if (i !== options.styles.length - 1) {
                 return (
-                  <>
+                  <React.Fragment key={option.id}>
                     <Typography
                       variant="body2"
                       component="span"
@@ -86,12 +86,13 @@ export const BottomFilters = ({
                     >
                       -
                     </Typography>
-                  </>
+                  </React.Fragment>
                 );
               }
 
               return (
                 <Typography
+                  key={option.id}
                   variant="body2"
                   component="span"
                   className={cx(classes.option, {
@@ -117,7 +118,7 @@ export const BottomFilters = ({
             {options.doorTypes.map((option, i) => {
               if (i !== options.doorTypes.length - 1) {
                 return (
-                  <>
+                  <React.Fragment key={option.id}>
                     <Typography
                       variant="body2"
                       component="span"
@@ -135,12 +136,13 @@ export const BottomFilters = ({
                     >
                       -
                     </Typography>
-                  </>
+                  </React.Fragment>
                 );
               }
 
               return (
                 <Typography
+                  key={option.id}
                   variant="body2"
                   component="span"
                   className={cx(classes.option, {

@@ -5,9 +5,10 @@ import {
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/core/styles';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/storage';
+import 'firebase/analytics';
 import { configureStore } from './store';
 import App from './App';
 import { theme } from './theme';

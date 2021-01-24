@@ -59,7 +59,7 @@ export const SectionPicker = ({ options, value, onChange }) => {
         {options.map((section, i) => {
           if (i !== options.length - 1) {
             return (
-              <>
+              <React.Fragment key={section.title}>
                 <Typography
                   variant="body1"
                   className={cx(classes.option, {
@@ -70,12 +70,13 @@ export const SectionPicker = ({ options, value, onChange }) => {
                   {section.title}
                 </Typography>
                 <span className={classes.dash}>&mdash;</span>
-              </>
+              </React.Fragment>
             );
           }
 
           return (
             <Typography
+              key={section.title}
               variant="body1"
               className={cx(classes.option, {
                 [classes.selectedOption]: value === section.id,
