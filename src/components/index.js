@@ -13,3 +13,4 @@ export * from './Loader/Loader';
 export * from './DesignOffer/DesignOffer';
 export * from './Map/Map';
 export * from './ShopImg/ShopImg';
+export * from './FullScreenLoader';
