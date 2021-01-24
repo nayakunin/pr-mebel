@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const HomePage = () => {
+export default () => {
   const classes = useStyles();
   const refsMap = useRef({});
   const location = useLocation();

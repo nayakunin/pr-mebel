@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Catalog = () => {
+export default () => {
   const classes = useStyles();
   const refsMap = useRef({});
   const dispatch = useDispatch();

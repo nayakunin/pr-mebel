@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import {
   Route,
   Switch,
 } from 'react-router-dom';
-import { HomePage } from './pages/HomePage/HomePage';
-import { Catalog } from './pages/Catalog/Catalog';
+
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const Catalog = lazy(() => import('./pages/Catalog/Catalog'));
 
 function App() {
   return (
-    <>
+    <Suspense fallback={(<div>LOADING</div>)}>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/catalog" component={Catalog} />
       </Switch>
-    </>
+    </Suspense>
   );
 }
 
