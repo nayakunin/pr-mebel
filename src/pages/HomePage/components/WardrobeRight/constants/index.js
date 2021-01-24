@@ -1,15 +1,15 @@
 import { NB_SP, MDASH } from '__constants__';
-import imgAdd1 from '../assets/1.1.jpg';
-import imgAdd2 from '../assets/1.2.jpg';
-import imgAdd3 from '../assets/1.3.jpg';
-import imgAdd4 from '../assets/1.4.jpg';
-import imgAdd5 from '../assets/1.5.jpg';
-import imgAdd6 from '../assets/1.6.jpg';
-import imgAdd7 from '../assets/1.7.jpg';
-import imgAdd8 from '../assets/1.8.jpg';
-import imgAdd9 from '../assets/1.9.jpg';
-import imgAdd10 from '../assets/1.10.jpg';
-import imgAdd11 from '../assets/1.11.jpg';
+import imgAdd1 from '../assets/1.1.webp';
+import imgAdd2 from '../assets/1.2.webp';
+import imgAdd3 from '../assets/1.3.webp';
+import imgAdd4 from '../assets/1.4.webp';
+import imgAdd5 from '../assets/1.5.webp';
+import imgAdd6 from '../assets/1.6.webp';
+import imgAdd7 from '../assets/1.7.webp';
+import imgAdd8 from '../assets/1.8.webp';
+import imgAdd9 from '../assets/1.9.webp';
+import imgAdd10 from '../assets/1.10.webp';
+import imgAdd11 from '../assets/1.11.webp';
 
 export const ADDITIONAL = [
   // 1

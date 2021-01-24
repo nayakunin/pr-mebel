@@ -1,18 +1,18 @@
 import { NB_SP, MDASH } from '__constants__';
-import img1 from '../assets/comfort-img1.jpg';
-import img2 from '../assets/comfort-img2.jpg';
-import img3 from '../assets/comfort-img3.jpg';
-import imgAdd1 from '../assets/3.1.jpg';
-import imgAdd2 from '../assets/3.2.jpg';
-import imgAdd3 from '../assets/3.3.jpg';
-import imgAdd4 from '../assets/3.4.jpg';
-import imgAdd5 from '../assets/3.5.jpg';
-import imgAdd6 from '../assets/3.6.jpg';
-import imgAdd7 from '../assets/3.7.jpg';
-import imgAdd8 from '../assets/3.8.jpg';
-import imgAdd9 from '../assets/3.9.jpg';
-import imgAdd10 from '../assets/3.10.jpg';
-import imgAdd11 from '../assets/3.11.jpg';
+import img1 from '../assets/comfort-img1.webp';
+import img2 from '../assets/comfort-img2.webp';
+import img3 from '../assets/comfort-img3.webp';
+import imgAdd1 from '../assets/3.1.webp';
+import imgAdd2 from '../assets/3.2.webp';
+import imgAdd3 from '../assets/3.3.webp';
+import imgAdd4 from '../assets/3.4.webp';
+import imgAdd5 from '../assets/3.5.webp';
+import imgAdd6 from '../assets/3.6.webp';
+import imgAdd7 from '../assets/3.7.webp';
+import imgAdd8 from '../assets/3.8.webp';
+import imgAdd9 from '../assets/3.9.webp';
+import imgAdd10 from '../assets/3.10.webp';
+import imgAdd11 from '../assets/3.11.webp';
 
 export const TABS = [
   {

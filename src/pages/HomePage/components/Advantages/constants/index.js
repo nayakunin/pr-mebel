@@ -1,8 +1,8 @@
-import img1 from '../assets/advantages-img1.jpg';
-import img2 from '../assets/advantages-img2.jpg';
-import img4 from '../assets/advantages-img4.jpg';
-import img5 from '../assets/advantages-img5.jpg';
-import img6 from '../assets/advantages-img6.jpg';
+import img1 from '../assets/advantages-img1.webp';
+import img2 from '../assets/advantages-img2.webp';
+import img4 from '../assets/advantages-img4.webp';
+import img5 from '../assets/advantages-img5.webp';
+import img6 from '../assets/advantages-img6.webp';
 
 export const TABS = [
   {

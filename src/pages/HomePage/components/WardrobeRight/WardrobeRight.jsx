@@ -15,7 +15,7 @@ import {
 import { ADDITIONAL } from './constants';
 import { WardrobeAdditionalBlock } from '../WardrobeAdditionalBlock';
 import { WardrobeSnippet } from '../WardrobeSnippet';
-import img from './assets/quality-img.jpg';
+import img from './assets/quality-img.webp';
 
 const useStyles = makeStyles((theme) => ({
   content_sm: {

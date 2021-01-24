@@ -14,7 +14,7 @@ import {
   Pagination,
 } from 'components';
 import { LIST } from './constants';
-import img from './assets/production-img.jpg';
+import img from './assets/production-img.webp';
 
 const useStyles = makeStyles((theme) => ({
   img: {

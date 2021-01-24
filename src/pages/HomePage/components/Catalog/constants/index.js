@@ -1,9 +1,9 @@
-import img1 from '../assets/catalog-1.jpg';
-import img2 from '../assets/catalog-2.jpg';
-import img3 from '../assets/catalog-3.jpg';
-import img4 from '../assets/catalog-4.jpg';
-import img5 from '../assets/catalog-5.jpg';
-import img6 from '../assets/catalog-6.jpg';
+import img1 from '../assets/catalog-1.webp';
+import img2 from '../assets/catalog-2.webp';
+import img3 from '../assets/catalog-3.webp';
+import img4 from '../assets/catalog-4.webp';
+import img5 from '../assets/catalog-5.webp';
+import img6 from '../assets/catalog-6.webp';
 
 export const CATALOG = [
   {

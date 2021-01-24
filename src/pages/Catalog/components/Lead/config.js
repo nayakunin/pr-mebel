@@ -1,7 +1,7 @@
 import { filters } from '__constants__';
-import cupboard from './assets/cupboard.jpg';
-import wardrobe from './assets/wardrobe.jpg';
-import accessories from './assets/accessories.jpg';
+import cupboard from './assets/cupboard.webp';
+import wardrobe from './assets/wardrobe.webp';
+import accessories from './assets/accessories.webp';
 
 export const images = {
   [filters.sections[0].id]: cupboard,

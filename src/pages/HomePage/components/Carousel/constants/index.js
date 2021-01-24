@@ -1,23 +1,23 @@
-import topImg1 from '../assets/top-img1.jpg';
-import topImg2 from '../assets/top-img2.jpg';
-import topImg3 from '../assets/top-img3.jpg';
-import topImg4 from '../assets/top-img4.jpg';
-import topImg5 from '../assets/top-img5.jpg';
-import topImg6 from '../assets/top-img6.jpg';
+import topImg1 from '../assets/top-img1.webp';
+import topImg2 from '../assets/top-img2.webp';
+import topImg3 from '../assets/top-img3.webp';
+import topImg4 from '../assets/top-img4.webp';
+import topImg5 from '../assets/top-img5.webp';
+import topImg6 from '../assets/top-img6.webp';
 
-import topImgTab1 from '../assets/top-img-tab1.jpg';
-import topImgTab2 from '../assets/top-img-tab2.jpg';
-import topImgTab3 from '../assets/top-img-tab3.jpg';
-import topImgTab4 from '../assets/top-img-tab4.jpg';
-import topImgTab5 from '../assets/top-img-tab5.jpg';
-import topImgTab6 from '../assets/top-img-tab6.jpg';
+import topImgTab1 from '../assets/top-img-tab1.webp';
+import topImgTab2 from '../assets/top-img-tab2.webp';
+import topImgTab3 from '../assets/top-img-tab3.webp';
+import topImgTab4 from '../assets/top-img-tab4.webp';
+import topImgTab5 from '../assets/top-img-tab5.webp';
+import topImgTab6 from '../assets/top-img-tab6.webp';
 
-import topImgMob1 from '../assets/top-img-mob1.jpg';
-import topImgMob2 from '../assets/top-img-mob2.jpg';
-import topImgMob3 from '../assets/top-img-mob3.jpg';
-import topImgMob4 from '../assets/top-img-mob4.jpg';
-import topImgMob5 from '../assets/top-img-mob5.jpg';
-import topImgMob6 from '../assets/top-img-mob6.jpg';
+import topImgMob1 from '../assets/top-img-mob1.webp';
+import topImgMob2 from '../assets/top-img-mob2.webp';
+import topImgMob3 from '../assets/top-img-mob3.webp';
+import topImgMob4 from '../assets/top-img-mob4.webp';
+import topImgMob5 from '../assets/top-img-mob5.webp';
+import topImgMob6 from '../assets/top-img-mob6.webp';
 
 export const PAGES = [
   {

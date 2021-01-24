@@ -17,7 +17,7 @@ import {
   BlockTitle,
   SubmitButton,
 } from 'components';
-import img from './assets/connect-bg.jpg';
+import img from './assets/connect-bg.webp';
 
 const useStyles = makeStyles({
   root: {

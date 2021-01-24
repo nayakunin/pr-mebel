@@ -22,7 +22,7 @@ import {
   BlockTitle,
   SubmitButton,
 } from 'components';
-import img from './assets/questions-bg.jpg';
+import img from './assets/questions-bg.webp';
 
 const useStyles = makeStyles({
   root: {
