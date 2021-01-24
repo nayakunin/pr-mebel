@@ -5,7 +5,6 @@ import React, {
   useLayoutEffect,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import LazyLoad from 'react-lazyload';
 import { makeStyles } from '@material-ui/core/styles';
 import { useLocation } from 'react-router-dom';
 import QueryString from 'query-string';
@@ -212,9 +211,7 @@ export default () => {
           <ShopImg />
         </section>
         <section className={classes.mapSection}>
-          <LazyLoad height={500} offset={500}>
-            <Map />
-          </LazyLoad>
+          <Map />
         </section>
       </main>
       {isCardPopupOpen && (
