@@ -101,10 +101,12 @@ const useStyles = makeStyles((theme) => ({
     fontStyle: 'italic',
     textTransform: 'lowercase',
   },
+  captionContainer: {
+    marginTop: '12px',
+  },
   caption: {
     position: 'relative',
     textTransform: 'uppercase',
-    marginTop: '12px',
     fontSize: '15px',
     '&:after': {
       position: 'absolute',
@@ -175,11 +177,14 @@ export const CatalogCard = ({
               <ArrowForwardIcon className={classes.arrow} />
             </div>
           </LoadingBackground>
-          <Typography
-            className={classes.caption}
-          >
-            {caption}
-          </Typography>
+          <div className={classes.captionContainer}>
+            <Typography
+              className={classes.caption}
+              component="span"
+            >
+              {caption}
+            </Typography>
+          </div>
         </Hidden>
         <Hidden smUp>
           <LoadingBackground>

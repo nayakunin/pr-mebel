@@ -47,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '400',
   },
   closeIcon: {
+    cursor: 'pointer',
     width: '30px',
     height: '30px',
     top: '5px',
@@ -107,6 +108,17 @@ const useStyles = makeStyles((theme) => ({
   copyrightLink: {
     color: 'black',
   },
+  deleteFilesIcon: {
+    cursor: 'pointer',
+    width: '20px',
+    height: '20px',
+    position: 'absolute',
+    right: '-30px',
+    bottom: '1px',
+  },
+  fileInputText: {
+    position: 'relative',
+  },
   [theme.breakpoints.down('xs')]: {
     paperRoot: {
       maxWidth: 'unset !important',
@@ -127,14 +139,19 @@ export const OrderFormPopup = () => {
   const handleClosePopup = useCallback(() => {
     dispatch(closeOrderFormPopup());
     fileInputRef.current.value = null;
-  }, [dispatch]);
+  }, [fileInputRef, dispatch]);
 
   const handleFileInputClick = useCallback(() => {
     fileInputRef.current.click();
-  }, [fileInputRef]);
+  }, [fileInputRef, fileInputRef]);
 
   const handleFileUploadChange = useCallback(() => {
     setFileNames(fileInputRef.current.files);
+  }, [fileInputRef]);
+
+  const handleDeleteSelectedFiles = useCallback(() => {
+    fileInputRef.current.value = null;
+    setFileNames([]);
   }, [fileInputRef]);
 
   const onSubmit = useCallback((data) => {
@@ -250,8 +267,12 @@ export const OrderFormPopup = () => {
               </Grid>
               {!!fileNames.length && (
                 <Grid item xs={12} sm={5} container justify="center">
-                  <Typography>
+                  <Typography className={classes.fileInputText}>
                     {`${fileNames.length}\xA0${getFileDeclination(fileNames.length)}`}
+                    <ClearIcon
+                      className={classes.deleteFilesIcon}
+                      onClick={handleDeleteSelectedFiles}
+                    />
                   </Typography>
                 </Grid>
               )}
@@ -263,7 +284,7 @@ export const OrderFormPopup = () => {
               Нажимая кнопку &laquo;Рассчитать стоимость&raquo;,
               я&nbsp;даю согласие на&nbsp;обработку персональных данных и&nbsp;подтверждаю,
               что ознакомлен с&nbsp;
-              <a href="/" className={classes.copyrightLink}>пользовательским соглашением</a>
+              <a href="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit" className={classes.copyrightLink}>пользовательским соглашением</a>
             </Typography>
           </form>
         </Grid>

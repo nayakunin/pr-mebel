@@ -36,9 +36,27 @@ const useStyles = makeStyles((theme) => ({
 export const FAQ = () => {
   const classes = useStyles();
   const [isShowMoreClicked, setIsShowMoreClicked] = useState(false);
+  const [expandedList, setExpandedList] = useState(LIST.reduce((acc, v) => ({
+    ...acc,
+    [v.title]: false,
+  }), {}));
 
   const handleShowMore = useCallback(() => {
     setIsShowMoreClicked(true);
+  }, []);
+
+  const handleChange = useCallback((title) => (_, expanded) => {
+    if (expanded) {
+      setExpandedList(LIST.reduce((acc, v) => ({
+        ...acc,
+        [v.title]: v.title === title,
+      }), {}));
+    } else {
+      setExpandedList(LIST.reduce((acc, v) => ({
+        ...acc,
+        [v.title]: false,
+      }), {}));
+    }
   }, []);
 
   return (
@@ -56,6 +74,8 @@ export const FAQ = () => {
             <Grid item xs={12} md={10} key={item.title}>
               <Accordion
                 className={classes.accordion}
+                onChange={handleChange(item.title)}
+                expanded={expandedList[item.title]}
               >
                 <AccordionSummary
                   expandIcon={<ArrowForwardIosIcon className={classes.dropdownIcon} />}

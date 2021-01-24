@@ -41,7 +41,14 @@ export const Link = ({
 
   if (external) {
     return (
-      <a href={to} className={cx(classes.root, className)}>{children}</a>
+      <a
+        href={to}
+        className={cx(classes.root, className)}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {children}
+      </a>
     );
   }
 

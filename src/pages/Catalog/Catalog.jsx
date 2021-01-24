@@ -1,4 +1,9 @@
-import React, { useCallback, useEffect } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useLayoutEffect,
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { useLocation } from 'react-router-dom';
@@ -11,6 +16,7 @@ import {
   DesignOffer,
   Map,
   ShopImg,
+  GoTopButton,
 } from 'components';
 import {
   fetchCatalog,
@@ -70,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const Catalog = () => {
   const classes = useStyles();
+  const refsMap = useRef({});
   const dispatch = useDispatch();
   const {
     items,
@@ -150,12 +157,35 @@ export const Catalog = () => {
     handleApplyFilter();
   }, [location, dispatch, handleApplyFilter]);
 
+  useEffect(() => {
+    refsMap.current = {};
+  }, []);
+
+  useLayoutEffect(() => {
+    if (location.hash) {
+      refsMap.current[location.hash].scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    } else {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
+    }
+  }, [location]);
+
   return (
     <>
       <Header />
       <main>
         <Lead sectionId={filter.section} />
-        <section className={classes.filterSection}>
+        <section
+          id="filters"
+          ref={(el) => { refsMap.current['#filters'] = el; }}
+          className={classes.filterSection}
+        >
           <Filters
             filter={filter}
             options={filters}
@@ -207,6 +237,7 @@ export const Catalog = () => {
       <Footer />
       <OrderFormPopup />
       <FormSubmitPopup />
+      <GoTopButton />
     </>
   );
 };

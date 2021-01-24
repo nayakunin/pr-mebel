@@ -111,6 +111,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   deleteFilesIcon: {
+    cursor: 'pointer',
     color: 'white',
     width: '20px',
     height: '20px',
@@ -307,7 +308,7 @@ export const FeedbackForm = () => {
                   Нажимая кнопку &laquo;Рассчитать стоимость&raquo;,
                   я&nbsp;даю согласие на&nbsp;обработку персональных данных и&nbsp;подтверждаю,
                   что ознакомлен с&nbsp;
-                  <a href="/" className={classes['copyright-link']}>пользовательским соглашением</a>
+                  <a href="https://docs.google.com/document/d/1KSM18JIPpeT6weSQaG3dgpTEC9MO3wvxYWsrF2A6CZE/edit" className={classes['copyright-link']}>пользовательским соглашением</a>
                 </Typography>
               </Grid>
             </Grid>

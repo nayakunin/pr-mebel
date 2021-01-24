@@ -53,7 +53,7 @@ export const PAGES = [
       medium: topImgTab2,
       large: topImg2,
     },
-    to: '/catalog?section=cupboard&style=classic',
+    to: '/catalog?section=cupboard&style=classic#filters',
   },
   {
     titles: [
@@ -71,7 +71,7 @@ export const PAGES = [
       medium: topImgTab3,
       large: topImg3,
     },
-    to: '/catalog?section=wardrobe',
+    to: '/catalog?section=wardrobe#filters',
   },
   {
     titles: [
@@ -88,7 +88,7 @@ export const PAGES = [
       medium: topImgTab4,
       large: topImg4,
     },
-    to: '/catalog?section=cupboard&style=modern',
+    to: '/catalog?section=cupboard&style=modern#filters',
   },
   {
     titles: [
@@ -105,7 +105,7 @@ export const PAGES = [
       medium: topImgTab5,
       large: topImg5,
     },
-    to: '/catalog?section=accessories',
+    to: '/catalog?section=accessories#filters',
   },
   {
     titles: [
@@ -122,6 +122,6 @@ export const PAGES = [
       medium: topImgTab6,
       large: topImg6,
     },
-    to: '/catalog?section=lightingSystems',
+    to: '/catalog?section=lightingSystems#filters',
   },
 ];

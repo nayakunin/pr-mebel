@@ -104,7 +104,7 @@ export const HomePage = () => {
         behavior: 'smooth',
       });
     }
-  }, [location.hash]);
+  }, [location]);
 
   return (
     <>

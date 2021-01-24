@@ -87,6 +87,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '0',
   },
   menu__icon: {
+    cursor: 'pointer',
     width: '35px',
     height: '35px',
   },
@@ -214,22 +215,22 @@ export const Header = () => {
                     >
                       <li>
                         <Typography className={classes.text} gutterBottom>
-                          <Link to="/catalog?section=cupboard">Шкафы</Link>
+                          <Link to="/catalog?section=cupboard#filters">Шкафы</Link>
                         </Typography>
                       </li>
                       <li>
                         <Typography className={classes.text} gutterBottom>
-                          <Link to="/catalog?section=wardrobe">Гардеробные</Link>
+                          <Link to="/catalog?section=wardrobe#filters">Гардеробные</Link>
                         </Typography>
                       </li>
                       <li>
                         <Typography className={classes.text} gutterBottom>
-                          <Link to="/catalog?section=accessories">Аксессуары</Link>
+                          <Link to="/catalog?section=accessories#filters">Аксессуары</Link>
                         </Typography>
                       </li>
                       <li>
                         <Typography className={classes.text} gutterBottom>
-                          <Link to="/catalog?section=lightingSystems">Системы подсветки</Link>
+                          <Link to="/catalog?section=lightingSystems#filters">Системы подсветки</Link>
                         </Typography>
                       </li>
                     </ul>
@@ -347,22 +348,22 @@ export const Header = () => {
               <Grid item xs={12} container spacing={1} direction="column" style={{ paddingLeft: '10px' }}>
                 <Grid item xs>
                   <Typography>
-                    <Link to="/catalog?section=cupboard">Шкафы</Link>
+                    <Link to="/catalog?section=cupboard#filters">Шкафы</Link>
                   </Typography>
                 </Grid>
                 <Grid item xs>
                   <Typography>
-                    <Link to="/catalog?section=wardrobe">Гардеробные</Link>
+                    <Link to="/catalog?section=wardrobe#filters">Гардеробные</Link>
                   </Typography>
                 </Grid>
                 <Grid item xs>
                   <Typography>
-                    <Link to="/catalog?section=accessories">Аксессуары</Link>
+                    <Link to="/catalog?section=accessories#filters">Аксессуары</Link>
                   </Typography>
                 </Grid>
                 <Grid item xs>
                   <Typography>
-                    <Link to="/catalog?section=lightingSystems">Системы подсветки</Link>
+                    <Link to="/catalog?section=lightingSystems#filters">Системы подсветки</Link>
                   </Typography>
                 </Grid>
               </Grid>
