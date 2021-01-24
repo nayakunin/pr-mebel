@@ -82,7 +82,7 @@ export const Card = ({
         className={classes.root}
         onClick={handleClick}
       >
-        <LazyLoad offset={200}>
+        <LazyLoad offset={300} once>
           <img
             className={classes.img}
             src={imageUrlMin}

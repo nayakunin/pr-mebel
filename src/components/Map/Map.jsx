@@ -115,7 +115,7 @@ export const Map = () => {
           Приезжайте к нам в гости!
         </Typography>
       </BlockTitle>
-      <LazyLoad>
+      <LazyLoad once offset={300}>
         <Grid container className={classes.content}>
           <Grid item xs={12} sm={5}>
             <Typography variant="body2">

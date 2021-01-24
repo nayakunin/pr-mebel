@@ -161,7 +161,7 @@ export const Advantages = () => {
             </Options>
           </Grid>
           <Grid item xs={5}>
-            <LazyLoad height={300} offset={500}>
+            <LazyLoad height={300} offset={500} once>
               <img
                 src={TABS.filter((tab, i) => i === activeTab)[0].img}
                 alt="smth"
@@ -203,7 +203,7 @@ export const Advantages = () => {
               className={cx(classes.icon, classes.iconBack)}
               onClick={handlePrevTab}
             />
-            <LazyLoad height={300} offset={300}>
+            <LazyLoad height={300} offset={300} once>
               <img
                 src={TABS.filter((tab, i) => i === activeTab)[0].img}
                 alt="smth"

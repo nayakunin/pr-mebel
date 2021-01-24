@@ -168,7 +168,7 @@ export const CatalogCard = ({
         <Hidden xsDown>
           <LoadingBackground>
             <div className={classes.imageContainer}>
-              <LazyLoad height={250} offset={500}>
+              <LazyLoad height={250} offset={500} once>
                 <img src={img} alt={caption} className={classes.image} />
               </LazyLoad>
               <div className={classes.hoverTextContainer}>
@@ -192,7 +192,7 @@ export const CatalogCard = ({
         <Hidden smUp>
           <LoadingBackground>
             <div className={classes.imageContainer}>
-              <LazyLoad height={300} offset={400}>
+              <LazyLoad height={300} offset={400} once>
                 <img src={img} alt={caption} className={classes.image} />
               </LazyLoad>
               <div className={classes.imgHeader}>

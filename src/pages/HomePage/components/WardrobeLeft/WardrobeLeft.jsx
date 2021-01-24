@@ -103,7 +103,7 @@ export const WardrobeLeft = () => {
         <Grid container spacing={6} className={classes.content}>
           <Grid item xs={6} className={classes.imgContainerLarge}>
             <div className={classes.imgWrapper}>
-              <LazyLoad height={450} offset={500}>
+              <LazyLoad height={450} offset={500} once>
                 <img
                   src={currentImg}
                   alt="шкаф"
@@ -174,7 +174,7 @@ export const WardrobeLeft = () => {
             </ul>
           </Grid>
           <Grid item xs={12} className={classes.img__container}>
-            <LazyLoad height={400} offset={300}>
+            <LazyLoad height={400} offset={300} once>
               <img
                 src={currentImg}
                 alt="шкаф"

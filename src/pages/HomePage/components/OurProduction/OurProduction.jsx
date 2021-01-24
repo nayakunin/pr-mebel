@@ -65,7 +65,7 @@ export const OurProduction = () => {
           Наше производство
         </Typography>
       </BlockTitle>
-      <LazyLoad>
+      <LazyLoad offset={400} once>
         <img src={img} alt="Производство" className={classes.img} />
       </LazyLoad>
       <Grid

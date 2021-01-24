@@ -86,7 +86,7 @@ export const QuestionsForm = () => {
   }, [reset, dispatch]);
 
   return (
-    <LazyLoad height={650} offset={500}>
+    <LazyLoad height={650} offset={500} once>
       <div className={classes.root}>
         <Container className={classes.container}>
           <BlockTitle>

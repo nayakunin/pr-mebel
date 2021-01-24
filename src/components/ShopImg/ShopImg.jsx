@@ -12,13 +12,22 @@ const useStyles = makeStyles({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
   },
+  lazyContainer: {
+    height: '30vw',
+  },
 });
 
 export const ShopImg = () => {
   const classes = useStyles();
 
   return (
-    <LazyLoad height={400}>
+    <LazyLoad
+      once
+      offset={300}
+      style={{
+        height: '30vw',
+      }}
+    >
       <div
         className={classes.root}
       />

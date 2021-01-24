@@ -186,7 +186,7 @@ export const Page = ({
           <img className={classes.image} src={imageSet.small} alt="Фоновое изображение" />
         </picture>
       ) : (
-        <LazyLoad>
+        <LazyLoad height="100vh" once>
           <picture className={classes.imageContainer}>
             <source className={classes.image} srcSet={imageSet.small} media="(max-width: 575px)" />
             <source className={classes.image} srcSet={imageSet.medium} media="(max-width: 990px)" />
