@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { BlockTitle } from 'components';
@@ -72,7 +72,7 @@ export const WardrobeSnippet = ({
     setAnchorEl(null);
   }, []);
 
-  const open = Boolean(anchorEl);
+  const open = useMemo(() => Boolean(anchorEl), [anchorEl]);
 
   return (
     <div
@@ -101,6 +101,7 @@ export const WardrobeSnippet = ({
           className: classes.paper,
         }}
         onClose={handleClose}
+        disableScrollLock
       >
         <div className={classes.paperContainer}>
           <img
